@@ -470,7 +470,7 @@ def oomLaunch(fileName, delay=0):
 
 
 def oomLaunchKicad():
-    oomLaunchPopen('"C:/Program Files/KiCad/6.0/bin/kicad.exe"')
+    oomLaunchPopen('"C:/Program Files/KiCad/7.0/bin/kicad.exe"')
 
 def oomLaunchEagle(file = ""):
     oomLaunchPopen('"C:/EAGLE 9.6.2/eagle.exe" ' + '"' + file + '"')
@@ -674,7 +674,10 @@ def oomGetClipboard():
 
 def oomClipboardSaveImage(filename):
     im = ImageGrab.grabclipboard()
-    im.save(filename,'PNG')
+    try:
+        im.save(filename,'PNG')
+    except:
+        print("No image in clipboard")
 
 def oomSetClipboard(text):
     win32clipboard.OpenClipboard()
