@@ -403,27 +403,27 @@ def generate_readme(**kwargs):
 
     # time to make a readme for the provided project
     readme = f"# {name}\n"
-    # if the file oomp/current/working/working_3d.png exists add it
-    extra = "oomp/"
+    # if the file oomp/version_current/working/working_3d.png exists add it
+    extra = "oomp_documentation/"
     if oomp_in_output:
         extra = ""
-    if os.path.isfile(f"{directory}/oomp/current/working/working_3d.png"):
-        readme += f"![{name}]({extra}current/working/working_3d.png)\n"
+    if os.path.isfile(f"{directory}/oomp_documentation/version_current/working/working_3d.png"):
+        readme += f"![{name}]({extra}version_current/working/working_3d.png)\n"
     # add description with header 
     
     readme += f"## Description\n"
     readme += f"{description}/\n"
     
     #add the schematic if it exists
-    if os.path.isfile(f"{directory}/oomp/current/working/working_schematic.png"):
+    if os.path.isfile(f"{directory}/oomp_documentation/version_current/working/working_schematic.png"):
         readme += f"## Schematic\n"
-        readme += f"![{name}]({extra}current/working/working_schematic.png)\n"
+        readme += f"![{name}]({extra}version_current/working/working_schematic.png)\n"
     
     # add the bom if it exists
-    if os.path.isfile(f"{directory}/oomp/current/working/working_bom.csv"):
+    if os.path.isfile(f"{directory}/oomp_documentation/version_current/working/working_bom.csv"):
         readme += f"## Bill of Materials\n"
         #take the bom csv and import it as a dict using csv library don't add it to bom do it in one line rather than using a csvfile object it is seperated with ;
-        bom = csv.DictReader(open(f"{directory}/oomp/current/working/working_bom.csv"), delimiter=';')
+        bom = csv.DictReader(open(f"{directory}/oomp_documentation/version_current/working/working_bom.csv"), delimiter=';')
         #add the bom to the readme as a table
         #get the headers from the dict
         headers = bom.fieldnames
@@ -474,7 +474,7 @@ def generate_readme(**kwargs):
     pngs = []
     extra = ""
     if oomp_in_output:
-        extra = "oomp/"
+        extra = "oomp_documentation/"
     for root, dirs, files in os.walk(f"{directory}{extra}"):
         for file in files:
             if file.endswith(".png") and "src/" not in root:
@@ -493,7 +493,7 @@ def generate_readme(**kwargs):
     #write the readme
     extra = ""
     if oomp_in_output:
-        extra = "oomp/"
+        extra = "oomp_documentation/"
     with open(f'{directory}{extra}readme.md', "w") as f:
         f.write(readme)
     
