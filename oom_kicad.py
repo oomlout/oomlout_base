@@ -54,14 +54,17 @@ def generate_outputs(**kwargs):
 def generate_outputs_board(**kwargs):
     #get current working directory as a string
     import os
-    current_working_directory = os.getcwd()
+    current_working_directory = os.getcwd().replace("\\","/")
 
     
     board_file = kwargs.get('board_file', rf"{current_working_directory}\oomp\current\working\working.kicad_pcb")
     #if board file doesn't start with a drive
     if not board_file[1] == ":":
-        board_file = rf"{current_working_directory}\{board_file}"
+        board_file = rf"{current_working_directory}/{board_file}"
     kicadBoard = board_file
+    #replace // with /
+    kicadBoard = kicadBoard.replace("//","/")
+
     overwrite = True
     #get the directory of board_file and set dir to be it
     dir = os.path.dirname(board_file) + "/"
