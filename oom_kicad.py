@@ -159,10 +159,173 @@ def generate_outputs_schematic(**kwargs):
             kicadClosePcb()
             oomSendEsc(delay=5)
 
+def generate_outputs_footprint(**kwargs):
+    filename = kwargs.get('filename', None)
+    #replace \\ with /
+    filename = filename.replace("\\","/")
+    #get directory from filename
+    directory = os.path.dirname(filename) + ""
+    #if no drive letter add current working directory
+    if not filename[1] == ":":
+        directory = os.getcwd() + "/" + directory
+    #replace \\ with /
+    directory = directory.replace("\\","/")
+    
+    overwrite = kwargs.get('overwrite', False)
+    #load footprint details from directoery working.yaml
+    import yaml
+    footprint = yaml.load(open(directory + "/working.yaml"), Loader=yaml.FullLoader)
+
+    
+    oompFileName = f'{directory}/working.png'
+    oompFileName3D = f'{directory}/working_kicad_pcb_3d.png'
+    oompFileName3Dfront = f'{directory}/working_kicad_pcb_3d_front.png'
+    oompFileName3Dback = f'{directory}/working_kicad_pcb_3d_back.png'
+    oomp_filename_pdf = f'{directory}/working.pdf'
+    footprintFilename = f'{directory}/working.kicad_mod'
+    #last directory in filename is footprint fullname
+    footprint_fullname = filename.split("/")[-3]
+    
+
+    #if overwrite or not os.path.isfile(oompFileName) :
+    if overwrite or not os.path.isfile(oompFileName3D) :
+        print("    Harvesting files")
+        shortDelay = 1
+        longDelay = 3
+        footprintName = footprint[0]["name"]
+        footprintDir = footprint[0]["name"]
+        print("Capturing :" + str(footprint))
+        oomMouseClick(pos=kicadActive)
+        oomDelay(shortDelay)
+        ##apply filter
+        oomMouseClick(pos=kicadFootprintFilter)
+        oomDelay(shortDelay)
+        oomSendCtrl("a")
+        oomDelay(shortDelay)
+        oomSend(footprint_fullname)
+        oomDelay(longDelay)
+        oomMouseDoubleClick(pos=kicadFootprintFirstResult)
+        oomDelay(longDelay)
+        #### Discard Changes
+        oomSendRight()
+        oomDelay(shortDelay)
+        oomSendEnter()
+        oomDelay(longDelay)
+        #print to pdf
+        oomSendAltKey("f",5)
+        oomSend("p",5)
+        oomSendEnter(delay=2)
+        oomSendEnter(delay=2)
+        oomSend(oomp_filename_pdf.replace("/","\\"),delay=2)
+        oomSendEnter(delay=2)
+        oomSend("y",2)
+        #wait 10 seconds
+        oomDelay(10)
+        oomSendEsc(delay=5)
+        #### Export PNG
+        file = oompFileName.replace("/","\\")
+        if not os.path.exists(file):
+            oomSendAltKey("f",2)
+            oomSend("e",1)
+            oomSend("p",2)
+            oomSend(file,3)
+            oomSendEnter(delay=1)
+            oomSend("y",2)
+        #### Export Footprint
+        oomMouseClick(pos=kicadFootprintFilter)
+        file = footprintFilename.replace("/","\\")
+        if not os.path.exists(file):        
+            oomSendAltKey("f",2)
+            oomSend("e",1)
+            oomSend("f",2)
+            oomSend(file,3)
+            oomSendEnter(delay=1)
+            oomSend("y",2)
+            oomSendEnter(delay=1)
+        #### 3d 
+        oomMouseClick(pos=[153,36],delay=1)
+        oomSendDown(times=2,delay=1)
+        oomSendEnter(delay=5)
+        oomSendWindowsKey("up")
+        ##### raytracing
+        #if "_BALL" not in oompID.upper() and "_FLG" not in oompID.upper():
+        #    oomSendAltKey("p",1)
+        #    oomSendEnter(2)
+        #    oomDelay(10)
+        #### front
+        oomSendAltKey("f",2)
+        oomSendEnter(delay=1)
+        oomSend(oompFileName3Dfront.replace("/","\\"),3)
+        oomSendEnter(delay=1)
+        oomSend("y",2)
+        oomMouseClick(pos=[595,60],delay=5)
+        oomMouseClick(pos=[818,536],delay=5) ###### click middle
+        oomSend("Z",2)       
+        #### back        
+        oomDelay(10)
+        oomSendAltKey("f",2)
+        oomSendEnter(delay=1)
+        oomSend(oompFileName3Dback.replace("/","\\"),3)
+        oomSendEnter(delay=1)
+        oomSend("y",2)  
+        oomMouseClick(pos=[818,536],delay=5) ###### click middle
+        oomSend("r",2)       
+        #### ortho
+        #oomMouseClick(pos=[595,60],delay=5)  
+        # Needs hotkey setting rotate x clockwise to a, z counter clockwise to d 
+        #yaxis
+        times = 3
+        for x in range(times):
+            oomMouseClick(pos=kicad3dView,delay=1)
+            oomSend("rr")
+            oomSendEnter(delay=1)
+        #zaxis    
+        times = 2
+        for x in range(times):
+            oomMouseClick(pos=kicad3dView,delay=1)
+            oomSend("rrrrrrr")
+            oomSendEnter(delay=1)
+        oomMouseClick(pos=[818,536],delay=5) ###### click middle
+        oomSendAltKey("f",2)
+        oomSendEnter(delay=1)
+        oomSend(oompFileName3D.replace("/","\\"),3)
+        oomSendEnter(delay=1)
+        oomSend("y",2)
+        oomMouseClick(pos=[818,536],delay=5) ###### click middle
+        
+
+
+
+        ##### close
+        oomSendAltKey("f",delay=1)
+        oomSendUp(delay=1)
+        oomSendEnter(delay=3)
+
+
+
+
+
+
+
+        oomDelay(longDelay)    
+
+        oomDelay(5)
+
 
 kicadActive =[515,14]
 kicadFile = [80,35]
 kicadFootprintMiddle = [945,545] 
+kicad3dView = [145,35]
+kicadActive =[515,14]
+kicadFootprintFilter =[145,114]
+kicadFootprintFirstResult = [145,185]
+kicadFootprintMiddle = [945,545] 
+kicadFootprintMiddlePlus = [950,550] 
+kicadFootprintTopLeft = [365,86] 
+kicadSymbolMiddle = [1105,555] 
+kicadSymbolMiddlePlus = [1110,560] 
+
+kicadFile = [80,35]
 kicad3dView = [145,35]
 
 def kicadExport(filename,type,overwrite=False):
@@ -291,6 +454,23 @@ def kicadExport(filename,type,overwrite=False):
             oomMouseClick(pos=kicadFile,delay=5) 
             oomSend("c",2)
 
+def open_footprint_window():
+    #open kicad.exe and wait 10 seconds
+    oomLaunchPopen("kicad.exe",10)
+    #maximize
+    oomSendMaximize()
+    #click at 400,240 opwen footpritn editor
+    oomMouseClick(pos=[400,260],delay=5)
+    #send enter
+    oomSendEnter(delay=5)
+    #maximize
+    oomSendMaximize()
+    #wait for footprints to load 10 seconds
+    oomDelay(10)
+    #press enter
+    oomSendEnter(delay=5)
+
+
 def kicadClosePcb(noSave=True,eda=False):
     #oomSendAltKey("f",2)
     oomMouseClick(pos=kicadFile,delay=5)
@@ -373,7 +553,7 @@ def eagle_to_kicad(**kwargs):
         oomMouseClick(pos=kicadFootprintMiddle,delay=2)
         oomSendEsc(delay=2)
         #fill zones
-        oomSend("b",15)
+        oomSend("b",30)
         ######  save board
         oomMouseClick(pos=kicadFile,delay=5)
         oomSendDown(3,delay=2)
