@@ -56,8 +56,11 @@ def generate_outputs_board(**kwargs):
     import os
     current_working_directory = os.getcwd().replace("\\","/")
 
-    
-    board_file = kwargs.get('board_file', rf"{current_working_directory}\oomp\current\working\working.kicad_pcb")
+    filename = kwargs.get('filename', None)
+    if filename == None:
+        board_file = kwargs.get('board_file', rf"{current_working_directory}\oomp\current\working\working.kicad_pcb")
+    else:
+        board_file = filename
     #if board file doesn't start with a drive
     if not board_file[1] == ":":
         board_file = rf"{current_working_directory}/{board_file}"
@@ -320,13 +323,15 @@ def eagle_to_kicad(**kwargs):
     style = ""
     kicadBoard = dir + "working.kicad_pcb"
     kicad_schematic = dir + "working.kicad_sch"
+    kicad_footprint_directory = dir + "working.pretty"
 
     
     boardEagle = filename
     #remove any double
     
     
-    if (overwrite or not os.path.exists(kicadBoard)) and os.path.exists(boardEagle):
+    #if (overwrite or not os.path.exists(kicadBoard)) and os.path.exists(boardEagle):
+    if (overwrite or not os.path.exists(kicad_footprint_directory)) and os.path.exists(boardEagle):
         print(    "HarvestEagleBoardToKicad: " + filename)
         oomLaunchKicad()
         oomDelay(10)
@@ -390,6 +395,14 @@ def eagle_to_kicad(**kwargs):
         oomSendEnter(delay=2)
         ###### close project
         kicadClosePcb(False)
+        #copy footprint folder across
+        #find the folder that ends .pretty in tmp
+        tmpDir = f'tmp/'
+        for file in os.listdir(tmpDir):
+            if file.endswith(".pretty"):
+                shutil.copytree(tmpDir+file, kicad_footprint_directory)
+
+        
         
     else:
         pass
