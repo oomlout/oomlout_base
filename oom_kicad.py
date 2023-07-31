@@ -159,6 +159,65 @@ def generate_outputs_schematic(**kwargs):
             kicadClosePcb()
             oomSendEsc(delay=5)
 
+def generate_outputs_symbol(**kwargs):
+
+    current_working_directory = os.getcwd().replace("\\","/")
+
+    filename = kwargs['filename']
+    #if filename doesn't have 
+    if not filename[1] == ":":
+        filename = rf"{current_working_directory}/{filename}"
+    #//make \\ /
+    filename = filename.replace("\\","/")
+
+    overwrite = kwargs.get('overwrite', False)
+
+    kicadBoard = filename
+    symbol_name = filename.split("/")[-3].replace(".kicad_sym","")
+    pngFileName = filename.replace(".kicad_sym",".png")
+    svgFileName = filename.replace(".kicad_sym",".svg")
+    symbolFileName = filename
+    print("Harvesting Kicad Symbol File: " + filename)
+    if overwrite or not os.path.isfile(svgFileName)  or not os.path.isfile(svgFileName)  or not os.path.isfile(pngFileName) and name != "":
+        print("    Generating")
+        oomMouseClick(pos=kicadActive, delay=5)        
+        oomMouseClick(pos=kicadFootprintFilter, delay=5)
+        oomSendCtrl("a")
+        oomDelay(1)
+        oomSendDelete(delay=1)
+        oomSend(symbol_name,delay=2)
+
+        oomSendEnter(delay=3)
+        oomMouseClick(pos=kicadFootprintFirstResult, delay=0.1)
+        oomMouseClick(pos=kicadFootprintFirstResult, delay=5)
+        oomMouseClick(pos=kicadFootprintFirstResult, delay=10)
+
+        exportKicadSymbol(pngFileName,"png")
+        exportKicadSymbol(svgFileName,"svg")
+        #exportKicadSymbol(symbolFileName,"kicad_sym")
+        oomDelay(5)
+
+def exportKicadSymbol(filename,type):
+    oomMouseClick(pos=kicadFootprintFirstResult, delay=5)    
+    oomSendAltKey("f",delay=2)
+    oomSend("e",delay=2)
+    down = 0
+    if type == "png":
+        down = 1
+    if type == "svg":
+        down = 2
+    oomSendDown(times=down,delay=2)
+    oomSendEnter(delay=2)
+    oomSend(filename.replace("/","\\"), delay=2)
+    oomSendEnter(delay=2)
+    if type == "kicad_sym":
+        oomSendEnter(delay=2)
+
+    oomSend("y",delay=2)
+    oomSendEnter(delay=2)
+    if type == "kicad_sym":
+        oomSendEnter(delay=2)
+
 def generate_outputs_footprint(**kwargs):
     filename = kwargs.get('filename', None)
     #replace \\ with /
@@ -704,7 +763,6 @@ def generate_readme(**kwargs):
 
 
     
-
 
 
 
