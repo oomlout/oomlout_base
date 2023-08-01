@@ -548,9 +548,13 @@ def eagle_to_kicad(**kwargs):
     current_working_directory = os.getcwd()
     #replace backslashes with slashes
     current_working_directory = current_working_directory.replace("\\","/")
-    eagle_file = kwargs.get('eagle_file', rf"{current_working_directory}\oomp\current\working\working.brd")
-    kicad_directory =   kwargs.get('kicad_directory', rf"{current_working_directory}\oomp\current\working\kicad")
-    overwrite = kwargs.get('overwrite', True)
+    eagle_file = kwargs.get('eagle_file', None)
+    if eagle_file == None:
+        eagle_file = kwargs.get("filename", rf"{current_working_directory}\oomp\current\working\working.brd")
+    #get ther directory from eagle_file
+    eagle_directory = os.path.dirname(eagle_file)
+    kicad_directory = eagle_directory
+    overwrite = kwargs.get('overwrite', False)
 
     filename = f'{current_working_directory}/{eagle_file}'
     #remove any double slashe with single slashes
@@ -586,7 +590,7 @@ def eagle_to_kicad(**kwargs):
         oomSend(filename,5)
         oomSendEnter(10)
         ######  set temp folder
-        tempDir = f'{current_working_directory}/tmp/'
+        tempDir = f'{current_working_directory}/tmp/eagle_to_kicad/'
         #create tmp directory if it doesn't exist
         if not os.path.exists(tempDir):
             os.makedirs(tempDir)
