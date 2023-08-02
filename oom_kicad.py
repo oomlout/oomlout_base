@@ -565,6 +565,7 @@ def eagle_to_kicad(**kwargs):
     dir = dir.replace("//","/")
     style = ""
     kicadBoard = dir + "working.kicad_pcb"
+    kicad_board_file = kicadBoard
     kicad_schematic = dir + "working.kicad_sch"
     kicad_footprint_directory = dir + "working.pretty"
 
@@ -574,7 +575,7 @@ def eagle_to_kicad(**kwargs):
     
     
     #if (overwrite or not os.path.exists(kicadBoard)) and os.path.exists(boardEagle):
-    if (overwrite or not os.path.exists(kicad_footprint_directory)) and os.path.exists(boardEagle):
+    if (overwrite or not os.path.exists(kicad_board_file)) and os.path.exists(boardEagle):
         print(    "HarvestEagleBoardToKicad: " + filename)
         oomLaunchKicad()
         oomDelay(10)
@@ -596,16 +597,29 @@ def eagle_to_kicad(**kwargs):
             os.makedirs(tempDir)
         #delete tempDir + "boardEagle.pretty/" if it exists using os
         # delete contents of temp_dir
-        shutil.rmtree(tempDir)
+        try:
+            shutil.rmtree(tempDir)
+        except:
+            print("couldn't remove temp folder")
         # make temp_dir
-        os.makedirs(tempDir)
+        if not os.path.exists(tempDir):
+            os.makedirs(tempDir)
 
         oomSend(tempDir.replace("/","\\"),2)
         oomSendEnter(5)        
         oomSendEnter(10)
         oomSend("y",10)
+        #cleaer badly formed xml error
+        oomSendEnter(10)
+        oomSendEnter(10)
+        oomSendEnter(5)
+        #reset layer matching
+        #send four tabs
+        oomSendTab(4,2)
+        #send enter
+        oomSendEnter(2)
         ######  match layers dialog
-        oomSendTab(6,5)
+        oomSendTab(6-4,5)
         oomSendEnter(2)
         oomSendTab(1,2)
         oomSendEnter(10)
@@ -649,8 +663,8 @@ def eagle_to_kicad(**kwargs):
         
     else:
         pass
-        #
-        # print("        SKIPPING")
+        print("skipping: " + filename + " already exists")
+        
 
 def generate_readme(**kwargs):
     import oomp
