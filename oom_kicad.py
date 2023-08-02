@@ -58,7 +58,7 @@ def generate_outputs_board(**kwargs):
 
     filename = kwargs.get('filename', None)
     if filename == None:
-        board_file = kwargs.get('board_file', rf"{current_working_directory}\oomp\current\working\working.kicad_pcb")
+        board_file = kwargs.get('board_file', rf"{current_working_directory}\oomp\current_version\working\working.kicad_pcb")
     else:
         board_file = filename
     #if board file doesn't start with a drive
