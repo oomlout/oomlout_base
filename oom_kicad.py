@@ -160,7 +160,7 @@ def generate_outputs_schematic(**kwargs):
             oomSendEsc(delay=5)
 
 def generate_outputs_symbol(**kwargs):
-
+    counter = 0
     current_working_directory = os.getcwd().replace("\\","/")
 
     filename = kwargs['filename']
@@ -196,6 +196,8 @@ def generate_outputs_symbol(**kwargs):
         exportKicadSymbol(svgFileName,"svg")
         #exportKicadSymbol(symbolFileName,"kicad_sym")
         oomDelay(5)
+        counter = 1
+    return counter
 
 def exportKicadSymbol(filename,type):
     oomMouseClick(pos=kicadFootprintFirstResult, delay=5)    
