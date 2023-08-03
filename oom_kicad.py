@@ -221,6 +221,7 @@ def exportKicadSymbol(filename,type):
         oomSendEnter(delay=2)
 
 def generate_outputs_footprint(**kwargs):
+    counter = 0
     filename = kwargs.get('filename', None)
     #replace \\ with /
     filename = filename.replace("\\","/")
@@ -371,6 +372,8 @@ def generate_outputs_footprint(**kwargs):
         oomDelay(longDelay)    
 
         oomDelay(5)
+        counter = 1
+    return counter
 
 
 kicadActive =[515,14]
