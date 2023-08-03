@@ -771,6 +771,24 @@ def generate_readme(**kwargs):
         f.write(readme)
     
 
+def copy_kibom_template(**kwargs):
+    filename = kwargs.get('filename', None)
+    template_file = kwargs.get('tamplate_file', 'templates/kibot_template.yaml')
+    
+    filename_directory = os.path.dirname(filename)
+    output_template = f'{filename_directory}/working_kibot_template.yaml'
+    #copy and overwrite the template file if it exists
+    shutil.copyfile(template_file, output_template)
+
+def push_to_git(**kwargs):
+    count = kwargs.get('count', 1)
+    #push to github
+    print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    print("%%%%%%  pushing to github")
+    subprocess.run(["git", "add", "*"])
+    subprocess.run(["git", "commit", "-m", f"comitting after {count} generations"])
+    subprocess.run(["git", "push"])
+
 
 
 
