@@ -790,9 +790,20 @@ def push_to_git(**kwargs):
     #push to github
     print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     print("%%%%%%  pushing to github")
-    subprocess.run(["git", "add", "*"])
-    subprocess.run(["git", "commit", "-m", f"comitting after {count} generations"])
-    subprocess.run(["git", "push"])
+    #remove the lock file on thsi repo if it exists
+    try:
+        os.remove(".git/index.lock")
+    except:
+        pass
+    import git 
+    repo = git.Repo(os.getcwd())
+    repo.git.add("*")
+    repo.index.commit(f"comitting after {count} generations")
+    origin = repo.remote(name='origin')
+    origin.push()
+    #subprocess.run(["git", "add", "*"])
+    #subprocess.run(["git", "commit", "-m", f"comitting after {count} generations"])
+    #subprocess.run(["git", "push"])
 
 
 
