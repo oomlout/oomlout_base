@@ -33,13 +33,15 @@ def symbol_change_name_oomp(**kwargs):
         except:
             extra_entry_name = unit.id.replace(entry_name_original, entry_name)
             extra_entry_name = oom_base.remove_special_characters(extra_entry_name)
-            unit.id = unit.id.replace(entry_name_original, entry_name)
+
+            unit.id = unit.id.replace(entry_name_original, extra_entry_name)
     #if extends
     if "10m03" in entry_name:
         pass
     if symbol.extends != None:
         extend_extra = f'{owner}_{library_name}'
         extend_extra = oom_base.remove_special_characters(f'{extend_extra}_{symbol.extends}')
+        extend_extra = extend_extra.lower()
         symbol.extends = extend_extra
 
     return symbol
