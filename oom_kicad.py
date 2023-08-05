@@ -614,6 +614,8 @@ def eagle_to_kicad(**kwargs):
         oomSendEnter(5)        
         oomSendEnter(10)
         oomSend("y",10)
+        #move to the right if theres a schemativc already open error
+        oomSendRight(1,2)
         #cleaer badly formed xml error
         oomSendEnter(10)
         oomSendEnter(10)
