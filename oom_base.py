@@ -1,4 +1,94 @@
 import os
+import time
+import keyboard
+import win32com.client
+import pyautogui
+
+#timimng
+def delay(t,escape=True):    
+    if t > 9:
+        if t == 50:
+            c=0
+        for u in range(t):
+            print(">", end='',flush=True)
+        print("")
+    if t < 1:
+        time.sleep(t)
+    else:
+        exit = False
+        for x in range(int(t)):
+            print(".", end='',flush=True)
+            for y in range(9):
+                time.sleep(.1)
+                if escape:
+                    if keyboard.is_pressed("s"):
+                        print("Delay Escaped")
+                        time.sleep(2)
+                        exit = True
+                        break
+            if exit:
+                break
+
+
+        print()    
+
+#keyboard
+def send_keys(string, **kwargs):
+    dela = kwargs.get('dela', 0.1)
+    count = kwargs.get('count', 1)    
+    print(f"                Sending: {str(string)}   {count} times with a delay of {dela}")    
+    for x in range(count):
+        #st = st.replace("}","").rpleace("{","")
+
+        swaps = [")", "(", "+"]
+        for swap in swaps:
+            st = string.replace(swap,"{" + swap + "}")    
+        shell = win32com.client.Dispatch("WScript.Shell")
+        shell.SendKeys(string, 0)
+        delay(dela)
+
+def send_keys_alt(st, dela=0):
+    print("                Alt " + st)
+    pyautogui.keyDown('alt')
+    delay(.15)
+    pyautogui.press(st)
+    delay(.15)
+    pyautogui.keyUp('alt')
+    delay(.1)
+    delay(dela)
+
+def send_enter(dela = 0,times = 1):
+    print("            Enter")
+    for time in range(times):
+        pyautogui.press('enter')
+        delay(0.1)
+    delay(dela)
+
+def send_esc(dela = 0,times = 1):
+    print(f"            Esc {times} times")
+    for time in range(times):
+        pyautogui.press('esc')
+        delay(0.1)
+    delay(dela)
+
+def send_tab(times=1,dela=0):
+    print("            Tab")
+    for time in range(times):
+        pyautogui.press('tab')
+        delay(0.1)
+    delay(dela)
+
+def send_tab_shift(times=1,dela=0):
+    print("            Tab")
+    for time in range(times):
+        pyautogui.keyDown('shift')
+        delay(.15)
+        pyautogui.press('tab')
+        delay(.15)
+        pyautogui.keyUp('shift')
+        delay(.1)
+    delay(dela)
+
 
 #image manipulation
 def generate_image(**kwargs):
