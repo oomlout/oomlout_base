@@ -100,7 +100,9 @@ def generate_outputs_schematic(**kwargs):
     #get current working directory as a string
     import os
     current_working_directory = os.getcwd()     
-    board_file = kwargs.get('board_file', rf"{current_working_directory}\oomp\current\working\working.kicad_pcb")
+    board_file = kwargs.get('board_file', "none")
+    if board_file == "none":
+        board_file = kwargs.get('filename', rf"{current_working_directory}\oomp\current\working\working.kicad_pcb")
     #change to sch file
     board_file = board_file.replace(".kicad_pcb",".kicad_sch")
     #if board file doesn't start with a drive
@@ -112,7 +114,7 @@ def generate_outputs_schematic(**kwargs):
     imageFile = directory + "working_schematic.png"
     pdfFile = directory + "working_schematic.pdf"
     if os.path.isfile(kicadBoard):
-        if overwrite or not os.path.isfile(pdfFile):
+        if overwrite or not os.path.isfile(imageFile):
             print("Harvesting Kicad Board File: " + kicadBoard)
             oomLaunchPopen("eeschema.exe " + kicadBoard,10)
             #maximize
@@ -806,6 +808,17 @@ def push_to_git(**kwargs):
     #subprocess.run(["git", "add", "*"])
     #subprocess.run(["git", "commit", "-m", f"comitting after {count} generations"])
     #subprocess.run(["git", "push"])
+
+
+def get_footprint_pin_names(**kwargs):
+    ##abandoned because names come from the symbol
+    from kiutils.footprint import Footprint
+    filename = kwargs.get('filename', None)
+    
+    footprint = Footprint().from_file(filename)
+
+
+    pass
 
 
 
