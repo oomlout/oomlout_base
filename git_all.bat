@@ -1,1 +1,1 @@
-action_git_all_quick.bat
+action_git_all_quick.bat %1
