@@ -180,7 +180,7 @@ def generate_outputs_symbol(**kwargs):
     svgFileName = filename.replace(".kicad_sym",".svg")
     symbolFileName = filename
     print("Harvesting Kicad Symbol File: " + filename)
-    if overwrite or not os.path.isfile(svgFileName) or not os.path.isfile(pngFileName):
+    if overwrite or not os.path.isfile(svgFileName) or not os.path.isfile(pngFileName) or not os.path.isfile(symbolFileName):
         print("    Generating")
         oomMouseClick(pos=kicadActive, delay=5)        
         oomMouseClick(pos=kicadFootprintFilter, delay=5)
@@ -194,9 +194,13 @@ def generate_outputs_symbol(**kwargs):
         oomMouseClick(pos=kicadFootprintFirstResult, delay=5)
         oomMouseClick(pos=kicadFootprintFirstResult, delay=10)
 
-        exportKicadSymbol(pngFileName,"png")
-        exportKicadSymbol(svgFileName,"svg")
-        #exportKicadSymbol(symbolFileName,"kicad_sym")
+        #check if png exists
+        if not os.path.isfile(pngFileName):
+            exportKicadSymbol(pngFileName,"png")
+        if not os.path.isfile(svgFileName):
+            exportKicadSymbol(svgFileName,"svg")
+        if not os.path.isfile(symbolFileName):
+            exportKicadSymbol(symbolFileName,"kicad_sym")
         oomDelay(5)
         counter = 1
     return counter
