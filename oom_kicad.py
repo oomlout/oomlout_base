@@ -790,6 +790,7 @@ def copy_kibom_template(**kwargs):
     shutil.copyfile(template_file, output_template)
 
 def push_to_git(**kwargs):
+    repo_directory = kwargs.get('repo_directory', os.getcwd())
     count = kwargs.get('count', 1)
     #push to github
     print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -799,8 +800,9 @@ def push_to_git(**kwargs):
         os.remove(".git/index.lock")
     except:
         pass
+    print(f"pushing to {repo_directory}")
     import git 
-    repo = git.Repo(os.getcwd())
+    repo = git.Repo(repo_directory)
     repo.git.add("*")
     repo.index.commit(f"comitting after {count} generations")
     origin = repo.remote(name='origin')
