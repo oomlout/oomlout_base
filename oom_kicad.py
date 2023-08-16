@@ -806,11 +806,16 @@ def push_to_git(**kwargs):
         pass
     print(f"pushing to {repo_directory}")
     import git 
-    repo = git.Repo(repo_directory)
-    repo.git.add("*")
-    repo.index.commit(f"comitting after {count} generations")
-    origin = repo.remote(name='origin')
-    origin.push()
+    result = repo = git.Repo(repo_directory)
+    print(result)
+    result =  repo.git.add("*")
+    print(result)
+    result = repo.index.commit(f"comitting after {count} generations")
+    print(result)
+
+    result = origin = repo.remote(name='origin')
+    result = origin.push()
+    print(result)
     #subprocess.run(["git", "add", "*"])
     #subprocess.run(["git", "commit", "-m", f"comitting after {count} generations"])
     #subprocess.run(["git", "push"])
