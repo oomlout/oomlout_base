@@ -47,7 +47,8 @@ def get_from_corel_coord(x,y):
     return (x,y)
 
 
-def generate_outputs(**kwargs):
+def generate_outputs(**kwargs):    
+    define_mouse_positions(**kwargs)
     generate_outputs_board(**kwargs)
     generate_outputs_schematic(**kwargs)
 
@@ -89,8 +90,8 @@ def generate_outputs_board(**kwargs):
         kicadExport(filename,"bom",overwrite=overwrite)
         kicadExport(filename,"pos",overwrite=overwrite)                
         kicadExport(filename,"svg",overwrite=overwrite)            
-        kicadExport(filename,"wrl",overwrite=overwrite)
-        kicadExport(filename,"step",overwrite=overwrite)
+        #kicadExport(filename,"wrl",overwrite=overwrite)
+        #kicadExport(filename,"step",overwrite=overwrite)
         kicadExport(filename,"3dRender",overwrite=overwrite)
         kicadClosePcb()    
 
@@ -116,9 +117,26 @@ def generate_outputs_schematic(**kwargs):
     if os.path.isfile(kicadBoard):
         if overwrite or not os.path.isfile(imageFile):
             print("Harvesting Kicad Board File: " + kicadBoard)
+
             oomLaunchPopen("eeschema.exe " + kicadBoard,10)
+            ###### check if its an error
+            oomSetClipboard("")
+            oomDelay(1)
+            oomCopy()
+            oomDelay(2)
+            check_error = oomGetClipboard()
+            if "KiCad PCB Editor Error" in check_error:
+                oomSendEnter()
+                oomDelay(2)                   
+                kicadClosePcb()         
+                #make a new file text file with name imageFile
+                #f = open(imageFile, "w")
+                #f.write("Error")
+                #f.close()
+ 
+                return 
             #maximize
-            oomSendMaximize()
+            #oomSendMaximize()
             oomDelay(2)
             oomMouseMove(pos=kicadFootprintMiddle,delay=2)
             oomMouseMove(pos=kicadActive,delay=2)
@@ -152,8 +170,13 @@ def generate_outputs_schematic(**kwargs):
             if os.path.isfile(src):
                 os.rename(src, dest)
             #delete the tmp directory and files in it
-            shutil.rmtree(f'{directory}{tempDir}')
+            temp_directory = f'{directory}{tempDir}'
+            #if the directory exists
+            if os.path.exists(temp_directory):
+                shutil.rmtree(f'{directory}{tempDir}')
             #send esc
+            oomSendEsc(delay=2)
+            oomSendEsc(delay=2)
             oomSendEsc(delay=2)
 
 
@@ -398,6 +421,39 @@ kicadSymbolMiddlePlus = [1110,560]
 kicadFile = [80,35]
 kicad3dView = [145,35]
 
+def define_mouse_positions(**kwargs):
+    global kicadFile, kicadActive, kicadFile, kicadFootprintMiddle, kicad3dView, kicadActive, kicadFootprintFilter, kicadFootprintFirstResult, kicadFootprintMiddle, kicadFootprintMiddlePlus, kicadFootprintTopLeft, kicadSymbolMiddle,kicadSymbolMiddlePlus
+
+    computer = kwargs.get("computer","desktop")
+
+    if computer == "desktop":
+        kicadFile = [80,35]
+        kicadActive =[515,14]
+        kicadFile = [80,35]
+        kicadFootprintMiddle = [945,545] 
+        kicad3dView = [145,35]
+        kicadActive =[515,14]
+        kicadFootprintFilter =[145,114]
+        kicadFootprintFirstResult = [145,185]
+        kicadFootprintMiddle = [945,545] 
+        kicadFootprintMiddlePlus = [950,550] 
+        kicadFootprintTopLeft = [365,86] 
+        kicadSymbolMiddle = [1105,555] 
+        kicadSymbolMiddlePlus = [1110,560] 
+    elif computer == "surface":        
+        kicadFile = [19,50]
+        kicadFootprintMiddle = [945,545] 
+        kicad3dView = [145,35]
+        kicadActive =[515,14]
+        kicadFootprintFilter =[145,114] ####
+        kicadFootprintFirstResult = [145,185] ####
+        kicadFootprintMiddle = [945,545] 
+        kicadFootprintMiddlePlus = [950,550] 
+        kicadFootprintTopLeft = [365,86] 
+        kicadSymbolMiddle = [1105,555] 
+        kicadSymbolMiddlePlus = [1110,560] 
+
+
 def kicadExport(filename,type,overwrite=False):
     if type.lower() == "bom":        
         bomFile = filename + "working_bom.csv"
@@ -554,6 +610,8 @@ def kicadClosePcb(noSave=True,eda=False):
         oomSendEnter(delay=20)
 
 def eagle_to_kicad(**kwargs):
+    computer = kwargs.get("computer","desktop")
+    define_mouse_positions(computer=computer)
     #get the working directory
     import os
     current_working_directory = os.getcwd()
@@ -655,7 +713,7 @@ def eagle_to_kicad(**kwargs):
         ###### close project
         kicadClosePcb(False)
         ###### save schematic
-        oomSendMaximize()
+        #oomSendMaximize()
         oomMouseClick(pos=kicadFile,delay=5)
         oomSendDown(2,delay=2)
         oomSendEnter(delay=5)

@@ -486,8 +486,12 @@ def oomLaunchOpen(fileName, delay=0):
     print("            Opening: " + launchString)
     os.startfile(launchString)
 
-def oomLaunchPopen(fileName, delay=0):
-    launchString = fileName
+def oomLaunchPopen(filename, delay=0):
+    if "pcbnew.exe" in filename.lower():
+        filename = filename.replace("pcbnew.exe", "C:\\Program Files\\KiCad\\7.0\\bin\\pcbnew.exe")
+    if "eeschema.exe" in filename.lower():
+        filename = filename.replace("eeschema.exe", "C:\\Program Files\\KiCad\\7.0\\bin\\eeschema.exe")
+    launchString = filename
     print("Launching: " + launchString)
     subprocess.Popen(launchString)
     oomDelay(delay)
