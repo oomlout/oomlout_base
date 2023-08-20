@@ -671,10 +671,16 @@ def oomPaste():
     
 
 def oomGetClipboard():
-    win32clipboard.OpenClipboard()
-    clip = win32clipboard.GetClipboardData()
-    win32clipboard.CloseClipboard()
-    return clip
+    return_value = ""
+    try:
+        win32clipboard.OpenClipboard()
+        clip = win32clipboard.GetClipboardData()
+        win32clipboard.CloseClipboard()
+        return_value = clip
+    except:
+        print("No text in clipboard")
+
+    return return_value
 
 def oomClipboardSaveImage(filename):
     im = ImageGrab.grabclipboard()
