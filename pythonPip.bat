@@ -46,5 +46,6 @@ pip install scipy
 pip install scikit-image
 
 pip install selenium
-
+pip install pelican
+pip install jinja2 
 pause
