@@ -61,6 +61,8 @@ def svg_dict_replace(**kwargs):
             value = value.get(key2,{})
         #replace value in svg_string
         search_string = f"%%{key}%%"
+        if value == {}:
+            value = ""
         replace_string = value 
         svg_string = svg_string.replace(search_string, replace_string)
 
@@ -83,12 +85,16 @@ def svg_make_png(**kwargs):
     svg_make_file(**kwargs)
 
 def svg_make_file(**kwargs):
+    export_dpi = kwargs.get('export_dpi',"")
     file_type = kwargs.get('file_type',"pdf")
     file_in = kwargs.get('file_in',"")
     file_out = kwargs.get('file_out',"")
     if file_out == "":
         file_out = file_in.replace(".svg", f".{file_type}")
     #executeString = f"inkscape.exe --export-pdf-version=1.4 --export-text-to-path --export-filename=\"{file_out}\" \"{file_in}\""
-    executeString = f'inkscape.exe --export-type="{file_type}" --export-filename="{file_out}" "{file_in}"'
+    executeString = f'inkscape.exe --export-type="{file_type}" --export-filename="{file_out}"'
+    if export_dpi != "":
+        executeString += f' --export-dpi="{export_dpi}"'
+    executeString += f'  "{file_in}"'
     print(f"converting to {file_type} {file_out}")
     os.system(executeString)
