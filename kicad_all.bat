@@ -1,0 +1,1 @@
+call action_kicad_document_project.py

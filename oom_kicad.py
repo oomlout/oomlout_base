@@ -77,7 +77,7 @@ def generate_outputs_board(**kwargs):
     print("Harvesting Kicad Board File: " + kicadBoard)
     #test if the last 3d render exists if it does skip the rest
     if not os.path.isfile(dir + "working_3d.png"):
-        oomLaunchPopen("pcbnew.exe " + kicadBoard,10)
+        oomLaunchPopen("pcbnew.exe " + kicadBoard,15)
         oomSendEnter(delay = 5)
         oomMouseMove(pos=kicadFootprintMiddle,delay=2)
         oomSend("b",10)

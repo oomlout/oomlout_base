@@ -170,3 +170,39 @@ def yaml_to_markdown(**kwargs):
         
 
     return readme
+
+
+#git stuff
+
+def git_clone(**kwargs):
+    url = kwargs.get('url', "")
+    if url != "":
+        repo_name = kwargs.get('repo_name',"")
+        if repo_name == "":
+            #get repo name from url
+            url_git = url
+            if not url_git.endswith(".git"):
+                url_git += ".git"
+            repo_name = url_git.split("/")[-1].split(".")[0]
+        #add repo name to fodler
+        folder = kwargs.get('folder', "") + "/" + repo_name
+        os.system("git clone " + url + " " + folder)
+        return folder
+
+def git_delete(**kwargs):
+    url = kwargs.get('url', "")
+    if url != "":
+        repo_name = kwargs.get('repo_name',"")
+        if repo_name == "":
+            #get repo name from url
+            url_git = url
+            if not url_git.endswith(".git"):
+                url_git += ".git"
+            repo_name = url_git.split("/")[-1].split(".")[0]
+        #add repo name to fodler
+        folder = kwargs.get('folder', "") + "/" + repo_name
+        if repo_name != "":
+            print("Deleting " + folder)
+            #replace / with \\
+            folder = folder.replace("/","\\")
+            os.system("rmdir /s /q " + folder)
