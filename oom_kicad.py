@@ -251,6 +251,8 @@ def exportKicadSymbol(filename,type):
 
 def generate_outputs_footprint(**kwargs):
     counter = 0
+    computer = kwargs.get("computer","desktop")
+    define_mouse_positions(computer=computer)
     filename = kwargs.get('filename', None)
     #replace \\ with /
     filename = filename.replace("\\","/")
@@ -334,10 +336,10 @@ def generate_outputs_footprint(**kwargs):
             oomSend("y",2)
             oomSendEnter(delay=1)
         #### 3d 
-        oomMouseClick(pos=[153,36],delay=1)
+        oomMouseClick(pos=kicadFootprintView,delay=1)
         oomSendDown(times=2,delay=1)
         oomSendEnter(delay=5)
-        oomSendWindowsKey("up")
+        #oomSendWindowsKey("up")
         ##### raytracing
         #if "_BALL" not in oompID.upper() and "_FLG" not in oompID.upper():
         #    oomSendAltKey("p",1)
@@ -417,14 +419,15 @@ kicadFootprintMiddlePlus = [950,550]
 kicadFootprintTopLeft = [365,86] 
 kicadSymbolMiddle = [1105,555] 
 kicadSymbolMiddlePlus = [1110,560] 
+kicadFootprintView = [153,36]
 
 kicadFile = [80,35]
 kicad3dView = [145,35]
 
 def define_mouse_positions(**kwargs):
-    global kicadFile, kicadActive, kicadFile, kicadFootprintMiddle, kicad3dView, kicadActive, kicadFootprintFilter, kicadFootprintFirstResult, kicadFootprintMiddle, kicadFootprintMiddlePlus, kicadFootprintTopLeft, kicadSymbolMiddle,kicadSymbolMiddlePlus
 
     computer = kwargs.get("computer","desktop")
+    global kicadFile, kicadActive, kicadFile, kicadFootprintMiddle, kicad3dView, kicadActive, kicadFootprintFilter, kicadFootprintFirstResult, kicadFootprintMiddle, kicadFootprintMiddlePlus, kicadFootprintTopLeft, kicadSymbolMiddle,kicadSymbolMiddlePlus, kicadFootprintView
 
     if computer == "desktop":
         kicadFile = [80,35]
@@ -440,18 +443,20 @@ def define_mouse_positions(**kwargs):
         kicadFootprintTopLeft = [365,86] 
         kicadSymbolMiddle = [1105,555] 
         kicadSymbolMiddlePlus = [1110,560] 
+        kicadFootprintView = [153,36]
     elif computer == "surface":        
         kicadFile = [19,50]
         kicadFootprintMiddle = [945,545] 
         kicad3dView = [145,35]
         kicadActive =[515,14]
-        kicadFootprintFilter =[145,114] ####
-        kicadFootprintFirstResult = [145,185] ####
+        kicadFootprintFilter =[145,169] ####
+        kicadFootprintFirstResult = [86,270] ####
         kicadFootprintMiddle = [945,545] 
         kicadFootprintMiddlePlus = [950,550] 
-        kicadFootprintTopLeft = [365,86] 
+        kicadFootprintTopLeft = [365,186] 
         kicadSymbolMiddle = [1105,555] 
         kicadSymbolMiddlePlus = [1110,560] 
+        kicadFootprintView = [131,52]
 
 
 def kicadExport(filename,type,overwrite=False):
