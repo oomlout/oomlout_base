@@ -8,7 +8,9 @@ from kiutils.items.common import Position
 def kicad_set_components(**kwargs):
     board_file = kwargs.get('board_file', None)
     board_file = board_file.replace('\\', '/')
-    components = kwargs.get('components', None)    
+    components = kwargs.get('components', None)   
+    if components == None:
+        components = kwargs.get('parts', None)   
 
     board = Board.from_file(board_file)
     footprints = board.footprints
@@ -16,6 +18,7 @@ def kicad_set_components(**kwargs):
         for footprint in footprints:        
             #get reference by going through components.graphicItems until typw is 'reference' then make ref equal to text
             reference = None
+            new_rotation = None
             for graphicItem in footprint.graphicItems:
                 try:
                     if graphicItem.type == 'reference':
@@ -24,26 +27,67 @@ def kicad_set_components(**kwargs):
                     pass
                     #skip lines and rectangles
 
-            if reference == component['reference']:
+            designator = component.get('designator', "")
+            if designator == "":
+                designator = component.get('reference', "")
+            
+            if designator == "":
+                print(f"Error: No designator or reference for {component}")
+
+            if reference.lower() == designator.lower():
                 current_pos = footprint.position                
-                
-                new_pos = component.get('position', current_pos)
-                if len(new_pos) == 2:
-                    new_pos = (new_pos[0], new_pos[1], 0)
-                corel_pos = component.get('corel_pos', False)
-                if corel_pos:                       
-                    corel_p = get_from_corel_coord(new_pos[0], new_pos[1]  )
-                    new_pos = (corel_p[0], corel_p[1], new_pos[2])
-                new_pos = Position(new_pos[0], new_pos[1], new_pos[2])
+                current_angle = current_pos.angle
+                if current_angle == None:
+                    current_angle = 0
+                new_pos = component.get('position', "")
+                if new_pos == "":
+                    position_x = component.get('position_x', "")
+                    position_y = component.get('position_y', "")
+                    rotation = component.get('rotation', None)
+                    if rotation != None:
+                        rotation = rotation
+                        if rotation == "":
+                            rotation = 0
+                        new_rotation = float(rotation) - current_angle
+                    else:
+                        rotation = 0
+                    
+                    if position_x != "" and position_y != "":
+                        new_pos = (position_x, position_y, rotation)
+                    else:
+                        new_pos = current_pos
+                if new_pos != current_pos:
+                    if len(new_pos) == 2:
+                        new_pos = (new_pos[0], new_pos[1], 0)
+                    corel_pos = component.get('corel_pos', True)
+                    #if corel_pos isn't a boolean
+                    if type(corel_pos) == str:
+                        if corel_pos.lower() == "true":
+                            corel_pos = True
+                    if corel_pos:                       
+                        corel_p = get_from_corel_coord(new_pos[0], new_pos[1]  )
+                        new_pos = (corel_p[0], corel_p[1], new_pos[2])
+                    new_pos = Position(new_pos[0], new_pos[1], new_pos[2])
                 footprint.position = new_pos
+                #### rotate pads if rotation is changed
+                if new_rotation != None:
+                    for pad in footprint.pads:
+                        old_position = pad.position
+                        old_angle = old_position.angle
+                        if old_angle == None:
+                            old_angle = 0
+                        new_angle = old_angle + new_rotation
+                        new_position = Position(old_position.X, old_position.Y, new_angle)
+                        pad.position = new_position
                 
     
     board.filePath = board.filePath.replace('.kicad_pcb', '_new.kicad_pcb')
+    print(f"Saving {board.filePath}")
     board.to_file()
 
 def get_from_corel_coord(x,y):
-    x = x
-    y = -y
+    x = float(x)
+    y = -float(y)
     return (x,y)
 
 

@@ -1,4 +1,14 @@
 
+
+def get_table_dict(**kwargs):
+    data = kwargs.get("data","none")
+    new_data = []
+    new_data.append(["name","value"])
+    for key in data:
+        new_data.append([key,data[key]])
+    return get_table(data=new_data)
+
+
 def get_table(**kwargs):
     data = kwargs.get("data","none")
     #data is an array of dicts or an array of lists
