@@ -14,6 +14,8 @@ def get_table(**kwargs):
     #data is an array of dicts or an array of lists
     #if it's an array of lists
     #if data is a list
+    if len(data) == 0:
+        return "no data"
     if type(data) == list:
         #if the first element is a list
         if type(data[0]) == list:
@@ -66,3 +68,26 @@ def get_link_image_scale(**kwargs):
     #get a markdown image that links to another image
     return_value = f"[![{image}]({image_low_res})]({image})"
     return return_value
+
+### jinja2 template stuff
+
+
+def get_jinja2_template(**kwargs):
+    file_template = kwargs.get("template_file","")
+    file_output = kwargs.get("output_file","")
+    dict_data = kwargs.get("dict_data",{})
+
+    markdown_string = ""
+    with open(file_template, "r") as infile:
+        markdown_string = infile.read()
+    ##### sanitize part
+    import copy
+    data2 = copy.deepcopy(dict_data)
+
+    import jinja2    
+
+    markdown_string = jinja2.Template(markdown_string).render(p=data2)
+    with open(file_output, "w") as outfile:
+        outfile.write(markdown_string)
+        print(f"jinja2 template file written: {file_output}")
+
