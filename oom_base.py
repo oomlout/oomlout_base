@@ -140,15 +140,13 @@ def image_resolutions_dir(**kwargs):
     count2 = 1
     for root, dirs, files in os.walk(directory):
         #for each directory
-        for name in dirs:
-            #go through the files in this directory just one level
-            for file in os.listdir(os.path.join(root, name)):
+            for file in files:
                 #if kicad_mod file
                 if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg"):
                     resolutions = [140,300,600,1000]
                     for resolution in resolutions:
                         #generate the image at this resolution
-                        filename = os.path.join(root, name, file)
+                        filename = os.path.join(root, file )
                         #print(filename)
                         counter = generate_image(filename=filename, resolution=resolution, overwrite=overwrite)
                         pass
