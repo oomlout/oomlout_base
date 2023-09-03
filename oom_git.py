@@ -1,4 +1,5 @@
 import git
+import os
 
 def push_to_git(**kwargs):
     repo_directory = kwargs.get('repo_directory', os.getcwd())
