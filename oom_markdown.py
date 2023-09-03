@@ -1,4 +1,4 @@
-
+import os
 
 def get_table_dict(**kwargs):
     data = kwargs.get("data","none")
@@ -70,6 +70,85 @@ def get_link_image_scale(**kwargs):
     return return_value
 
 ### jinja2 template stuff
+
+dir_oomlout_base = "c:/gh/oomlout_base"
+dir_template = f"{dir_oomlout_base}/templates"
+
+def generate_readme_project(**kwargs):
+    directory = kwargs.get("directory","")
+    template_file = f"{dir_template}/project_readme_template.md.j2"
+    output_file = f"{directory}/readme.md"
+    details = {}
+    #load details from working,yaml file
+    import yaml
+    with open(f"{directory}/working.yaml", 'r') as stream:
+        try:
+            details = yaml.load(stream, Loader=yaml.FullLoader)
+        except yaml.YAMLError as exc:
+            print(exc)
+    files = []    
+    #get a list of recursive files
+    import glob
+    files = glob.glob(f"{directory}/**/*.*", recursive=True)
+    #replace all \\ with /
+    for i in range(len(files)):
+        files[i] = files[i].replace("\\","/")
+    #remove the directory from the file name
+    # replace \\ with / in directory
+    directory = directory.replace("\\","/")
+    for i in range(len(files)):
+        files[i] = files[i].replace(f"{directory}/","")
+    import copy
+    files2 = copy.deepcopy(files)
+    details["files"] = files2
+
+
+    #load working_bom.csv into an array
+    import csv
+    bom_file = f"{directory}/kicad/current_version/working/working_bom.csv"
+    if os.path.exists(bom_file):
+        files = []    
+        #divider is a ;
+        with open(bom_file, newline='' ) as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=';')
+            for row in reader:
+                files.append(row)
+        #replace footprint with link
+        github_base_part = "https://github.com/oomlout/oomlout_oomp_part_src/tree/main/parts"
+        for i in range(len(files)):
+            footprint = files[i]["Footprint"]
+            #footprint is everything after the first _
+            footprint = footprint.split("_",1)[1]
+            link = f"{github_base_part}/{footprint}"
+            full_link = get_link(link=link,text=footprint)
+            files[i]["Footprint"] = full_link
+        bom_table = get_table(data=files)
+        details["bom_table"] = bom_table
+
+    #load working_parts.csv
+    if os.path.exists(f"{directory}/working_parts.csv"):
+        files = []    
+        with open(f"{directory}/working_parts.csv", newline='') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                files.append(row)
+        #add link to oomp_key
+        github_base_part = "https://github.com/oomlout/oomlout_oomp_part_src/tree/main/parts"
+        for i in range(len(files)):
+            oomp_key = files[i]["oomp_key"]
+            key = oomp_key.replace("oomp_","")
+            link = f"{github_base_part}/{oomp_key}"
+            full_link = get_link(link=link,text=oomp_key)
+            files[i]["oomp_key"] = full_link
+
+        parts_table = get_table(data=files)
+        details["parts_table"] = parts_table     
+    
+    file_template = template_file
+    file_output = output_file
+    dict_data = details
+    get_jinja2_template(template_file=file_template,output_file=file_output,dict_data=dict_data)
+
 
 
 def get_jinja2_template(**kwargs):

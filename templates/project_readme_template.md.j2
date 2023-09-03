@@ -1,0 +1,24 @@
+# {{ p.name }}
+{{ p.description }}
+{% if "working.jpg" in p.files %} ![](working_600.jpg) 
+{% endif %}
+{% if "kicad/current_version/working/working_schematic.png" in p.files %}## schematic  
+![](kicad/current_version/working/working_schematic_600.png)  
+[schematic.pdf](kicad/current_version/working/working_schematic.pdf)  
+{% endif %}
+{% if "kicad/current_version/working/working_3d.png" in p.files %}## pcb  
+![](kicad/current_version/working/working_3d_600.png) 
+![](kicad/current_version/working/working_front_600.png)  
+![](kicad/current_version/working/working_back_600.png)  
+![](kicad/current_version/working/working_600.png) 
+{% endif %}
+{% if "working.png" in p.files %}## corel working
+![](working_600.png) 
+{% endif %}
+{% if "kicad/current_version/working/working_bom.csv" in p.files %}## working_bom
+{{ p.bom_table }}
+{% endif %}
+{% if "working_parts.csv" in p.files %}## working_parts
+{{ p.parts_table }}
+{% endif %}
+
