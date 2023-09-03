@@ -100,13 +100,13 @@ def generate_image(**kwargs):
     #skip if overwrite is false and the file already exists
     if not overwrite:
         if os.path.isfile(file_out):
-            return
+            return 0
     
     #if the image is already a resized on skip it chjeck for all numbers 100 or more
     if "_" in filename:
         if filename.split("_")[-1].split(".")[0].isdigit():
             if int(filename.split("_")[-1].split(".")[0]) >= 100:
-                return
+                return 0
     
     #open the image file png or jpg
     from PIL import Image
@@ -127,6 +127,7 @@ def generate_image(**kwargs):
     except:
         print("Error with image: " + filename)
         pass
+        return_value = 0
     return return_value
 
 # do all image resolutions for a directory
