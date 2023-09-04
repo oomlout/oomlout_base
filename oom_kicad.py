@@ -179,6 +179,13 @@ def generate_outputs_schematic(**kwargs):
                 #f.close()
  
                 return 
+            #deal with already open error
+            #send right
+            oomSendRight(delay=2)
+            #send enter
+            oomSendEnter(delay=2)
+            #send enter
+            oomSendEnter(delay=2)
             #maximize
             #oomSendMaximize()
             oomDelay(2)
