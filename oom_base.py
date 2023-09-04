@@ -144,9 +144,11 @@ def image_resolutions_dir(**kwargs):
                 #if kicad_mod file
                 if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg"):
                     resolutions = [140,300,600,1000]
+                    filename = os.path.join(root, file )
+                    #print(f"Generating images for {filename}")
                     for resolution in resolutions:
                         #generate the image at this resolution
-                        filename = os.path.join(root, file )
+                        
                         #print(filename)
                         counter = generate_image(filename=filename, resolution=resolution, overwrite=overwrite)
                         pass
@@ -167,7 +169,13 @@ def image_resolutions_dir(**kwargs):
                     
 
 
-
+def image_svg_to_png(**kwargs):
+    filename = kwargs.get('filename', "")
+    file_out = filename.replace(".svg", ".png")
+    import os
+    #convert with os.systyem call to inkscape
+    print(f"Converting {filename} to {file_out}")
+    os.system(f'inkscape --export-type="png" -w 2000 {filename}')
 
 
 # string manipulation

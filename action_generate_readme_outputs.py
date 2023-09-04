@@ -6,7 +6,7 @@ import oom_markdown
 def main_single_directory():
     #find all cdr files in the directory it was launched from
     directory = os.getcwd()
-    directory = "C:\GH\oomlout_ibbc_breakout_board_holder_oobb_3_2"
+    #directory = "C:\GH\oomlout_ibbc_breakout_board_holder_oobb_3_2"
     oom_markdown.generate_readme_project(directory=directory)
     
 

@@ -1,6 +1,6 @@
 
 from oomBase import *
-
+import os
 
 from kiutils.board import Board
 from kiutils.items.common import Position
@@ -93,7 +93,9 @@ def get_from_corel_coord(x,y):
 
 def generate_outputs(**kwargs):    
     define_mouse_positions(**kwargs)
+    print(f"Generating board outputs")
     generate_outputs_board(**kwargs)
+    print(f"Generating schematic outputs")
     generate_outputs_schematic(**kwargs)
 
 def generate_outputs_board(**kwargs):
@@ -120,7 +122,7 @@ def generate_outputs_board(**kwargs):
     dir = dir.replace("\\","/")
     print("Harvesting Kicad Board File: " + kicadBoard)
     #test if the last 3d render exists if it does skip the rest
-    if not os.path.isfile(dir + "working_3d.png"):
+    if not os.path.isfile(dir + "working_3d.png") or overwrite:
         oomLaunchPopen("pcbnew.exe " + kicadBoard,15)
         oomSendEnter(delay = 5)
         oomMouseMove(pos=kicadFootprintMiddle,delay=2)
@@ -130,7 +132,8 @@ def generate_outputs_board(**kwargs):
         filename = dir
         filename = filename.replace("\\","/") 
         filename = filename.replace("//","/")
-        oomMakeDir(filename)
+        oomMakeDir(filename)            
+        kicadExport(filename,"pdf",overwrite=overwrite)
         kicadExport(filename,"bom",overwrite=overwrite)
         kicadExport(filename,"pos",overwrite=overwrite)                
         kicadExport(filename,"svg",overwrite=overwrite)            
@@ -535,7 +538,7 @@ def kicadExport(filename,type,overwrite=False):
             oomSendEnter(2)   
             oomSendEsc(2)         
     if type.lower() == "svg":
-        if overwrite or not os.path.isfile(filename + "working-B_Cu.svg"):
+        if overwrite or not os.path.isfile(filename + "working.svg"):
             print("    Making svg files")
             #oomSendAltKey("f",2)
             oomMouseClick(pos=kicadFile,delay=5)       
@@ -545,6 +548,29 @@ def kicadExport(filename,type,overwrite=False):
             oomSend(filename,5)
             oomSendShiftTab(2,delay=2)
             oomSendEnter(delay=10)
+            oomSendEsc(5)
+            #rename the file
+            src = f'{filename}working-brd.svg'
+            dst = f'{filename}working.svg'
+            #if dst exists delete it
+            if os.path.isfile(dst):
+                os.remove(dst)
+            os.rename(src, dst)
+    if type.lower() == "pdf":
+        if overwrite or not os.path.isfile(filename + "working.pdf"):
+            print("    Making pdf files")
+            #oomSendAltKey("f",2)
+            oomMouseClick(pos=kicadFile,delay=5)       
+            oomSend("pp",2)            
+            oomSendEnter(delay=10)
+            oomSendEnter(delay=10)
+            oomSendEnter(delay=10)
+            file_pdf = f"{filename}working.pdf"
+            #replace / with \\
+            file_pdf = file_pdf.replace("/","\\")
+            oomSend(file_pdf,5)
+            oomSendEnter(delay=5)
+            oomSend("y",15)
             oomSendEsc(5)
     if type.lower() == "wrl":
         if overwrite or not os.path.isfile(filename + "working.wrl"):

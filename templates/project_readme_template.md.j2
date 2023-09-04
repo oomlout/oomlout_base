@@ -1,16 +1,17 @@
 # {{ p.name }}
 {{ p.description }}
-{% if "working.jpg" in p.files %} ![](working_600.jpg) 
+{% if "working.jpg" in p.files %} [![](working_600.jpg)](working.jpg)
 {% endif %}
 {% if "kicad/current_version/working/working_schematic.png" in p.files %}## schematic  
 ![](kicad/current_version/working/working_schematic_600.png)  
-[schematic.pdf](kicad/current_version/working/working_schematic.pdf)  
+[schematic (pdf)](kicad/current_version/working/working_schematic.pdf)  
 {% endif %}
 {% if "kicad/current_version/working/working_3d.png" in p.files %}## pcb  
 ![](kicad/current_version/working/working_3d_600.png) 
-![](kicad/current_version/working/working_front_600.png)  
-![](kicad/current_version/working/working_back_600.png)  
-![](kicad/current_version/working/working_600.png) 
+![](kicad/current_version/working/working_3d_front_600.png)  
+![](kicad/current_version/working/working_3d_back_600.png)  
+![](kicad/current_version/working/working_600.png)  
+[board (pdf)](kicad/current_version/working/working.pdf)  
 {% endif %}
 {% if "working.png" in p.files %}## corel working
 ![](working_600.png) 
@@ -20,5 +21,9 @@
 {% endif %}
 {% if "working_parts.csv" in p.files %}## working_parts
 {{ p.parts_table }}
+{% endif %}
+{% if "oomp_parts_table" in p %}## oomp_parts_summary
+{{ p.oomp_parts_table }}
+Search Links: (L) - lcsc, (D) - digikey, (M) - mouser, (N) - newark, (SZ) - szlcsc
 {% endif %}
 
