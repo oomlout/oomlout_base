@@ -31,6 +31,11 @@ def delay(t,escape=True):
 
 
         print()    
+#mouse
+def move_mouse(x,y,dela=0):
+    print(f"                Moving mouse to {x},{y}")
+    pyautogui.moveTo(x, y)
+    delay(dela)
 
 #keyboard
 def send_keys(string, **kwargs):
