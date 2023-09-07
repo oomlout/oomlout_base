@@ -3,6 +3,9 @@ Backup_
 _autosave
 backup
 autosave
+_sch.lck
+_pcb.lck
+.tmp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

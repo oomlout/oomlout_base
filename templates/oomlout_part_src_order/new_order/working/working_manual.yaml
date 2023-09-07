@@ -1,0 +1,15 @@
+oomp_id: lcsc_2023_09_05_ibbc_testing
+directory: orders\lcsc_2023_09_05_ibbc_testing\working
+link_github: https://github.com/oomlout/oomlout_oomp_part_src/tree/main/orders/orders/lcsc_2023_09_05_ibbc_testing/working
+distributor_name: LCSC
+distributor_code: distributor_lcsc
+date: 2023_09_05
+note:
+- ""
+source: 
+- https://github.com/oomlout/oomlout_oomp_electronic_breakout_board_sensor_temperature_pressure_bosch_bme280
+- https://github.com/oomlout/oomlout_ibbc_breakout_board_holder_oobb_3_2
+parts_src: working.ods
+cost_shipping: $0
+cost_parts: $0
+cost_total: $0
