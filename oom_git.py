@@ -1,6 +1,42 @@
 import git
 import os
 
+
+def clone(**kwargs):
+    repo = kwargs['repo']
+    directory = kwargs.get('directory', os.getcwd())
+    #add repo name to directory
+    directory = os.path.join(directory, repo.split("/")[-1])
+    #if directory doesn't exist make it
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    else:
+        #if it does exist pull instead of clone
+        print(f"directory {directory} already exists")
+        pull(directory=directory)
+        return
+
+    #make absolute
+    directory = os.path.abspath(directory)
+    print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    print("%%%%%%  cloning from github")
+    print(f"cloning {repo} to {directory}")
+    #do in one os.system call
+    os.system(f"git clone {repo} {directory}")
+
+def pull(**kwargs):
+    directory = kwargs.get('directory', os.getcwd())
+    #make absolute
+    directory = os.path.abspath(directory)
+    print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    print("%%%%%%  pulling from github")
+    print(f"pulling from {directory}")
+    #do in one os.system call
+    os.system(f"cd {directory} && git pull")
+    
+    
+
+
 def push_to_git(**kwargs):
     repo_directory = kwargs.get('repo_directory', os.getcwd())
     count = kwargs.get('count', 1)

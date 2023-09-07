@@ -201,6 +201,31 @@ def generate_outputs_schematic(**kwargs):
             oomMouseMove(pos=kicadFootprintMiddle,delay=2)
             oomMouseClick(pos=kicadActive,delay=5)    
             
+            # bom
+            #send alt t
+            oomSendAltKey("t",delay=2)
+            #send up twice
+            oomSendUp(times=2,delay=2)
+            #send enter
+            oomSendEnter(delay=2)
+            #select filter press down three times
+            oomSendDown(times=3,delay=2)
+            #send tab four times
+            oomSendTab(times=3,delay=2)
+            #send paramter string
+            string_parameter = 'python "C:/Program Files/KiCad/7.0/bin/scripting/plugins/bom_csv_grouped_by_value_with_fp.py" "{%}I" "{%}O_bom_schematic.csv'
+            oomSend(string_parameter,delay=2)
+            #send one tab
+            oomSendTab(delay=2)
+            #send enter
+            oomSendEnter(delay=2)
+            #send esc
+            oomSendEsc(delay=2)
+
+
+
+
+            # image
             #oomSendAltKey("f",delay=2)            
             oomMouseClick(pos=kicadFile,delay=5)   
             oomSend("e",1)
@@ -232,6 +257,7 @@ def generate_outputs_schematic(**kwargs):
             oomSendEsc(delay=2)
             oomSendEsc(delay=2)
             oomSendEsc(delay=2)
+
 
 
 
@@ -762,7 +788,55 @@ def eagle_to_kicad(**kwargs):
         oomSend("y",10)
         #move to the right if theres a schemativc already open error
         oomSendRight(1,2)
-        #cleaer badly formed xml error
+        #check what the error is
+        # clear clipboard
+        oomSetClipboard("")
+        #send ctrl c
+        oomSendCtrl("a")
+        oomDelay(2)
+        oomSendCtrl("c")
+        oomDelay(2)
+        #get clipboard
+        clipboard = oomGetClipboard()
+        #if it is a schematic already open error
+        
+        if "Unable to read file" in clipboard:
+            print(f"old eagle format converting")
+            #convert in eagle
+            #open filename in eagle with os.sysytem
+            filenames = []
+            filenames.append(filename)
+            filenames.append(filename.replace(".brd",".sch"))
+            for filename in filenames:
+                #open filename in eagle with subprocess not os.system
+                subprocess.Popen(["eagle", filename])
+                #wait 10 seconds
+                oomDelay(20)
+                #maximize window
+                oomSendMaximize()
+                #click on file button
+                oomMouseClick(pos=kicadFile,delay=2)
+                #down 1 time
+                oomSendDown(4,delay=2)
+                #enter
+                
+                oomSendEnter()
+                oomDelay(2)
+                oomSendEnter()
+                oomDelay(2)
+                oomSendEnter()
+                oomDelay(2)
+                #close
+                #click on file button
+                oomMouseClick(pos=kicadFile,delay=2)
+                #send up once
+                oomSendUp(1,delay=2)
+                #enter
+                oomSendEnter()
+            
+
+
+        #cleaer badly formed xml error        
         oomSendEnter(10)
         oomSendEnter(10)
         oomSendEnter(5)
@@ -795,14 +869,43 @@ def eagle_to_kicad(**kwargs):
         ###### close project
         kicadClosePcb(False)
         ###### save schematic
-        #oomSendMaximize()
-        oomMouseClick(pos=kicadFile,delay=5)
-        oomSendDown(2,delay=2)
-        oomSendEnter(delay=5)
-        oomSend(kicad_schematic.replace("/","\\").replace("\\\\","\\"),2)
-        oomSendEnter(delay=10)
-        oomSend("y",2)
-        oomSendEnter(delay=2)
+        #test if it is multi sheet
+        oomMouseClick(pos=kicadFootprintMiddle,delay=2)
+        #clear clipboard
+        oomSetClipboard("") 
+        #send ctrl c
+        oomSendCtrl("a")
+        oomDelay(2)
+        oomSendCtrl("c")
+        oomDelay(2)
+        #get clipboard
+        clipboard = oomGetClipboard()
+        mouse_points_sheet = []
+        mouse_points_sheet.append([160,110])
+        #if it is multi sheet
+        if "working_1.kicad_sch" in clipboard:
+            print("multi sheet")
+            mouse_points_sheet = []            
+            mouse_points_sheet.append([160,130])
+            mouse_points_sheet.append([160,150])
+            mouse_points_sheet.append([160,170])
+            #copy old to kicad_sch_old
+            import shutil
+            shutil.copyfile(kicad_schematic, kicad_schematic.replace(".kicad_sch","_old.kicad_sch"))
+        sheets = len(mouse_points_sheet)
+        for x in range(0,sheets):
+            oomMouseClick(pos=mouse_points_sheet[x],delay=5)    
+            
+            oomMouseClick(pos=kicadFile,delay=5)
+            oomSendDown(2,delay=2)
+            oomSendEnter(delay=5)
+            filename = kicad_schematic.replace("/","\\").replace("\\\\","\\")
+            if x > 0:
+                filename = filename.replace("working",f"workin_{x}")
+            oomSend(filename,2)
+            oomSendEnter(delay=10)
+            oomSend("y",2)
+            oomSendEnter(delay=5)
         ###### close project
         kicadClosePcb(False)
         #copy footprint folder across

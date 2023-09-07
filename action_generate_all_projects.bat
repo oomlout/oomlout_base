@@ -1,4 +1,5 @@
-cd C:\GH\oomlout_oomp_electronic_breakout_board_sensor_temperature_pressure_bosch_bme280
-generate
 cd C:\GH\oomlout_ibbc_breakout_board_holder_oobb_3_2
-generate 
+call generate 
+cd C:\GH\oomlout_oomp_electronic_breakout_board_sensor_temperature_pressure_bosch_bme280
+call generate
+pause
