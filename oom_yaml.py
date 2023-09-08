@@ -19,7 +19,7 @@ def load_yaml_directory(**kwargs):
 
 def add_detail(**kwargs):
     yaml_file = kwargs.get('yaml_file', "")
-    detail = kwargs.get('details', "")
+    detail = kwargs.get('detail', "")
     add_markdown = kwargs.get('add_markdown', False)
     oomp_replace = kwargs.get('oomp_replace', False)
     #if yaml file doesn't exist create it
@@ -50,6 +50,6 @@ def add_detail(**kwargs):
             new_details[1] = oom_markdown.get_table_oomp_replace(data=detail[1])
         else:
             new_details[1] = oom_markdown.get_table(data=detail[1])
-        add_detail(yaml_file=yaml_file, details=[new_details[0], new_details[1]])
+        add_detail(yaml_file=yaml_file, detail=[new_details[0], new_details[1]])
 
     return yaml_data

@@ -946,9 +946,10 @@ def eagle_to_kicad(**kwargs):
     else:
         pass
         print("skipping: " + filename + " already exists")
+
         
 
-def generate_readme(**kwargs):
+def generate_readme_old(**kwargs):
     import oomp
     oomp.load_parts(make_files=False)
     name = kwargs.get('name', None)
@@ -1100,10 +1101,13 @@ def get_footprint_pin_names(**kwargs):
 
     pass
 
+import oom_yaml
+import oom_markdown
 
 def load_bom_into_yaml(**kwargs):
     directory = kwargs.get('directory', None)
-    bom_file = f"{directory}/kicad/current_version/working/working_bom.csv"
+    yaml_file = f"{directory}/working.yaml"
+    bom_file = f"{directory}/working_bom.csv"
     if os.path.exists(bom_file):
         files = []    
         #divider is a ;
@@ -1111,96 +1115,22 @@ def load_bom_into_yaml(**kwargs):
             reader = csv.DictReader(csvfile, delimiter=';')
             for row in reader:
                 files.append(row)
-        #replace footprint with link
-        github_base_part = "https://github.com/oomlout/oomlout_oomp_part_src/tree/main/parts"
-        for i in range(len(files)):
-            footprint = files[i]["Footprint"]
-            #footprint is everything after the first _
-            footprint = footprint.split("_",1)[1]
-            link = f"{github_base_part}/{footprint}/working"
-            full_link = get_link(link=link,text=footprint)
-            files[i]["Footprint"] = full_link
-        bom_table = get_table(data=files)
-        details["bom_table"] = bom_table
+        oom_yaml.add_detail(yaml_file=yaml_file, detail=["bom",files], add_markdown=True)
 
-    #load working_parts.csv
-    if os.path.exists(f"{directory}/working_parts.csv"):
-        files = []    
-        with open(f"{directory}/working_parts.csv", newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                files.append(row)
-        #add link to oomp_key
-        github_base_part = "https://github.com/oomlout/oomlout_oomp_part_src/tree/main/parts"
-        for i in range(len(files)):
-            oomp_key = files[i]["oomp_key"]
-            key = oomp_key.replace("oomp_","")
-            link = f"{github_base_part}/{key}/working"
-            full_link = get_link(link=link,text=oomp_key)
-            files[i]["oomp_key"] = full_link
-
-        parts_table = get_table(data=files)
-        details["parts_table"] = parts_table     
-    
-    #oomp_parts_summary
-    bom_file = f"{directory}/kicad/current_version/working/working_bom.csv"
+     #load working_bom_schematic.csv into an array
+    bom_file = f"{directory}/working_bom_schematic.csv"
     if os.path.exists(bom_file):
         files = []    
         #divider is a ;
         with open(bom_file, newline='' ) as csvfile:
-            reader = csv.DictReader(csvfile, delimiter=';')
+            #skip the first 6 lines
+            for i in range(5):
+                next(csvfile)
+
+            reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
                 files.append(row)
-        #make a new dict entry for each line
-        new_data = []    
-        oomp_yaml_file = "tmp/oomlout_oomp_part_src/parts.yaml"
-        backup_yaml_file = "c:/gh/oomlout_base/tmp/oomlout_oomp_part_src/parts.yaml"
-        oomp_parts = {}
-        if os.path.exists(oomp_yaml_file):
-            with open(oomp_yaml_file, 'r') as stream:
-                print(f"loading oomp_yaml_file: {oomp_yaml_file}")
-                try:
-                    oomp_parts = yaml.load(stream, Loader=yaml.FullLoader)
-                except yaml.YAMLError as exc:   
-                    print(exc)
-        elif os.path.exists(backup_yaml_file):
-            with open(backup_yaml_file, 'r') as stream:
-                print(f"loading backup_yaml_file: {backup_yaml_file}")
-                try:
-                    oomp_parts = yaml.load(stream, Loader=yaml.FullLoader)
-                except yaml.YAMLError as exc:   
-                    print(exc)
-        else:
-            print(f"oomp_yaml_file not found: {oomp_yaml_file}")
-            
-
-        for i in range(len(files)):
-            footprint = files[i]
-            #footprint is everything after the first _
-            oomp_id = footprint["Footprint"].split("_",1)[1]
-            index = footprint["Id"] 
-            designator = footprint["Designator"]
-            quantity = footprint["Quantity"]
-            new_datum = {}
-            #add index            
-            new_datum.update({"index":index})
-            new_datum.update({"designator":designator})
-            new_datum.update({"quantity":quantity})
-
-            oomp_markdown = oomp_parts[oomp_id]["markdown_full"]
-            new_datum.update({"oomp_id":oomp_markdown})
-            new_data.append(new_datum)
-        bom_table = get_table(data=new_data)
-        details["oomp_parts_table"] = bom_table
+        oom_yaml.add_detail(yaml_file=yaml_file, detail=["bom_schematic",files], add_markdown=True)
 
 
-    
-    
-
-
-
-
-    
-
-
-
+   

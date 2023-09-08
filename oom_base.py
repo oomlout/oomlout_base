@@ -2,6 +2,7 @@ import time
 import keyboard
 import win32com.client
 import pyautogui
+import os
 
 #timimng
 def delay(t,escape=True):    
