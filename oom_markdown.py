@@ -8,6 +8,23 @@ def get_table_dict(**kwargs):
         new_data.append([key,data[key]])
     return get_table(data=new_data)
 
+def get_table_oomp_replace(**kwargs):
+    import oomp
+    oomp.load_parts(from_pickle=True)
+    data = kwargs.get("data","none")
+    for row in data:
+        if "oomp_id" in row:
+            oomp_id = row["oomp_id"]
+            oomp_id = oomp_id.replace("oomp_","")
+            if oomp_id in oomp.parts:
+                oomp_part = oomp.parts[oomp_id]
+                row["oomp_id"] = oomp_part["markdown_short"]
+            else:
+                print(f"oomp_id not found: {oomp_id}")
+        else:
+            print("no oomp_id column")
+
+    return get_table(data=data)
 
 def get_table(**kwargs):
     data = kwargs.get("data","none")
@@ -224,8 +241,8 @@ def generate_readme_project(**kwargs):
 
 
 def get_jinja2_template(**kwargs):
-    file_template = kwargs.get("template_file","")
-    file_output = kwargs.get("output_file","")
+    file_template = kwargs.get("file_template","")
+    file_output = kwargs.get("file_output","")
     dict_data = kwargs.get("dict_data",{})
 
     markdown_string = ""

@@ -1,4 +1,3 @@
-import os
 import time
 import keyboard
 import win32com.client

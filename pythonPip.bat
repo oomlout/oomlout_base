@@ -49,4 +49,5 @@ pip install selenium
 pip install pelican
 pip install jinja2 
 pip install db-sqlite3
+pip install virtualenv
 pause
