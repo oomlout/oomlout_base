@@ -581,7 +581,10 @@ def kicadExport(filename,type,overwrite=False):
             #if dst exists delete it
             if os.path.isfile(dst):
                 os.remove(dst)
-            os.rename(src, dst)
+            try:
+                os.rename(src, dst)
+            except:
+                print(f"Error renaming {src} to {dst}")
     if type.lower() == "pdf":
         if overwrite or not os.path.isfile(filename + "working.pdf"):
             print("    Making pdf files")
@@ -870,7 +873,8 @@ def eagle_to_kicad(**kwargs):
         kicadClosePcb(False)
         ###### save schematic
         #test if it is multi sheet
-        oomMouseClick(pos=kicadFootprintMiddle,delay=2)
+        oomMouseClick(pos=kicadFootprintMiddle,delay=10)
+        oomDelay(2)
         #clear clipboard
         oomSetClipboard("") 
         #send ctrl c
@@ -880,32 +884,54 @@ def eagle_to_kicad(**kwargs):
         oomDelay(2)
         #get clipboard
         clipboard = oomGetClipboard()
+        last_clipboard = clipboard
         mouse_points_sheet = []
         mouse_points_sheet.append([160,110])
         #if it is multi sheet
         if "working_1.kicad_sch" in clipboard:
-            print("multi sheet")
-            mouse_points_sheet = []            
+            print("multi sheet")           
             mouse_points_sheet.append([160,130])
             mouse_points_sheet.append([160,150])
             mouse_points_sheet.append([160,170])
+            mouse_points_sheet.append([160,190])            
+            mouse_points_sheet.append([160,210])
             #copy old to kicad_sch_old
             import shutil
-            shutil.copyfile(kicad_schematic, kicad_schematic.replace(".kicad_sch","_old.kicad_sch"))
+            #shutil.copyfile(kicad_schematic, kicad_schematic.replace(".sch",".sch_old"))
         sheets = len(mouse_points_sheet)
+        
         for x in range(0,sheets):
+            print("sheet: " + str(x))
             oomMouseClick(pos=mouse_points_sheet[x],delay=5)    
+            oomMouseClick(pos=kicadFootprintMiddle,delay=2)                
+            oomSetClipboard("") 
+            #send ctrl c
+            oomSendCtrl("a")
+            oomDelay(2)
+            oomSendCtrl("c")
+            oomDelay(2)
+            #get clipboard
+            clipboard = oomGetClipboard()
+            if "working_1.kicad_sch" in clipboard and x != 0:
+                print("no more sheets")
+                break
             
+
             oomMouseClick(pos=kicadFile,delay=5)
             oomSendDown(2,delay=2)
             oomSendEnter(delay=5)
-            filename = kicad_schematic.replace("/","\\").replace("\\\\","\\")
+            filename2 = kicad_schematic.replace("/","\\").replace("\\\\","\\")
             if x > 0:
-                filename = filename.replace("working",f"workin_{x}")
-            oomSend(filename,2)
+                filename2 = filename2.replace("working.kicad_sch",f"working_{x}.kicad_sch")
+            print(f"filename2: {filename2}")
+            oomSend(filename2,2)
+
+
             oomSendEnter(delay=10)
             oomSend("y",2)
             oomSendEnter(delay=5)
+
+
         ###### close project
         kicadClosePcb(False)
         #copy footprint folder across

@@ -127,6 +127,25 @@ def generate_readme_project(**kwargs):
         bom_table = get_table(data=files)
         details["bom_table"] = bom_table
 
+    #load working_bom_schematic.csv into an array
+    import csv
+    bom_file = f"{directory}/kicad/current_version/working/working_bom_schematic.csv"
+    if os.path.exists(bom_file):
+        files = []    
+        #divider is a ;
+        with open(bom_file, newline='' ) as csvfile:
+            #skip the first 6 lines
+            for i in range(5):
+                next(csvfile)
+
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                files.append(row)
+        bom_table = get_table(data=files)
+        details["bom_schematic_table"] = bom_table
+
+    
+
     #load working_parts.csv
     if os.path.exists(f"{directory}/working_parts.csv"):
         files = []    

@@ -18,12 +18,19 @@
 {% endif %}
 {% if "kicad/current_version/working/working_bom.csv" in p.files %}## working_bom
 {{ p.bom_table }}
+note: the bom as exported by kicad pcb
+{% endif %}
+{% if "kicad/current_version/working/working_bom_schematic.csv" in p.files %}## working_bom_schematic
+{{ p.bom_schematic_table }}
+the bom as exported by kicad schematic
 {% endif %}
 {% if "working_parts.csv" in p.files %}## working_parts
 {{ p.parts_table }}
+note: a manually generated file for taking notes and positioning components
 {% endif %}
 {% if "oomp_parts_table" in p %}## oomp_parts_summary
 {{ p.oomp_parts_table }}
 Search Links: (L) - lcsc, (D) - digikey, (M) - mouser, (N) - newark, (SZ) - szlcsc
+note: a work on progress that takes the bom file from kicad pcb and try's to add oomp details
 {% endif %}
 
