@@ -33,6 +33,13 @@ def get_table(**kwargs):
     #if data is a list
     if len(data) == 0:
         return "no data"
+    #if it's a list of strings
+    if type(data[0]) == str:
+        #convert the list to a dict
+        data_dict = []
+        for row in data:
+            data_dict.append({"name":row,"value":""})
+        data = data_dict
     if type(data) == list:
         #if the first element is a list
         if type(data[0]) == list:
@@ -253,8 +260,12 @@ def get_jinja2_template(**kwargs):
     data2 = copy.deepcopy(dict_data)
 
     import jinja2    
-
-    markdown_string = jinja2.Template(markdown_string).render(p=data2)
+    try:
+        markdown_string = jinja2.Template(markdown_string).render(p=data2)
+    except Exception as e:
+        print(f"error in jinja2 template: {file_template}")
+        print(e)
+        markdown_string = "markdown_string_error"
     with open(file_output, "w") as outfile:
         outfile.write(markdown_string)
         print(f"jinja2 template file written: {file_output}")

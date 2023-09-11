@@ -22,6 +22,21 @@ def calc_convert_ods_to_png(**kwargs):
     #convert the ods file to csv scale to fit all data
     os.system(f'soffice --headless --convert-to png --convert-options "Size=1000,FitToSize=1" {filename}')
 
+import os
+
+def calc_convert_ods_to_xls(**kwargs):
+
+    filename = kwargs.get('filename', "")
+    #make filename absolute
+    import os
+    filename = os.path.abspath(filename)
+    directory = os.path.dirname(filename)
+    print(f"converting to xls {filename}")
+    #use os.system to convert filename to csv on the command line
+    import os
+    #convert the ods file to csv scale to fit all data
+    os.system(f'soffice --headless --convert-to xls:"MS Excel 97" --outdir {directory} {filename}')
+
 
 def load_csv_to_dict(**kwargs):
     return_value = []

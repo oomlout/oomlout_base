@@ -1132,5 +1132,78 @@ def load_bom_into_yaml(**kwargs):
                 files.append(row)
         oom_yaml.add_detail(yaml_file=yaml_file, detail=["bom_schematic",files], add_markdown=True)
 
+    
+    #load position_top
+    bom_file = f"{directory}/working-top.pos"
+    key = "position_top"
+    load_positions(filename = bom_file, yaml_file=yaml_file, key=key)
+    
+    #load position_bottom
+    bom_file = f"{directory}/working-bottom.pos"
+    key = "position_bottom"
+    load_positions(filename = bom_file, yaml_file=yaml_file, key=key)
 
-   
+    #add mounting hoes
+    add_mounting_holes(yaml_file=yaml_file)
+       
+
+def load_positions(**kwargs):
+    bom_file = kwargs.get('filename', None)
+    yaml_file = kwargs.get('yaml_file', None)
+    key = kwargs.get('key', None)
+    if os.path.exists(bom_file):
+        files = []    
+        #divider is a ;
+        with open(bom_file, newline='' ) as csvfile:
+            #skip the first 5 lines
+            for i in range(4):
+                next(csvfile)
+
+            #import fixed width column file i don't known the column widths and data starts on line 5
+            import pandas
+            df = pandas.read_fwf(csvfile)
+            #get the column names
+            columns = df.columns
+            #get the data
+            data = df.values
+            #get the number of rows
+            rows = len(data)
+            #get the number of columns
+            cols = len(columns)
+            #loop through the rows
+            for row in range(rows):
+                #create a dict for the row
+                row_dict = {}
+                #loop through the columns
+                for col in range(cols):
+                    #add the column name and data to the dict
+                    row_dict[columns[col]] = data[row][col]
+                #add the dict to the files list
+                files.append(row_dict)
+            #remove the last element
+            files.pop()
+            oom_yaml.add_detail(yaml_file=yaml_file, detail=[key,files], add_markdown=True)
+
+
+def add_mounting_holes(**kwargs):
+    yaml_file = kwargs.get('yaml_file', None)
+    yaml_directory = os.path.dirname(yaml_file)
+    yaml_dict = oom_yaml.load_yaml_directory(directory=yaml_directory)
+    mounting_holes = []
+    if "position_top" in yaml_dict:
+        for line in yaml_dict["position_top"]:
+            package_l = str(line["Package"]).lower()
+            tests = ["mountinghole", "mounting hole", "mounting-hole", "mounting_hole"]
+            if any(x in package_l for x in tests):            
+                m_hole = {}
+                m_hole["x"] = line["PosX"]
+                m_hole["y"] = line["PosY"]
+                m_hole["package"] = line["Package"]
+                m_hole["value"] = line["Val"]
+                m_hole["ref"] = line["# Ref"]
+                #needs implementing
+                m_hole["size"] = "m3"
+                mounting_holes.append(m_hole)
+    if mounting_holes:
+        oom_yaml.add_detail(yaml_file=yaml_file, detail=["mounting_holes",mounting_holes], add_markdown=True)
+        

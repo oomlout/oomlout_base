@@ -3,7 +3,7 @@ import os
 import oom_markdown
 
 def load_yaml_directory(**kwargs):
-    directory = kwargs.get('directory', "")
+    directory = kwargs['directory']
     return_value = {}
     yaml_files_to_add = ["working.yaml","working_manual.yaml"]
     for yaml_file in yaml_files_to_add:
@@ -17,11 +17,12 @@ def load_yaml_directory(**kwargs):
             return_value.update(yaml_data)
     return return_value
 
-def add_detail(**kwargs):
+def add_detail(**kwargs):    
     yaml_file = kwargs.get('yaml_file', "")
     detail = kwargs.get('detail', "")
     add_markdown = kwargs.get('add_markdown', False)
     oomp_replace = kwargs.get('oomp_replace', False)
+    print(f"Adding detail {detail[0]} to {yaml_file}")
     #if yaml file doesn't exist create it
     if not os.path.exists(yaml_file):
         with open(yaml_file, 'w') as outfile:
