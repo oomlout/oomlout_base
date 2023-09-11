@@ -243,7 +243,7 @@ def generate_readme_project(**kwargs):
     file_template = template_file
     file_output = output_file
     dict_data = details
-    get_jinja2_template(template_file=file_template,output_file=file_output,dict_data=dict_data)
+    get_jinja2_template(file_template=file_template,file_output=file_output,dict_data=dict_data)
 
 
 
