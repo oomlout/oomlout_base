@@ -1191,19 +1191,50 @@ def add_mounting_holes(**kwargs):
     yaml_dict = oom_yaml.load_yaml_directory(directory=yaml_directory)
     mounting_holes = []
     if "position_top" in yaml_dict:
-        for line in yaml_dict["position_top"]:
-            package_l = str(line["Package"]).lower()
-            tests = ["mountinghole", "mounting hole", "mounting-hole", "mounting_hole"]
-            if any(x in package_l for x in tests):            
-                m_hole = {}
-                m_hole["x"] = line["PosX"]
-                m_hole["y"] = line["PosY"]
-                m_hole["package"] = line["Package"]
-                m_hole["value"] = line["Val"]
-                m_hole["ref"] = line["# Ref"]
-                #needs implementing
-                m_hole["size"] = "m3"
-                mounting_holes.append(m_hole)
-    if mounting_holes:
-        oom_yaml.add_detail(yaml_file=yaml_file, detail=["mounting_holes",mounting_holes], add_markdown=True)
+        try:
+            for line in yaml_dict["position_top"]:
+                package_l = str(line["Package"]).lower()
+                tests = ["mountinghole", "mounting hole", "mounting-hole", "mounting_hole"]
+                if any(x in package_l for x in tests):            
+                    m_hole = {}
+                    m_hole["x"] = float(line["PosX"])
+                    m_hole["y"] = float(line["PosY"])
+                    m_hole["package"] = line["Package"]
+                    m_hole["value"] = line["Val"]
+                    m_hole["ref"] = line["# Ref"]
+                    #needs implementing
+                    m_hole["size"] = "m3"
+                    mounting_holes.append(m_hole)
+            #process mounting holes
+            #find min_x and min y and subtract
+            min_x = 9999999
+            min_y = 9999999
+            max_x = -9999999
+            max_y = -9999999
+            for hole in mounting_holes:
+                if hole["x"] < min_x:
+                    min_x = hole["x"]
+                if hole["y"] < min_y:
+                    min_y = hole["y"]
+                if hole["x"] > max_x:
+                    max_x = hole["x"]
+                if hole["y"] > max_y:
+                    max_y = hole["y"]
+            #subtract min_x and min_y from all the holes
+            for hole in mounting_holes:
+                hole["x"] -= min_x
+                hole["y"] -= min_y
+
+
+            #turn all holes "x" and "y" into strings
+            for hole in mounting_holes:
+                hole["x"] = str(hole["x"])
+                hole["y"] = str(hole["y"])        
+            
+
+
+            if mounting_holes:
+                oom_yaml.add_detail(yaml_file=yaml_file, detail=["mounting_holes",mounting_holes], add_markdown=True)
+        except Exception as e:
+            print(f"error adding mounting holes: {e}")
         

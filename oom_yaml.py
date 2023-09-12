@@ -12,8 +12,9 @@ def load_yaml_directory(**kwargs):
             with open(yaml_file, 'r') as stream:
                 try:
                     yaml_data = yaml.load(stream, Loader=yaml.FullLoader)
-                except yaml.YAMLError as exc:
+                except Exception as exc:
                     print(exc)
+                    return {}
             return_value.update(yaml_data)
     return return_value
 
@@ -33,7 +34,10 @@ def add_detail(**kwargs):
         try:
             yaml_data = yaml.load(stream, Loader=yaml.FullLoader)
         except yaml.YAMLError as exc:
+            print(f"Error loading yaml file {yaml_file}")
             print(exc)
+            return []
+            
     #add details
     if yaml_data == None:
         yaml_data = {}
