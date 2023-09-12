@@ -104,6 +104,9 @@ def generate_outputs_board(**kwargs):
     current_working_directory = os.getcwd().replace("\\","/")
 
     filename = kwargs.get('filename', None)
+    basename = os.path.basename(filename)
+    #remove extension
+    basename = basename.split(".")[0]
     if filename == None:
         board_file = kwargs.get('board_file', rf"{current_working_directory}\oomp\current_version\working\working.kicad_pcb")
     else:
@@ -122,7 +125,7 @@ def generate_outputs_board(**kwargs):
     dir = dir.replace("\\","/")
     print("Harvesting Kicad Board File: " + kicadBoard)
     #test if the last 3d render exists if it does skip the rest
-    if not os.path.isfile(dir + "working_3d.png") or overwrite:
+    if not os.path.isfile(dir + f"{basename}_3d.png") or overwrite:
         oomLaunchPopen("pcbnew.exe " + kicadBoard,15)
         oomSendEnter(delay = 5)
         oomMouseMove(pos=kicadFootprintMiddle,delay=2)
@@ -153,14 +156,17 @@ def generate_outputs_schematic(**kwargs):
         board_file = kwargs.get('filename', rf"{current_working_directory}\oomp\current\working\working.kicad_pcb")
     #change to sch file
     board_file = board_file.replace(".kicad_pcb",".kicad_sch")
+    basename = os.path.basename(board_file)
+    #remove extension
+    basename = basename.split(".")[0]
     #if board file doesn't start with a drive
     if not board_file[1] == ":":
         board_file = rf"{current_working_directory}\{board_file}"
 
     kicadBoard = board_file
     directory = os.path.dirname(board_file) + "/"
-    imageFile = directory + "working_schematic.png"
-    pdfFile = directory + "working_schematic.pdf"
+    imageFile = directory + f"{basename}_schematic.png"
+    pdfFile = directory + f"{basename}_schematic.pdf"
     if os.path.isfile(kicadBoard):
         if overwrite or not os.path.isfile(imageFile):
             print("Harvesting Kicad Board File: " + kicadBoard)
@@ -241,8 +247,8 @@ def generate_outputs_schematic(**kwargs):
             oomSend(tempDir.replace("/","\\"),2)
             oomSendEnter(delay=2)
             #move and rename file
-            src = f'{directory}tmp/working.pdf'
-            dest = f'{directory}working_schematic.pdf'
+            src = f'{directory}tmp/{basename}.pdf'
+            dest = f'{directory}{basename}_schematic.pdf'
             #delete if the dest exists
             if os.path.isfile(dest):
                 os.remove(dest)
@@ -540,8 +546,11 @@ def define_mouse_positions(**kwargs):
 
 
 def kicadExport(filename,type,overwrite=False):
+    basename = os.path.basename(filename)
+    #remove extension
+    basename = basename.split(".")[0]
     if type.lower() == "bom":        
-        bomFile = filename + "working_bom.csv"
+        bomFile = filename + f"{basename}_bom.csv"
         if overwrite or not os.path.isfile(bomFile):
             print("    Making bom file")
             #oomSendAltKey("f",2)
@@ -552,7 +561,7 @@ def kicadExport(filename,type,overwrite=False):
             oomSendEnter(2)
             oomSend("y",2)
     if type.lower() == "pos":
-        bomFile = filename + "working.pos"
+        bomFile = filename + f"{basename}.pos"
         if overwrite or not os.path.isfile(bomFile):
             print("    Making bom file")
             #oomSendAltKey("f",2)
@@ -564,7 +573,7 @@ def kicadExport(filename,type,overwrite=False):
             oomSendEnter(2)   
             oomSendEsc(2)         
     if type.lower() == "svg":
-        if overwrite or not os.path.isfile(filename + "working.svg"):
+        if overwrite or not os.path.isfile(filename + f"{basename}.svg"):
             print("    Making svg files")
             #oomSendAltKey("f",2)
             oomMouseClick(pos=kicadFile,delay=5)       
@@ -576,8 +585,8 @@ def kicadExport(filename,type,overwrite=False):
             oomSendEnter(delay=10)
             oomSendEsc(5)
             #rename the file
-            src = f'{filename}working-brd.svg'
-            dst = f'{filename}working.svg'
+            src = f'{filename}{basename}-brd.svg'
+            dst = f'{filename}{basename}.svg'
             #if dst exists delete it
             if os.path.isfile(dst):
                 os.remove(dst)
@@ -586,7 +595,7 @@ def kicadExport(filename,type,overwrite=False):
             except:
                 print(f"Error renaming {src} to {dst} probbly missing src")
     if type.lower() == "pdf":
-        if overwrite or not os.path.isfile(filename + "working.pdf"):
+        if overwrite or not os.path.isfile(filename + f"{basename}.pdf"):
             print("    Making pdf files")
             #oomSendAltKey("f",2)
             oomMouseClick(pos=kicadFile,delay=5)       
@@ -594,7 +603,7 @@ def kicadExport(filename,type,overwrite=False):
             oomSendEnter(delay=10)
             oomSendEnter(delay=10)
             oomSendEnter(delay=10)
-            file_pdf = f"{filename}working.pdf"
+            file_pdf = f"{filename}{basename}.pdf"
             #replace / with \\
             file_pdf = file_pdf.replace("/","\\")
             oomSend(file_pdf,5)
@@ -602,7 +611,7 @@ def kicadExport(filename,type,overwrite=False):
             oomSend("y",15)
             oomSendEsc(5)
     if type.lower() == "wrl":
-        if overwrite or not os.path.isfile(filename + "working.wrl"):
+        if overwrite or not os.path.isfile(filename + f"{basename}.wrl"):
             print("    Making wrl file")
             oomMouseClick(pos=kicadFile,delay=5)       
             oomSend("e",2)
@@ -612,7 +621,7 @@ def kicadExport(filename,type,overwrite=False):
             oomSend("y",8)
             oomSendEsc(5)
     if type.lower() == "step":
-        if overwrite or not os.path.isfile(filename + "working.step"):
+        if overwrite or not os.path.isfile(filename + f"{basename}.step"):
             print("    Making step file")
             oomMouseClick(pos=kicadFile,delay=5)       
             oomSend("e",2)
@@ -623,7 +632,7 @@ def kicadExport(filename,type,overwrite=False):
             oomSendAltKey('f4',5)
             oomSendEsc(5)
     if type.lower() == "3drender":
-        if overwrite or not os.path.isfile(filename + "working_3d.png"):
+        if overwrite or not os.path.isfile(filename + f"{basename}_3d.png"):
             filename = filename.replace("\\\\","\\")
             filename = filename.replace("//","/")
             oomMouseMove(pos=kicadFootprintMiddle,delay=2)
@@ -633,7 +642,7 @@ def kicadExport(filename,type,overwrite=False):
             oomSend("z")
             oomSendEnter(delay=1)
             ######  front
-            currentFile = filename + "working_3d_front.png"
+            currentFile = filename + f"{basename}_3d_front.png"
             oomMouseClick(pos=kicadFile,delay=5) 
             oomSend("e",2)
             oomSendEnter(delay=2)
@@ -641,7 +650,7 @@ def kicadExport(filename,type,overwrite=False):
             oomSendEnter(delay=2)
             oomSend("y",2)
             ######  back
-            currentFile = filename + "working_3d_back.png"
+            currentFile = filename + f"{basename}_3d_back.png"
             oomMouseMove(pos=kicadFootprintMiddle,delay=2)
             oomMouseRight(1)
             oomSend("vv",0.5)
@@ -680,7 +689,7 @@ def kicadExport(filename,type,overwrite=False):
                 oomSend("rrrrrrr")
                 oomSendEnter(delay=1)
 
-            currentFile = filename + "working_3d.png"
+            currentFile = filename + f"{basename}_3d.png"
             oomMouseClick(pos=kicadFile,delay=5) 
             oomSend("e",2)
             oomSendEnter(delay=2)
