@@ -127,6 +127,11 @@ def generate_outputs_board(**kwargs):
     #test if the last 3d render exists if it does skip the rest
     if not os.path.isfile(dir + f"{basename}_3d.png") or overwrite:
         oomLaunchPopen("pcbnew.exe " + kicadBoard,15)
+        #deal with already open error
+        #send right
+        oomSendRight(delay=2)
+        #send enter
+        oomSendEnter(delay=2)
         oomSendEnter(delay = 5)
         oomMouseMove(pos=kicadFootprintMiddle,delay=2)
         oomSend("b",10)
