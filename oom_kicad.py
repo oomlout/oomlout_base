@@ -91,14 +91,17 @@ def get_from_corel_coord(x,y):
     return (x,y)
 
 
-def generate_outputs(**kwargs):    
+def generate_outputs(**kwargs):   
+    return_value = 0 
     define_mouse_positions(**kwargs)
-    print(f"Generating schematic outputs")
-    generate_outputs_schematic(**kwargs)
-    print(f"Generating board outputs")
-    generate_outputs_board(**kwargs)
+    return_value += generate_outputs_board(**kwargs)
+    return_value += generate_outputs_schematic(**kwargs)
+    if return_value > 0:
+        return_value = 1
+    return return_value
 
 def generate_outputs_board(**kwargs):
+    return_value = 0
     #get current working directory as a string
     import os
     current_working_directory = os.getcwd().replace("\\","/")
@@ -152,7 +155,7 @@ def generate_outputs_board(**kwargs):
         #kicadExport(filename,"step",overwrite=overwrite)
         kicadExport(filename,"3dRender",overwrite=overwrite, basename=basename)
         kicadClosePcb()    
-
+    return return_value 
 
 def kicad_export_interactive_bom(**kwargs):
     filename = kwargs.get('filename', None)
@@ -187,6 +190,7 @@ def kicad_export_interactive_bom(**kwargs):
 
 
 def generate_outputs_schematic(**kwargs):   
+    return_value = 0
     overwrite = kwargs.get('overwrite', False)
     #get current working directory as a string
     import os
@@ -210,7 +214,7 @@ def generate_outputs_schematic(**kwargs):
     if os.path.isfile(kicadBoard):
         if overwrite or not os.path.isfile(imageFile):
             print("Harvesting Kicad Board File: " + kicadBoard)
-
+            return_value = 1
             oomLaunchPopen("eeschema.exe " + kicadBoard,10)
             ###### check if its an error
             oomSetClipboard("")
@@ -228,6 +232,9 @@ def generate_outputs_schematic(**kwargs):
                 #f.close()
  
                 return 
+
+            oomSendEnter()
+            oomDelay(2)   
             #deal with already open error
             #send right
             oomSendRight(delay=2)
@@ -295,8 +302,11 @@ def generate_outputs_schematic(**kwargs):
             if os.path.isfile(dest):
                 os.remove(dest)
             if os.path.isfile(src):
-                print(f"Moving {src} to {dest}")
-                os.rename(src, dest)
+                try:
+                    os.rename(src, dest)
+                except Exception as e:
+                    print(f"Error renaming {src} to {dest} probbly missing src")
+                    print(e)
             #delete the tmp directory and files in it
             temp_directory = f'{directory}{tempDir}'
             #if the directory exists
@@ -312,6 +322,7 @@ def generate_outputs_schematic(**kwargs):
 
             kicadClosePcb()
             oomSendEsc(delay=5)
+    return return_value
 
 def generate_outputs_symbol(**kwargs):
     counter = 0
@@ -641,7 +652,7 @@ def kicadExport(filename,type,overwrite=False, **kwargs):
         if overwrite or not os.path.isfile(filename + f"{basename}.pdf"):
             print("    Making pdf files")
             #oomSendAltKey("f",2)
-            oomMouseClick(pos=kicadFile,delay=5)       
+            oomMouseClick(pos=kicadFile,delay=10)       
             oomSend("pp",2)            
             oomSendEnter(delay=10)
             oomSendEnter(delay=10)
