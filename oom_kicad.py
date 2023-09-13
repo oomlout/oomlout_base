@@ -93,10 +93,10 @@ def get_from_corel_coord(x,y):
 
 def generate_outputs(**kwargs):    
     define_mouse_positions(**kwargs)
-    print(f"Generating board outputs")
-    generate_outputs_board(**kwargs)
     print(f"Generating schematic outputs")
     generate_outputs_schematic(**kwargs)
+    print(f"Generating board outputs")
+    generate_outputs_board(**kwargs)
 
 def generate_outputs_board(**kwargs):
     #get current working directory as a string
@@ -118,7 +118,7 @@ def generate_outputs_board(**kwargs):
     #replace // with /
     kicadBoard = kicadBoard.replace("//","/")
 
-    overwrite = True
+    overwrite = kwargs.get('overwrite', True)
     #get the directory of board_file and set dir to be it
     dir = os.path.dirname(board_file) + "/"
     #replace backslashes with slashes
@@ -135,15 +135,50 @@ def generate_outputs_board(**kwargs):
         filename = dir
         filename = filename.replace("\\","/") 
         filename = filename.replace("//","/")
-        oomMakeDir(filename)            
-        kicadExport(filename,"pdf",overwrite=overwrite)
-        kicadExport(filename,"bom",overwrite=overwrite)
-        kicadExport(filename,"pos",overwrite=overwrite)                
-        kicadExport(filename,"svg",overwrite=overwrite)            
+        oomMakeDir(filename)      
+        kicad_export_interactive_bom(filename=filename,overwrite=overwrite, basename=basename)
+
+
+        kicadExport(filename,"pdf",overwrite=overwrite, basename=basename)
+        kicadExport(filename,"bom",overwrite=overwrite, basename=basename)
+        kicadExport(filename,"pos",overwrite=overwrite, basename=basename)                
+        kicadExport(filename,"svg",overwrite=overwrite, basename=basename)            
         #kicadExport(filename,"wrl",overwrite=overwrite)
         #kicadExport(filename,"step",overwrite=overwrite)
-        kicadExport(filename,"3dRender",overwrite=overwrite)
+        kicadExport(filename,"3dRender",overwrite=overwrite, basename=basename)
         kicadClosePcb()    
+
+
+def kicad_export_interactive_bom(**kwargs):
+    filename = kwargs.get('filename', None)
+    basename = kwargs.get('basename', "working")
+    overwrite = kwargs.get('overwrite', False)        
+    #send alt t
+    oomSendAltKey("t",delay=2)
+    # send e
+    oomSend("e",delay=2)
+    # send g
+    oomSend("g",delay=2)
+
+    # turn off open browser and compression
+    #send right
+    oomSendRight(delay=2)
+    #send shift tabe 4 tinmes
+    oomSendShiftTab(times=4,delay=2)
+    #send space
+    oomSendSpace()
+    #delay 2
+    oomDelay(2)
+    #send shift tab
+    oomSendShiftTab(delay=2)
+    #send space
+    oomSendSpace()
+    #delay 2
+    oomDelay(2)
+    # send enter
+
+
+    oomSendEnter(delay=10)
 
 
 def generate_outputs_schematic(**kwargs):   
@@ -197,6 +232,8 @@ def generate_outputs_schematic(**kwargs):
             oomSendEnter(delay=2)
             #maximize
             #oomSendMaximize()
+            #zoom to schematic rather than page
+            oomSendControl("home",delay=2)
             oomDelay(2)
             oomMouseMove(pos=kicadFootprintMiddle,delay=2)
             oomMouseMove(pos=kicadActive,delay=2)
@@ -253,6 +290,7 @@ def generate_outputs_schematic(**kwargs):
             if os.path.isfile(dest):
                 os.remove(dest)
             if os.path.isfile(src):
+                print(f"Moving {src} to {dest}")
                 os.rename(src, dest)
             #delete the tmp directory and files in it
             temp_directory = f'{directory}{tempDir}'
@@ -545,8 +583,8 @@ def define_mouse_positions(**kwargs):
         kicadFootprintView = [131,52]
 
 
-def kicadExport(filename,type,overwrite=False):
-    basename = os.path.basename(filename)
+def kicadExport(filename,type,overwrite=False, **kwargs):
+    basename = kwargs.get('basename', "working")
     #remove extension
     basename = basename.split(".")[0]
     if type.lower() == "bom":        
@@ -825,7 +863,7 @@ def eagle_to_kicad(**kwargs):
                 #wait 10 seconds
                 oomDelay(20)
                 #maximize window
-                oomSendMaximize()
+                #oomSendMaximize()
                 #click on file button
                 oomMouseClick(pos=kicadFile,delay=2)
                 #down 1 time
@@ -845,6 +883,20 @@ def eagle_to_kicad(**kwargs):
                 oomSendUp(1,delay=2)
                 #enter
                 oomSendEnter()
+                oomDelay(5)
+                oomSendEnter()
+                oomDelay(5)
+                oomSendEnter()
+                oomDelay(5)
+                oomSendEnter()
+                oomDelay(5)
+                oomSendEnter()
+                oomDelay(5)
+                kicadClosePcb(False)
+                oomDelay(5)
+                kicadClosePcb(False)
+                oomDelay(10)
+                return
             
 
 
@@ -881,38 +933,14 @@ def eagle_to_kicad(**kwargs):
         ###### close project
         kicadClosePcb(False)
         ###### save schematic
-        #test if it is multi sheet
-        oomMouseClick(pos=kicadFootprintMiddle,delay=10)
-        oomDelay(2)
-        #clear clipboard
-        oomSetClipboard("") 
-        #send ctrl c
-        oomSendCtrl("a")
-        oomDelay(2)
-        oomSendCtrl("c")
-        oomDelay(2)
-        #get clipboard
-        clipboard = oomGetClipboard()
-        last_clipboard = clipboard
-        mouse_points_sheet = []
-        mouse_points_sheet.append([160,110])
-        #if it is multi sheet
-        if "working_1.kicad_sch" in clipboard:
-            print("multi sheet")           
-            mouse_points_sheet.append([160,130])
-            mouse_points_sheet.append([160,150])
-            mouse_points_sheet.append([160,170])
-            mouse_points_sheet.append([160,190])            
-            mouse_points_sheet.append([160,210])
-            #copy old to kicad_sch_old
-            import shutil
-            #shutil.copyfile(kicad_schematic, kicad_schematic.replace(".sch",".sch_old"))
-        sheets = len(mouse_points_sheet)
-        
-        for x in range(0,sheets):
-            print("sheet: " + str(x))
-            oomMouseClick(pos=mouse_points_sheet[x],delay=5)    
-            oomMouseClick(pos=kicadFootprintMiddle,delay=2)                
+        filename_schematic = filename.replace(".brd",".sch")
+        #if filename exists
+        if os.path.isfile(filename_schematic):
+                
+            #test if it is multi sheet
+            oomMouseClick(pos=kicadFootprintMiddle,delay=10)
+            oomDelay(2)
+            #clear clipboard
             oomSetClipboard("") 
             #send ctrl c
             oomSendCtrl("a")
@@ -921,24 +949,52 @@ def eagle_to_kicad(**kwargs):
             oomDelay(2)
             #get clipboard
             clipboard = oomGetClipboard()
-            if "working_1.kicad_sch" in clipboard and x != 0:
-                print("no more sheets")
-                break
+            last_clipboard = clipboard
+            mouse_points_sheet = []
+            mouse_points_sheet.append([160,110])
+            #if it is multi sheet
+            if "working_1.kicad_sch" in clipboard:
+                print("multi sheet")           
+                mouse_points_sheet.append([160,130])
+                mouse_points_sheet.append([160,150])
+                mouse_points_sheet.append([160,170])
+                mouse_points_sheet.append([160,190])            
+                mouse_points_sheet.append([160,210])
+                #copy old to kicad_sch_old
+                import shutil
+                #shutil.copyfile(kicad_schematic, kicad_schematic.replace(".sch",".sch_old"))
+            sheets = len(mouse_points_sheet)
             
+            for x in range(0,sheets):
+                print("sheet: " + str(x))
+                oomMouseClick(pos=mouse_points_sheet[x],delay=5)    
+                oomMouseClick(pos=kicadFootprintMiddle,delay=2)                
+                oomSetClipboard("") 
+                #send ctrl c
+                oomSendCtrl("a")
+                oomDelay(2)
+                oomSendCtrl("c")
+                oomDelay(2)
+                #get clipboard
+                clipboard = oomGetClipboard()
+                if "working_1.kicad_sch" in clipboard and x != 0:
+                    print("no more sheets")
+                    break
+                
 
-            oomMouseClick(pos=kicadFile,delay=5)
-            oomSendDown(2,delay=2)
-            oomSendEnter(delay=5)
-            filename2 = kicad_schematic.replace("/","\\").replace("\\\\","\\")
-            if x > 0:
-                filename2 = filename2.replace("working.kicad_sch",f"working_{x}.kicad_sch")
-            print(f"filename2: {filename2}")
-            oomSend(filename2,2)
+                oomMouseClick(pos=kicadFile,delay=5)
+                oomSendDown(2,delay=2)
+                oomSendEnter(delay=5)
+                filename2 = kicad_schematic.replace("/","\\").replace("\\\\","\\")
+                if x > 0:
+                    filename2 = filename2.replace("working.kicad_sch",f"working_{x}.kicad_sch")
+                print(f"filename2: {filename2}")
+                oomSend(filename2,2)
 
 
-            oomSendEnter(delay=10)
-            oomSend("y",2)
-            oomSendEnter(delay=5)
+                oomSendEnter(delay=10)
+                oomSend("y",2)
+                oomSendEnter(delay=5)
 
 
         ###### close project

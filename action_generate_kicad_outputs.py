@@ -15,11 +15,14 @@ def main_single_directory():
 
 
 def main_recursive():
-    for root, dirs, files in os.walk(os.getcwd()):
+    directory = os.getcwd()
+    #directory = "C:/GH/oomlout_oomp_electronic_project_prototyping_board_sizes"
+    directory = "C:\GH\oomlout_oomp_electronic_project_usb_switch"
+    for root, dirs, files in os.walk(directory):
         for file in files:
             filename = os.path.join(root, file)
             if filename.endswith(".kicad_pcb"):
-                #if filename doesnt include backup
+                #if filbename doesnt include backup
                 if "backup" not in filename.lower():
                     print(f'Generating outputs for {filename}')
                     oom_kicad.generate_outputs(filename=filename, computer="desktop", overwrite=True, skip_oomp_folder=True)

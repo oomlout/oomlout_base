@@ -1,45 +1,52 @@
 # {{ p.name }}
-{{ p.description }} 
-## summary 
-* id: {{ p.id }}
-* user: {{ p.user }}
-* name: {{ p.name }}
-* board: {{ p.board }}
-* repo: {{ p.repo.html_url }}
-{% if p.src_file_repo_kicad_pcb %}* src_file_repo_kicad_pcb: {{ p.src_file_repo_kicad_pcb }}
-* src_file_repo_kicad_pcb_link: {{ p.repo.html_url }}/tree/{{ p.repo.default_branch }}/{{ p.src_file_repo_kicad_pcb }}{% endif %}
-{% if p.src_file_repo_kicad_sch %}* src_file_repo_kicad_sch: {{ p.src_file_repo_kicad_sch }}
-* src_file_repo_kicad_sch_link: {{ p.repo.html_url }}/tree/{{ p.repo.default_branch }}/{{ p.src_file_repo_kicad_sch }}{% endif %}
-{% if p.src_file_repo_brd %}* src_file_repo_brd: {{ p.src_file_repo_brd }}
-* src_file_repo_brd_link: {{ p.repo.html_url }}/tree/{{ p.repo.default_branch }}/{{ p.src_file_repo_brd }}{% endif %}
-{% if p,src_file_repo_sch %}* src_file_repo_sch: {{ p.src_file_repo_sch }}
-* src_file_repo_sch_link: {{ p.repo.html_url }}/tree/{{ p.repo.default_branch }}/{{ p.src_file_repo_sch }}{% endif %}
-
-{% if "working_schematic.png" in p.files %}## schematic  
-![](working_schematic_600.png)  
-[schematic (pdf)](working_schematic.pdf)  
+{{ p.description }}
+{% if "working.jpg" in p.files %} [![](working_600.jpg)](working.jpg)
 {% endif %}
-{% if "working_3d.png" in p.files %}## pcb  
-![](working_3d_600.png) 
-![](working_3d_front_600.png)  
-![](working_3d_back_600.png)  
-![](working_600.png)  
-[board (pdf)](working.pdf)  
+{% if "kicad/current_version/working/working_schematic.png" in p.files %}## schematic  
+![](kicad/current_version/working/working_schematic_600.png)  
+[schematic (pdf)](kicad/current_version/working/working_schematic.pdf)  
 {% endif %}
-{% if "bom" in p %}## working_bom
-{{ p.bom_markdown }}
+{% if "kicad/current_version/working/working_3d.png" in p.files %}## pcb  
+![](kicad/current_version/working/working_3d_600.png) 
+![](kicad/current_version/working/working_3d_front_600.png)  
+![](kicad/current_version/working/working_3d_back_600.png)  
+![](kicad/current_version/working/working_600.png)  
+[board (pdf)](kicad/current_version/working/working.pdf)  
 {% endif %}
-{% if "bom_schematic" in p %}## bom_schematic
-{{ p.bom_schematic_markdown }}
+{% if "working.png" in p.files %}## corel working
+![](working_600.png) 
+{% endif %}
+{% if "module" in p %}## module
+{% for mod in p.module %}* [{{ mod.id }}]({{ mod.link }}) 
+{% endfor %}
+{% endif %}
+{#}
+{% if "kicad/current_version/working/working_bom.csv" in p.files %}## working_bom
+{{ p.bom_table }}
+{% if "kicad/current_version/working/working_bom.csv" in p.files %}## working_bom
+{{ p.bom_table }}
+note: the bom as exported by kicad pcb
+{% endif %}
+{% if "kicad/current_version/working/working_bom_schematic.csv" in p.files %}## working_bom_schematic
+{{ p.bom_schematic_table }}
+the bom as exported by kicad schematic
+{% endif %}
+{% if "working_parts.csv" in p.files %}## working_parts
+{{ p.parts_table }}
+note: a manually generated file for taking notes and positioning components
+{% endif %}
+#}
+{% if "oomp_parts_table" in p %}## oomp_parts_summary
+{{ p.oomp_parts_table }}
+Search Links: (L) - lcsc, (D) - digikey, (M) - mouser, (N) - newark, (SZ) - szlcsc
+note: a work on progress that takes the bom file from kicad pcb and try's to add oomp details
 {% endif %}
 {% if "mounting_holes" in p %}## mounting_holes
 {{ p.mounting_holes_markdown }}
 {% endif %}
-{#
 {% if "position_top" in p %}## positions
 ### top
 {{ p.position_top_markdown }}
 ### bottom
 {{ p.position_bottom_markdown }}
 {% endif %}
-#}

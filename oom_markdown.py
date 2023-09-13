@@ -1,4 +1,5 @@
 import os
+import csv
 
 def get_table_dict(**kwargs):
     data = kwargs.get("data","none")
@@ -100,18 +101,28 @@ dir_template = f"{dir_oomlout_base}/templates"
 
 def generate_readme_project(**kwargs):
     directory = kwargs.get("directory","")
+    directory_board = f"{directory}/kicad/current_version/working"
     template_file = f"{dir_template}/project_readme_template.md.j2"
     output_file = f"{directory}/readme.md"
     details = {}
-    #load details from working,yaml file
+
+
+    import oom_kicad
+    oom_kicad.load_bom_into_yaml(directory=directory_board)
+
+
+
+    #load details from working,yaml file    
     import yaml
-    if os.path.exists(f"{directory}/working.yaml"):
-        with open(f"{directory}/working.yaml", 'r') as stream:
-            try:
-                details_yaml = yaml.load(stream, Loader=yaml.FullLoader)
-            except yaml.YAMLError as exc:
-                print(exc)
-            details.update(details_yaml)
+    import oom_yaml
+    details = oom_yaml.load_yaml_directory(directory=directory)
+    
+    
+    
+    
+    
+    
+    
     files = []    
     #get a list of recursive files
     import glob
@@ -128,67 +139,8 @@ def generate_readme_project(**kwargs):
     files2 = copy.deepcopy(files)
     details["files"] = files2
 
-
-    #load working_bom.csv into an array
-    import csv
-    bom_file = f"{directory}/kicad/current_version/working/working_bom.csv"
-    if os.path.exists(bom_file):
-        files = []    
-        #divider is a ;
-        with open(bom_file, newline='' ) as csvfile:
-            reader = csv.DictReader(csvfile, delimiter=';')
-            for row in reader:
-                files.append(row)
-        #replace footprint with link
-        github_base_part = "https://github.com/oomlout/oomlout_oomp_part_src/tree/main/parts"
-        for i in range(len(files)):
-            footprint = files[i]["Footprint"]
-            #footprint is everything after the first _
-            footprint = footprint.split("_",1)[1]
-            link = f"{github_base_part}/{footprint}/working"
-            full_link = get_link(link=link,text=footprint)
-            files[i]["Footprint"] = full_link
-        bom_table = get_table(data=files)
-        details["bom_table"] = bom_table
-
-    #load working_bom_schematic.csv into an array
-    import csv
-    bom_file = f"{directory}/kicad/current_version/working/working_bom_schematic.csv"
-    if os.path.exists(bom_file):
-        files = []    
-        #divider is a ;
-        with open(bom_file, newline='' ) as csvfile:
-            #skip the first 6 lines
-            for i in range(5):
-                next(csvfile)
-
-            reader = csv.DictReader(csvfile, delimiter=',')
-            for row in reader:
-                files.append(row)
-        bom_table = get_table(data=files)
-        details["bom_schematic_table"] = bom_table
-
     
 
-    #load working_parts.csv
-    if os.path.exists(f"{directory}/working_parts.csv"):
-        files = []    
-        with open(f"{directory}/working_parts.csv", newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                files.append(row)
-        #add link to oomp_key
-        github_base_part = "https://github.com/oomlout/oomlout_oomp_part_src/tree/main/parts"
-        for i in range(len(files)):
-            oomp_key = files[i]["oomp_key"]
-            key = oomp_key.replace("oomp_","")
-            link = f"{github_base_part}/{key}/working"
-            full_link = get_link(link=link,text=oomp_key)
-            files[i]["oomp_key"] = full_link
-
-        parts_table = get_table(data=files)
-        details["parts_table"] = parts_table     
-    
     #oomp_parts_summary
     bom_file = f"{directory}/kicad/current_version/working/working_bom.csv"
     if os.path.exists(bom_file):
@@ -233,8 +185,10 @@ def generate_readme_project(**kwargs):
             new_datum.update({"index":index})
             new_datum.update({"designator":designator})
             new_datum.update({"quantity":quantity})
-
-            oomp_markdown = oomp_parts[oomp_id]["markdown_full"]
+            try:
+                oomp_markdown = oomp_parts[oomp_id]["markdown_full"]
+            except:
+                oomp_markdown = oomp_id
             new_datum.update({"oomp_id":oomp_markdown})
             new_data.append(new_datum)
         bom_table = get_table(data=new_data)

@@ -5,17 +5,22 @@ import oom_markdown
 def load_yaml_directory(**kwargs):
     directory = kwargs['directory']
     return_value = {}
-    yaml_files_to_add = ["working.yaml","working_manual.yaml"]
+    yaml_files_to_add = ["working.yaml","working_manual.yaml","kicad/current_version/working/working.yaml","kicad/current_version/working/working_manual.yaml"]
     for yaml_file in yaml_files_to_add:
         yaml_file = os.path.join(directory, yaml_file)
         if os.path.exists(yaml_file):
             with open(yaml_file, 'r') as stream:
                 try:
                     yaml_data = yaml.load(stream, Loader=yaml.FullLoader)
+                    if yaml_data != None:
+                        return_value.update(yaml_data)
                 except Exception as exc:
                     print(exc)
                     return {}
-            return_value.update(yaml_data)
+                
+        else:
+            pass
+            #print(f"yaml file not found: {yaml_file}")
     return return_value
 
 def add_detail(**kwargs):    

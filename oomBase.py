@@ -685,6 +685,11 @@ def oomGetClipboard():
 def oomClipboardSaveImage(filename):
     im = ImageGrab.grabclipboard()
     try:
+        #of file eexists delete iot first
+        if os.path.isfile(filename):
+            print("    removing: " + filename)
+            os.remove(filename)
+            delay(0.5)
         im.save(filename,'PNG')
     except:
         print("No image in clipboard")
