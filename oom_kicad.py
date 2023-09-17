@@ -325,6 +325,8 @@ def generate_outputs_schematic(**kwargs):
     return return_value
 
 def generate_outputs_symbol(**kwargs):
+    computer = kwargs.get("computer","desktop")
+    define_mouse_positions(computer=computer)
     counter = 0
     current_working_directory = os.getcwd().replace("\\","/")
 
@@ -583,6 +585,7 @@ def define_mouse_positions(**kwargs):
         kicadFootprintTopLeft = [365,86] 
         kicadSymbolMiddle = [1105,555] 
         kicadSymbolMiddlePlus = [1110,560] 
+        
         kicadFootprintView = [153,36]
     elif computer == "surface":        
         kicadFile = [19,50]
