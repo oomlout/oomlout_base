@@ -35,10 +35,18 @@ def pull(**kwargs):
     os.system(f"cd {directory} && git pull")
     
     
+def push(**kwargs):
+    push_to_git(**kwargs)
 
 
-def push_to_git(**kwargs):
-    repo_directory = kwargs.get('repo_directory', os.getcwd())
+def push_to_git(**kwargs):    
+    directory = kwargs.get('directory', "")
+    repo_directory = kwargs.get('repo_directory', "")
+    if repo_directory == "":
+        repo_directory = directory
+        if repo_directory == "":
+            repo_directory = os.getcwd()
+    
     count = kwargs.get('count', 1)
     comment = kwargs.get('comment', f"comitting after {count} generations")
     #push to github

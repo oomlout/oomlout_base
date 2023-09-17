@@ -59,7 +59,7 @@ def svg_dict_replace(**kwargs):
         value = svg_dict
         for key2 in key_list:
             value = value.get(key2,{})
-        #replace value in svg_string
+        #replace value in svg_string        
         search_string = f"%%{key}%%"
         if value == {}:
             value = ""

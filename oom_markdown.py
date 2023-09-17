@@ -220,7 +220,7 @@ def get_jinja2_template(**kwargs):
         print(f"error in jinja2 template: {file_template}")
         print(e)
         markdown_string = "markdown_string_error"
-    with open(file_output, "w") as outfile:
+    with open(file_output, "w", encoding="utf-8") as outfile:
         outfile.write(markdown_string)
         print(f"jinja2 template file written: {file_output}")
 

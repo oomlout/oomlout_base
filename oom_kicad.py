@@ -1312,8 +1312,8 @@ def add_mounting_holes(**kwargs):
 
             #turn all holes "x" and "y" into strings
             for hole in mounting_holes:
-                hole["x"] = str(hole["x"])
-                hole["y"] = str(hole["y"])        
+                hole["x"] = str(float(round(hole["x"],2)))
+                hole["y"] = str(float(round(hole["y"],2)))        
             
 
 
