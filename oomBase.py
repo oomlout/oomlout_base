@@ -694,11 +694,15 @@ def oomClipboardSaveImage(filename):
     except:
         print("No image in clipboard")
 
-def oomSetClipboard(text):
-    win32clipboard.OpenClipboard()
-    win32clipboard.EmptyClipboard()
-    win32clipboard.SetClipboardText(text, win32clipboard.CF_UNICODETEXT)
-    win32clipboard.CloseClipboard()
+def oomSetClipboard(text): 
+    try:
+        win32clipboard.OpenClipboard()
+        win32clipboard.EmptyClipboard()
+        win32clipboard.SetClipboardText(text, win32clipboard.CF_UNICODETEXT)
+        win32clipboard.CloseClipboard()
+    except:
+        print("clipboard error set clipboard")
+        pass
 
 ######  File things
 

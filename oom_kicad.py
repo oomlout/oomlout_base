@@ -885,6 +885,8 @@ def eagle_to_kicad(**kwargs):
                 #oomSendMaximize()
                 #click on file button
                 oomMouseClick(pos=kicadFile,delay=2)
+                oomSendEnter()
+                oomDelay(2)
                 #down 1 time
                 oomSendDown(4,delay=2)
                 #enter
@@ -903,19 +905,38 @@ def eagle_to_kicad(**kwargs):
                 #enter
                 oomSendEnter()
                 oomDelay(5)
-                oomSendEnter()
-                oomDelay(5)
-                oomSendEnter()
-                oomDelay(5)
-                oomSendEnter()
-                oomDelay(5)
-                oomSendEnter()
-                oomDelay(5)
-                kicadClosePcb(False)
-                oomDelay(5)
-                kicadClosePcb(False)
-                oomDelay(10)
-                return
+            #kill matching dialog
+            oomSendEnter()
+            oomDelay(5)
+            oomSendEnter()
+            oomDelay(5)
+            oomSendEnter()
+            oomDelay(5)
+            oomSendEnter()
+            oomDelay(5)
+            kicadClosePcb(False)
+            oomDelay(5)
+            ##match layer dialog
+                #cleaer badly formed xml error   
+            oomSendEnter(5)
+            #reset layer matching
+            #send four tabs
+            oomSendTab(4,2)
+            #send enter
+            oomSendEnter(2)
+            ######  match layers dialog
+            oomSendTab(6-4,5)
+            oomSendEnter(2)
+            oomSendTab(1,2)
+            oomSendEnter(5)
+            oomSendEsc(5)
+            oomSendEsc(2)
+            oomDelay(15)
+            oomMouseClick(pos=kicadFootprintMiddle,delay=2)
+            oomSendEsc(delay=2)
+            kicadClosePcb(False)
+            oomDelay(10)
+            return
             
 
 

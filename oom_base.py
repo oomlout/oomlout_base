@@ -200,6 +200,7 @@ def remove_special_characters(string):
     symbol_name = symbol_name.replace('+', '_')
     symbol_name = symbol_name.replace(' ', '_')
     symbol_name = symbol_name.replace('.', '_')
+    symbol_name = symbol_name.replace('$', '_')
     symbol_name = symbol_name.replace('__', '_')
     symbol_name = symbol_name.replace('__', '_')
     symbol_name = symbol_name.replace('__', '_')

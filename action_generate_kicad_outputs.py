@@ -17,7 +17,7 @@ def main_single_directory():
 def main_recursive():
     directory = os.getcwd()
     #directory = "C:/GH/oomlout_oomp_electronic_project_prototyping_board_sizes"
-    directory = "C:\GH\oomlout_oomp_electronic_project_usb_switch"
+    #directory = "C:\GH\oomlout_oomp_electronic_project_usb_switch"
     for root, dirs, files in os.walk(directory):
         for file in files:
             filename = os.path.join(root, file)
