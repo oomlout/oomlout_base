@@ -100,7 +100,8 @@ dir_oomlout_base = "c:/gh/oomlout_base"
 dir_template = f"{dir_oomlout_base}/templates"
 
 def generate_readme_project(**kwargs):
-    directory = kwargs.get("directory","")
+    import os
+    directory = kwargs.get("directory",os.getcwd())
     directory_board = f"{directory}/kicad/current_version/working"
     template_file = f"{dir_template}/project_readme_template.md.j2"
     output_file = f"{directory}/readme.md"
@@ -116,9 +117,6 @@ def generate_readme_project(**kwargs):
     import yaml
     import oom_yaml
     details = oom_yaml.load_yaml_directory(directory=directory)
-    
-    
-    
     
     
     

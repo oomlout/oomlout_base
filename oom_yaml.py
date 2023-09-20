@@ -26,6 +26,8 @@ def load_yaml_directory(**kwargs):
 def add_detail(**kwargs):    
     yaml_file = kwargs.get('yaml_file', "")
     detail = kwargs.get('detail', "")
+    import copy
+    detail = copy.deepcopy(detail)
     add_markdown = kwargs.get('add_markdown', False)
     oomp_replace = kwargs.get('oomp_replace', False)
     print(f"Adding detail {detail[0]} to {yaml_file}")

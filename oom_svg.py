@@ -87,7 +87,13 @@ def svg_make_png(**kwargs):
 def svg_make_file(**kwargs):
     export_dpi = kwargs.get('export_dpi',"")
     file_type = kwargs.get('file_type',"pdf")
+    
     file_in = kwargs.get('file_in',"")
+    if file_in == "":
+        file_in = kwargs.get('file',"")
+    if file_in == "":
+        file_in = kwargs.get('file_svg',"")
+
     file_out = kwargs.get('file_out',"")
     if file_out == "":
         file_out = file_in.replace(".svg", f".{file_type}")
