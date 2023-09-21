@@ -14,7 +14,9 @@ def main_single_directory():
                 oom_kicad.generate_outputs(filename=filename, computer="desktop" , overwrite=True, skip_oomp_folder=True)
 
 
-def main_recursive():
+def main_recursive(**kwargs):
+    overwrite = kwargs.get('overwrite', True)
+    print(f'Overwrite is {overwrite}')
     directory = os.getcwd()
     #directory = "C:/GH/oomlout_oomp_electronic_project_prototyping_board_sizes"
     #directory = "C:\GH\oomlout_oomp_electronic_project_usb_switch"
@@ -25,7 +27,7 @@ def main_recursive():
                 #if filbename doesnt include backup
                 if "backup" not in filename.lower():
                     print(f'Generating outputs for {filename}')
-                    oom_kicad.generate_outputs(filename=filename, computer="desktop", overwrite=True, skip_oomp_folder=True)
+                    oom_kicad.generate_outputs(filename=filename, computer="desktop", overwrite=overwrite, skip_oomp_folder=True)
                     svg_filename = filename.replace(".kicad_pcb", ".svg")
                     if os.path.isfile(svg_filename):
                         oom_base.image_svg_to_png(filename=svg_filename)                    
@@ -34,4 +36,15 @@ def main_recursive():
 
 
 if __name__ == '__main__':
-    main_recursive()
+    #extract - overwrite from args if there make overwrite true if not false
+    overwrite = True
+    import sys
+    #checkt to see if -overwrite is in args
+    if "-overwrite" in sys.argv:
+        overwrite = True
+        print("Overwrite is true")
+    else:
+        overwrite = False
+        print("Overwrite is false")
+    #oom_base.delay(10)
+    main_recursive(overwrite=overwrite)

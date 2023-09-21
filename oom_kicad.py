@@ -572,9 +572,9 @@ def define_mouse_positions(**kwargs):
     global kicadFile, kicadActive, kicadFile, kicadFootprintMiddle, kicad3dView, kicadActive, kicadFootprintFilter, kicadFootprintFirstResult, kicadFootprintMiddle, kicadFootprintMiddlePlus, kicadFootprintTopLeft, kicadSymbolMiddle,kicadSymbolMiddlePlus, kicadFootprintView
 
     if computer == "desktop":
-        kicadFile = [80,35]
+        kicadFile = [90,30]
         kicadActive =[515,14]
-        kicadFile = [80,35]
+        
         kicadFootprintMiddle = [945,545] 
         kicad3dView = [145,35]
         kicadActive =[515,14]
@@ -884,6 +884,8 @@ def eagle_to_kicad(**kwargs):
                 #maximize window
                 #oomSendMaximize()
                 #click on file button
+                        #send enter to clear backward annotation error
+                oomSendEnter(delay=5)
                 oomMouseClick(pos=kicadFile,delay=2)
                 oomSendEnter()
                 oomDelay(2)
