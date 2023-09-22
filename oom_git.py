@@ -41,6 +41,7 @@ def push(**kwargs):
 
 def push_to_git(**kwargs):    
     directory = kwargs.get('directory', "")
+    cwd = os.getcwd()
     repo_directory = kwargs.get('repo_directory', "")
     if repo_directory == "":
         repo_directory = directory
