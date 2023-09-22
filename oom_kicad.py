@@ -128,7 +128,8 @@ def generate_outputs_board(**kwargs):
     dir = dir.replace("\\","/")
     print("Harvesting Kicad Board File: " + kicadBoard)
     #test if the last 3d render exists if it does skip the rest
-    if not os.path.isfile(dir + f"{basename}_3d.png") or overwrite:
+    file_test = f"{dir}{basename}_3d.png"
+    if not os.path.isfile(file_test) or overwrite:
         oomLaunchPopen("pcbnew.exe " + kicadBoard,15)
         #deal with already open error
         #send right
@@ -184,8 +185,8 @@ def kicad_export_interactive_bom(**kwargs):
     #delay 2
     oomDelay(2)
     # send enter
-
-
+    oomSendEnter(delay=2)
+    oomSendEnter(delay=2)
     oomSendEnter(delay=10)
 
 
@@ -232,7 +233,8 @@ def generate_outputs_schematic(**kwargs):
                 #f.close()
  
                 return 
-
+            #send right
+            oomSendRight(delay=2)
             oomSendEnter()
             oomDelay(2)   
             #deal with already open error
