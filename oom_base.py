@@ -32,9 +32,14 @@ def delay(t,escape=True):
 
         print()    
 #mouse
-def move_mouse(x,y,dela=0):
+def mouse_move(x,y,dela=0):
     print(f"                Moving mouse to {x},{y}")
     pyautogui.moveTo(x, y)
+    delay(dela)
+
+def mouse_click(x,y,dela=0):
+    print(f"                Clicking mouse at {x},{y}")
+    pyautogui.click(x, y)
     delay(dela)
 
 #keyboard
@@ -59,6 +64,15 @@ def send_keys_alt(st, dela=0):
     pyautogui.press(st)
     delay(.15)
     pyautogui.keyUp('alt')
+    delay(.1)
+    delay(dela)
+def send_keys_ctrl(st, dela=0):
+    print("                ctrl " + st)
+    pyautogui.keyDown('ctrl')
+    delay(.15)
+    pyautogui.press(st)
+    delay(.15)
+    pyautogui.keyUp('ctrl')
     delay(.1)
     delay(dela)
 
@@ -201,6 +215,9 @@ def remove_special_characters(string):
     symbol_name = symbol_name.replace(' ', '_')
     symbol_name = symbol_name.replace('.', '_')
     symbol_name = symbol_name.replace('$', '_')
+    symbol_name = symbol_name.replace('(', '_')
+    symbol_name = symbol_name.replace(')', '_')
+    symbol_name = symbol_name.replace('&', '_')
     symbol_name = symbol_name.replace('__', '_')
     symbol_name = symbol_name.replace('__', '_')
     symbol_name = symbol_name.replace('__', '_')
