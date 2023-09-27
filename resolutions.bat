@@ -1,0 +1,1 @@
+call action_generate_resolutions.py

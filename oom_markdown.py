@@ -198,11 +198,34 @@ def generate_readme_project(**kwargs):
     get_jinja2_template(file_template=file_template,file_output=file_output,dict_data=dict_data)
 
 
+def add_files_to_dict_data(**kwargs):
+    directory = kwargs.get("directory",os.getcwd())
+    files = []    
+    #get a list of recursive files
+    import glob
+    files = glob.glob(f"{directory}/**/*.*", recursive=True)
+    #replace all \\ with /
+    for i in range(len(files)):
+        files[i] = files[i].replace("\\","/")
+    #remove the directory from the file name
+    # replace \\ with / in directory
+    directory = directory.replace("\\","/")
+    for i in range(len(files)):
+        files[i] = files[i].replace(f"{directory}/","")
+    import copy
+    files2 = copy.deepcopy(files)
+    return files2
 
 def get_jinja2_template(**kwargs):
     file_template = kwargs.get("file_template","")
     file_output = kwargs.get("file_output","")
+    directory = kwargs.get("directory","")
     dict_data = kwargs.get("dict_data",{})
+
+    #add files to dict_data if directory != ""
+    if directory != "":
+        files = add_files_to_dict_data(directory=directory)
+        dict_data["files"] = files
 
     markdown_string = ""
     with open(file_template, "r") as infile:
