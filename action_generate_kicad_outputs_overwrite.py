@@ -38,14 +38,5 @@ def main_recursive(**kwargs):
 if __name__ == '__main__':
     #extract - overwrite from args if there make overwrite true if not false
     overwrite = True
-    import sys
-    #checkt to see if -overwrite is in args
-    print(str(sys.argv))
-    if "-overwrite" in sys.argv:
-        overwrite = True
-        print("Overwrite is true")
-    else:
-        overwrite = False
-        print("Overwrite is false")
     #oom_base.delay(10)
     main_recursive(overwrite=overwrite)

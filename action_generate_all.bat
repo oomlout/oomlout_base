@@ -1,6 +1,6 @@
-action_generate_kicad_outputs.py -overwrite
-action_generate_corel_outputs.py -overwrite
-action_generate_office_outputs.py -overwrite
-action_generate_resolutions.py -overwrite
-action_generate_readme_outputs.py -overwrite
+action_generate_kicad_outputs_overwrite.py 
+action_generate_corel_outputs_overwrite.py
+action_generate_office_outputs_overwrite.py
+action_generate_resolutions_overwrite.py
+action_generate_readme_outputs_overwrite.py
 action_git_commit.py
