@@ -29,6 +29,47 @@ def get_table_oomp_replace(**kwargs):
 
 def get_table(**kwargs):
     data = kwargs.get("data","none")
+    #if each element of data is just a string make it a string in an array
+    new_data = []
+    for row in data:
+        if type(row) == str:            
+            new_data.append([row])
+        else:
+            new_data.append(row)
+    data = new_data
+    #go through all values in data and replace \n, \r and \n\r with <br>
+    for row in data:
+        #if row is a dict
+        if type(row) == dict:
+            for key in row:
+                value = row[key]            
+                value = value.replace("\n","<br>")
+                value = value.replace("\r","<br>")
+                value = value.replace("\n\r","<br>")
+                row[key] = value
+        #if row is a list
+        if type(row) == list:
+            for i in range(len(row)):
+                value = row[i]       
+                #if value is  a string
+                if type(value) == str:     
+                    value = value.replace("\n","<br>")
+                    value = value.replace("\r","<br>")
+                    value = value.replace("\n\r","<br>")
+                    row[i] = value                
+                elif type(value) == dict:
+                    for key in value:
+                        value2 = value[key]
+                        value2 = value2.replace("\n","<br>")
+                        value2 = value2.replace("\r","<br>")
+                        value2 = value2.replace("\n\r","<br>")
+                        value[key] = value2
+                    row[i] = value
+                #if value is an array of strings replace in all strings ad a <br> between the strings
+                elif type(value) == list:
+                    value = "<br>".join(str(value))
+                    row[i] = value
+                #if value is a dict
     #data is an array of dicts or an array of lists
     #if it's an array of lists
     #if data is a list
