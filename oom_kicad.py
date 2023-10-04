@@ -210,120 +210,160 @@ def generate_outputs_schematic(**kwargs):
 
     kicadBoard = board_file
     directory = os.path.dirname(board_file) + "/"
+    #replace \ with /
+    directory = directory.replace("\\","/")
     imageFile = directory + f"{basename}_schematic.png"
     pdfFile = directory + f"{basename}_schematic.pdf"
-    if os.path.isfile(kicadBoard):
-        if overwrite or not os.path.isfile(imageFile):
-            print("Harvesting Kicad Board File: " + kicadBoard)
-            return_value = 1
-            oomLaunchPopen("eeschema.exe " + kicadBoard,10)
-            ###### check if its an error
-            oomSetClipboard("")
-            oomDelay(1)
-            oomCopy()
-            oomDelay(2)
-            check_error = oomGetClipboard()
-            if "KiCad PCB Editor Error" in check_error:
+    #check for extra schematics
+    #get all kicad_sch files in directory non recursive use glob
+    import glob
+    kicadSchFiles = glob.glob(directory + "*.kicad_sch")
+    #replace \ with / for all entries
+    kicadSchFiles = [x.replace("\\","/") for x in kicadSchFiles]
+    #if working.kicad_sch in in it make it the first element
+    if directory + "working.kicad_sch" in kicadSchFiles:
+        kicadSchFiles.remove(directory + "working.kicad_sch")
+        kicadSchFiles.insert(0,directory + "working.kicad_sch")
+    count_sch = 0
+    basename_original = basename
+    for kicadBoard in kicadSchFiles:    
+        if count_sch > 0:
+            basename = basename_original + f"_{count_sch}"
+        new_filename = directory + basename + ".kicad_sch"
+        imageFile = directory + f"{basename}_schematic.png"
+        if os.path.isfile(kicadBoard):
+            if overwrite or not os.path.isfile(imageFile):
+                
+                
+
+                print("Harvesting Kicad Board File: " + kicadBoard)
+                return_value = 1
+                oomLaunchPopen("eeschema.exe " + kicadBoard,10)
+                ###### check if its an error
+                oomSetClipboard("")
+                oomDelay(1)
+                oomCopy()
+                oomDelay(2)
+                check_error = oomGetClipboard()
+                if "KiCad PCB Editor Error" in check_error:
+                    oomSendEnter()
+                    oomDelay(2)                   
+                    kicadClosePcb()         
+                    #make a new file text file with name imageFile
+                    #f = open(imageFile, "w")
+                    #f.write("Error")
+                    #f.close()
+    
+                    return 
+                #send right
+                oomSendRight(delay=2)
                 oomSendEnter()
-                oomDelay(2)                   
-                kicadClosePcb()         
-                #make a new file text file with name imageFile
-                #f = open(imageFile, "w")
-                #f.write("Error")
-                #f.close()
- 
-                return 
-            #send right
-            oomSendRight(delay=2)
-            oomSendEnter()
-            oomDelay(2)   
-            #deal with already open error
-            #send right
-            oomSendRight(delay=2)
-            #send enter
-            oomSendEnter(delay=2)
-            #send enter
-            oomSendEnter(delay=2)
-            #maximize
-            #oomSendMaximize()
-            #zoom to schematic rather than page
-            oomSendControl("home",delay=2)
-            oomDelay(2)
-            oomMouseMove(pos=kicadFootprintMiddle,delay=2)
-            oomMouseMove(pos=kicadActive,delay=2)
-            oomMouseMove(pos=kicadFootprintMiddle,delay=2)
-            oomMouseMove(pos=kicadActive,delay=2)
-            oomMouseMove(pos=kicadFootprintMiddle,delay=2)
-            oomMouseMove(pos=kicadActive,delay=2)
-            oomMouseMove(pos=kicadFootprintMiddle,delay=2)
-            oomMouseClick(pos=kicadActive,delay=5)    
-            
-            # bom
-            #send alt t
-            oomSendAltKey("t",delay=2)
-            #send up twice
-            oomSendUp(times=2,delay=2)
-            #send enter
-            oomSendEnter(delay=2)
-            #select filter press down three times
-            oomSendDown(times=3,delay=2)
-            #send tab four times
-            oomSendTab(times=3,delay=2)
-            #send paramter string
-            string_parameter = 'python "C:/Program Files/KiCad/7.0/bin/scripting/plugins/bom_csv_grouped_by_value_with_fp.py" "{%}I" "{%}O_bom_schematic.csv'
-            oomSend(string_parameter,delay=2)
-            #send one tab
-            oomSendTab(delay=2)
-            #send enter
-            oomSendEnter(delay=2)
-            #send esc
-            oomSendEsc(delay=2)
+                oomDelay(2)   
+                #deal with already open error
+                #send right
+                oomSendRight(delay=2)
+                #send enter
+                oomSendEnter(delay=2)
+                #send enter
+                oomSendEnter(delay=2)
+                #maximize
+                #oomSendMaximize()
+                #zoom to schematic rather than page
+                oomSendControl("home",delay=2)
+                oomDelay(2)
+                oomMouseMove(pos=kicadFootprintMiddle,delay=2)
+                oomMouseMove(pos=kicadActive,delay=2)
+                oomMouseMove(pos=kicadFootprintMiddle,delay=2)
+                oomMouseMove(pos=kicadActive,delay=2)
+                oomMouseMove(pos=kicadFootprintMiddle,delay=2)
+                oomMouseMove(pos=kicadActive,delay=2)
+                oomMouseMove(pos=kicadFootprintMiddle,delay=2)
+                oomMouseClick(pos=kicadActive,delay=5)    
+                
+                # open and ready to do things
+                #save first
+                
+                for i in range(1):
+                    print(f"saving as try {i} of 2")
+                    #save as
+                    #click kicadfile
+                    oomMouseClick(pos=kicadFile,delay=2)
+                    oomSend("ss",delay=2)
+                    oomSendEnter(delay=2)
+                    oomSend(new_filename.replace("/","\\"),delay=2)
+                    oomSendEnter(delay=2)
+                    oomSend("y",delay=2)
+
+
+                # bom
+                #send alt t
+                oomMouseClick(pos=kicadTool,delay=2)
+                #send up twice
+                oomSendUp(times=2,delay=2)
+                #send enter
+                oomSendEnter(delay=2)
+                #select filter press down three times
+                oomSendDown(times=3,delay=2)
+                #send tab four times
+                oomSendTab(times=3,delay=2)
+                #send paramter string
+                string_parameter = 'python "C:/Program Files/KiCad/7.0/bin/scripting/plugins/bom_csv_grouped_by_value_with_fp.py" "{%}I" "{%}O_bom_schematic.csv'
+                oomSend(string_parameter,delay=2)
+                #send one tab
+                oomSendTab(delay=2)
+                #send enter #extra enter for annotate schematic
+                oomSendEnter(delay=2)
+                #send enter
+                oomSendEnter(delay=2)
+                #send esc
+                oomSendEsc(delay=2)
 
 
 
 
-            # image
-            #oomSendAltKey("f",delay=2)            
-            oomMouseClick(pos=kicadFile,delay=5)   
-            oomSend("e",1)
-            oomSendEnter(delay=2)
-            oomClipboardSaveImage(imageFile)
+                # image
+                #oomSendAltKey("f",delay=2)            
+                oomMouseClick(pos=kicadFile,delay=5)   
+                oomSend("e",1)
+                oomSendEnter(delay=2)
+                oomClipboardSaveImage(imageFile)
 
-            ###### plot pdf
-            oomMouseClick(pos=kicadFile,delay=5)
-            oomSend("ppp",2)
-            oomSendEnter(delay=2)
-            #'send temp dir
-            tempDir = 'tmp/'    
-            oomSend(tempDir.replace("/","\\"),2)
-            oomSendEnter(delay=2)
-            #move and rename file
-            src = f'{directory}tmp/{basename}.pdf'
-            dest = f'{directory}{basename}_schematic.pdf'
-            #delete if the dest exists
-            if os.path.isfile(dest):
-                os.remove(dest)
-            if os.path.isfile(src):
-                try:
-                    os.rename(src, dest)
-                except Exception as e:
-                    print(f"Error renaming {src} to {dest} probbly missing src")
-                    print(e)
-            #delete the tmp directory and files in it
-            temp_directory = f'{directory}{tempDir}'
-            #if the directory exists
-            if os.path.exists(temp_directory):
-                shutil.rmtree(f'{directory}{tempDir}')
-            #send esc
-            oomSendEsc(delay=2)
-            oomSendEsc(delay=2)
-            oomSendEsc(delay=2)
-
-
+                ###### plot pdf
+                oomMouseClick(pos=kicadFile,delay=5)
+                oomSend("ppp",2)
+                oomSendEnter(delay=2)
+                #'send temp dir
+                tempDir = 'tmp/'    
+                oomSend(tempDir.replace("/","\\"),2)
+                oomSendEnter(delay=2)
+                #move and rename file
+                src = f'{directory}tmp/{basename}.pdf'
+                dest = f'{directory}{basename}_schematic.pdf'
+                #delete if the dest exists
+                if os.path.isfile(dest):
+                    os.remove(dest)
+                if os.path.isfile(src):
+                    try:
+                        os.rename(src, dest)
+                    except Exception as e:
+                        print(f"Error renaming {src} to {dest} probbly missing src")
+                        print(e)
+                #delete the tmp directory and files in it
+                temp_directory = f'{directory}{tempDir}'
+                #if the directory exists
+                if os.path.exists(temp_directory):
+                    shutil.rmtree(f'{directory}{tempDir}')
+                #send esc
+                oomSendEsc(delay=2)
+                oomSendEsc(delay=2)
+                oomSendEsc(delay=2)
 
 
-            kicadClosePcb()
-            oomSendEsc(delay=5)
+
+
+                kicadClosePcb()
+                oomSendEsc(delay=5)
+                count_sch += 1
     return return_value
 
 def generate_outputs_symbol(**kwargs):
@@ -553,6 +593,7 @@ def generate_outputs_footprint(**kwargs):
 
 kicadActive =[515,14]
 kicadFile = [80,35]
+kicadTool = [331,50]
 kicadFootprintMiddle = [945,545] 
 kicad3dView = [145,35]
 kicadActive =[515,14]
@@ -571,10 +612,11 @@ kicad3dView = [145,35]
 def define_mouse_positions(**kwargs):
 
     computer = kwargs.get("computer","desktop")
-    global kicadFile, kicadActive, kicadFile, kicadFootprintMiddle, kicad3dView, kicadActive, kicadFootprintFilter, kicadFootprintFirstResult, kicadFootprintMiddle, kicadFootprintMiddlePlus, kicadFootprintTopLeft, kicadSymbolMiddle,kicadSymbolMiddlePlus, kicadFootprintView
+    global kicadTool, kicadFile, kicadActive, kicadFile, kicadFootprintMiddle, kicad3dView, kicadActive, kicadFootprintFilter, kicadFootprintFirstResult, kicadFootprintMiddle, kicadFootprintMiddlePlus, kicadFootprintTopLeft, kicadSymbolMiddle,kicadSymbolMiddlePlus, kicadFootprintView
 
     if computer == "desktop":
         kicadFile = [90,30]
+        kicadTool = [391,50]
         kicadActive =[515,14]
         
         kicadFootprintMiddle = [945,545] 
@@ -591,6 +633,7 @@ def define_mouse_positions(**kwargs):
         kicadFootprintView = [153,36]
     elif computer == "surface":        
         kicadFile = [19,50]
+        kicadTool = [331,50]
         kicadFootprintMiddle = [945,545] 
         kicad3dView = [145,35]
         kicadActive =[515,14]
