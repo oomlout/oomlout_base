@@ -152,8 +152,11 @@ def generate_image(**kwargs):
 # do all image resolutions for a directory
 def image_resolutions_dir(**kwargs):
     overwrite = kwargs.get('overwrite', False)
-    directory = kwargs.get('directory', "")
+    directory = kwargs.get('directory', "")    
+    git = kwargs.get('git', True)
+    git_per = kwargs.get('git_per', 20000)
     filter = kwargs.get('filter', [""])
+
     #if filter isn't an array make it one
     if not isinstance(filter, list):
         filter = [filter]
@@ -164,13 +167,14 @@ def image_resolutions_dir(**kwargs):
     for root, dirs, files in os.walk(directory):
         #for each directory
             for file in files:
-                full_file = os.path.join(root, file)
-                #if any of filter is in filename
+                full_file = os.path.join(root, file )
+                # if any of filter are in 
                 if any(x in full_file for x in filter):
                     #if kicad_mod file
                     if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg"):
                         resolutions = [140,300,600,1000]
                         filename = os.path.join(root, file )
+                        
                         #print(f"Generating images for {filename}")
                         for resolution in resolutions:
                             #generate the image at this resolution
@@ -185,14 +189,15 @@ def image_resolutions_dir(**kwargs):
                             if count % 100 == 0:
                                 print("-", end="", flush=True)
                             #git commit every 5000 files
-                            if count % 500 == 0:
+                            if count % git_per == 0:
                                 import oom_kicad
-                                oom_kicad.push_to_git(count = count )
-                    count2 += 1
-                    #print a dot every 1000 files
-                    if count2 % 1000 == 0:
-                        print(".", end="", flush=True)
-                        
+                                if git:
+                                    oom_kicad.push_to_git(count = count )
+                count2 += 1
+                #print a dot every 1000 files
+                if count2 % 100000 == 0:
+                    print(".", end="", flush=True)
+                    
 
 
 def image_svg_to_png(**kwargs):

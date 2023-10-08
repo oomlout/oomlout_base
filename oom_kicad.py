@@ -394,7 +394,7 @@ def generate_outputs_symbol(**kwargs):
         oomSendCtrl("a")
         oomDelay(1)
         oomSendDelete(delay=1)
-        oomSend(symbol_name,delay=2)
+        oomSend(symbol_name,delay=10)
 
         oomSendEnter(delay=3)
         oomMouseClick(pos=kicadFootprintFirstResult, delay=0.1)
