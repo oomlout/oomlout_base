@@ -1,0 +1,71 @@
+oomlout_oomp_part_src:
+  name: oomlout_oomp_part_src
+  
+
+oomlout_oobb_version_3:
+  name: oomlout_oobb_version_3  
+
+
+# base ones
+oomlout_label_printing_python_flask_svg_replace:
+  name: oomlout_label_printing_python_flask_svg_replace
+
+#oobb bundles
+oomlout_oobe_bundle_plates_basic:
+  name: oomlout_oobe_bundle_plates_basic
+
+oomlout_oobb_bundle_plates_basic:
+  name: oomlout_oobb_bundle_plates_basic
+
+oomlout_oobb_bundle_bunting_alphabet:
+  name: oomlout_oobb_bundle_bunting_alphabet  
+
+oomlout_oobe_bundle_decorations:
+  name: oomlout_oobe_bundle_decorations
+
+oomlout_oobb_bundle_decorations:
+  name: oomlout_oobb_bundle_decorations
+
+oomlout_oobb_bundle_smd_magazine:
+  name: oomlout_oobb_bundle_smd_magazine
+
+
+#oomp projects
+oomlout_oomp_electronic_project_mcu_board:
+  name: oomlout_oomp_electronic_project_mcu_board
+
+oomlout_oomp_electronic_project_mcu_breakout_mega_footprint:
+  name: oomlout_oomp_electronic_project_mcu_breakout_mega_footprint
+
+oomlout_oomp_electronic_project_svg_component_placement:
+  name: oomlout_oomp_electronic_project_svg_component_placement
+
+oomlout_oomp_electronic_breakout_board_mcu_atmega328_shennie:
+  name: oomlout_oomp_electronic_breakout_board_mcu_atmega328_shennie
+
+
+#      ibbc
+oomlout_oomp_electronic_project_ibbc_breakout_board_holder_oobb_3_2:
+  name: oomlout_oomp_electronic_project_ibbc_breakout_board_holder_oobb_3_2
+
+oomlout_oomp_electronic_project_ibbc_breakout_board_sensor_temperature_pressure_bosch_bme280:
+  name: oomlout_oomp_electronic_project_ibbc_breakout_board_sensor_temperature_pressure_bosch_bme280
+
+
+# lesser projects
+oomlout_oomp_electronic_project_usb_switch:
+  name: oomlout_oomp_electronic_project_usb_switch
+
+oomlout_oobb_project_robot_mearm_working:
+  name: oomlout_oobb_project_robot_mearm_working
+
+oomlout_oomp_electronic_device_aliexpress_amp_meter_10_amp_0_28_inch_display:
+  name: oomlout_oomp_electronic_device_aliexpress_amp_meter_10_amp_0_28_inch_display
+
+
+# teardowns
+oomlout_oomp_teardown_vinyl_cutter_cricut_maker:
+  name: oomlout_oomp_teardown_vinyl_cutter_cricut_maker
+
+oomlout_oomp_teardown_label_printer_niimbot_d110:
+  name: oomlout_oomp_teardown_label_printer_niimbot_d110

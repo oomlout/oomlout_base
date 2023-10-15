@@ -4,6 +4,8 @@ import os
 
 def clone(**kwargs):
     repo = kwargs['repo']
+    #remove.git from repo name
+    repo = repo.replace(".git", "")
     directory = kwargs.get('directory', os.getcwd())
     #add repo name to directory
     directory = os.path.join(directory, repo.split("/")[-1])
