@@ -1,8 +1,15 @@
 working-backups/
-Backup_
 _autosave
 backup
 autosave
+git/
+old_1*/
+backup_*
+working-backups/
+Backup_
+_autosave
+
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

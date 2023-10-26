@@ -1,14 +1,27 @@
-oomlout_oomp_part_src:
-  name: oomlout_oomp_part_src
+
   
 
 oomlout_oobb_version_3:
   name: oomlout_oobb_version_3  
 
+oomlout_oobb_version_4:
+  name: oomlout_oobb_version_4
+
+
 
 # base ones
 oomlout_label_printing_python_flask_svg_replace:
   name: oomlout_label_printing_python_flask_svg_replace
+
+oomlout_opsc_v2:
+  name: oomlout_opsc_v2
+oomlout_opsc_version_3:
+  name: oomlout_opsc_version_3
+
+
+#the_allotment
+oomlout_the_allotment:
+  name: the_allotment
 
 #oobb bundles
 oomlout_oobe_bundle_plates_basic:
@@ -28,6 +41,7 @@ oomlout_oobb_bundle_decorations:
 
 oomlout_oobb_bundle_smd_magazine:
   name: oomlout_oobb_bundle_smd_magazine
+
 
 
 #oomp projects
@@ -69,3 +83,40 @@ oomlout_oomp_teardown_vinyl_cutter_cricut_maker:
 
 oomlout_oomp_teardown_label_printer_niimbot_d110:
   name: oomlout_oomp_teardown_label_printer_niimbot_d110
+
+# oomp ones
+oomlout_oomp_part_src:
+  name: oomlout_oomp_part_src
+
+oomlout_oomp_symbol_all_the_kicad_symbols:
+  name: oomlout_oomp_symbol_all_the_kicad_symbols
+
+oomlout_oomp_footprint_all_the_kicad_footprints:
+  name: oomlout_oomp_footprint_all_the_kicad_footprints
+#      generated
+oomlout_oomp_part_kicad_footprints:
+  name: oomlout_oomp_part_kicad_footprints
+  directory: gh/oomlout_oomp_part_src/tmp/generated
+
+oomlout_oomp_part_kicad_symbolss:
+  name: oomlout_oomp_part_kicad_symbols
+  directory: gh/oomlout_oomp_part_src/tmp/generated
+
+oomlout_oomp_part_doc_v_2:
+  name: oomlout_oomp_part_doc_v_2
+  
+#      secondary ones
+oomlout_oomp_footprint_bot:
+  name: oomlout_oomp_footprint_bot
+  directory: gh/oomlout_oomp_part_src/tmp
+
+oomlout_oomp_project_bot:
+  name: oomlout_oomp_project_bot
+  directory: gh/oomlout_oomp_part_src/tmp
+
+oomlout_oomp_symbol_bot:
+  name: oomlout_oomp_symbol_bot
+  directory: gh/oomlout_oomp_part_src/tmp
+
+
+

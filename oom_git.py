@@ -25,6 +25,9 @@ def clone(**kwargs):
     print(f"cloning {repo} to {directory}")
     #do in one os.system call
     os.system(f"git clone {repo} {directory}")
+    # git pull origin master
+    os.system(f"cd {directory} && git pull origin main")
+
 
 def pull(**kwargs):
     directory = kwargs.get('directory', os.getcwd())

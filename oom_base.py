@@ -198,8 +198,6 @@ def image_resolutions_dir(**kwargs):
                 if count2 % 100000 == 0:
                     print(".", end="", flush=True)
                     
-
-
 def image_svg_to_png(**kwargs):
     filename = kwargs.get('filename', "")
     file_out = filename.replace(".svg", ".png")
@@ -236,9 +234,63 @@ def remove_special_characters(string):
     symbol_name = symbol_name.replace('__', '_')
     return symbol_name
 
+# label
+
+import copy
+
+def print_message_label(**kwargs):
+    p3 = copy.deepcopy(kwargs)        
+    file_output = make_message_label(**p3)
+    print_pdf(file_input=file_output)
+    pass
+    
+def make_message_label(**kwargs):
+    import time
+    file_template = "templates/template_label_message_76_mm_x_50_mm.svg.j2"
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    file_output = f"output/label_{timestamp}.svg"
+    kwargs["file_output"] = file_output
+    kwargs["file_template"] = file_template
+    kwargs["file_output"] = file_output
+    kwargs["dict_data"] = copy.deepcopy(kwargs)
+    get_jinja2_template(**kwargs)
+    file_output = convert_svg_to_pdf(file_input=file_output)
+    return file_output
+
+#ghostprint
+
+def print_pdf(**kwargs):
+    file_input = kwargs.get("file_input","")
+    ##scale to fit notes https://stackoverflow.com/questions/7446552/resizing-a-pdf-using-ghostscript
+        
+    printer = "zephyr_mcpaper"    
+
+    ghostScript = "gswin64C.exe"    
+    silentLaunch = "silentCMD.exe"
+
+    ghostOptions = " -sDEVICE=mswinpr2 -q -dNOPAUSE"
+    ghostQuit = " -c quit"
+
+    pdfFile = '"' + file_input + '"'
+    printerString = ' -sOutputFile="%printer%' + printer + '"'
+
+    executeString = silentLaunch + " " + ghostScript + ghostOptions + printerString + " -f " + pdfFile + ghostQuit 
+    
+    print("Printing PDF:  " + executeString)
+    os.system(executeString)
+    delay(1)
 
 
-
+# inkscape
+def convert_svg_to_pdf(**kwargs):
+    inkscape = "inkscape.exe"
+    file_input = kwargs.get("file_input","")
+    file_output = kwargs.get("file_output","")
+    if file_output == "":
+        file_output = file_input.replace(".svg", ".pdf")
+    import os
+    os.system(f'{inkscape} --export-type="pdf" {file_input} --export-filename={file_output}')
+    return file_output
 # data manipulation
 
 #yaml to readme
@@ -257,6 +309,62 @@ def yaml_to_markdown(**kwargs):
         
 
     return readme
+
+
+def get_jinja2_template(**kwargs):
+    file_template = kwargs.get("file_template","")
+    file_output = kwargs.get("file_output","")
+    directory = kwargs.get("directory","")
+    dict_data = kwargs.get("dict_data",{})
+
+    #add files to dict_data if directory != ""
+    if directory != "":
+        files = add_files_to_dict_data(directory=directory)
+        dict_data["files"] = files
+
+    markdown_string = ""
+    #if file _temoplate doesn't exist
+    if not os.path.isfile(file_template):
+        file_template = os.path.join("c:/gh/oomlout_base", file_template)    
+    file_template = file_template.replace("/", "\\")
+    with open(file_template, "r") as infile:
+        markdown_string = infile.read()
+    ##### sanitize part
+    import copy
+    data2 = copy.deepcopy(dict_data)
+
+    import jinja2    
+    try:
+        markdown_string = jinja2.Template(markdown_string).render(p=data2)
+    except Exception as e:
+        print(f"error in jinja2 template: {file_template}")
+        print(e)
+        markdown_string = "markdown_string_error"
+    #make directory if it doesn't exist
+    directory = os.path.dirname(file_output)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    with open(file_output, "w", encoding="utf-8") as outfile:
+        outfile.write(markdown_string)
+        print(f"jinja2 template file written: {file_output}")
+
+def add_files_to_dict_data(**kwargs):
+    directory = kwargs.get("directory",os.getcwd())
+    files = []    
+    #get a list of recursive files
+    import glob
+    files = glob.glob(f"{directory}/**/*.*", recursive=True)
+    #replace all \\ with /
+    for i in range(len(files)):
+        files[i] = files[i].replace("\\","/")
+    #remove the directory from the file name
+    # replace \\ with / in directory
+    directory = directory.replace("\\","/")
+    for i in range(len(files)):
+        files[i] = files[i].replace(f"{directory}/","")
+    import copy
+    files2 = copy.deepcopy(files)
+    return files2
 
 
 #git stuff

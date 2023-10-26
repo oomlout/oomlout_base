@@ -1,32 +1,66 @@
 import os
 import copy
-import yaml
-import oom_git
+
 
 def main(**kwargs):
     print("action_new_computer_setup.py main()")
     
-    
-    
-    # environment_variable = "PATH"
-    folder_path = []
-    folder_path.append("c:/gh/oomlout_base")   
+    pip = False
+    path = False
+    pythonpath = False
+    clone = False
 
-    kwargs["folder_path"] = folder_path
-    # set_folder_path(**kwargs)
+    #run python_pip.bat
+    if pip:
+        os.system("action_python_pip.bat")
+    
+    
+
+    # environment_variable = "PATH"
+    if path:
+        print("path()")
+        folder_path = []
+        folder_path.append("c:/gh/oomlout_base")
+        # the_allotment
+        folder_path.append("c:/gh/the_allotment")
+        # ghost script
+        folder_path.append("C:/Program Files/gs/gs9.54.0/bin") 
+        #db path
+        folder_path.append("c:/db/Dropbox/path") 
+        #opsc
+        folder_path.append("c:/gh/oomlout_opsc_version_3")
+        #openscad
+        folder_path.append("C:/Program Files/OpenSCAD")
+        #corel
+        folder_path.append("C:/Program Files/Corel/CorelDRAW Graphics Suite 2020/Programs64")   
+        #inkscape
+        folder_path.append("C:/Program Files/Inkscape/bin")
+        # python
+        folder_path.append("C:/Users/aaron/AppData/Local/Programs/Python/Python312")
+
+        
+
+        kwargs["folder_path"] = folder_path
+        set_folder_path(**kwargs)
 
     # environment_variable = "PYTHONPATH"
-    folder_pythonpath = []
-    folder_pythonpath.append("c:/gh/oomlout_base")
-    
-    kwargs["folder_pythonpath"] = folder_pythonpath
-    # set_folder_pythonpath(**kwargs)
+    if pythonpath:
+        print("pythonpath()")   
+        folder_pythonpath = []
+        folder_pythonpath.append("c:/gh/oomlout_base")
+        #opsc
+        folder_pythonpath.append("c:/gh/oomlout_opsc_version_3")
+        
+        
+        kwargs["folder_pythonpath"] = folder_pythonpath
+        set_folder_pythonpath(**kwargs)
 
     # clone repos
-    file_oomlout_repos = "oomlout_github_repos.yaml"
+    if clone:
+        file_oomlout_repos = "oomlout_github_repos.yaml"
 
-    kwargs["file_oomlout_repos"] = file_oomlout_repos
-    clone_repos(**kwargs)
+        kwargs["file_oomlout_repos"] = file_oomlout_repos
+        clone_repos(**kwargs)
 
 
 
@@ -34,6 +68,7 @@ def clone_repos(**kwargs):
     file_oomlolout_repos = kwargs["file_oomlout_repos"]
 
     #load the repos
+    import yaml
     with open(file_oomlolout_repos) as file:
         oomlout_repos = yaml.load(file, Loader=yaml.FullLoader)
     #loop through the repos
@@ -43,6 +78,7 @@ def clone_repos(**kwargs):
         directory = repo.get("directory", "gh")
         directory = os.path.join("c:/", directory)
         url = repo.get("url", f"http://github.com/oomlout/{name}.git")
+        import oom_git
         oom_git.clone(repo=url, directory=directory)
 
 
@@ -62,17 +98,33 @@ def set_folder_pythonpath(**kwargs):
 def set_folder_generic(**kwargs):
     print("action_new_computer_setup.py set_folder_path()")
     folder_path = kwargs["folder_path"]
-    environment_variable = kwargs.get("environment_variable", "PATH")
+    environment_variable = kwargs.get("environment_variable", "PATH")    
+    #print("folder: ", folder)
+    #add folder to the path variable if it isn't already there using os.system it is windows
+    path_current = os.environ[environment_variable]
+
+    new_path = f'{path_current}'
+    #split new path with ; and remove duplicates            
+    new_path = new_path.split(";")
+    new_path = list(set(new_path))
+    #remove "" entries
+    new_path = [x for x in new_path if x != ""]            
     for folder in folder_path:
-        folder = folder.replace("/", "\\")
-        print("folder: ", folder)
-        #add folder to the path variable if it isn't already there using os.system it is windows
-        path_current = os.environ['PATH']
-        if not folder.lower() in path_current.lower():
-            os.system(f'setx PATH "%PATH%;{folder}"')
-            print("folder added to path: ", folder)
-        else:
-            print("folder already in path: ", folder)
+        folder = folder.replace("\\", "/")
+        # if fiolder not in any of new_path.lower()
+        if not any(folder.lower() in s.lower() for s in new_path):
+            new_path.append(folder)
+
+    new_path = ";".join(new_path)
+    command = f'setx {environment_variable} "{new_path}"'
+    os.system(command)
+    # echo path using os.system
+    #os.system(f'echo %PATH%')
+
+
+    #print out the current path variable
+    #path_current = os.environ['PATH']
+    #print("path_current: ", path_current)
 
 
 if __name__ == '__main__':

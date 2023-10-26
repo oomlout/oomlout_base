@@ -1,5 +1,6 @@
 import os
 import csv
+import oom_base
 
 def get_table_dict(**kwargs):
     data = kwargs.get("data","none")
@@ -240,49 +241,7 @@ def generate_readme_project(**kwargs):
 
 
 def add_files_to_dict_data(**kwargs):
-    directory = kwargs.get("directory",os.getcwd())
-    files = []    
-    #get a list of recursive files
-    import glob
-    files = glob.glob(f"{directory}/**/*.*", recursive=True)
-    #replace all \\ with /
-    for i in range(len(files)):
-        files[i] = files[i].replace("\\","/")
-    #remove the directory from the file name
-    # replace \\ with / in directory
-    directory = directory.replace("\\","/")
-    for i in range(len(files)):
-        files[i] = files[i].replace(f"{directory}/","")
-    import copy
-    files2 = copy.deepcopy(files)
-    return files2
+    return oom_base.add_files_to_dict_data(**kwargs)
 
 def get_jinja2_template(**kwargs):
-    file_template = kwargs.get("file_template","")
-    file_output = kwargs.get("file_output","")
-    directory = kwargs.get("directory","")
-    dict_data = kwargs.get("dict_data",{})
-
-    #add files to dict_data if directory != ""
-    if directory != "":
-        files = add_files_to_dict_data(directory=directory)
-        dict_data["files"] = files
-
-    markdown_string = ""
-    with open(file_template, "r") as infile:
-        markdown_string = infile.read()
-    ##### sanitize part
-    import copy
-    data2 = copy.deepcopy(dict_data)
-
-    import jinja2    
-    try:
-        markdown_string = jinja2.Template(markdown_string).render(p=data2)
-    except Exception as e:
-        print(f"error in jinja2 template: {file_template}")
-        print(e)
-        markdown_string = "markdown_string_error"
-    with open(file_output, "w", encoding="utf-8") as outfile:
-        outfile.write(markdown_string)
-        print(f"jinja2 template file written: {file_output}")
-
+    oom_base.get_jinja2_template(**kwargs)

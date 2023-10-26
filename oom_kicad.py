@@ -1230,10 +1230,13 @@ def push_to_git(**kwargs):
     import git 
     result = repo = git.Repo(repo_directory)
     print(result)
-    result =  repo.git.add("*")
-    print(result)
-    result = repo.index.commit(f"comitting after {count} generations")
-    print(result)
+    try:
+        result =  repo.git.add("*")
+        print(result)
+        result = repo.index.commit(f"comitting after {count} generations")
+        print(result)
+    except Exception as e:
+        print(e)
 
     result = origin = repo.remote(name='origin')
     result = origin.push()

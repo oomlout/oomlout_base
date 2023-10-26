@@ -51,4 +51,3 @@ pip install jinja2
 pip install db-sqlite3
 pip install virtualenv
 pip install pandas
-pause
