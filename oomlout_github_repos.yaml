@@ -1,6 +1,4 @@
 
-  
-
 oomlout_oobb_version_3:
   name: oomlout_oobb_version_3  
 
@@ -26,21 +24,31 @@ oomlout_the_allotment:
 #oobb bundles
 oomlout_oobe_bundle_plates_basic:
   name: oomlout_oobe_bundle_plates_basic
+  directory: gh/oobb_bundle
 
 oomlout_oobb_bundle_plates_basic:
   name: oomlout_oobb_bundle_plates_basic
+  directory: gh/oobb_bundle
 
 oomlout_oobb_bundle_bunting_alphabet:
   name: oomlout_oobb_bundle_bunting_alphabet  
+  directory: gh/oobb_bundle
 
 oomlout_oobe_bundle_decorations:
   name: oomlout_oobe_bundle_decorations
+  directory: gh/oobb_bundle
 
 oomlout_oobb_bundle_decorations:
   name: oomlout_oobb_bundle_decorations
+  directory: gh/oobb_bundle
 
 oomlout_oobb_bundle_smd_magazine:
   name: oomlout_oobb_bundle_smd_magazine
+  directory: gh/oobb_bundle
+
+oomlout_oobb_bundle_holder_05_03_00_ex_motor_servo_standard_01:
+  name: oomlout_oobb_bundle_holder_05_03_00_ex_motor_servo_standard_01
+  directory: gh/oobb_bundle
 
 
 
