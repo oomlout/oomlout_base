@@ -1,5 +1,6 @@
 import oom_kicad
 import oom_markdown
+import os
 
 #process
 #  locations set in working_parts.ods 
@@ -9,15 +10,14 @@ import oom_markdown
 
 def main(**kwargs):
     #place_parts(**kwargs)
-    #make_readme(**kwargs)
-    pass
+    make_readme(**kwargs)
     
     
 
 def make_readme(**kwargs):
+    os.system("generate_resolution.bat")
     #oom_markdown.generate_readme_project(**kwargs)
-    #oom_markdown.generate_readme_teardown(**kwargs)
-    pass    
+    oom_markdown.generate_readme_teardown(**kwargs)
     
 #take component positions from working_parts.csv and place them in working.kicad_pcb
 def place_parts(**kwargs):
