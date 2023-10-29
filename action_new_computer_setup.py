@@ -8,7 +8,7 @@ def main(**kwargs):
     pip = False
     path = False
     pythonpath = False
-    clone = False
+    clone = True
 
     #run python_pip.bat
     if pip:

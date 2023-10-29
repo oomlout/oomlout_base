@@ -141,11 +141,23 @@ def get_link_image_scale(**kwargs):
 dir_oomlout_base = "c:/gh/oomlout_base"
 dir_template = f"{dir_oomlout_base}/templates"
 
+
+def generate_readme_teardown(**kwargs):
+    template_file = f"{dir_template}/teardown_readme_template.md.j2"
+    kwargs["template_file"] = template_file
+    generate_readme_generic(**kwargs)
+
 def generate_readme_project(**kwargs):
+    template_file = f"{dir_template}/project_readme_template.md.j2"
+    kwargs["template_file"] = template_file
+    generate_readme_generic(**kwargs)
+
+def generate_readme_generic(**kwargs):
     import os
     directory = kwargs.get("directory",os.getcwd())
     directory_board = f"{directory}/kicad/current_version/working"
-    template_file = f"{dir_template}/project_readme_template.md.j2"
+    template_file_default = f"{dir_template}/project_readme_template.md.j2"
+    template_file = kwargs.get("template_file",template_file_default)
     output_file = f"{directory}/readme.md"
     details = {}
 

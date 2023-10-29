@@ -50,6 +50,20 @@ oomlout_oobb_bundle_holder_05_03_00_ex_motor_servo_standard_01:
   name: oomlout_oobb_bundle_holder_05_03_00_ex_motor_servo_standard_01
   directory: gh/oobb_bundle
 
+#teardowns
+
+oomlout_oomp_teardown_label_printer_niimbot_d110:
+  name: oomlout_oomp_teardown_label_printer_niimbot_d110
+  directory: gh/oomp_teardown
+
+oomlout_oomp_teardown_vinyl_cutter_cricut_maker:
+  name: oomlout_oomp_teardown_vinyl_cutter_cricut_maker
+  directory: gh/oomp_teardown
+
+oomlout_oomp_teardown_multitool_ryobi_rmt1801:
+  name: oomlout_oomp_teardown_multitool_ryobi_rmt1801
+  directory: gh/oomp_teardown
+
 
 
 #oomp projects
@@ -84,13 +98,6 @@ oomlout_oobb_project_robot_mearm_working:
 oomlout_oomp_electronic_device_aliexpress_amp_meter_10_amp_0_28_inch_display:
   name: oomlout_oomp_electronic_device_aliexpress_amp_meter_10_amp_0_28_inch_display
 
-
-# teardowns
-oomlout_oomp_teardown_vinyl_cutter_cricut_maker:
-  name: oomlout_oomp_teardown_vinyl_cutter_cricut_maker
-
-oomlout_oomp_teardown_label_printer_niimbot_d110:
-  name: oomlout_oomp_teardown_label_printer_niimbot_d110
 
 # oomp ones
 oomlout_oomp_part_src:

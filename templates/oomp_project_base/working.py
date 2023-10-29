@@ -9,12 +9,15 @@ import oom_markdown
 
 def main(**kwargs):
     #place_parts(**kwargs)
-    make_readme(**kwargs)
+    #make_readme(**kwargs)
+    pass
     
     
 
 def make_readme(**kwargs):
-    oom_markdown.generate_readme_project(**kwargs)
+    #oom_markdown.generate_readme_project(**kwargs)
+    #oom_markdown.generate_readme_teardown(**kwargs)
+    pass    
     
 #take component positions from working_parts.csv and place them in working.kicad_pcb
 def place_parts(**kwargs):
