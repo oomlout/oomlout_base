@@ -50,7 +50,9 @@ def main(**kwargs):
         folder_pythonpath.append("c:/gh/oomlout_base")
         #opsc
         folder_pythonpath.append("c:/gh/oomlout_opsc_version_3")
-        
+        # oomp_src
+        folder_pythonpath.append("C:/gh/oomlout_oomp_part_src")
+
         
         kwargs["folder_pythonpath"] = folder_pythonpath
         set_folder_pythonpath(**kwargs)
