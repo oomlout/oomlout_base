@@ -248,7 +248,10 @@ def make_message_label(**kwargs):
     import time
     file_template = "templates/template_label_message_76_mm_x_50_mm.svg.j2"
     timestamp = time.strftime("%Y%m%d_%H%M%S")
-    file_output = f"output/label_{timestamp}.svg"
+    import random
+    random_extra = str(random.randint(100000, 999999))
+
+    file_output = f"output/label_{timestamp}_{random_extra}.svg"
     kwargs["file_output"] = file_output
     kwargs["file_template"] = file_template
     kwargs["file_output"] = file_output
