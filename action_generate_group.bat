@@ -1,0 +1,18 @@
+@echo off
+
+cd C:\GH\oomlout_tdpbmct_nineteen_inch_rack_printer_mounts
+call generate.bat
+cd C:\GH\oomlout_tdpbmct_printer_anycubic_vyper
+call generate.bat
+cd C:\GH\oomlout_tdpbmct_printer_anycubic_vyper_height_reduction
+call generate.bat
+cd C:\GH\oomlout_tdpbmct_nineteen_inch_rack_sliding_platform
+call generate.bat
+cd C:\GH\oomlout_tdpbmct_nineteen_inch_rack_power_bar_holder
+call generate.bat
+cd C:\GH\oomlout_tdpbmct_nineteen_inch_rack_printer_farm
+call generate.bat
+cd C:\GH\oomlout_oobb_tool_header_pin_press
+call generate.bat
+cd C:\GH\glassgarden_oolc_decorative_item_christmas_bauble
+call generate.bat

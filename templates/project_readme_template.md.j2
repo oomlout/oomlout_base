@@ -1,11 +1,10 @@
 # {{ p.name }}
-{{ p.description }}
-{{ p.readme_manual }}
 {{ p.description }}  
+{{ p.readme_manual }}  
 {% if "kicad/current_version/working/bom/ibom.html" in p.files %}* ibom github: [ibom github](kicad/current_version/working/bom/ibom.html)
 * ibom direct: [ibom direct](https://raw.githack.com/oomlout/{{p.id}}/main/kicad/current_version/working/bom/ibom.html){% endif %}
-{% if "working.jpg" in p.files %}[![](working_600.jpg)](working.jpg)
-{% for i in range(1, 11) %}{% if "working_" ~ i ~ ".jpg" in p.files %}[![](working_{{ i }}_300.jpg)](working_{{ i }}.jpg){% endif %}
+{% if "image.jpg" in p.files %}[![](image_600.jpg)](image.jpg)
+{% for i in range(1, 11) %}{% if "image_" ~ i ~ ".jpg" in p.files %}[![](image_{{ i }}_300.jpg)](image_{{ i }}.jpg){% endif %}
 {% endfor %}
 {% endif %}
 {% if "kicad/current_version/working/working_schematic.png" in p.files %}## schematic  
@@ -22,6 +21,10 @@
 {% if "working.png" in p.files %}## corel working
 ![](working_600.png) 
 {% endif %}
+{% for i in range(1, 11) %}{% if "working_" ~ i ~ ".png" in p.files %}
+![](working_{{ i }}_600.png) 
+{% endif %}
+{% endfor %}
 {% if "module" in p %}## module
 {% for mod in p.module %}* [{{ mod.id }}]({{ mod.link }}) 
 {% endfor %}
