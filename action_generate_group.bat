@@ -14,5 +14,7 @@ cd C:\GH\oomlout_tdpbmct_nineteen_inch_rack_printer_farm
 call generate.bat
 cd C:\GH\oomlout_oobb_tool_header_pin_press
 call generate.bat
-cd C:\GH\glassgarden_oolc_decorative_item_christmas_bauble
+cd C:\GH\oomlout_oolc_oopen_laser_cutting_production_format\tmp\data\glassgarden_oolc_decorative_item_christmas_bauble
+call generate.bat
+cd C:\GH\oomlout_oolc_oopen_laser_cutting_production_format\tmp\data\glassgarden_oolc_decorative_item_seed_pods
 call generate.bat

@@ -37,7 +37,8 @@ def main(**kwargs):
         folder_path.append("C:/Program Files/Inkscape/bin")
         # python
         folder_path.append("C:/Users/aaron/AppData/Local/Programs/Python/Python312")
-
+        #oolc
+        folder_path.append("C:/GH/oomlout_oolc_oopen_laser_cutting_production_format")
         
 
         kwargs["folder_path"] = folder_path
@@ -52,8 +53,9 @@ def main(**kwargs):
         folder_pythonpath.append("c:/gh/oomlout_opsc_version_3")
         # oomp_src
         folder_pythonpath.append("C:/gh/oomlout_oomp_part_src")
+        # oolc
+        folder_pythonpath.append("C:/gh/oomlout_oolc_oopen_laser_cutting_production_format")
 
-        
         kwargs["folder_pythonpath"] = folder_pythonpath
         set_folder_pythonpath(**kwargs)
 
