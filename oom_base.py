@@ -130,6 +130,7 @@ def generate_image(**kwargs):
     #open the image file png or jpg
     from PIL import Image
     try:
+        print(f"Generating {file_out}")
         im = Image.open(filename)
         #scale the image so the largest side is reolution pixels wide
         width, height = im.size
