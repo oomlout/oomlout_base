@@ -37,6 +37,7 @@ pip install pygame
 
 pip install svgutils
 pip install flask
+pip install flask-Markdown
 pip install markdown
 
 pip install requests
@@ -51,3 +52,4 @@ pip install jinja2
 pip install db-sqlite3
 pip install virtualenv
 pip install pandas
+pip install ushlex

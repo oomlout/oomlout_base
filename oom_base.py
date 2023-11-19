@@ -239,9 +239,17 @@ def remove_special_characters(string):
 import copy
 
 def print_message_label(**kwargs):
+    import multiprocessing
+    target = print_message_label_task
+    
+    p = multiprocessing.Process(target=target, kwargs=kwargs)
+    p.start()
+
+def print_message_label_task(**kwargs):
     p3 = copy.deepcopy(kwargs)        
     file_output = make_message_label(**p3)
-    print_pdf(file_input=file_output)
+    p3["file_input"] = file_output
+    print_pdf(**p3)
     pass
     
 def make_message_label(**kwargs):
@@ -264,6 +272,7 @@ def make_message_label(**kwargs):
 
 def print_pdf(**kwargs):
     file_input = kwargs.get("file_input","")
+    multiple = kwargs.get("multiple",1)
     ##scale to fit notes https://stackoverflow.com/questions/7446552/resizing-a-pdf-using-ghostscript
         
     printer = "zephyr_mcpaper"    
@@ -279,8 +288,10 @@ def print_pdf(**kwargs):
 
     executeString = silentLaunch + " " + ghostScript + ghostOptions + printerString + " -f " + pdfFile + ghostQuit 
     
-    print("Printing PDF:  " + executeString)
-    os.system(executeString)
+    print(f"printing {multiple} times {file_input}"  )
+    for x in range(int(multiple)):
+        os.system(executeString)
+        delay(0.25)
     delay(1)
 
 
