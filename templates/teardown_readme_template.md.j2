@@ -8,12 +8,18 @@
 {% for i in range(1, 11) %}{% if "working_" ~ i ~ ".jpg" in p.files %}[![](working_{{ i }}_300.jpg)](working_{{ i }}.jpg){% endif %}
 {% endfor %}
 {% endif %}
+{% if "tool" in p %}## tools
+{% for t in p.tool %}* {{ t.title }} - {{ t.description }})
+{% endfor %}{% endif %}
 {% if "disassembly" in p %}## disassembly
-{% for dis in p.disassembly %}### step: { dis.index }
-[![](disassembly_{{ dis.index }}_300.jpg)](disassembly_{{ dis.index }}.jpg)
+{% for dis in p.disassembly %}### step: {{ dis.index }}
+[![](images/disassembly_{{ dis.index }}_300.jpg)](images/disassembly_{{ dis.index }}.jpg)  
 {{ dis.description }}
 {% endfor %}
 {% endif %}
+{% if "disassembly_part" in p %}## disassembly parts
+{% for part in p.disassembly_part %}* {{ part.designator }} - {{ part.mpn }} - {{ part.note }} - {{ part.description }} - [datasheet]({{ part.datasheet }})
+{% endfor %}{% endif %}
 {% if "kicad/current_version/working/working_schematic.png" in p.files %}## schematic  
 [![](kicad/current_version/working/working_schematic_600.png)](kicad/current_version/working/working_schematic.png)  
 [schematic (pdf)](kicad/current_version/working/working_schematic.pdf)  
