@@ -8,7 +8,8 @@ def main(**kwargs):
     pip = False
     path = False
     pythonpath = False
-    clone = True
+    openscadpath = True
+    clone = False
 
     #run python_pip.bat
     if pip:
@@ -59,6 +60,14 @@ def main(**kwargs):
         kwargs["folder_pythonpath"] = folder_pythonpath
         set_folder_pythonpath(**kwargs)
 
+    if openscadpath:
+        print("openscadpath()")   
+        folder_openscadpath = []
+        #opsc
+        folder_openscadpath.append("c:/gh/oomlout_opsc_version_3")
+        kwargs["folder_openscadpath"] = folder_openscadpath
+        set_folder_openscadpath(**kwargs)
+
     # clone repos
     if clone:
         file_oomlout_repos = "oomlout_github_repos.yaml"
@@ -98,6 +107,13 @@ def set_folder_pythonpath(**kwargs):
     kwargs["environment_variable"] = environment_variable
     set_folder_generic(**kwargs)
 
+def set_folder_openscadpath(**kwargs):
+    environment_variable = "OPENSCADPATH"
+    kwargs = copy.deepcopy(kwargs)
+    kwargs["folder_path"] = kwargs["folder_openscadpath"]    
+    kwargs["environment_variable"] = environment_variable
+    set_folder_generic(**kwargs)
+
 
 def set_folder_generic(**kwargs):
     print("action_new_computer_setup.py set_folder_path()")
@@ -105,7 +121,11 @@ def set_folder_generic(**kwargs):
     environment_variable = kwargs.get("environment_variable", "PATH")    
     #print("folder: ", folder)
     #add folder to the path variable if it isn't already there using os.system it is windows
-    path_current = os.environ[environment_variable]
+
+    path_current = os.environ.get(environment_variable, None)
+    if path_current is None:
+        os.environ[environment_variable] = ""
+        path_current = os.environ[environment_variable]
 
     new_path = f'{path_current}'
     #split new path with ; and remove duplicates            
