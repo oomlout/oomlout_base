@@ -57,13 +57,13 @@ def save_as(filename, save_as_type='pdf',**kwargs):
     ob.delay(5)
     #send enter
     ob.send_enter()
-    ob.delay(2)
+    ob.delay(5)
     #swend shift tab once
     ob.send_tab_shift()
-    ob.delay(2)
+    ob.delay(5)
     #send filename
     ob.send_keys(filename)
-    ob.delay(2)
+    ob.delay(10)
     #send enter
     ob.send_enter()
     ob.delay(2)
@@ -72,7 +72,8 @@ def save_as(filename, save_as_type='pdf',**kwargs):
     ob.delay(10)
     #if save as type is pdf
     if save_as_type == 'pdf':
-        pass
+        ob.delay(10)
+        ob.send_keys('y', dela=2) 
     #if save as type is svg
     if save_as_type == 'svg':
         #send escape
