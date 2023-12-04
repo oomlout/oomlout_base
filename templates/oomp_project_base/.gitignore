@@ -7,6 +7,7 @@ _sch.lck
 _pcb.lck
 *.tmp
 *.lck
+outputs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -26,7 +27,7 @@ eggs/
 .eggs/
 lib/
 lib64/
-parts/
+
 sdist/
 var/
 wheels/
