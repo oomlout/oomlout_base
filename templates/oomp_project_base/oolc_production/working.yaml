@@ -1,0 +1,13 @@
+project_id: glassgarden_oolc_decorative_item_seed_pods
+project_name: "seed pods"
+project_repo: github.com/oomlout/glassgarden_oolc_decorative_item_seed_pods
+production_format:
+  a4_1:
+    file_location: source_files/glassgarden_oolc_decorative_item_seed_pods_a4_1.cdr
+  tileable_1_rudebekia:
+    file_location: source_files/glassgarden_oolc_decorative_item_seed_pods_rudebekia_tileable.cdr
+    width: 162 mm
+    height: 594 mm
+  
+  
+  
