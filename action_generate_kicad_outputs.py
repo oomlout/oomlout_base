@@ -15,7 +15,7 @@ def main_single_directory():
 
 
 def main_recursive(**kwargs):
-    overwrite = kwargs.get('overwrite', True)
+    overwrite = kwargs.get('overwrite', False)
     print(f'Overwrite is {overwrite}')
     directory = os.getcwd()
     #directory = "C:/GH/oomlout_oomp_electronic_project_prototyping_board_sizes"

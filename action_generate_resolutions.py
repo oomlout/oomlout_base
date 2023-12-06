@@ -3,7 +3,7 @@ import os
 
 def main():
     directory = os.getcwd()
-    oom_base.image_resolutions_dir(directory=directory, overwrite=True)
+    oom_base.image_resolutions_dir(directory=directory, overwrite=False)
 
 
 

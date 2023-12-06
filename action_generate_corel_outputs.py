@@ -21,7 +21,7 @@ def main_recursive():
                 #if filename doesnt include backup
                 if "backup" not in filename.lower():
                     print(f'Generating outputs for {filename}')
-                    oom_corel.generate_outputs(filename=filename, overwrite=True)
+                    oom_corel.generate_outputs(filename=filename, overwrite=False)
 
 
 
