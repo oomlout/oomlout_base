@@ -26,17 +26,19 @@ rem Compare the commit hashes to check for changes
 rem Compare the commit hashes to check for changes
 
 if "%localCommit%" neq "%remoteCommit%" (
+    echo     changes_made running
     set run=1
 )
 rem run regardless if git is off
 if "%git%" neq "1" (
+    echo     git_off running
     set run=1
 )
 
 
 
 if %run% equ 1 (
-    echo     changes_made
+    echo    running
     rem Your action for an existing Git repository with changes goes here.
     git pull
     rem if overwrite = 1
@@ -56,7 +58,7 @@ if %run% equ 1 (
     action_git_commit.py
 
 ) else (
-    echo     changes_not_made
+    echo     not running
     rem Your action for an existing Git repository without changes goes here.
 )
 
