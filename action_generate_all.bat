@@ -14,6 +14,10 @@ if "%overwrite%"=="" (
     set overwrite=1
 )
 
+rem if git isn't set set it to one
+if "%git%"=="" (
+    set git=1
+)
 
 rem Get the commit hashes of the local and remote main branches
 for /f %%i in ('git rev-parse HEAD') do set localCommit=%%i
@@ -22,6 +26,10 @@ rem Compare the commit hashes to check for changes
 rem Compare the commit hashes to check for changes
 
 if "%localCommit%" neq "%remoteCommit%" (
+    set run=1
+)
+rem run regardless if git is off
+if "%git%" neq "1" (
     set run=1
 )
 
