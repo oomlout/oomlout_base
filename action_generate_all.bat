@@ -41,17 +41,17 @@ if %run% equ 1 (
     git pull
     rem if overwrite = 1
     if %overwrite% equ 1 (
-        call action_generate_kicad_outputs_overwrite.bat
-        call action_generate_corel_outputs_overwrite.bat
-        call action_generate_office_outputs_overwrite.bat
-        call action_generate_resolutions_overwrite.bat
-        call action_generate_readme_outputs_overwrite.bat
+        call action_generate_kicad_outputs_overwrite.py
+        call action_generate_corel_outputs_overwrite.py
+        call action_generate_office_outputs_overwrite.py
+        call action_generate_resolutions_overwrite.py
+        call action_generate_readme_outputs_overwrite.py
     ) else (
-        call action_generate_kicad_outputs.bat
-        call action_generate_corel_outputs.bat
-        call action_generate_office_outputs.bat
-        call action_generate_resolutions.bat
-        call action_generate_readme_outputs.bat
+        call action_generate_kicad_outputs.py
+        call action_generate_corel_outputs.py
+        call action_generate_office_outputs.py
+        call action_generate_resolutions.py
+        call action_generate_readme_outputs.py
     )
     action_git_commit.py
 
