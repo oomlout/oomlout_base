@@ -7,6 +7,10 @@
 {% for i in range(1, 11) %}{% if "image_" ~ i ~ ".jpg" in p.files %}[![](image_{{ i }}_300.jpg)](image_{{ i }}.jpg){% endif %}
 {% endfor %}
 {% endif %}
+{% if "image.png" in p.files %}[![](image_600.png)](image.png)
+{% for i in range(1, 11) %}{% if "image_" ~ i ~ ".png" in p.files %}[![](image_{{ i }}_300.png)](image_{{ i }}.png){% endif %}
+{% endfor %}
+{% endif %}
 {% if "kicad/current_version/working/working_schematic.png" in p.files %}## schematic  
 [![](kicad/current_version/working/working_schematic_600.png)](kicad/current_version/working/working_schematic.png)  
 [schematic (pdf)](kicad/current_version/working/working_schematic.pdf)  
