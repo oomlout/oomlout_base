@@ -93,9 +93,9 @@ def get_from_corel_coord(x,y):
 
 def generate_outputs(**kwargs):   
     return_value = 0 
-    define_mouse_positions(**kwargs)
-    return_value += generate_outputs_board(**kwargs)
+    define_mouse_positions(**kwargs)    
     return_value += generate_outputs_schematic(**kwargs)
+    return_value += generate_outputs_board(**kwargs)
     if return_value > 0:
         return_value = 1
     return return_value
@@ -632,10 +632,10 @@ def define_mouse_positions(**kwargs):
         
         kicadFootprintView = [153,36]
     elif computer == "surface":        
-        kicadFile = [19,50]
-        kicadTool = [331,50]
+        kicadFile = [19,33] #[19,50]
+        kicadTool = [217,33] #[331,50]
         kicadFootprintMiddle = [945,545] 
-        kicad3dView = [145,35]
+        kicad3dView = [85, 33] #[145,35]
         kicadActive =[515,14]
         kicadFootprintFilter =[145,169] ####
         kicadFootprintFirstResult = [86,270] ####
@@ -672,6 +672,8 @@ def kicadExport(filename,type,overwrite=False, **kwargs):
             oomSend("c",2)
             oomSend(filename.replace("/","\\"),5)
             oomSendShiftTab(2)
+            oomSendEnter(2)   
+            #extra enter to deal with no parts
             oomSendEnter(2)   
             oomSendEsc(2)         
     if type.lower() == "svg":

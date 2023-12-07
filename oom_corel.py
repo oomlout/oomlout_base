@@ -10,6 +10,10 @@ def generate_outputs(**kwargs):
     if ":" not in filename:
         filename = os.getcwd() + "\\" + filename
     overwrite = kwargs.get('overwrite', False)
+    skip_template = kwargs.get('template', False)
+    if "template" in filename.lower() and skip_template:
+        print(f"skipping template {filename} ")
+        return
 
     full_filename_pdf = filename.replace(".cdr", ".pdf")
     full_filename_svg = filename.replace(".cdr", ".svg")

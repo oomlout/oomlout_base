@@ -11,7 +11,7 @@ def main_single_directory():
             #if filename doesnt include backup
             if "backup" not in filename.lower():
                 print(f'Generating outputs for {filename}')
-                oom_kicad.generate_outputs(filename=filename, computer="desktop" , overwrite=True, skip_oomp_folder=True)
+                oom_kicad.generate_outputs(filename=filename, computer="surface" , overwrite=True, skip_oomp_folder=True)
 
 
 def main_recursive(**kwargs):
@@ -27,7 +27,7 @@ def main_recursive(**kwargs):
                 #if filbename doesnt include backup
                 if "backup" not in filename.lower():
                     print(f'Generating outputs for {filename}')
-                    oom_kicad.generate_outputs(filename=filename, computer="desktop", overwrite=overwrite, skip_oomp_folder=True)
+                    oom_kicad.generate_outputs(filename=filename, computer="surface", overwrite=overwrite, skip_oomp_folder=True)
                     svg_filename = filename.replace(".kicad_pcb", ".svg")
                     if os.path.isfile(svg_filename):
                         oom_base.image_svg_to_png(filename=svg_filename)                    
