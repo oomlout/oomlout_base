@@ -53,7 +53,7 @@ def main(**kwargs):
         #opsc
         folder_pythonpath.append("c:/gh/oomlout_opsc_version_3")
         # oomp_src
-        folder_pythonpath.append("C:/gh/oomlout_oomp_part_src")
+        folder_pythonpath.append("C:/gh/oomlout_oomp_part_generation_version_1")
         # oolc
         folder_pythonpath.append("C:/gh/oomlout_oolc_oopen_laser_cutting_production_format")
 
