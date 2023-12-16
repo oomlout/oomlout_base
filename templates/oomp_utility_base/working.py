@@ -1,28 +1,72 @@
 import os
-# An oomp utility to:
-# delete all the working,yaml files to cleanse before rebuilding from base.yaml 
-# 
-# This is part of OOMP the Oopen Organization Method For Parts. For more details: https://github.com/oomlout/oomp_base  
+import yaml
+import glob
+
+folder_configuration = "configuration"
+folder_configuration = os.path.join(os.path.dirname(__file__), folder_configuration)
+file_configuration = os.path.join(folder_configuration, "configuration.yaml")
+#check if exists
+if not os.path.exists(file_configuration):
+    print(f"no configuration.yaml found in {folder_configuration} using default")
+    file_configuration = os.path.join(folder_configuration, "configuration_default.yaml")
+
+folder_navigation = "navigation"
+
+#import configuration
+configuration = {}
+with open(file_configuration, 'r') as stream:
+    try:
+        configuration = yaml.load(stream, Loader=yaml.FullLoader)
+    except yaml.YAMLError as exc:   
+        print(exc)
 
 
 def main(**kwargs):
-    recursive_through_parts(**kwargs)    
+    folder = kwargs.get("folder", f"{os.path.dirname(__file__)}/parts")
+    folder = folder.replace("\\","/")
     
-def recursive_through_parts(**kwargs):
+    kwargs["configuration"] = configuration
+    print(f"running utility for: {folder}")
+    create_recursive(**kwargs)
+
+def create_recursive(**kwargs):
     folder = kwargs.get("folder", os.path.dirname(__file__))
     kwargs["folder"] = folder
     for item in os.listdir(folder):
-        item_absolute = os.path.join(folder, item)
-        if os.path.isdir(item_absolute):
-            #if base.yaml exists in the folder or working,yaml exists in the folder
-            if os.path.exists(os.path.join(item_absolute, "base.yaml") or os.path.join(item_absolute, "working.yaml")):
-                kwargs["directory"] = item_absolute
-                process_part(**kwargs)
+        directory_absolute = os.path.join(folder, item)
+        directory_absolute = directory_absolute.replace("\\","/")
+        if os.path.isdir(directory_absolute):
+            #if working.yaml exists in the folder
+            if os.path.exists(os.path.join(directory_absolute, "working.yaml")):
+                kwargs["directory_absolute"] = directory_absolute
+                create(**kwargs)
 
-def process_part(**kwargs):
-    directory = kwargs.get("directory", os.getcwd())    
-    kwargs["directory"] = directory        
-    print("Processing: {}".format(directory))
+def create(**kwargs):
+    directory_absolute = kwargs.get("directory_absolute", os.getcwd())    
+    kwargs["directory_absolute"] = directory_absolute    
+    generate(**kwargs)
+    
+
+def generate(**kwargs):    
+    directory_absolute = kwargs.get("directory_absolute", os.getcwd())
+    folder = kwargs.get("folder", os.getcwd())
+    yaml_file = os.path.join(directory_absolute, "working.yaml")
+    kwargs["yaml_file"] = yaml_file
+    #load the yaml file
+    details = {}
+    with open(yaml_file, 'r') as stream:
+        try:
+            details = yaml.load(stream, Loader=yaml.FullLoader)
+        except yaml.YAMLError as exc:   
+            print(exc)
+    kwargs["details"] = details
+
+    if details != {}:        
+        print(f"    generating for {directory_absolute}")
+    else:
+        print(f"no yaml file found in {directory_absolute}")    
+
+
 
 if __name__ == '__main__':
     #folder is the path it was launched from
@@ -30,7 +74,10 @@ if __name__ == '__main__':
     kwargs = {}
     folder = os.path.dirname(__file__)
     #folder = "C:/gh/oomlout_oomp_builder/parts"
-    #folder = "C:/gh/oomlout_oomp_part_generation_version_1/parts"
-    #folder = "C:/gh/oomlout-organization/oomlout_oomp_current_version/parts"
+    folder = "C:/gh/oomlout_oomp_part_generation_version_1/parts"
+    #folder = "C:/gh/oomlout_oobb_version_4/things"
+    #folder = "C:/gh/oomlout_oomp_current_version"
     kwargs["folder"] = folder
+    overwrite = False
+    kwargs["overwrite"] = overwrite
     main(**kwargs)
