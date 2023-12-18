@@ -10,7 +10,7 @@ def main_single_directory():
             #if filename doesnt include backup
             if "backup" not in filename.lower():
                 print(f'Generating outputs for {filename}')
-                oom_office.generate_outputs(filename=filename, overwrite=False)
+                oom_office.generate_outputs(filename=filename, overwrite=False, skip_oomp_folder=True)
 
 
 def main_recursive():
@@ -21,7 +21,7 @@ def main_recursive():
                 #if filename doesnt include backup
                 if "backup" not in filename.lower():
                     print(f'Generating outputs for {filename}')
-                    oom_office.generate_outputs(filename=filename, overwrite=False)
+                    oom_office.generate_outputs(filename=filename, overwrite=False, skip_oomp_folder=True)
 
 
 

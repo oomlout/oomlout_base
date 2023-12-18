@@ -10,7 +10,7 @@ def generate_outputs(**kwargs):
     if ":" not in filename:
         filename = os.getcwd() + "\\" + filename
     overwrite = kwargs.get('overwrite', False)
-    skip_template = kwargs.get('template', False)
+    skip_template = kwargs.get('skip_template', False)
     if "template" in filename.lower() and skip_template:
         print(f"skipping template {filename} ")
         return
@@ -21,20 +21,25 @@ def generate_outputs(**kwargs):
     full_filename_dxf = filename.replace(".cdr", ".dxf")
 
     #if any of the full filenames doesn't exist then
+    print(f"Checking if {filename} needs to be generated\noverwrite: {overwrite}")
     if not os.path.isfile(full_filename_pdf) or not os.path.isfile(full_filename_svg) or not os.path.isfile(full_filename_png) or not os.path.isfile(full_filename_dxf) or overwrite:
         #open the file
         open_file(filename=filename)
         #save as pdf
         if not os.path.isfile(full_filename_pdf) or overwrite:
+            print(f"Saving {filename} as pdf")
             save_as(filename=filename, save_as_type='pdf')
         #save as svg
         if not os.path.isfile(full_filename_svg) or overwrite:
+            print(f"Saving {filename} as svg")
             save_as(filename=filename, save_as_type='svg')
         #save as png
         if not os.path.isfile(full_filename_png) or overwrite:
+            print(f"Saving {filename} as png")
             save_as(filename=filename, save_as_type='png')
         #save as dxf
         if not os.path.isfile(full_filename_dxf) or overwrite:
+            print(f"Saving {filename} as dxf")
             save_as(filename=filename, save_as_type='dxf')
         
         close_file()

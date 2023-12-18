@@ -10,18 +10,19 @@ def main_single_directory():
             #if filename doesnt include backup
             if "backup" not in filename.lower():
                 print(f'Generating outputs for {filename}')
-                oom_corel.generate_outputs(filename=filename, overwrite=True, skip_template=True)
+                oom_corel.generate_outputs(filename=filename, overwrite=False, skip_template=True)
 
 
 def main_recursive():
     for root, dirs, files in os.walk(os.getcwd()):
         for file in files:
             filename = os.path.join(root, file)
+            filename_absolute = os.path.abspath(filename)
             if filename.endswith(".cdr"):
                 #if filename doesnt include backup
                 if "backup" not in filename.lower():
                     print(f'Generating outputs for {filename}')
-                    oom_corel.generate_outputs(filename=filename, overwrite=False, skip_template=True)
+                    oom_corel.generate_outputs(filename=filename_absolute, overwrite=False, skip_template=True)
 
 
 
