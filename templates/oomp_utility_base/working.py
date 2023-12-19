@@ -10,7 +10,7 @@ if not os.path.exists(file_configuration):
     print(f"no configuration.yaml found in {folder_configuration} using default")
     file_configuration = os.path.join(folder_configuration, "configuration_default.yaml")
 
-folder_navigation = "navigation"
+
 
 #import configuration
 configuration = {}
@@ -32,14 +32,18 @@ def main(**kwargs):
 def create_recursive(**kwargs):
     folder = kwargs.get("folder", os.path.dirname(__file__))
     kwargs["folder"] = folder
-    for item in os.listdir(folder):
-        directory_absolute = os.path.join(folder, item)
-        directory_absolute = directory_absolute.replace("\\","/")
-        if os.path.isdir(directory_absolute):
-            #if working.yaml exists in the folder
-            if os.path.exists(os.path.join(directory_absolute, "working.yaml")):
-                kwargs["directory_absolute"] = directory_absolute
-                create(**kwargs)
+    #if folder exists
+    if os.path.exists(folder):
+        for item in os.listdir(folder):
+            directory_absolute = os.path.join(folder, item)
+            directory_absolute = directory_absolute.replace("\\","/")
+            if os.path.isdir(directory_absolute):
+                #if working.yaml exists in the folder
+                if os.path.exists(os.path.join(directory_absolute, "working.yaml")):
+                    kwargs["directory_absolute"] = directory_absolute
+                    create(**kwargs)
+    else:
+        print(f"no folder found at {folder}")
 
 def create(**kwargs):
     directory_absolute = kwargs.get("directory_absolute", os.getcwd())    
@@ -63,6 +67,24 @@ def generate(**kwargs):
 
     if details != {}:        
         print(f"    generating for {directory_absolute}")
+        #import from this folder
+        # impotoomp_word from this files directory even if that isn't the cwd
+        import sys
+        sys.path.append(os.path.dirname(__file__))
+        #import oomp_word
+        
+        ##### process part here
+
+
+
+        
+
+        #write back to yaml file
+        with open(yaml_file, 'w') as outfile:
+            yaml.dump(details, outfile, default_flow_style=False)
+        
+
+
     else:
         print(f"no yaml file found in {directory_absolute}")    
 
