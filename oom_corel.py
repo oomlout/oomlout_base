@@ -62,14 +62,17 @@ def save_as(filename, save_as_type='pdf',**kwargs):
     ob.send_tab()
     ob.delay(5)
     #send file type
-    ob.send_keys(save_as_type)
+    #send save_as type key by key
+    for i in range(len(save_as_type)):
+        ob.send_keys(save_as_type[i])
+        ob.delay(0.2)    
     ob.delay(5)
     #send enter
     ob.send_enter()
     ob.delay(5)
     #swend shift tab once
     ob.send_tab_shift()
-    ob.delay(5)
+    ob.delay(10)
     #send filename
     ob.send_keys(filename)
     ob.delay(10)
