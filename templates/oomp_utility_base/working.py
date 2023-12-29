@@ -32,16 +32,22 @@ def main(**kwargs):
 def create_recursive(**kwargs):
     folder = kwargs.get("folder", os.path.dirname(__file__))
     kwargs["folder"] = folder
+    filter = kwargs.get("filter", "")
     #if folder exists
     if os.path.exists(folder):
-        for item in os.listdir(folder):
-            directory_absolute = os.path.join(folder, item)
-            directory_absolute = directory_absolute.replace("\\","/")
-            if os.path.isdir(directory_absolute):
-                #if working.yaml exists in the folder
-                if os.path.exists(os.path.join(directory_absolute, "working.yaml")):
-                    kwargs["directory_absolute"] = directory_absolute
-                    create(**kwargs)
+        if filter in folder:
+            counter = 0
+            for item in os.listdir(folder):
+                directory_absolute = os.path.join(folder, item)
+                directory_absolute = directory_absolute.replace("\\","/")
+                if os.path.isdir(directory_absolute):
+                    #if working.yaml exists in the folder
+                    if os.path.exists(os.path.join(directory_absolute, "working.yaml")):
+                        kwargs["directory_absolute"] = directory_absolute
+                        create(**kwargs)
+                        counter += 1
+                        if counter % 100 == 0:
+                            print(f"    {counter} folders processed")
     else:
         print(f"no folder found at {folder}")
 
@@ -66,7 +72,7 @@ def generate(**kwargs):
     kwargs["details"] = details
 
     if details != {}:        
-        print(f"    generating for {directory_absolute}")
+        #print(f"    generating for {directory_absolute}")
         #import from this folder
         # impotoomp_word from this files directory even if that isn't the cwd
         import sys

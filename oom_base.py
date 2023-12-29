@@ -281,7 +281,7 @@ def print_pdf(**kwargs):
     ghostScript = "gswin64C.exe"    
     silentLaunch = "silentCMD.exe"
 
-    ghostOptions = " -sDEVICE=mswinpr2 -q -dNOPAUSE"
+    ghostOptions = " -sDEVICE=mswinpr2 -q -dNOPAUSE -dFITTED"
     ghostQuit = " -c quit"
 
     pdfFile = '"' + file_input + '"'
@@ -292,6 +292,33 @@ def print_pdf(**kwargs):
     print(f"printing {multiple} times {file_input}"  )
     for x in range(int(multiple)):
         os.system(executeString)
+        delay(0.25)
+    delay(1)
+
+def print_pdf_adobe(**kwargs):
+    file_input = kwargs.get("file_input","")
+    multiple = kwargs.get("multiple",1)
+    ##scale to fit notes https://stackoverflow.com/questions/7446552/resizing-a-pdf-using-ghostscript
+         
+
+    acrobat = '"C:\\Program Files\\Adobe\\Acrobat DC\\Acrobat\\Acrobat.exe"'
+    parameters = "/t"
+    
+    pdfFile = '"' + file_input.replace("/","\\") + '"'
+    executeString = f"{acrobat} {parameters} {pdfFile}"   
+    
+    print(f"printing {multiple} times {file_input}"  )
+    for x in range(int(multiple)):
+        #add cmd to the prompt
+        #os.system("start cmd /c " + executeString)
+        import subprocess
+        #run as an independent process don't wait for it to finish 
+        subprocess.Popen(executeString)
+
+        
+        
+
+        
         delay(0.25)
     delay(1)
 
