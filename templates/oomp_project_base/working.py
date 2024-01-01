@@ -16,8 +16,8 @@ def main(**kwargs):
 
 def make_readme(**kwargs):
     os.system("generate_resolution.bat")
-    #oom_markdown.generate_readme_project(**kwargs)
-    oom_markdown.generate_readme_teardown(**kwargs)
+    oom_markdown.generate_readme_project(**kwargs)
+    #oom_markdown.generate_readme_teardown(**kwargs)
     
 #take component positions from working_parts.csv and place them in working.kicad_pcb
 def place_parts(**kwargs):
