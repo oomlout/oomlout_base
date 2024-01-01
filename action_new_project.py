@@ -17,7 +17,7 @@ def main(**kwargs):
     
     #copy the base project
     if True:
-        directory_base_project = 'templates/oomp_project_base'
+        directory_base_project = 'templates\\oomp_project_base'
         file_skip = []
         #generated files
         file_skip.append("oolc_production/working.yaml")
@@ -25,7 +25,12 @@ def main(**kwargs):
         #implementing later
         file_skip.append("working_manual_teardown.yaml")
         file_skip.append("working_parts.ods")
-        for file_name in os.listdir(directory_base_project):
+        #copy files and directories using recusrion
+        import glob
+        files = glob.glob(f'{directory_base_project}/**/*', recursive=True)
+        for file_name in files:        
+            file_name = file_name.replace("/", "\\")
+            file_name = file_name.replace(f"{directory_base_project}\\", "")
             if file_name in file_skip:
                 continue
             file_path = os.path.join(directory_base_project, file_name)
