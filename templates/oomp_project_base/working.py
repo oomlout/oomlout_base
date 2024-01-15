@@ -2,6 +2,7 @@ import oom_kicad
 import oom_markdown
 import os
 import copy
+import scad
 
 #process
 #  locations set in working_parts.ods 
@@ -12,7 +13,7 @@ import copy
 def main(**kwargs):
     #place_parts(**kwargs)
     #make_readme(**kwargs)
-    make_scad(**kwargs)
+    scad.make_scad(**kwargs)
     
     
 
