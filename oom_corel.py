@@ -1,6 +1,6 @@
 import oom_base as ob
 import os
-
+import copy
 
 def generate_outputs(**kwargs):
     filename = kwargs.get('filename', None)
@@ -58,6 +58,10 @@ def save_as(filename, save_as_type='pdf',**kwargs):
     else:
         ob.send_keys('a')
     ob.delay(5)
+    # issue with window getting unfocused so alt tab away then back
+    ob.send_keys_alt_tab()
+    ob.delay(2)
+    ob.send_keys_alt_tab()            
     #send tab
     ob.send_tab()
     ob.delay(5)
@@ -102,6 +106,49 @@ def save_as(filename, save_as_type='pdf',**kwargs):
     ob.send_enter()
     ob.delay(10)
     ob.delay(2)
+
+def dxf_to_cdr(**kwargs):
+    directory_base = "c:/gh/oomlout_base"
+    file_template = f"{directory_base}/templates/blank.cdr"
+    file_template = file_template.replace("/", "\\")
+    filename = kwargs.get('filename', "")
+    filename = filename.replace("/", "\\")
+    p3 = copy.deepcopy(kwargs)
+    
+    p3["filename"] = file_template
+    open_file(**p3)
+    ob.delay(10)
+    #send ctrl i
+    ob.send_keys_ctrl('i', dela=5)
+    ob.send_keys(filename, dela=2)
+    ob.send_enter(dela=10)
+    ob.send_enter(dela=10)
+    ob.mouse_click(500,500, dela=5)
+    ob.send_keys_ctrl('enter', dela=5)
+    ob.send_tab(dela=1)
+    ob.send_keys(300)
+    ob.send_tab(dela=1)
+    ob.send_keys(300)
+    ob.send_enter(dela=2)
+    #save as
+    ob.send_keys_alt('f')
+    ob.send_keys_down(times=6, dela=1)
+    ob.send_enter(dela=10)
+    filename = filename.replace(".dxf", ".cdr")
+    ob.send_keys(filename, dela=2)
+    ob.send_enter(dela=2)
+    ob.send_keys('y', dela=2)
+    ob.send_keys_alt('f')
+    ob.send_keys_up(times=1, dela=1)
+    ob.send_enter(dela=5)
+
+
+
+
+
+
+
+
 
 
 def open_file(**kwargs):

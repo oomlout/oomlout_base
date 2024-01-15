@@ -43,9 +43,26 @@ def mouse_click(x,y,dela=0):
     delay(dela)
 
 #keyboard
+
+def send_keys_down(times=1,dela=0):
+    send_keys_direction(direction="down",times=times,dela=0)
+
+def send_keys_up(times=1,dela=0):
+    send_keys_direction(direction="up",times=times,dela=0)
+
+def send_keys_direction(direction,times=1,dela=0):
+    print(f"            sending {direction} {times} times")
+    for time in range(times):        
+        pyautogui.press(direction)             
+        delay(0.1)
+    delay(dela)
+
 def send_keys(string, **kwargs):
     dela = kwargs.get('dela', 0.1)
-    count = kwargs.get('count', 1)    
+    count = kwargs.get('count', 1)  
+    #if string is an int or float make it a string
+    if isinstance(string, int) or isinstance(string, float):
+        string = str(string)  
     print(f"                Sending: {str(string)}   {count} times with a delay of {dela}")    
     for x in range(count):
         #st = st.replace("}","").rpleace("{","")
@@ -66,6 +83,18 @@ def send_keys_alt(st, dela=0):
     pyautogui.keyUp('alt')
     delay(.1)
     delay(dela)
+
+def send_keys_alt_tab(dela=1):
+    print("                alt tab")
+    pyautogui.keyDown('alt')
+    delay(.15)
+    pyautogui.press('tab')
+    delay(.15)
+    pyautogui.keyUp('alt')
+    delay(.1)
+    delay(dela)
+
+
 def send_keys_ctrl(st, dela=0):
     print("                ctrl " + st)
     pyautogui.keyDown('ctrl')
