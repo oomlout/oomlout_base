@@ -27,7 +27,7 @@ def main(**kwargs):
         # ghost script
         folder_path.append("C:/Program Files/gs/gs9.54.0/bin") 
         #db path
-        folder_path.append("c:/db/Dropbox/path") 
+        folder_path.append("c:/od/OneDrive/path") 
         #opsc
         folder_path.append("c:/gh/oomlout_opsc_version_3")
         #openscad
@@ -140,6 +140,7 @@ def set_folder_generic(**kwargs):
             new_path.append(folder)
 
     new_path = ";".join(new_path)
+    new_path = new_path.replace("/", "\\")
     command = f'setx {environment_variable} "{new_path}"'
     os.system(command)
     # echo path using os.system
