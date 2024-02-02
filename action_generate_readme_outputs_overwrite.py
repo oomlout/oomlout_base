@@ -9,7 +9,10 @@ def main_single_directory():
     #directory = "C:\GH\oomlout_ibbc_breakout_board_holder_oobb_3_2"
     #directory = "C:\GH\oomlout_oomp_electronic_project_usb_switch"
     #directory = r"C:\GH\oomlout_oomp_electronic_device_aliexpress_amp_meter_10_amp_0_28_inch_display"
-    oom_markdown.generate_readme_project(directory=directory)
+    if "teardown" in directory:
+        oom_markdown.generate_readme_teardown(directory=directory)
+    else:
+        oom_markdown.generate_readme_project(directory=directory)
     
 
 
