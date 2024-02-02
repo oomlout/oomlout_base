@@ -15,16 +15,20 @@ def generate_outputs(**kwargs):
         print(f"skipping template {filename} ")
         return
 
+    full_filename_dxf = filename.replace(".cdr", ".dxf")
     full_filename_pdf = filename.replace(".cdr", ".pdf")
     full_filename_svg = filename.replace(".cdr", ".svg")
     full_filename_png = filename.replace(".cdr", ".png")
-    full_filename_dxf = filename.replace(".cdr", ".dxf")
 
     #if any of the full filenames doesn't exist then
     print(f"Checking if {filename} needs to be generated\noverwrite: {overwrite}")
     if not os.path.isfile(full_filename_pdf) or not os.path.isfile(full_filename_svg) or not os.path.isfile(full_filename_png) or not os.path.isfile(full_filename_dxf) or overwrite:
         #open the file
         open_file(filename=filename)
+        #save as dxf
+        if not os.path.isfile(full_filename_dxf) or overwrite:
+            print(f"Saving {filename} as dxf")
+            save_as(filename=filename, save_as_type='dxf')
         #save as pdf
         if not os.path.isfile(full_filename_pdf) or overwrite:
             print(f"Saving {filename} as pdf")
@@ -37,10 +41,7 @@ def generate_outputs(**kwargs):
         if not os.path.isfile(full_filename_png) or overwrite:
             print(f"Saving {filename} as png")
             save_as(filename=filename, save_as_type='png')
-        #save as dxf
-        if not os.path.isfile(full_filename_dxf) or overwrite:
-            print(f"Saving {filename} as dxf")
-            save_as(filename=filename, save_as_type='dxf')
+        
         
         close_file()
 
@@ -108,6 +109,15 @@ def save_as(filename, save_as_type='pdf',**kwargs):
     ob.delay(2)
 
 def dxf_to_cdr(**kwargs):
+    kwargs["file_type"] = "dxf"
+    import_to_cdr(**kwargs)
+
+def svg_to_cdr(**kwargs):
+    kwargs["file_type"] = "svg"
+    import_to_cdr(**kwargs)
+
+def import_to_cdr(**kwargs):
+    file_type = kwargs.get('file_type', None)
     directory_base = "c:/gh/oomlout_base"
     file_template = f"{directory_base}/templates/blank.cdr"
     file_template = file_template.replace("/", "\\")
@@ -134,7 +144,7 @@ def dxf_to_cdr(**kwargs):
     ob.send_keys_alt('f')
     ob.send_keys_down(times=6, dela=1)
     ob.send_enter(dela=10)
-    filename = filename.replace(".dxf", ".cdr")
+    filename = filename.replace(f".{file_type}", ".cdr")
     ob.send_keys(filename, dela=2)
     ob.send_enter(dela=2)
     ob.send_keys('y', dela=2)

@@ -172,7 +172,16 @@ def generate_readme_generic(**kwargs):
     import oom_yaml
     details = oom_yaml.load_yaml_directory(directory=directory)
     
-    
+    #add oolc if its there
+    file_oolc = f"{directory}/oolc_production"
+    if os.path.exists(file_oolc):
+        details["oolc"] = oom_yaml.load_yaml_directory(directory=file_oolc)
+
+    #add scad_output if its there
+    file_scad_output = f"{directory}/scad_output"
+    if os.path.exists(file_scad_output):
+        details["scad_output"] = oom_yaml.load_yaml_directory(directory=file_scad_output)
+
     
     
     files = []    
