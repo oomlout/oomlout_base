@@ -279,7 +279,8 @@ def print_message_label_task(**kwargs):
     p3 = copy.deepcopy(kwargs)        
     file_output = make_message_label(**p3)
     p3["file_input"] = file_output
-    print_pdf(**p3)
+    #print_pdf(**p3)
+    print_pdf_adobe(**p3)
     pass
     
 def make_message_label(**kwargs):
