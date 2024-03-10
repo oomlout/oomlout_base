@@ -44,9 +44,9 @@ def make_scad(**kwargs):
         
         part = copy.deepcopy(part_default)
         p3 = copy.deepcopy(kwargs)
-        p3["thickness"] = 6
+        #p3["thickness"] = 6
         part["kwargs"] = p3
-        part["name"] = "test"
+        part["name"] = "base"
         parts.append(part)
 
         
@@ -61,27 +61,35 @@ def make_scad(**kwargs):
             else:
                 print(f"skipping {part['name']}")
 
-def get_test(thing, **kwargs):
+def get_base(thing, **kwargs):
 
     depth = kwargs.get("thickness", 4)
-    prepare_print = kwargs.get("prepare_print", True)
+    prepare_print = kwargs.get("prepare_print", False)
 
     pos = kwargs.get("pos", [0, 0, 0])
     #pos = copy.deepcopy(pos)
     #pos[2] += -20
 
-    #add _cylinder
+    #add plate
     p3 = copy.deepcopy(kwargs)
     p3["type"] = "p"
-    p3["shape"] = f"oobb_cylinder"
-    p3["radius"] = 30
+    p3["shape"] = f"oobb_plate"    
     p3["depth"] = depth
     #p3["m"] = "#"
     pos1 = copy.deepcopy(pos)         
     p3["pos"] = pos1
     oobb_base.append_full(thing,**p3)
-
-    
+    #add holes
+    p3 = copy.deepcopy(kwargs)
+    p3["type"] = "p"
+    p3["shape"] = f"oobb_holes"
+    p3["both_holes"] = True  
+    p3["depth"] = depth
+    p3["holes"] = "perimeter"
+    #p3["m"] = "#"
+    pos1 = copy.deepcopy(pos)         
+    p3["pos"] = pos1
+    oobb_base.append_full(thing,**p3)
 
     if prepare_print:
         #put into a rotation object
