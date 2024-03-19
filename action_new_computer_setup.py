@@ -8,14 +8,14 @@ def main(**kwargs):
     pip = False
     path = False
     pythonpath = False
-    openscadpath = True
+    openscadpath = False
     clone = False
+    install = True
 
     #run python_pip.bat
     if pip:
         os.system("action_python_pip.bat")
-    
-    
+        
 
     # environment_variable = "PATH"
     if path:
@@ -75,7 +75,9 @@ def main(**kwargs):
         kwargs["file_oomlout_repos"] = file_oomlout_repos
         clone_repos(**kwargs)
 
-
+    if install:
+        print(f"installing files")
+        install_programs(**kwargs)
 
 def clone_repos(**kwargs):
     file_oomlolout_repos = kwargs["file_oomlout_repos"]
@@ -93,6 +95,28 @@ def clone_repos(**kwargs):
         url = repo.get("url", f"http://github.com/oomlout/{name}.git")
         import oom_git
         oom_git.clone(repo=url, directory=directory)
+
+
+def install_programs(**kwargs):
+    folder_base = "C:/od/OneDrive/install_files/install_files_new_computer"
+    programs = []
+    import glob
+    #get all .exe from folder_base
+    files = glob.glob(f"{folder_base}/*.exe")
+    #add all .msi files
+    files += glob.glob(f"{folder_base}/*.msi")
+    for file in files:
+        programs.append(file)
+
+
+    for program in programs:
+        choice = input(f"install {program}? (y/n)")
+        if choice == "y":
+            os.system(program)
+        else:
+            print(f"skipping {program}")
+
+    
 
 
 def set_folder_path(**kwargs):
@@ -134,7 +158,7 @@ def set_folder_generic(**kwargs):
     #remove "" entries
     new_path = [x for x in new_path if x != ""]            
     for folder in folder_path:
-        folder = folder.replace("\\", "/")
+        folder = folder.replace("/", "\\")
         # if fiolder not in any of new_path.lower()
         if not any(folder.lower() in s.lower() for s in new_path):
             new_path.append(folder)

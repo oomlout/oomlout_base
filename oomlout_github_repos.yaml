@@ -11,8 +11,6 @@ oomlout_oobb_version_4:
 oomlout_label_printing_python_flask_svg_replace:
   name: oomlout_label_printing_python_flask_svg_replace
 
-oomlout_opsc_v2:
-  name: oomlout_opsc_v2
 oomlout_opsc_version_3:
   name: oomlout_opsc_version_3
 
@@ -50,88 +48,7 @@ oomlout_oobb_bundle_holder_05_03_00_ex_motor_servo_standard_01:
   name: oomlout_oobb_bundle_holder_05_03_00_ex_motor_servo_standard_01
   directory: gh/oobb_bundle
 
-#teardowns
 
-oomlout_oomp_teardown_label_printer_niimbot_d110:
-  name: oomlout_oomp_teardown_label_printer_niimbot_d110
-  directory: gh/oomp_teardown
-
-oomlout_oomp_teardown_vinyl_cutter_cricut_maker:
-  name: oomlout_oomp_teardown_vinyl_cutter_cricut_maker
-  directory: gh/oomp_teardown
-
-oomlout_oomp_teardown_multitool_ryobi_rmt1801:
-  name: oomlout_oomp_teardown_multitool_ryobi_rmt1801
-  directory: gh/oomp_teardown
-
-
-
-#oomp projects
-oomlout_oomp_electronic_project_mcu_board:
-  name: oomlout_oomp_electronic_project_mcu_board
-
-oomlout_oomp_electronic_project_mcu_breakout_mega_footprint:
-  name: oomlout_oomp_electronic_project_mcu_breakout_mega_footprint
-
-oomlout_oomp_electronic_project_svg_component_placement:
-  name: oomlout_oomp_electronic_project_svg_component_placement
-
-oomlout_oomp_electronic_breakout_board_mcu_atmega328_shennie:
-  name: oomlout_oomp_electronic_breakout_board_mcu_atmega328_shennie
-
-
-#      ibbc
-oomlout_oomp_electronic_project_ibbc_breakout_board_holder_oobb_3_2:
-  name: oomlout_oomp_electronic_project_ibbc_breakout_board_holder_oobb_3_2
-
-oomlout_oomp_electronic_project_ibbc_breakout_board_sensor_temperature_pressure_bosch_bme280:
-  name: oomlout_oomp_electronic_project_ibbc_breakout_board_sensor_temperature_pressure_bosch_bme280
-
-
-# lesser projects
-oomlout_oomp_electronic_project_usb_switch:
-  name: oomlout_oomp_electronic_project_usb_switch
-
-oomlout_oobb_project_robot_mearm_working:
-  name: oomlout_oobb_project_robot_mearm_working
-
-oomlout_oomp_electronic_device_aliexpress_amp_meter_10_amp_0_28_inch_display:
-  name: oomlout_oomp_electronic_device_aliexpress_amp_meter_10_amp_0_28_inch_display
-
-
-# oomp ones
-oomlout_oomp_part_src:
-  name: oomlout_oomp_part_src
-
-oomlout_oomp_symbol_all_the_kicad_symbols:
-  name: oomlout_oomp_symbol_all_the_kicad_symbols
-
-oomlout_oomp_footprint_all_the_kicad_footprints:
-  name: oomlout_oomp_footprint_all_the_kicad_footprints
-#      generated
-oomlout_oomp_part_kicad_footprints:
-  name: oomlout_oomp_part_kicad_footprints
-  directory: gh/oomlout_oomp_part_src/tmp/generated
-
-oomlout_oomp_part_kicad_symbolss:
-  name: oomlout_oomp_part_kicad_symbols
-  directory: gh/oomlout_oomp_part_src/tmp/generated
-
-oomlout_oomp_part_doc_v_2:
-  name: oomlout_oomp_part_doc_v_2
-  
-#      secondary ones
-oomlout_oomp_footprint_bot:
-  name: oomlout_oomp_footprint_bot
-  directory: gh/oomlout_oomp_part_src/tmp
-
-oomlout_oomp_project_bot:
-  name: oomlout_oomp_project_bot
-  directory: gh/oomlout_oomp_part_src/tmp
-
-oomlout_oomp_symbol_bot:
-  name: oomlout_oomp_symbol_bot
-  directory: gh/oomlout_oomp_part_src/tmp
 
 
 
