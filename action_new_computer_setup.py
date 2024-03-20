@@ -5,12 +5,19 @@ import copy
 def main(**kwargs):
     print("action_new_computer_setup.py main()")
     
+    pip = True
+    path = True
+    pythonpath = True
+    openscadpath = True
+    clone = True
+    install = True
+
     pip = False
     path = False
     pythonpath = False
     openscadpath = False
-    clone = False
-    install = True
+    #clone = False
+    install = False
 
     #run python_pip.bat
     if pip:
@@ -88,7 +95,7 @@ def clone_repos(**kwargs):
         oomlout_repos = yaml.load(file, Loader=yaml.FullLoader)
     #loop through the repos
     for repo_id in oomlout_repos:
-        repo = oomlout_repos[repo_id]
+        repo = oomlout_repos[repo_id]        
         name = repo["name"]
         directory = repo.get("directory", "gh")
         directory = os.path.join("c:/", directory)
