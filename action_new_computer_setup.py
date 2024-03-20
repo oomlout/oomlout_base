@@ -13,11 +13,11 @@ def main(**kwargs):
     install = True
 
     pip = False
-    path = False
+    #path = False
     pythonpath = False
     openscadpath = False
-    #clone = False
-    install = False
+    clone = False
+    #install = False
 
     #run python_pip.bat
     if pip:
