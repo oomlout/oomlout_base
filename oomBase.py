@@ -771,9 +771,10 @@ def oomReadFileLine(fileName):
         #print("No Google Sheet File")        
     return returnV
 
-import git
+
 
 def oomGitPullNew(gitBase,directory,onlyCreate=False):   
+    import git
     oomMakeDir(directory) 
     outDir = directory + gitBase.rsplit("/")[-1].replace(".git","")
     skips = ["https://github.com/adafruit/adafruit-rpi-kernel.git"]
@@ -796,6 +797,7 @@ def oomGitPullNew(gitBase,directory,onlyCreate=False):
 
 
 def oomGitPull(git,directory,close = True, pause = False):
+    import git
     sp = git.split("/")
     repoName = sp[len(sp)-1]
     if repoName == "":
