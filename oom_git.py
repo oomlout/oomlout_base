@@ -1,4 +1,5 @@
-import git
+#print env path variable
+#import git
 import os
 
 
@@ -63,18 +64,26 @@ def push_to_git(**kwargs):
         os.remove(".git/index.lock")
     except:
         pass
-    print(f"pushing to {repo_directory}")
-    import git 
-    result = repo = git.Repo(repo_directory)
-    print(result)
-    result =  repo.git.add("*")
-    print(result)
-    result = repo.index.commit(comment)
-    print(result)
+    use_command_line = True
 
-    result = origin = repo.remote(name='origin')
-    result = origin.push()
-    print(result)
-    #subprocess.run(["git", "add", "*"])
-    #subprocess.run(["git", "commit", "-m", f"comitting after {count} generations"])
-    #subprocess.run(["git", "push"])
+    if not use_command_line:
+        print(f"pushing to {repo_directory}")
+        import git 
+        result = repo = git.Repo(repo_directory)
+        print(result)
+        result =  repo.git.add("*")
+        print(result)
+        result = repo.index.commit(comment)
+        print(result)
+
+        result = origin = repo.remote(name='origin')
+        result = origin.push()
+        print(result)
+    else:
+        print(f"pushing to {repo_directory}")
+        #use os.system to do it all in one command
+        os.system(f"cd {repo_directory} && git add *")
+        os.system(f"cd {repo_directory} && git commit -m \"{comment}\"")
+        os.system(f"cd {repo_directory} && git push")
+        
+    

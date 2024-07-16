@@ -1,6 +1,9 @@
 import os
 import copy
 
+### to look into adding github cli
+#winget install --id GitHub.cli
+#gh auth login
 
 def main(**kwargs):
     print("action_new_computer_setup.py main()")

@@ -87,7 +87,8 @@ def main(**kwargs):
         
 
         #add to gihub using github cli gh
-        os.system(f'cd {directory_project} && gh repo create oomlout/{project_name} --public --confirm')
+        command = f'cd {directory_project} && gh repo create oomlout/{project_name} --public --confirm'
+        os.system(command)
         pass
 
         #add origin to git
