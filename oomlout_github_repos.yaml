@@ -19,6 +19,10 @@ oomlout_opsc_version_3:
 oomlout_the_allotment:
   name: the_allotment
 
+# media
+oomlout_media:
+  name: oomlout_media
+
 #oobb bundles
 oomlout_oobe_bundle_plates_basic:
   name: oomlout_oobe_bundle_plates_basic

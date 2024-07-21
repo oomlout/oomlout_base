@@ -14,41 +14,42 @@ def main(**kwargs):
     openscadpath = True
     clone = True
     install = True
-    
+
     pip = False
-    path = False
+    #path = False
     pythonpath = False
     openscadpath = False
-    #clone = False
-    install = False
+    clone = False
+    #install = False
 
     #run python_pip.bat
-    if pip:     
-        print("doing all the pip installs")   
+    if pip:
         os.system("action_python_pip.bat")
         
 
     # environment_variable = "PATH"
     if path:
-        print("doing all the path stuff")
+        print("path()")
         folder_path = []
-        folder_path.append("c:\\gh\\oomlout_base")
+        folder_path.append("c:/gh/oomlout_base")
         # the_allotment
-        folder_path.append("c:\\gh\\the_allotment")
+        folder_path.append("c:/gh/the_allotment")
         # ghost script
-        folder_path.append("C:\\Program Files\\gs\\gs9.54.0\\bin") 
+        folder_path.append("C:/Program Files/gs/gs9.54.0/bin") 
         #db path
-        folder_path.append("c:\\od\\OneDrive\\path") 
+        folder_path.append("c:/od/OneDrive/path") 
         #opsc
-        folder_path.append("c:\\gh\\oomlout_opsc_version_3")
+        folder_path.append("c:/gh/oomlout_opsc_version_3")
         #openscad
-        folder_path.append("C:\\Program Files\\OpenSCAD")
+        folder_path.append("C:/Program Files/OpenSCAD")
         #corel
-        folder_path.append("C:\\Program Files\\Corel\\CorelDRAW Graphics Suite 2020\\Programs64")   
+        folder_path.append("C:/Program Files/Corel/CorelDRAW Graphics Suite 2020/Programs64")   
         #inkscape
-        folder_path.append("C:\\Program Files\\Inkscape\\bin")
+        folder_path.append("C:/Program Files/Inkscape/bin")
+        # python
+        folder_path.append("C:/Users/aaron/AppData/Local/Programs/Python/Python312")
         #oolc
-        folder_path.append("C:\\gh\\oomlout_oolc_oopen_laser_cutting_production_format")
+        folder_path.append("C:/GH/oomlout_oolc_oopen_laser_cutting_production_format")
         
 
         kwargs["folder_path"] = folder_path
@@ -58,13 +59,13 @@ def main(**kwargs):
     if pythonpath:
         print("pythonpath()")   
         folder_pythonpath = []
-        folder_pythonpath.append("c:\\gh\\oomlout_base")
+        folder_pythonpath.append("c:/gh/oomlout_base")
         #opsc
-        folder_pythonpath.append("c:\\gh\\oomlout_opsc_version_3")
+        folder_pythonpath.append("c:/gh/oomlout_opsc_version_3")
         # oomp_src
-        folder_pythonpath.append("C:\\gh\\oomlout_oomp_part_generation_version_1")
+        folder_pythonpath.append("C:/gh/oomlout_oomp_part_generation_version_1")
         # oolc
-        folder_pythonpath.append("C:\\gh\\oomlout_oolc_oopen_laser_cutting_production_format")
+        folder_pythonpath.append("C:/gh/oomlout_oolc_oopen_laser_cutting_production_format")
 
         kwargs["folder_pythonpath"] = folder_pythonpath
         set_folder_pythonpath(**kwargs)
@@ -73,7 +74,7 @@ def main(**kwargs):
         print("openscadpath()")   
         folder_openscadpath = []
         #opsc
-        folder_openscadpath.append("c:\\gh\\oomlout_opsc_version_3")
+        folder_openscadpath.append("c:/gh/oomlout_opsc_version_3")
         kwargs["folder_openscadpath"] = folder_openscadpath
         set_folder_openscadpath(**kwargs)
 
