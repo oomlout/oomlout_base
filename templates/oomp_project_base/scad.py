@@ -135,11 +135,13 @@ def make_scad_generic(part):
     kwargs.pop("size","")
 
     #get the part from the function get_{name}"
-    try:        
-        func = globals()[f"get_{name}"]
-        func(thing, **kwargs)
-    except:
-        get_base(thing, **kwargs)
+    func = globals()[f"get_{name}"]    
+    # test if func exists
+    if callable(func):            
+        func(thing, **kwargs)        
+    else:            
+        get_base(thing, **kwargs)   
+    
 
     for mode in modes:
         depth = thing.get(
