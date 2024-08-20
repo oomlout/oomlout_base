@@ -10,6 +10,7 @@ pip install HTMLtag
 pip install pyqrcode
 pip install pypng
 pip install pyzbar 
+pip install yaml
 REM also needs pyzbar installing on windows
 pip install pillow
 REM Also needs tesseract exe ((C:\DB\Dropbox\BBBB-Product Working\PYTHON\ocr\tesseract-ocr-setup-4.00.00dev.exe) (and add C:\Program Files (x86)\Tesseract-OCR to PATH)
