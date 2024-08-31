@@ -15,12 +15,12 @@ def main(**kwargs):
     clone = True
     install = True
     
-    pip = False
+    #pip = False
     path = False
-    pythonpath = False
-    openscadpath = False
+    #pythonpath = False
+    #openscadpath = False
     #clone = False
-    install = False
+    #install = False
 
     #run python_pip.bat
     if pip:     
