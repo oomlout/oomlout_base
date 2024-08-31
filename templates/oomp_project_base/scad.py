@@ -14,22 +14,22 @@ def make_scad(**kwargs):
         filter = ""
         #filter = "test"
 
-        #kwargs["save_type"] = "none"
-        kwargs["save_type"] = "all"
+        kwargs["save_type"] = "none"
+        #kwargs["save_type"] = "all"
         
         kwargs["overwrite"] = True
         
-        kwargs["modes"] = ["3dpr", "laser", "true"]
-        #kwargs["modes"] = ["3dpr"]
+        #kwargs["modes"] = ["3dpr", "laser", "true"]
+        kwargs["modes"] = ["3dpr"]
         #kwargs["modes"] = ["laser"]
 
     # default variables
     if True:
         kwargs["size"] = "oobb"
-        kwargs["width"] = 12
-        kwargs["height"] = 12
-        kwargs["thickness"] = 6
-
+        kwargs["width"] = 1
+        kwargs["height"] = 1
+        kwargs["thickness"] = 3
+        
     # project_variables
     if True:
         pass
