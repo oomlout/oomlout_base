@@ -7,7 +7,7 @@ def main(**kwargs):
     if True:
         #prompt for the name of the new project
         project_name = input("Project Name: ")
-        directory_project = f'c:/gh/{project_name}'
+        directory_project = f'c:\\gh\\{project_name}'
 
     #create directory
     if True:
@@ -20,7 +20,7 @@ def main(**kwargs):
         directory_base_project = 'templates\\oomp_project_base'
         file_skip = []
         #generated files
-        file_skip.append("oolc_production/working.yaml")
+        file_skip.append("oolc_production\\working.yaml")
         file_skip.append("working_manual.yaml")
         #implementing later
         file_skip.append("working_manual_teardown.yaml")
