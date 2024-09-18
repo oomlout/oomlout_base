@@ -3,11 +3,27 @@ import os
 import yaml
 
 def main(**kwargs):
+    url_project_base_google_docs = "https://docs.google.com/document/d/1kq0wAvB6xJ0g4aAaEd-CLikVnkbmCYqg_ufLErMCwQo/edit"
+    #open the google docs
+    os.system(f'start {url_project_base_google_docs}')
+
+
     #get the project name    
+    project_type = input("Project Type (1: git, 2: local): ")
+    if project_type == "":
+        project_type = "git"
+    if project_type == "1":
+        project_type = "git"
+    if project_type == "2":
+        project_type = "local"
+    
     if True:
         #prompt for the name of the new project
         project_name = input("Project Name: ")
-        directory_project = f'c:\\gh\\{project_name}'
+        if project_type == "git":
+            directory_project = f'c:\\gh\\{project_name}'
+        else:
+            directory_project = f'c:\\od\\OneDrive\\docs\\{project_name}'
 
     #create directory
     if True:
@@ -79,7 +95,7 @@ def main(**kwargs):
         working.main()
 
     #turn the directory into a git repo and register it with github
-    if True:
+    if project_type == "git":
         #use os system calls
         
         #set the directory for os system so it persists        
