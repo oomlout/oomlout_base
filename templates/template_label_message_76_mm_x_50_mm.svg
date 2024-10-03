@@ -65,8 +65,8 @@
    style="font-size:22.6667px;font-family:'Lucida Sans Unicode';-inkscape-font-specification:'Lucida Sans Unicode';text-align:center;white-space:pre;shape-inside:url(#rect2);shape-padding:3.69185;fill:#000000"
    x="27.720703"
    y="0"><tspan
-     x="81.102464"
+     x="67.84333"
      y="29.111994"
-     id="tspan2"><tspan
+     id="tspan4"><tspan
        style="font-family:Calibri;-inkscape-font-specification:Calibri"
-       id="tspan1">{{ p.label }}</tspan></tspan></text></g>&#10;</svg>
+       id="tspan3">{{ p.content }}</tspan></tspan></text></g>&#10;</svg>
