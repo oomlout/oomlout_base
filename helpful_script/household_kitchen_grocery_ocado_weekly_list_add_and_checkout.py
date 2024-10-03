@@ -28,14 +28,22 @@ def main(**kwargs):
     print("done")
 
 def oom_household_kitchen_grocery_ocado_checkout():
+    import pyautogui
+
+    #get display width
+    screen_width = pyautogui.size().width
+    screen_height = pyautogui.size().height
+    print("Screen Width:", screen_width)
     #click checkout button
-    coordinate_checkout = (1600,170)
-    oom_click(*coordinate_checkout, time_delay = 3, message = "clicking checkout button")
+
+    coordinates_checkout = [(screen_width-50,170)]
+    for coordinate_checkout in coordinates_checkout:
+        oom_click(*coordinate_checkout, time_delay = 3, message = "clicking checkout button")
     #click continue button 5 times
     times = 5
     for i in range(times):     
         print(f"clicking continue button {i+1} times of {times}")   
-        coordinate_continue = (1600,975)
+        coordinate_continue = (screen_width-50,screen_height - 60)
         oom_click(*coordinate_continue, time_delay = 3)
 
 
