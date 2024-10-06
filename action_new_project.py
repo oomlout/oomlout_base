@@ -116,10 +116,10 @@ def main(**kwargs):
 
     #open the folder in explorer
     if True:
-
-        os.system(f'explorer {directory_project.replace("/", "\\")}')
+        used_directory_project = directory_project.replace("/", "\\")
+        os.system(f'explorer {used_directory_project}')
         # open in vscode
-        os.system(f'code {directory_project.replace("/", "\\")}')
+        os.system(f'code {used_directory_project}')
 
 if __name__ == '__main__':
     kwargs = {}
