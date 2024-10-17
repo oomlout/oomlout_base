@@ -63,9 +63,11 @@ def make_scad(**kwargs):
 
 def get_base(thing, **kwargs):
 
-    depth = kwargs.get("thickness", 4)
     prepare_print = kwargs.get("prepare_print", False)
-
+    width = kwargs.get("width", 1)
+    height = kwargs.get("height", 1)
+    depth = kwargs.get("thickness", 3)                    
+    rot = kwargs.get("rot", [0, 0, 0])
     pos = kwargs.get("pos", [0, 0, 0])
     #pos = copy.deepcopy(pos)
     #pos[2] += -20
@@ -75,11 +77,13 @@ def get_base(thing, **kwargs):
     p3["type"] = "p"
     p3["shape"] = f"oobb_plate"    
     p3["depth"] = depth
+    #p3["holes"] = True         uncomment to include default holes
     #p3["m"] = "#"
     pos1 = copy.deepcopy(pos)         
     p3["pos"] = pos1
     oobb_base.append_full(thing,**p3)
-    #add holes
+    
+    #add holes seperate
     p3 = copy.deepcopy(kwargs)
     p3["type"] = "p"
     p3["shape"] = f"oobb_holes"

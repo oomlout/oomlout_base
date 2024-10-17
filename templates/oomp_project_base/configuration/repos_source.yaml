@@ -1,4 +1,4 @@
-#- https://github.com/oomlout/oomlout_oomp_current_version_messy
+- https://github.com/oomlout/oomlout_oomp_current_version_messy
 #- https://github.com/oomlout/oomlout_oomp_part_generation_version_1
 ## computer
 #- http://www.github.com/oomlout/oomp_base_computer
@@ -19,7 +19,7 @@
 #- http://www.github.com/oomlout/oomp_base_electronic_image
 #- http://www.github.com/oomlout/oomp_base_electronic_three_d_model
 ## hardware
-- http://www.github.com/oomlout/oomp_base_hardware
+#- http://www.github.com/oomlout/oomp_base_hardware
 #- http://www.github.com/oomlout/oomp_base_hardware_datasheet
 #- http://www.github.com/oomlout/oomp_base_hardware_drawing
 #- http://www.github.com/oomlout/oomp_base_hardware_image
@@ -55,7 +55,7 @@
 #- http://www.github.com/oomlout/oomp_base_tool_image
 #- http://www.github.com/oomlout/oomp_base_tool_three_d_model
 ###### data
-# - https://github.com/oomlout/oomlout_oomp_data_injector_distributor_part_numbers
+- https://github.com/oomlout/oomlout_oomp_data_injector_distributor_part_numbers
 - https://github.com/oomlout/oomlout_oomp_data_injector_bolt_part_numbers
 
 
