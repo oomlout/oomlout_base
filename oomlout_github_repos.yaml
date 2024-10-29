@@ -55,6 +55,10 @@ oomlout_oobb_bundle_holder_05_03_00_ex_motor_servo_standard_01:
 oomlout_oomp_part_generation_version_1:
   name: oomlout_oomp_part_generation_version_1
 
+  
+oomlout_oomp_part_generation_version_1_messy:
+  name: oomlout_oomp_part_generation_version_1_messy
+
 oomlout_oomp_current_version:
   name: oomlout_oomp_current_version
   url: https://github.com/oomlout-organization/oomlout_oomp_current_version
