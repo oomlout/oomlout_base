@@ -55,3 +55,4 @@ pip install virtualenv
 pip install pandas
 pip install ushlex
 pip install qrcode[pil]
+pip install PyPDF2
