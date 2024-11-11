@@ -54,3 +54,4 @@ pip install db-sqlite3
 pip install virtualenv
 pip install pandas
 pip install ushlex
+pip install qrcode[pil]
