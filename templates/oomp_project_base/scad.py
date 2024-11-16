@@ -211,6 +211,9 @@ def generate_navigation(folder="scad_output", sort=["width", "height", "thicknes
         for s in sort:
             ex = kwarg_copy.get(s, "default")
             folder_extra += f"{s}_{ex}/"
+
+        #replace "." with d
+        folder_extra = folder_extra.replace(".","d")            
         folder_destination = f"{folder_navigation}/{folder_extra}"
         if not os.path.exists(folder_destination):
             os.makedirs(folder_destination)
