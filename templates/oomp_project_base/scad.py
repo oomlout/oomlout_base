@@ -2,6 +2,7 @@ import copy
 import opsc
 import oobb
 import oobb_base
+import yaml
 
 def main(**kwargs):
     make_scad(**kwargs)
@@ -173,6 +174,10 @@ def make_scad_generic(part):
         if "bunting" in thing:
             start = 0.5
         opsc.opsc_make_object(f'scad_output/{thing["id"]}/{mode}.scad', thing["components"], mode=mode, save_type=save_type, overwrite=overwrite, layers=layers, tilediff=tilediff, start=start)    
+
+    yaml_file = f"{folder}/working.yaml"
+    with open(yaml_file, 'w') as file:
+        yaml.dump(part, file)
 
 def generate_navigation(folder="scad_output", sort=["width", "height", "thickness"]):
     #crawl though all directories in scad_output and load all the working.yaml files
