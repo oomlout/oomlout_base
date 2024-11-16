@@ -18,7 +18,7 @@ def make_scad(**kwargs):
         #kwargs["save_type"] = "all"
         
         navigation = False
-        navigation = True    
+        #navigation = True    
 
         kwargs["overwrite"] = True
         
