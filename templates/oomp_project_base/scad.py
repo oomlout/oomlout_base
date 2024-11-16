@@ -3,6 +3,7 @@ import opsc
 import oobb
 import oobb_base
 import yaml
+import os
 
 def main(**kwargs):
     make_scad(**kwargs)
