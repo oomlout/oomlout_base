@@ -162,6 +162,7 @@ def make_scad_generic(part):
     else:            
         get_base(thing, **kwargs)   
     
+    folder = f"scad_output/{thing['id']}"
 
     for mode in modes:
         depth = thing.get(
@@ -174,7 +175,9 @@ def make_scad_generic(part):
             start = 1.5 - (layers / 2)*3
         if "bunting" in thing:
             start = 0.5
-        opsc.opsc_make_object(f'scad_output/{thing["id"]}/{mode}.scad', thing["components"], mode=mode, save_type=save_type, overwrite=overwrite, layers=layers, tilediff=tilediff, start=start)    
+        
+
+        opsc.opsc_make_object(f'{folder}/{mode}.scad', thing["components"], mode=mode, save_type=save_type, overwrite=overwrite, layers=layers, tilediff=tilediff, start=start)  
 
     yaml_file = f"{folder}/working.yaml"
     with open(yaml_file, 'w') as file:
