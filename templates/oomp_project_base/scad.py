@@ -183,7 +183,9 @@ def make_scad_generic(part):
     yaml_file = f"{folder}/working.yaml"
     with open(yaml_file, 'w') as file:
         part_new = copy.deepcopy(part)
-        part_new.pop("save_type","")
+        kwargs_new = part_new.get("kwargs", {})
+        kwargs_new.pop("save_type","")
+        part_new["kwargs"] = kwargs_new
         yaml.dump(part_new, file)
 
 def generate_navigation(folder="scad_output", sort=["width", "height", "thickness"]):
