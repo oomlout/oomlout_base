@@ -218,8 +218,8 @@ def generate_navigation(folder="scad_output", sort=["width", "height", "thicknes
         if not os.path.exists(folder_destination):
             os.makedirs(folder_destination)
         if os.name == 'nt':
-            #copy a full directory
-            command = f'xcopy "{folder_source}" "{folder_destination}" /E /I'
+            #copy a full directory auto overwrite
+            command = f'xcopy "{folder_source}" "{folder_destination}" /E /I /Y'
             print(command)
             os.system(command)
         else:
