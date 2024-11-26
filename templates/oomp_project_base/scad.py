@@ -71,6 +71,7 @@ def make_scad(**kwargs):
     if navigation:
         sort = []
         #sort.append("extra")
+        sort.append("name")
         sort.append("width")
         sort.append("height")
         sort.append("thickness")
@@ -181,7 +182,9 @@ def make_scad_generic(part):
 
     yaml_file = f"{folder}/working.yaml"
     with open(yaml_file, 'w') as file:
-        yaml.dump(part, file)
+        part_new = copy.deepcopy(part)
+        part_new.pop("save_type","")
+        yaml.dump(part_new, file)
 
 def generate_navigation(folder="scad_output", sort=["width", "height", "thickness"]):
     #crawl though all directories in scad_output and load all the working.yaml files
@@ -209,7 +212,10 @@ def generate_navigation(folder="scad_output", sort=["width", "height", "thicknes
         folder_source = part["folder"]
         folder_extra = ""
         for s in sort:
-            ex = kwarg_copy.get(s, "default")
+            if s == "name":
+                ex = part.get("name", "default")
+            else:
+                ex = kwarg_copy.get(s, "default")
             folder_extra += f"{s}_{ex}/"
 
         #replace "." with d
