@@ -202,23 +202,25 @@ def generate_navigation(folder="scad_output", sort=["width", "height", "thicknes
     for root, dirs, files in os.walk(folder):
         if 'working.yaml' in files:
             yaml_file = os.path.join(root, 'working.yaml')
-            with open(yaml_file, 'r') as file:
-                part = yaml.safe_load(file)
-                # Process the loaded YAML content as needed
-                part["folder"] = root
-                part_name = root.replace(f"{folder}","")
-                
-                #remove all slashes
-                part_name = part_name.replace("/","").replace("\\","")
-                parts[part_name] = part
+            #if working.yaml isn't in the root directory, then do it
+            if root != folder:
+                with open(yaml_file, 'r') as file:
+                    part = yaml.safe_load(file)
+                    # Process the loaded YAML content as needed
+                    part["folder"] = root
+                    part_name = root.replace(f"{folder}","")
+                    
+                    #remove all slashes
+                    part_name = part_name.replace("/","").replace("\\","")
+                    parts[part_name] = part
 
-                print(f"Loaded {yaml_file}: {part}")
+                    print(f"Loaded {yaml_file}: {part}")
 
     pass
     for part_id in parts:
         part = parts[part_id]
         kwarg_copy = copy.deepcopy(part["kwargs"])
-        folder_navigation = "navigation"
+        folder_navigation = "navigation_oobb"
         folder_source = part["folder"]
         folder_extra = ""
         for s in sort:
