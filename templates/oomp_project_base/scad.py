@@ -60,8 +60,9 @@ def make_scad(**kwargs):
     #make the parts
     if True:
         for part in parts:
-            name = part.get("name", "default")
-            if filter in name:
+            name = part.get("name", "default")            
+            extra = part["kwargs"].get("extra", "")
+            if filter in name or filter in extra:
                 print(f"making {part['name']}")
                 make_scad_generic(part)            
                 print(f"done {part['name']}")
