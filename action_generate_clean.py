@@ -32,14 +32,15 @@ def main():
     """
     directory = os.getcwd()
     rules = [
-        #has _140. in it
         lambda file: "_140.png" in file,
-        #has _300. in it
         lambda file: "_300.png" in file,
-        #has _600. in it
         lambda file: "_600.png" in file,
-        #has _1000. in it
         lambda file: "_1000.png" in file,
+        lambda file: "_140.jpg" in file,
+        lambda file: "_300.jpg" in file,
+        lambda file: "_600.jpg" in file,
+        lambda file: "_1000.jpg" in file,
+
         #working.dxf
         lambda file: "working.dxf" in file,
         lambda file: "working.pdf" in file
