@@ -97,7 +97,7 @@ def save_as(filename, save_as_type='pdf',**kwargs):
         ob.send_tab(dela=2)
     #if save as type is png
     if save_as_type == 'png':
-        ob.delay(10)
+        ob.delay(20)
         ob.send_keys('y', dela=2)        
         #send tab
         ob.send_tab(dela=2)
