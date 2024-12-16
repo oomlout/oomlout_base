@@ -1,0 +1,2 @@
+start Z:\oomlout_oomp_current_version_messy
+cd Z:\oomlout_oomp_current_version_messy

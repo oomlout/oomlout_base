@@ -1,0 +1,2 @@
+start c:\gh\oomlout_oomp_part_generation_version_1
+cd c:\gh\oomlout_oomp_part_generation_version_1
