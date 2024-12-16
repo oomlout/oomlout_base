@@ -6,6 +6,6 @@
 @REM generate_all_missing
 @REM cd C:\GH\oomlout_three_d_printer_printer_bambu_lab_a1_mini_reel_holder_experiment
 @REM generate_all_missing
-@REM cd C:\gh\oomlout_oobb_holder_stationery_clip_binder
+cd C:\gh\oomlout_oobb_holder_stationery_clip_binder
 action_clean_generate.py
 generate_all_missing
