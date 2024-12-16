@@ -1,0 +1,8 @@
+cd oomlout_oobb_stationery_paper_clip_staple_experiment
+generate_all_missing
+cd C:\GH\oomlout_oobb_holder_electronic_breakout_board_motor_driver
+generate_all_missing
+cd C:\GH\oomlout_oobb_organizing_pegboard\
+generate_all_missing
+cd C:\GH\oomlout_three_d_printer_printer_bambu_lab_a1_mini_reel_holder_experiment
+generate_all_missing
