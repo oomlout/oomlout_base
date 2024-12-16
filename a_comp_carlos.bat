@@ -1,8 +1,11 @@
-cd oomlout_oobb_stationery_paper_clip_staple_experiment
-generate_all_missing
-cd C:\GH\oomlout_oobb_holder_electronic_breakout_board_motor_driver
-generate_all_missing
-cd C:\GH\oomlout_oobb_organizing_pegboard\
-generate_all_missing
-cd C:\GH\oomlout_three_d_printer_printer_bambu_lab_a1_mini_reel_holder_experiment
+@REM cd oomlout_oobb_stationery_paper_clip_staple_experiment
+@REM generate_all_missing
+@REM cd C:\GH\oomlout_oobb_holder_electronic_breakout_board_motor_driver
+@REM generate_all_missing
+@REM cd C:\GH\oomlout_oobb_organizing_pegboard
+@REM generate_all_missing
+@REM cd C:\GH\oomlout_three_d_printer_printer_bambu_lab_a1_mini_reel_holder_experiment
+@REM generate_all_missing
+@REM cd C:\gh\oomlout_oobb_holder_stationery_clip_binder
+action_clean_generate.py
 generate_all_missing
