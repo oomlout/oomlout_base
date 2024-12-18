@@ -1,2 +1,2 @@
-start c:\gh\oomlout_oomp_part_generation_version_1
-cd c:\gh\oomlout_oomp_part_generation_version_1
+set OOMLOUT_PATH=c:\gh\oomlout_oomp_part_generation_version_1
+a_launch_directory.bat %OOMLOUT_PATH%

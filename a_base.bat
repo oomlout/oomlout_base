@@ -1,2 +1,2 @@
-start C:\gh\oomlout_base
-cd C:\gh\oomlout_base
+set OOMLOUT_PATH=C:\gh\oomlout_base
+a_launch_directory.bat %OOMLOUT_PATH%
