@@ -8,5 +8,5 @@
 @REM generate_all_missing
 cd C:\gh\oomlout_oobb_holder_stationery_clip_binder
 git pull
-action_clean_generate.py
+python c:\gh\oomlout_base\action_generate_clean.py -n
 generate_all_missing

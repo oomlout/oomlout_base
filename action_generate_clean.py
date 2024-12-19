@@ -2,8 +2,11 @@
 #it then shows that list and prompts the user to delete the files if they wish
 
 import os
+import argparse
 
-def list_files(directory, rules):
+
+def list_files(directory, rules, **kwargs):
+    prompt = kwargs.get('prompt', True)
     """
     List all files in the given directory that adhere to the specified rules.
     """
@@ -14,19 +17,26 @@ def list_files(directory, rules):
                 matching_files.append(os.path.join(root, file))
     return matching_files
 
-def prompt_delete_files(files):
+def prompt_delete_files(files, **kwargs):
     """
     Prompt the user to delete the specified files.
     """
     for file in files:
         print(f"Found file: {file}")
-    confirm = input("Do you want to delete these files? (y/n): ")
+    
+    prompt = kwargs.get('prompt', True)
+    if not prompt:
+        confirm = 'y'
+    else:
+        confirm = input(f"Delete {len(files)} files? (y/n): ")
     if confirm.lower() == 'y':
         for file in files:
             os.remove(file)
             print(f"Deleted file: {file}")
 
-def main():
+def main(**kwargs):
+    
+
     """
     Main function to list and optionally delete files based on rules.
     """
@@ -47,13 +57,32 @@ def main():
     ]
     matching_files = []
     for rule in rules:
-        matching_files.extend(list_files(directory, [rule]))    
+        matching_files.extend(list_files(directory, [rule], **kwargs))    
     #if working.png in base directory delete that
     if os.path.exists("working.png"):
         os.remove("working.png")
         print(f"Deleted file: working.png")
-    prompt_delete_files(matching_files)
+    prompt_delete_files(matching_files, **kwargs)
     
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description='Clean up files based on rules.')   
+    #-n -nop-prompt make it default to False 
+    parser.add_argument('-n', '--no-prompt', action='store_true', help='Do not prompt for deletion.')
+    
+    args = parser.parse_args()
+    
+    print("args:")
+    for arg in vars(args):
+        print(f"  {arg}: {getattr(args, arg)}")
+
+    kwargs = {}
+    if args.no_prompt:
+        kwargs['prompt'] = False
+    
+    # Call the main function with the parsed arguments
+    print("kwargs:")
+    for arg in kwargs:
+        print(f"  {arg}: {kwargs[arg]}")
+    main(**kwargs)
+    
