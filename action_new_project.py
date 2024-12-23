@@ -121,6 +121,11 @@ def main(**kwargs):
         # open in vscode
         os.system(f'code {used_directory_project}')
 
+    #open working.cdr
+    if True:
+        file_path = os.path.join(directory_project, "/working.cdr")
+        os.system(f'start {file_path}')
+
 if __name__ == '__main__':
     kwargs = {}
     main(**kwargs)
