@@ -72,17 +72,28 @@ def main(**kwargs):
 
     #create the oolc_production/working.yaml
     if True:
-        details = {}
-        details["project_id"] = project_name
-        details["project_name"] = f'{project_name.replace("_", " ").title()}'
-        details["project_repo"] = f'https://github.com/oomlout/{project_name}'
-        details["production_format"] = {}
-        details["production_format"]["oolc_1"] = {}
-        details["production_format"]["oolc_1"]["file_location"] = f'source_files/oolc_1.cdr'
+        working_yaml_string = ""
+        #details = {}
+        working_yaml_string += "id: " + project_name + "\n"
+        #details["project_id"] = project_name
+        working_yaml_string += "project_name: " + f'{project_name.replace("_", " ").title()}' + "\n"
+        #details["project_name"] = f'{project_name.replace("_", " ").title()}'
+        working_yaml_string += "project_description: " + f'{project_name.replace("_", " ").title()}' + "\n"
+        #details["project_repo"] = f'https://github.com/oomlout/{project_name}'
+        working_yaml_string += "project_repo: " + f'https://github.com/oomlout/{project_name}'
+        #details["production_format"] = 
+        working_yaml_string += "#production_format: " + "\n"
+        #details["production_format"]["oolc_1"] = 
+        working_yaml_string += "#  oolc_1: " + "\n"        
+        #details["production_format"]["oolc_1"]["file_location"] = f'source_files/oolc_1.cdr
+        working_yaml_string += "#    file_location: " + f'source_files/oolc_1.cdr' + "\n"
         #dump the yaml        
+        #file_path = os.path.join(directory_project, "oolc_production/working.yaml")
+        #with open(file_path, 'w') as file:            
+        #    yaml.dump(details, file, sort_keys=False)
         file_path = os.path.join(directory_project, "oolc_production/working.yaml")
-        with open(file_path, 'w') as file:            
-            yaml.dump(details, file, sort_keys=False)
+        with open(file_path, 'w') as file:
+            file.write(working_yaml_string)
 
 
     #run working.py to create the readme
