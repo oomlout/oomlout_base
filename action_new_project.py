@@ -80,7 +80,7 @@ def main(**kwargs):
         #details["project_name"] = f'{project_name.replace("_", " ").title()}'
         working_yaml_string += "project_description: " + f'{project_name.replace("_", " ").title()}' + "\n"
         #details["project_repo"] = f'https://github.com/oomlout/{project_name}'
-        working_yaml_string += "project_repo: " + f'https://github.com/oomlout/{project_name}'
+        working_yaml_string += f"project_repo: https://github.com/oomlout/{project_name}" + "\n"
         #details["production_format"] = 
         working_yaml_string += "#production_format: " + "\n"
         #details["production_format"]["oolc_1"] = 
