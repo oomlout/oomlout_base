@@ -215,7 +215,7 @@ def generate_navigation(folder="scad_output", sort=["width", "height", "thicknes
                     part_name = part_name.replace("/","").replace("\\","")
                     parts[part_name] = part
 
-                    print(f"Loaded {yaml_file}: {part}")
+                    print(f"Loaded {yaml_file}")
 
     pass
     for part_id in parts:
