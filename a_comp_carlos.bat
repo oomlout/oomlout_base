@@ -18,3 +18,6 @@ cd C:\gh\oomlout_oobb_part_tray_stackable_experiment
 git pull
 python c:\gh\oomlout_base\action_generate_clean.py -n
 generate_all_missing
+y: 
+cd y:\oomlout_oomp_redirect_generation
+python Y:\oomlout_oomp_redirect_generation\action_redirect_upload.py
