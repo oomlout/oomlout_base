@@ -13,11 +13,11 @@
 cd C:\gh\oomlout_oobb_organizing_electrical_wire_wall_mount_wire_shortener
 git pull
 python c:\gh\oomlout_base\action_generate_clean.py -n
-generate_all_missing
+call generate_all_missing.bat
 cd C:\gh\oomlout_oobb_part_tray_stackable_experiment
 git pull
 python c:\gh\oomlout_base\action_generate_clean.py -n
-generate_all_missing
+call generate_all_missing.bat
 y: 
 cd y:\oomlout_oomp_redirect_generation
 python Y:\oomlout_oomp_redirect_generation\action_redirect_upload.py
