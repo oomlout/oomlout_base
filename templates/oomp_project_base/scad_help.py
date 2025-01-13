@@ -19,7 +19,7 @@ def make_parts(**kwargs):
             if filter in name or filter in extra:
                 print(f"making {part['name']}")
                 make_scad_generic(part)            
-                print(f"done {part['name']}")
+                
             else:
                 print(f"skipping {part['name']}")
 
@@ -118,6 +118,8 @@ def make_scad_generic(part):
         part_new["id_oobb"] = thing["id"]
         part_new["thing"] = thing
         yaml.dump(part_new, file)
+
+    print(f"done {oomp_id}")
 
 def generate_navigation(folder="parts", sort=["width", "height", "thickness"]):
     #crawl though all directories in scad_output and load all the working.yaml files
