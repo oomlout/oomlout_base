@@ -42,7 +42,10 @@ def make_scad_generic(part):
     kwargs.pop("size","")
 
     #get the part from the function get_{name}"
-    func = globals()[f"get_{name}"]    
+    try:
+        func = globals()[f"get_{name}"]    
+    except KeyError:
+        func = None
     # test if func exists
     if callable(func):            
         func(thing, **kwargs)        
