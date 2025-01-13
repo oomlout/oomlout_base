@@ -64,6 +64,7 @@ def make_scad_generic(part):
     elif oomp_mode == "oobb":
         current_description_main = thing.get("description_main", "default")        
         kwargs["oomp_description_main"] = f"{current_description_main}"
+        kwargs["oomp_size"] = f"{part["name"]}"
 
     #move oomp bits from kwargs to part
     oomp_keys = ["classification", "type", "size", "color", "description_main", "description_extra", "manufacturer", "part_number"]
