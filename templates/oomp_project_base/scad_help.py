@@ -107,6 +107,7 @@ def make_scad_generic(part):
 
 
     yaml_file = f"{folder}/working.yaml"
+    #partial dump
     with open(yaml_file, 'w') as file:
         part_new = copy.deepcopy(part)
         kwargs_new = part_new.get("kwargs", {})
@@ -116,8 +117,24 @@ def make_scad_generic(part):
         cwd = os.getcwd()
         part_new["project_name"] = cwd
         part_new["id_oobb"] = thing["id"]
-        part_new["thing"] = thing
+        #part_new["thing"] = thing
+        part_new.pop("thing", "")
         yaml.dump(part_new, file)
+    
+    #full dump
+    yaml_file = f"{folder}/thing.yaml"
+    with open(yaml_file, 'w') as file:
+        part_new = copy.deepcopy(part)
+        kwargs_new = part_new.get("kwargs", {})
+        kwargs_new.pop("save_type","")
+        part_new["kwargs"] = kwargs_new
+        import os
+        cwd = os.getcwd()
+        part_new["project_name"] = cwd
+        part_new["id_oobb"] = thing["id"]
+        #part_new["thing"] = thing
+        yaml.dump(part_new, file)
+
 
     print(f"done {oomp_id}")
 

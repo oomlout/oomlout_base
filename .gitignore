@@ -6,7 +6,7 @@ git/
 old_1*/
 backup_*
 working-backups/
-Backup_
+Backup_*
 _autosave
 
 
