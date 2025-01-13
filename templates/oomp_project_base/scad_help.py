@@ -132,7 +132,7 @@ def make_scad_generic(part):
         cwd = os.getcwd()
         part_new["project_name"] = cwd
         part_new["id_oobb"] = thing["id"]
-        #part_new["thing"] = thing
+        part_new["thing"] = thing
         yaml.dump(part_new, file)
 
 
