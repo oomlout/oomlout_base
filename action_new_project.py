@@ -134,7 +134,7 @@ def main(**kwargs):
 
     #open working.cdr
     if True:
-        file_path = os.path.join(directory_project, "/working.cdr")
+        file_path = f"{directory_project}\\working.cdr"
         os.system(f'start {file_path}')
 
 if __name__ == '__main__':

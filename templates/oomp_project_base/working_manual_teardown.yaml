@@ -6,34 +6,6 @@ disassembly:
 - index: 1
   title: "ready to teardown"
   description: "Ready to teardown."
-- index: 2
-  title: "cutting head removed"
-  description: "Remove the cutting head."  
-- index: 3
-  title: "remove screws"
-  description: "Remove 8 screws using a torx 10 screwdriver."
-- index: 4
-  title: "pull clamshell apart"
-  description: "Pull the clamshell apart."
-- index: 5
-  title: "remove the connector"
-  description: "Chip away the glue securing the multi pin connector and unplug it."
-- index: 6
-  title: "remove the switch"
-  description: "Desolder the four wires connected to the switch."
-- index: 7
-  title: "remove the heatsink"
-  description: "Using a philips screwdriver remove the two heatsink screws."
-- index: 8
-  title: "remove the thermistor"
-  description: "Desolder the thermistor from the board. Leave it attached to the heatsink."
-
-- index: 9
-  title: "remove the bottom plastic shell"
-  description: "There are 8 plastic clips securing the shell on, try your best to unclip and wedge them open."
-- index: 10
-  title: "pull apart the shell"
-  description: "Pull the shell apart. This is tricky because the wires are soldered on after the shell is put together. Remove as much solder from the tabs as possible. I couldn't get enough removed so also needed to heat the tabs enough to melt the plastic to force a bigger hole."
 disassembly_part:
 - index: 1
   designator: "q1"
