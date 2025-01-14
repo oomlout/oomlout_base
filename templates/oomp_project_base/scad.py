@@ -12,18 +12,22 @@ def main(**kwargs):
 def make_scad(**kwargs):
     parts = []
 
-    #setup    
-    #typ = "all"
-    typ = "fast"
-    #typ = "manual"
+    typ = kwargs.get("typ", "")
+
+    if typ == "":
+        #setup    
+        typ = "all"
+        #typ = "fast"
+        #typ = "manual"
 
     oomp_mode = "project"
     #oomp_mode = "oobb"
 
     if typ == "all":
-        filter = ""; save_type = "all"; navigation = True; overwrite = True; modes = ["3dpr", "laser", "true"]
+        filter = ""; save_type = "all"; navigation = True; overwrite = True; modes = ["3dpr"]; oomp_run = True
+        #filter = ""; save_type = "all"; navigation = True; overwrite = True; modes = ["3dpr", "laser", "true"]
     elif typ == "fast":
-        filter = ""; save_type = "none"; navigation = False; overwrite = True; modes = ["3dpr"]
+        filter = ""; save_type = "none"; navigation = False; overwrite = True; modes = ["3dpr"]; oomp_run = False
     elif typ == "manual":
     #filter
         filter = ""
@@ -43,7 +47,11 @@ def make_scad(**kwargs):
     #modes
         #modes = ["3dpr", "laser", "true"]
         modes = ["3dpr"]
-        #modes = ["laser"]        
+        #modes = ["laser"]    
+
+    #oomp_run
+        oomp_run = True
+        #oomp_run = False    
 
     #adding to kwargs
     kwargs["filter"] = filter
@@ -52,6 +60,7 @@ def make_scad(**kwargs):
     kwargs["overwrite"] = overwrite
     kwargs["modes"] = modes
     kwargs["oomp_mode"] = oomp_mode
+    kwargs["oomp_run"] = oomp_run
     
        
     # project_variables
@@ -176,6 +185,11 @@ def get_base(thing, **kwargs):
         p3 = copy.deepcopy(kwargs)
         p3["type"] = "n"
         p3["shape"] = f"oobb_slice"
+        pos1 = copy.deepcopy(pos)
+        pos1[0] += -500/2
+        pos1[1] += 0
+        pos1[2] += -500/2        
+        p3["pos"] = pos1
         #p3["m"] = "#"
         oobb_base.append_full(thing,**p3)
     

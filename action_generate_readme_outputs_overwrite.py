@@ -3,6 +3,10 @@ import oom_markdown
 
 #find all the cdr files in the directory it was launched from and then run do_stuff(filename) to each one
 
+
+def main(**kwargs):
+    main_single_directory(kwargs)
+
 def main_single_directory(kwargs):
     #find all cdr files in the directory it was launched from
     directory = kwargs.get("directory",os.getcwd())

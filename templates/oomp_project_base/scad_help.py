@@ -23,6 +23,11 @@ def make_parts(**kwargs):
             else:
                 print(f"skipping {part['name']}")
 
+    #run oomp
+    oomp_run = kwargs.get("oomp_run", False)
+    if kwargs.get("oomp_run", False):
+        import action_build_oomp
+        action_build_oomp.main()
 
 def make_scad_generic(part):
     
