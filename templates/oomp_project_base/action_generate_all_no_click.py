@@ -4,8 +4,7 @@ import sys
 import subprocess
 
 def main(**kwargs):
-    #tun working
-    
+    #run working    
     if True:
         import working
         working.main(**kwargs)
@@ -17,6 +16,13 @@ def main(**kwargs):
         kwargs2["typ"] = "all"
         scad.main(**kwargs2)
     
+
+    #run build oomp
+    if True:
+        import action_build_oomp
+        kwargs2 = copy.deepcopy(kwargs)
+        action_build_oomp.main(**kwargs2)
+
     #run oolc process
     if True:        
         if not os.path.exists("temporary"):

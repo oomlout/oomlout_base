@@ -5,7 +5,7 @@ import oom_markdown
 def load_yaml_directory(**kwargs):
     directory = kwargs['directory']
     return_value = {}
-    yaml_files_to_add = ["working.yaml","working_manual.yaml","kicad/current_version/working/working.yaml","kicad/current_version/working/working_manual.yaml"]
+    yaml_files_to_add = ["working.yaml","working_manual.yaml","kicad/current_version/working/working.yaml","kicad/current_version/working/working_manual.yaml","yaml/working.yaml","yaml/working_manual.yaml","yaml/working_manual_teardown.yaml"]
     for yaml_file in yaml_files_to_add:
         yaml_file = os.path.join(directory, yaml_file)
         if os.path.exists(yaml_file):

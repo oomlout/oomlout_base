@@ -1,0 +1,1 @@
+"C:\gh\oomlout_base\templates\oomp_project_base\working.cdr"

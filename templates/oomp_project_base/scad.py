@@ -16,8 +16,8 @@ def make_scad(**kwargs):
 
     if typ == "":
         #setup    
-        typ = "all"
-        #typ = "fast"
+        #typ = "all"
+        typ = "fast"
         #typ = "manual"
 
     oomp_mode = "project"
@@ -115,7 +115,7 @@ def make_scad(**kwargs):
         part["name"] = nam
         if oomp_mode == "oobb":
             p3["oomp_size"] = nam
-        parts.append(part)
+        #parts.append(part)
 
 
     kwargs["parts"] = parts
@@ -142,6 +142,7 @@ def get_base(thing, **kwargs):
     depth = kwargs.get("thickness", 3)                    
     rot = kwargs.get("rot", [0, 0, 0])
     pos = kwargs.get("pos", [0, 0, 0])
+    extra = kwargs.get("extra", "")
     
     #add plate
     p3 = copy.deepcopy(kwargs)
