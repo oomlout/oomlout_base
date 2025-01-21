@@ -4,7 +4,7 @@ import oobb
 import oobb_base
 import yaml
 import os
-from scad_help import *
+import scad_help
 
 def main(**kwargs):
     make_scad(**kwargs)
@@ -121,7 +121,7 @@ def make_scad(**kwargs):
 
     kwargs["parts"] = parts
 
-    make_parts(**kwargs)
+    scad_help.make_parts(**kwargs)
 
     #generate navigation
     if navigation:
@@ -132,7 +132,7 @@ def make_scad(**kwargs):
         sort.append("height")
         sort.append("thickness")
         
-        generate_navigation(sort = sort)
+        scad_help.generate_navigation(sort = sort)
 
 
 def get_base(thing, **kwargs):

@@ -4,8 +4,7 @@ import oobb
 import oobb_base
 import yaml
 import os
-from scad import *
-
+import scad
 ###### utilities
 
 def make_parts(**kwargs):
@@ -48,14 +47,14 @@ def make_scad_generic(part):
 
     #get the part from the function get_{name}"
     try:
-        func = globals()[f"get_{name}"]    
+        func = globals()[f"scad.get_{name}"]    
     except KeyError:
         func = None
     # test if func exists
     if callable(func):            
         func(thing, **kwargs)        
     else:            
-        get_base(thing, **kwargs)   
+        scad.get_base(thing, **kwargs)   
 
     oomp_mode = kwargs.get("oomp_mode", "project")
     
