@@ -47,8 +47,8 @@ def make_scad_generic(part):
 
     #get the part from the function get_{name}"
     try:
-        func = globals()[f"scad.get_{name}"]    
-    except KeyError:
+        func = getattr(scad, f"get_{name}")
+    except AttributeError:
         func = None
     # test if func exists
     if callable(func):            
