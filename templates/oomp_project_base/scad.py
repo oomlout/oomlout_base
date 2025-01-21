@@ -110,6 +110,7 @@ def make_scad(**kwargs):
         p3["width"] = 3
         p3["height"] = 3
         #p3["thickness"] = 6
+        #p3["extra"] = ""
         part["kwargs"] = p3
         nam = "base"
         part["name"] = nam
