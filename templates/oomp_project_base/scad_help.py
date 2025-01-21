@@ -92,6 +92,7 @@ def make_scad_generic(part):
     oomp_id = oomp_id[:-1]
     part["id"] = oomp_id
     folder = f"parts/{oomp_id}"
+    folder_scad_ouput = f"scad_output/{descmain}"
 
     for mode in modes:
         depth = thing.get(
@@ -108,7 +109,18 @@ def make_scad_generic(part):
 
         opsc.opsc_make_object(f'{folder}/{mode}.scad', thing["components"], mode=mode, save_type=save_type, overwrite=overwrite, layers=layers, tilediff=tilediff, start=start)  
 
-    
+        #copy folder to scad_output_folder
+        if True:
+            print(f"copying {folder} to {folder_scad_ouput}")
+            import os
+            if not os.path.exists(folder_scad_ouput):
+                os.makedirs(folder_scad_ouput)
+            if os.name == 'nt':
+                #copy a full directory auto overwrite
+                command = f'xcopy "{folder}" "{folder_scad_ouput}" /E /I /Y'
+                            #print(command)
+                os.system(command)
+        
 
 
     yaml_file = f"{folder}/working.yaml"
