@@ -3,7 +3,7 @@ import glob
 
 def main(**kwargs):
     directories_to_delete = []
-    directories_to_delete.append("temporary")
+    #directories_to_delete.append("temporary")
     directories_to_delete.append("scad_output")
     directories_to_delete.append("parts")
     directories_to_delete.append("data")
@@ -50,8 +50,12 @@ def main(**kwargs):
                     if os.path.exists(directory):
                         for root, dirs, files in os.walk(directory):
                             if len(dirs) == 0 and len(files) == 0:
-                                os.rmdir(root)
-                                print(f"deleted {root}")
+                                try:
+                                    os.rmdir(root)
+                                    print(f"deleted {root}")
+                                except:
+                                    print(f".........................   failed to delete {root}")
+                                    pass
         else:
             print("not deleting files")
 
