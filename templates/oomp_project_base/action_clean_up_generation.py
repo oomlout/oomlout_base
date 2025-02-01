@@ -10,10 +10,16 @@ def main(**kwargs):
     directories_to_delete.append("navigation_oobb")
     directories_to_delete.append("navigation_oomp")
     directories_to_delete.append("oolc_production")
+    directories_to_delete.append("source_files")
 
     files_to_save = []
     files_to_save.append("image.jpg")
-    files_to_save.append("image_1.jpg")
+    files_to_save.append("working.yaml")
+    max_range = 20
+    
+    for i in range(1,max_range):
+        files_to_save.append(f"image_{i}.jpg")
+        files_to_save.append(f"oolc_{i}.cdr")
 
     files_to_delete = []
 
