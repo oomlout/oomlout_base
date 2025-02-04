@@ -65,6 +65,9 @@ def make_scad_generic(part):
         new_size = current_size.replace(f"{project_name}_", "")
         descmain = f"{new_size}_{current_description_main}"
         kwargs["oomp_description_main"] = f"{descmain}"
+        descextra = ""
+        current_description_extra = thing.get("description_extra", "")
+        descextra = f"{current_description_extra}"
     elif oomp_mode == "oobb":
         current_description_main = thing.get("description_main", "default")        
         kwargs["oomp_description_main"] = f"{current_description_main}"
@@ -92,6 +95,8 @@ def make_scad_generic(part):
     part["id"] = oomp_id
     folder = f"parts/{oomp_id}"
     folder_scad_ouput = f"scad_output/{descmain}"
+    if descextra != "":
+        folder_scad_ouput += f"_{descextra}"
 
     for mode in modes:
         depth = thing.get(
