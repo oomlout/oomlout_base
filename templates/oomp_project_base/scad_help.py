@@ -65,7 +65,7 @@ def make_scad_generic(part):
         new_size = current_size.replace(f"{project_name}_", "")
         descmain = f"{new_size}_{current_description_main}"
         kwargs["oomp_description_main"] = f"{descmain}"
-        descextra = ""
+        descextra = thing.get("extra", "")
         current_description_extra = thing.get("description_extra", "")
         descextra = f"{current_description_extra}"
     elif oomp_mode == "oobb":
