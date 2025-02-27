@@ -20,6 +20,8 @@ def main(**kwargs):
     if True:
         #prompt for the name of the new project
         project_name = input("Project Name: ")
+        #clip to max 99 characters
+        project_name = project_name[:99]
         if project_type == "git":
             directory_project = f'c:\\gh\\{project_name}'
         else:
