@@ -6,6 +6,9 @@ def main(**kwargs):
     url_project_base_google_docs = "https://docs.google.com/document/d/1kq0wAvB6xJ0g4aAaEd-CLikVnkbmCYqg_ufLErMCwQo/edit"
     #open the google docs
     os.system(f'start {url_project_base_google_docs}')
+    #open hardware spreadsheet
+    url_oomp_open_hardware_spreadsheet = "https://docs.google.com/document/d/1w2YXTGAi3CJBH51rvx9MS1SsJaPUdVnEo-PXjtVu5WQ/edit?tab=t.0"
+    os.system(f'start {url_oomp_open_hardware_spreadsheet}')
 
 
     #get the project name    
