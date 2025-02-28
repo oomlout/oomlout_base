@@ -15,11 +15,11 @@ oomp_open_hardware_project_repo: ''
   #   source_file: ""
   #  - destination_file: "kicad/working.kicad_board"
   #     source_file: ""
-  #  - destination_file: "license.txt"
-  #     source_file: ""
+  #  - destination_file: "license_source.txt"
+  #     source_file: "license.txt"
   #  - destination_file: "readme_source.md"
-  #     source_file: ""
-  #  - destination_file: "image.jpg"
+  #     source_file: "readme.md"
+  #  - destination_file: "image_source.jpg"
   #     source_file: ""
 # oshwa_registration_number: 'us002319'
 # oshwa_registration_link: 'https://certification.oshwa.org/us002319.html'
