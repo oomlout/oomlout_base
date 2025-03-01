@@ -96,6 +96,7 @@ def make_scad_generic(part):
     oomp_id = ""
     for key in oomp_keys:
         deet = part.get(key, "")
+        deet = deet.replace(".","_")
         if deet != "":
             oomp_id += f"{deet}_"
     oomp_id = oomp_id[:-1]
