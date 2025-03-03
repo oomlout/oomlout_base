@@ -14,7 +14,7 @@ def main(**kwargs):
 
     files_to_save = []
     files_to_save.append("image.jpg")
-    files_to_save.append("working.yaml")
+    #files_to_save.append("working.yaml")
     max_range = 20
     
     for i in range(1,max_range):
