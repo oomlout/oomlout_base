@@ -17,7 +17,7 @@ def main(**kwargs):
     #files_to_delete.append('action_build_oomp.py')
     files_to_delete.append('action_build_release.py')
     files_to_delete.append('action_clean_up_generation.py')
-    files_to_delete.append('action_generate_all_no_click.py')
+    #files_to_delete.append('action_generate_all_no_click.py')
     files_to_delete.append('Backup_of_working.cdr')
     files_to_delete.append('generate_all.bat')
     files_to_delete.append('generate_all_missing.bat')
@@ -44,7 +44,7 @@ def main(**kwargs):
     folders_to_delete = []
     folders_to_delete.append('kicad')
     folders_to_delete.append('oolc_production')
-    folders_to_delete.append('source_files')
+    #folders_to_delete.append('source_files')
     folders_to_delete.append('three_d_printing')
 
 
