@@ -15,10 +15,10 @@ def main(**kwargs):
     clone = True
     install = True
     
-    #pip = False
-    path = False
-    #pythonpath = False
-    #openscadpath = False
+    pip = False
+    #path = False
+    pythonpath = False
+    openscadpath = False
     #clone = False
     #install = False
 
