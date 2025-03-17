@@ -4,15 +4,15 @@ def main(**kwargs):
     pass
     files_to_delete = []
     #configuration
-    files_to_delete.append('configuration\\filter.yaml')
-    #files_to_delete.append('configuration\\filter_default.yaml')    
+    #files_to_delete.append('configuration\\filter.yaml')
+    files_to_delete.append('configuration\\filter_default.yaml')    
     files_to_delete.append('configuration\\generate_release.yaml')
     files_to_delete.append('configuration\\oomlout_oomp_utility_label_generation_configuration.yaml')
     files_to_delete.append('configuration\\oomlout_oomp_utility_oomlout_generate_report_configuration.yaml')
-    files_to_delete.append('configuration\\repos_source.yaml')
-    #files_to_delete.append('configuration\\repos_source_default.yaml')
-    files_to_delete.append('configuration\\utility_source.yaml')
-    #files_to_delete.append('configuration\\utility_source_default.yaml')
+    #files_to_delete.append('configuration\\repos_source.yaml')
+    files_to_delete.append('configuration\\repos_source_default.yaml')
+    #files_to_delete.append('configuration\\utility_source.yaml')
+    files_to_delete.append('configuration\\utility_source_default.yaml')
 
     files_to_delete.append('a_clean_for_base_oomp.py')
     files_to_delete.append('action_build_oomp.py')
