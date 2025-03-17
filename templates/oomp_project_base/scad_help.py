@@ -201,8 +201,15 @@ def generate_navigation(folder="parts", sort=["width", "height", "thickness"]):
                 for s in sort:
                     if s == "name":
                         ex = part.get("name", "default")
-                    else:
+                    else:                        
                         ex = kwarg_copy.get(s, "default")
+                        #if ex is a list
+                        if isinstance(ex, list):
+                            ex_string = ""
+                            for e in ex:
+                                ex_string += f"{e}_"
+                            ex = ex_string[:-1]
+                            ex = ex.replace(".","d")                            
                     folder_extra += f"{s}_{ex}/"
 
                 #replace "." with d
