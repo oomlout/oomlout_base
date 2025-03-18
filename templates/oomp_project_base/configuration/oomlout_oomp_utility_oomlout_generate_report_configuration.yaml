@@ -5,7 +5,6 @@ outputs:
       - "short_code"
       - "name"
       - "bip_39_word_dash_2"
-      - "oomp_id"
       - "classification"
       - "type"
       - "size"
