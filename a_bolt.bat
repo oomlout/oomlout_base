@@ -8,3 +8,5 @@ set product_path=C:\gh\company_oomlout_product_bolt_prototyping_tin_hardware_scr
 
 start %product_path%\working_label_front.cdr
 start %product_path%\working.cdr 
+
+start https://docs.google.com/document/d/1W_9NpHvelY4RW8J0hInU_Ap625StK6M9uRsHIM8c5qI/edit?tab=t.0
