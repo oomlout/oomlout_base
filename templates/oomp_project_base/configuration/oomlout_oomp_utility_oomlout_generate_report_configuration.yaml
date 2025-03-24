@@ -4,7 +4,7 @@ outputs:
     keys: 
       - "short_code"
       - "name"
-      - "bip_39_word_dash_2"
+      - "bip_39_word_underscore_2"
       - "classification"
       - "type"
       - "size"
