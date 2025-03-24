@@ -53,6 +53,7 @@ def main(**kwargs):
     folders_to_delete.append('scad_output')
     folders_to_delete.append('data')
     folders_to_delete.append('temporary')
+    
 
     #remove all files then remove directory recursively use a system call
     print('Deleting folders')
