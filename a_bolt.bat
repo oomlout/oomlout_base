@@ -1,4 +1,4 @@
 
-call a_git_directory_full.bat oomlout_bolt_product_hardware_screw_countersunk_m3_black
+call a_git_directory_full.bat company_oomlout_product_bolt_prototyping_tin_hardware_screw_countersunk_m3_black
 call a_git_directory_full.bat oomlout_oomp_version_1_project_bolt
 
