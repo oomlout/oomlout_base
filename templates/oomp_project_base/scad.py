@@ -23,11 +23,17 @@ def make_scad(**kwargs):
     oomp_mode = "project"
     #oomp_mode = "oobb"
 
+    test = False
+    #test = True
+
     if typ == "all":
-        filter = ""; save_type = "all"; navigation = True; overwrite = True; modes = ["3dpr"]; oomp_run = True
-        #filter = ""; save_type = "all"; navigation = True; overwrite = True; modes = ["3dpr"]; oomp_run = True
+        filter = ""; save_type = "all"; navigation = True; overwrite = True; modes = ["3dpr"]; oomp_run = True; test = False
+        #default
+        #filter = ""; save_type = "all"; navigation = True; overwrite = True; modes = ["3dpr"]; oomp_run = True; test = False
     elif typ == "fast":
         filter = ""; save_type = "none"; navigation = False; overwrite = True; modes = ["3dpr"]; oomp_run = False
+        #default
+        #filter = ""; save_type = "none"; navigation = False; overwrite = True; modes = ["3dpr"]; oomp_run = False
     elif typ == "manual":
     #filter
         filter = ""
@@ -123,7 +129,9 @@ def make_scad(**kwargs):
         part["name"] = nam
         if oomp_mode == "oobb":
             p3["oomp_size"] = nam
-        #parts.append(part)
+        if not test:
+            pass
+            #parts.append(part)
 
 
     kwargs["parts"] = parts
