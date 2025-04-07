@@ -1,6 +1,7 @@
 import shutil
 import os
 import yaml
+import action_new_doc
 
 def main(**kwargs):
     url_project_base_google_docs = "https://docs.google.com/document/d/1kq0wAvB6xJ0g4aAaEd-CLikVnkbmCYqg_ufLErMCwQo/edit"
@@ -141,6 +142,12 @@ def main(**kwargs):
     if True:
         file_path = f"{directory_project}\\working.cdr"
         os.system(f'start {file_path}')
+
+    #make a new doc
+    if True:
+        #open the template
+        action_new_doc.main(doc_name=project_name.replace("_", " "))
+
 
 if __name__ == '__main__':
     kwargs = {}
