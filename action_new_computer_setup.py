@@ -16,10 +16,10 @@ def main(**kwargs):
     install = True
     
     pip = False
-    #path = False
+    path = False
     pythonpath = False
     openscadpath = False
-    #clone = False
+    clone = False
     #install = False
 
     #run python_pip.bat

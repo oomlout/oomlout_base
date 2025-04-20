@@ -869,9 +869,10 @@ def oomAddToFile(fileName, line, utf=False):
 def oomMakeDir(dir):
     Path(dir).mkdir(parents=True, exist_ok=True)
 
-from distutils.dir_util import copy_tree
+
 
 def oomCopyDir(src,dst):
+    from distutils.dir_util import copy_tree
     oomMakeDir(src)
     copy_tree(src,dst)
 
