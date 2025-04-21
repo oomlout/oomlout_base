@@ -15,7 +15,7 @@ def main(**kwargs):
     files_to_delete.append('configuration\\utility_source_default.yaml')
 
     files_to_delete.append('a_clean_for_base_oomp.py')
-    files_to_delete.append('action_build_oomp.py')
+    #files_to_delete.append('action_build_oomp.py')
     files_to_delete.append('action_build_release.py')
     #files_to_delete.append('action_clean_up_generation.py')
     #files_to_delete.append('action_generate_all_no_click.py')
