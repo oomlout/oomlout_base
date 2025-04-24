@@ -8,6 +8,7 @@ import copy
 def main(**kwargs):
     print("action_new_computer_setup.py main()")
     
+    git_long_directory = True
     pip = True
     path = True
     pythonpath = True
@@ -15,12 +16,18 @@ def main(**kwargs):
     clone = True
     install = True
     
+    #git_long_directory = False
     pip = False
     path = False
     pythonpath = False
     openscadpath = False
-    clone = False
+    #clone = False
     #install = False
+
+    if git_long_directory:
+        print("doing all the git stuff")
+        os.system("action_git_long_directory.bat")
+        
 
     #run python_pip.bat
     if pip:     
