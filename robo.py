@@ -33,6 +33,36 @@ def robo_chrome_open_url(**kwargs):
     os.system(f"start chrome {url}")
     robo_delay(delay=delay)
 
+
+
+
+def robo_file_copy(**kwargs):
+
+    method = kwargs.get('method', 'shutil')
+
+
+    file_source = kwargs.get('file_source', '')
+    file_destination = kwargs.get('file_destination', '')
+    if file_source != "" and file_destination != "":
+        if method == 'xcopy':
+            #check if the file exists
+            if os.path.isfile(file_source):        
+                print(f"copying {file_source} to {file_destination}")
+                #use xcopy with overwrite and no prompt
+                os.system(f"xcopy {file_source} {file_destination} /Y /N /I")
+            else:
+                print(f"file {file_source} does not exist")
+        elif method == 'shutil':
+            #check if the file exists
+            if os.path.isfile(file_source):
+                print(f"copying {file_source} to {file_destination}")
+                #use shutil to copy the file
+                import shutil
+                shutil.copy(file_source, file_destination)
+            else:
+                print(f"file {file_source} does not exist")
+
+
 def robo_keyboard_close_tab(**kwargs):
     robo_chrome_close_tab(**kwargs)
 
@@ -151,3 +181,40 @@ def robo_mouse_click(**kwargs):
     pos = position
     pyautogui.click(pos[0], pos[1], button=button)
     robo_delay(delay=delay)
+
+def robo_pdf_from_svg(**kwargs):
+    file_input = kwargs.get('file_input', '')
+    file_output = kwargs.get('file_output', '')
+    if file_output == '':
+        file_output = file_input.replace('.svg', '.pdf')
+    #convert using call to inkscape command line
+    print(f"Converting {file_input} to {file_output}...")
+    os.system(f"inkscape {file_input} --export-filename={file_output}")
+
+def robo_pdf_merge(**kwargs):
+    import PyPDF2
+    folder = kwargs.get('folder', '')
+    fil = kwargs.get('files', '')
+    filters = kwargs.get('filters', ['.pdf'])
+    file_output = kwargs.get('file_output', 'merged.pdf')
+    #if filter is a string make it an array
+    if isinstance(filters, str):
+        filter = [filter]
+    if fil == '':
+        fil = []
+        for root, dirs, files in os.walk(folder):
+            for file in files:
+                #only include if all filters are in file
+                if all(f in file for f in filters):
+                    fil.append(os.path.join(root, file))
+
+    
+    
+    #merge the pdf files
+    print(f"Merging {len(files)} pdf files into {file_output}...")
+    merger = PyPDF2.PdfMerger()
+    for pdf in fil:
+        print(f"  adding {pdf}")
+        merger.append(pdf)
+    merger.write(file_output)
+    merger.close()
