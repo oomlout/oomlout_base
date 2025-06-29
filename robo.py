@@ -205,13 +205,14 @@ def robo_pdf_merge(**kwargs):
         for root, dirs, files in os.walk(folder):
             for file in files:
                 #only include if all filters are in file
-                if all(f in file for f in filters):
-                    fil.append(os.path.join(root, file))
+                file_full = os.path.join(root, file)
+                if all(f in file_full for f in filters):
+                    fil.append(file_full)
 
     
     
     #merge the pdf files
-    print(f"Merging {len(files)} pdf files into {file_output}...")
+    print(f"Merging {len(fil)} pdf files into {file_output}...")
     merger = PyPDF2.PdfMerger()
     for pdf in fil:
         print(f"  adding {pdf}")
