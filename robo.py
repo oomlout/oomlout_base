@@ -4,6 +4,7 @@ import random
 import time
 import os
 
+
 def robo_chatgpt_prompt_type(**kwargs):
     position = kwargs.get('position', [0, 0])
     robo_mouse_click(position=position)
@@ -70,11 +71,12 @@ def robo_keyboard_copy(**kwargs):
     delay = kwargs.get('delay', 1)
     position = kwargs.get('position', [0, 0])
     #click positionem of 
-    pos = position
-    pyautogui.click(pos[0], pos[1])
+    if position != [0, 0]:
+        pos = position
+        pyautogui.click(pos[0], pos[1])
     #copy the text from the clipboard
-    pyautogui.hotkey('ctrl', 'a')
-    time.sleep(0.5)
+        pyautogui.hotkey('ctrl', 'a')
+        time.sleep(0.5)
     pyautogui.hotkey('ctrl', 'c')
     time.sleep(0.5)
     #get the text from the clipboard
@@ -143,6 +145,13 @@ def robo_keyboard_press_generic(**kwargs):
         pyautogui.press(string)
         robo_delay(delay=delay)
 
+def robo_keyboard_select_all(**kwargs):
+    delay = kwargs.get('delay', 1)
+    #select all
+    print("selecting all")
+    pyautogui.hotkey('ctrl', 'a')
+    time.sleep(0.5)
+    robo_delay(delay=delay)
 
 def robo_delay(**kwargs):
     delay = kwargs.get('delay', 1)
@@ -182,6 +191,28 @@ def robo_mouse_click(**kwargs):
     pyautogui.click(pos[0], pos[1], button=button)
     robo_delay(delay=delay)
 
+def robo_screenshot(**kwargs):
+    position = kwargs.get('position', [0, 0])
+    #if position is only two values add size to it
+    if len(position) == 2:
+        size = kwargs.get('size', [1920, 1080])
+        position = [position[0], position[1], position[0] + size[0], position[1] + size[1]]
+    delay = kwargs.get('delay', 1)
+    folder = kwargs.get('folder', '')
+    file_name = kwargs.get('file_name', 'screenshot.png')
+    #take a screenshot
+    print(f"Taking a screenshot at {position}...")
+    pos = position
+    screenshot = pyautogui.screenshot(region=(pos[0], pos[1], pos[2]-pos[0], pos[3]-pos[1]))
+    #save the screenshot
+    if folder != "":
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+        file_name = f"{folder}\\{file_name}"
+        print(f"Saving the screenshot to {file_name}...")
+        screenshot.save(file_name)
+    robo_delay(delay=delay)
+    
 def robo_pdf_from_svg(**kwargs):
     file_input = kwargs.get('file_input', '')
     file_output = kwargs.get('file_output', '')

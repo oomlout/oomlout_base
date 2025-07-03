@@ -214,7 +214,7 @@ def generate_navigation(folder="parts", sort=["width", "height", "thickness"]):
 
                 #replace "." with d
                 folder_extra = folder_extra.replace(".","d")            
-                folder_destination = f"{folder_navigation}/{folder_extra}"
+                folder_destination = f"{folder_navigation}/{folder_extra}".lower()
                 if not os.path.exists(folder_destination):
                     os.makedirs(folder_destination)
                 if os.name == 'nt':
