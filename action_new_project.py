@@ -48,23 +48,41 @@ def main(**kwargs):
         file_skip.append("working_manual_teardown.yaml")
         file_skip.append("working_parts.ods")
         #copy files and directories using recusrion and include hidden files that start with a .
-        import glob
-        files = glob.glob(f"{directory_base_project}/**/*", recursive=True)
-        hidden_files = glob.glob(f"{directory_base_project}/**/.*", recursive=True)
-        files.extend(hidden_files)
-        for file_name in files:        
-            file_name = file_name.replace("/", "\\")
-            file_name = file_name.replace(f"{directory_base_project}\\", "")
-            if file_name in file_skip:
-                continue
-            file_path = os.path.join(directory_base_project, file_name)
-            file_path_new = os.path.join(directory_project, file_name)
-            if os.path.isdir(file_path):
-                if not os.path.exists(file_path_new):
-                    os.mkdir(file_path_new)            
-            else:
-                shutil.copy(file_path, file_path_new)
-            
+        #glob method misses .gitignore
+        if False:
+            import glob
+            files = glob.glob(f"{directory_base_project}/**/*", recursive=True)
+            hidden_files = glob.glob(f"{directory_base_project}/**/.*", recursive=True)
+            files.extend(hidden_files)
+            for file_name in files:        
+                file_name = file_name.replace("/", "\\")
+                file_name = file_name.replace(f"{directory_base_project}\\", "")
+                if file_name in file_skip:
+                    continue
+                file_path = os.path.join(directory_base_project, file_name)
+                file_path_new = os.path.join(directory_project, file_name)
+                if os.path.isdir(file_path):
+                    if not os.path.exists(file_path_new):
+                        os.mkdir(file_path_new)            
+                else:
+                    shutil.copy(file_path, file_path_new)
+        #use os.walk
+        if True:
+            for dirpath, dirnames, filenames in os.walk(directory_base_project):
+                #print(f"dirpath: {dirpath}")
+                #print(f"dirnames: {dirnames}")
+                #print(f"filenames: {filenames}")
+                for dirname in dirnames:
+                    #create the directory in the new project
+                    new_dir = os.path.join(directory_project, dirname)
+                    if not os.path.exists(new_dir):
+                        os.mkdir(new_dir)
+                for filename in filenames:
+                    if filename in file_skip:
+                        continue
+                    file_path = os.path.join(dirpath, filename)
+                    file_path_new = os.path.join(directory_project, filename)
+                    shutil.copy(file_path, file_path_new)
 
     #create the working_manual.yaml
     if True:
