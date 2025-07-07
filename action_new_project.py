@@ -47,9 +47,11 @@ def main(**kwargs):
         #implementing later
         file_skip.append("working_manual_teardown.yaml")
         file_skip.append("working_parts.ods")
-        #copy files and directories using recusrion
+        #copy files and directories using recusrion and include hidden files that start with a .
         import glob
-        files = glob.glob(f'{directory_base_project}/**/*', recursive=True)
+        files = glob.glob(f"{directory_base_project}/**/*", recursive=True)
+        hidden_files = glob.glob(f"{directory_base_project}/**/.*", recursive=True)
+        files.extend(hidden_files)
         for file_name in files:        
             file_name = file_name.replace("/", "\\")
             file_name = file_name.replace(f"{directory_base_project}\\", "")

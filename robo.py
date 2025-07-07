@@ -119,7 +119,11 @@ def robo_keyboard_press_space(**kwargs):
     kwargs["string"] = "space"
     robo_keyboard_press_generic(**kwargs)
 
+
 #press string
+def robo_keyboard_send(**kwargs):
+    robo_keyboard_press_string(**kwargs)
+        
 def robo_keyboard_press_string(**kwargs):
     string = kwargs.get('string', '')
     delay = kwargs.get('delay', 1)
