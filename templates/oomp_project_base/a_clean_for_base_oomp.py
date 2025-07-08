@@ -29,7 +29,7 @@ def main(**kwargs):
     files_to_delete.append('scad.py')
     files_to_delete.append('scad_help.py')
     #files_to_delete.append('working.cdr')
-    files_to_delete.append('working.py')
+    #files_to_delete.append('working.py')
     files_to_delete.append('working.scad')
     files_to_delete.append('working_xlsx.xlsx')
     files_to_delete.append('a_oomp_open_hardware_source_clean.py')
