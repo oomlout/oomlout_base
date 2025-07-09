@@ -3,6 +3,16 @@ import clipboard
 import random
 import time
 import os
+import sys
+
+# Import platform-specific key detection modules
+if sys.platform == "win32":
+    import msvcrt
+else:
+    # For Linux/Mac, we'll use a simpler approach
+    import select
+    import tty
+    import termios
 
 
 def robo_chatgpt_prompt_type(**kwargs):
@@ -157,6 +167,23 @@ def robo_keyboard_select_all(**kwargs):
     time.sleep(0.5)
     robo_delay(delay=delay)
 
+def check_key_pressed():
+    """Check if any key is pressed and return it, or None if no key is pressed"""
+    try:
+        if sys.platform == "win32":
+            if msvcrt.kbhit():
+                key = msvcrt.getch().decode('utf-8').lower()
+                return key
+        else:
+            # For Linux/Mac - simplified approach
+            if select.select([sys.stdin], [], [], 0) == ([sys.stdin], [], []):
+                key = sys.stdin.read(1).lower()
+                return key
+    except Exception as e:
+        # If key detection fails, just continue without it
+        pass
+    return None
+
 def robo_delay(**kwargs):
     delay = kwargs.get('delay', 1)
     rand = kwargs.get('rand', 0)
@@ -169,19 +196,31 @@ def robo_delay(**kwargs):
     if delay <= 1:
         time.sleep(delay)
     elif delay > 5:
-        print(f"<<<<<>>>>> waiting for {delay} seconds")
+        print(f"<<<<<>>>>> waiting for {delay} seconds (press 's' to skip)")
     
         splits = 10
         for i in range(splits):
             #print the progress bar
             print(".", end='', flush=True)
-            time.sleep(delay/splits)
+            for i in range(int(delay/splits)):
+                # Check if 's' key is pressed
+                key = check_key_pressed()
+                if key == 's':
+                    print("\nDelay skipped by pressing 's' key")
+                    return
+                time.sleep(1)
         print("")
     else:
-        print(f"waiting for {delay} seconds", end='', flush=True)
+        print(f"waiting for {delay} seconds (press 's' to skip)", end='', flush=True)
         for i in range(delay):
             #print the progress bar
             print(".", end='', flush=True)
+            # Check if 's' key is pressed
+            key = check_key_pressed()
+            if key == 's':
+                print("\nDelay skipped by pressing 's' key")
+                time.sleep(5)
+                return
             time.sleep(1)
         print("")
 
