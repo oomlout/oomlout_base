@@ -45,7 +45,334 @@ def robo_chrome_open_url(**kwargs):
     robo_delay(delay=delay)
 
 
+#corel things
 
+def robo_corel_copy(**kwargs):
+    delay = kwargs.get('delay', 1)
+    copy_mode = kwargs.get('copy_mode', 'all')
+    message = kwargs.get('message', f"Copying the selected items in Corel...")
+    #copy the selected items in corel
+    print(message)
+    #press ctrl a
+    if copy_mode == 'all':        
+        robo_keyboard_press_ctrl_generic(string='a', delay=delay)
+    #press ctrl c
+    robo_keyboard_press_ctrl_generic(string='c', delay=delay)
+    robo_delay(delay=delay)
+
+def robo_corel_close_file(**kwargs):
+    delay = kwargs.get('delay', 5)
+    save_style = kwargs.get('save_style', "y")
+    message = kwargs.get('message', f"Closing Corel...")
+    #close corel
+    print(message)
+    #press alt_f
+    robo_keyboard_press_alt_f(delay=1)
+    #press c
+    robo_keyboard_press_generic(string='c', delay=1)
+    #if save_style is y then save the file    
+    robo_keyboard_send(string=save_style, delay=1)
+    #wait for the delay
+    robo_delay(delay=delay)
+
+def robo_corel_export_file(**kwargs):
+    file_name = kwargs.get('file_name', '')
+    file_type = kwargs.get('file_type', 'pdf')
+    directory = kwargs.get('directory', '')
+    if directory != '':
+        file_name = os.path.join(directory, file_name)
+    file_name_absolute = os.path.abspath(file_name)
+    delay = kwargs.get('delay', 10)
+    message = kwargs.get('message', f"Exporting the file: {file_name} as {file_type}...")
+    print(message)
+    #export the file in corel    
+    if False:
+        robo_keyboard_press_alt_f(delay=1)
+        #send h twice
+        robo_keyboard_press_generic(string='h', repeat=2, delay=1)
+        #send enter
+        robo_keyboard_press_enter(delay=1)
+        #send filename absolute
+        robo_keyboard_send(string=file_name_absolute, delay=2)
+        #press enter to confirm
+        robo_keyboard_press_enter(delay=2)
+        #send y to overwrite
+        robo_keyboard_send(string='y', delay=2)
+        robo_delay(delay=delay)
+    else:
+        #select all
+        robo_keyboard_select_all(delay=2)
+        #send alt f
+        robo_keyboard_press_alt_f(delay=1)
+        #send e 
+        robo_keyboard_press_generic(string='e', delay=10)
+        #send tab
+        robo_keyboard_press_tab(delay=5, repeat=1)
+        #send file type
+        robo_keyboard_send(string=file_type, delay=5)
+        #send enter
+        robo_keyboard_press_enter(delay=5)
+        #shift tab once
+        robo_keyboard_press_tab_shift(delay=0.5, repeat=1)
+        #send filename absolute
+        robo_keyboard_send(string=file_name_absolute, delay=2)
+        #press enter to confirm
+        robo_keyboard_press_enter(delay=2)
+        #send y to overwrite
+        robo_keyboard_send(string='y', delay=5)
+        #press enter to confirm
+        robo_keyboard_press_enter(delay=5)
+        
+        robo_delay(delay=delay)
+
+        
+
+def robo_corel_open(**kwargs):
+    file_name = kwargs.get('file_name', '')
+    directory = kwargs.get('directory', '')
+    if directory != '':
+        file_name = os.path.join(directory, file_name)
+    delay = kwargs.get('delay', 45)
+    message = kwargs.get('message', f"Opening the file: {file_name}...")
+    #open the file in corel
+    print(message)
+    #os.system(f"start CorelDRW {file_name}")
+    os.system(f"start {file_name}")
+    robo_delay(delay=delay)
+
+
+def robo_corel_import_file(**kwargs):
+    file_name = kwargs.get('file_name', '')
+    directory = kwargs.get('directory', '')
+    x = kwargs.get('x', "")
+    y = kwargs.get('y', "")
+    width = kwargs.get('width', "")
+    height = kwargs.get('height', "")
+    max_dimension = kwargs.get('max_dimension', "")
+    if directory != '':
+        file_name = os.path.join(directory, file_name)
+    file_name_absolute = os.path.abspath(file_name)
+    delay = kwargs.get('delay', 10)
+    message = kwargs.get('message', f"Importing the file: {file_name} at position {x}, {y} with size {width}x{height} and max dimension {max_dimension}...")
+    print(message)
+    #import the file in corel
+    #press ctrl i
+    robo_keyboard_press_ctrl_i(delay=10)
+    #send file name absolute
+    robo_keyboard_send(string=file_name_absolute, delay=2)
+    #press enter to confirm
+    robo_keyboard_press_enter(delay=5)
+    #click in window
+    robo_mouse_click(position=[300, 300], delay=5)
+    robo_mouse_click(position=[300, 300], delay=5)
+    #if x, y, width, height are all skipped then just return
+    if x == "" and y == "" and width == "" and height == "" and max_dimension == "":
+
+        return
+    else:
+        if x != "" or y != "":
+            robo_corel_set_position(**kwargs)
+        if width != "" or height != "" or max_dimension != "":
+            robo_corel_set_size(**kwargs)
+
+def robo_corel_paste(**kwargs):
+    delay = kwargs.get('delay', 1)
+    message = kwargs.get('message', f"Pasting the copied items in Corel...")
+    x = kwargs.get('x', "")
+    y = kwargs.get('y', "")
+    width = kwargs.get('width', "")
+    height = kwargs.get('height', "")
+    max_dimension = kwargs.get('max_dimension', "")
+    #paste the copied items in corel
+    print(message)
+    #press ctrl v
+    robo_keyboard_press_ctrl_generic(string='v', delay=2)
+    #if x, y, width, height are all skipped then just return
+    if x != "" or y != "":
+        robo_corel_set_position(x=x, y=y)
+    if width != "" or height != "" or max_dimension != "":
+        robo_corel_set_size(width=width, height=height, max_dimension=max_dimension, delay=2)
+    robo_delay(delay=delay)
+
+def robo_corel_save(**kwargs):
+    message = kwargs.get('message', f"Saving the file")
+    #save the file in corel
+    print(message)
+    #press ctrl s
+    robo_keyboard_press_ctrl_generic(string='s', delay=10)
+
+
+def robo_corel_save_as(**kwargs):
+    
+    filename = kwargs.get('file_name', '')
+    directory = kwargs.get('directory', '')
+
+    if directory != '':
+        filename = os.path.join(directory, filename)
+    filename_absolute = os.path.abspath(filename)
+    message = kwargs.get('message', f"Saving the file {filename_absolute}")
+    #save the file in corel
+    print(message)
+    #move back and forth to enable the save so it's always six
+    #select all
+    if True:
+        robo_keyboard_select_all(delay=1)
+        #send left
+        robo_keyboard_press_left(delay=1)
+        #send right
+        robo_keyboard_press_right(delay=1)
+    
+    #press alt f
+    robo_keyboard_press_alt_f(delay=1)
+    #press down 6 times
+    robo_keyboard_press_down(delay=0.5, repeat=6)
+    #press enter
+    robo_keyboard_press_enter(delay=2)
+    #send the file name
+    robo_keyboard_send(string=filename_absolute, delay=2)
+    #press enter to confirm
+    robo_keyboard_press_enter(delay=2)
+    #y to overwrite
+    robo_keyboard_send(string='y', delay=2)
+    #wait 20 seconds
+    robo_delay(delay=20)
+
+def robo_corel_trace_clipart(**kwargs):
+    message = kwargs.get('message', f"Tracing the clipart")
+    #trace the clipart in corel
+    print(message)
+    #press alt b
+    robo_keyboard_press_alt_generic(string='b', delay=1)
+    #press o
+    robo_keyboard_send(string='o', delay=1)
+    #press right
+    robo_keyboard_press_right(delay=1)
+    #press down 5 times
+    robo_keyboard_press_down(delay=0.5, repeat=3)
+    #press enter
+    robo_keyboard_press_enter(delay=20)
+    #press tab 10 times
+    robo_keyboard_press_tab(delay=0.5, repeat=10)
+    #press space
+    robo_keyboard_press_space(delay=1)
+    #shift tab 6
+    robo_keyboard_press_tab_shift(delay=0.5, repeat=6)
+    #send ctrl select all
+    robo_keyboard_press_ctrl_generic(string='a', delay=1)
+    #send 10
+    robo_keyboard_send(string='10', delay=20)
+    #press shift tab 4 times
+    robo_keyboard_press_tab_shift(delay=0.5, repeat=4)
+    #press enter
+    robo_keyboard_press_enter(delay=10)
+
+def robo_corel_set_position(**kwargs):
+    x = kwargs.get('x', "")
+    y = kwargs.get('y', "")
+    
+    if x != "" and y != "":
+        print(f"Setting the position to {x}, {y}")
+        #send ctrl {enter}
+        robo_keyboard_press_ctrl_enter(delay=1)
+        #send tab
+        robo_keyboard_press_tab(delay=0.5)
+        robo_keyboard_send(string=str(x))
+        robo_keyboard_press_tab(delay=0.5)
+        robo_keyboard_send(string=str(y))
+        #press enter
+        robo_keyboard_press_enter(delay=0.5)
+
+def robo_corel_set_size(**kwargs):
+    width = kwargs.get('width', "")
+    height = kwargs.get('height', "")
+    max_dimension = kwargs.get('max_dimension', "")
+    delay = kwargs.get('delay', 2)
+
+    if width != "" and height != "":
+        #set the size of the object        
+        print(f"Setting the size to {width}x{height}")
+        
+        robo_keyboard_press_ctrl_enter(delay=1)
+        #send tab 3 times
+        robo_keyboard_press_tab(delay=0.5, repeat=3)
+        #send width
+        pyautogui.typewrite(f"{width}", interval=0.025)
+        robo_keyboard_press_tab(delay=0.5)
+        #send height
+        pyautogui.typewrite(f"{height}", interval=0.025)
+        robo_keyboard_press_enter(delay=0.5)
+    elif width != "" or height != "":        
+        #turn on the lock aspect ratio
+        if True:            
+            robo_keyboard_press_ctrl_enter(delay=1)
+            #send tab 7 times
+            robo_keyboard_press_tab(delay=0.5, repeat=7)
+            # send space
+            robo_keyboard_press_space(delay=0.5)
+        robo_keyboard_press_ctrl_enter(delay=1)
+        num_tabs = 3
+        dimen = width
+        if height != "":
+            num_tabs = 4
+            dimen = height
+        robo_keyboard_press_tab(delay=0.5, repeat=num_tabs)
+        #send dimension
+        pyautogui.typewrite(f"{dimen}", interval=0.025)
+        robo_keyboard_press_enter(delay=0.5)
+        #turn off the lock aspect ratio
+        if True:            
+            robo_keyboard_press_ctrl_enter(delay=1)
+            #send tab 7 times
+            robo_keyboard_press_tab(delay=0.5, repeat=7)
+            # send space
+            robo_keyboard_press_space(delay=0.5)
+    elif max_dimension != "":   
+        #turn on the lock aspect ratio
+        if True:            
+            robo_keyboard_press_ctrl_enter(delay=1)
+            #send tab 7 times
+            robo_keyboard_press_tab(delay=0.5, repeat=7)
+            # send space
+            robo_keyboard_press_space(delay=0.5)     
+        width_current = 0
+        robo_keyboard_press_ctrl_enter(delay=1)
+        #send tab 3 times
+        robo_keyboard_press_tab(delay=0.5, repeat=3)
+        try:
+            width_current = float(robo_keyboard_copy(**kwargs).replace(" mm", ""))
+        except Exception as e:
+            print(f"Error reading width: {e}")
+            width_current = 0
+        #send tab 1 times
+        robo_keyboard_press_tab(delay=0.5, repeat=1)
+        try:
+            height_current = float(robo_keyboard_copy(**kwargs).replace(" mm", ""))
+        except Exception as e:
+            print(f"Error reading height: {e}")
+            height_current = 0
+
+        if height_current > width_current:        
+            #send max dimension
+            robo_keyboard_send(string=str(max_dimension), delay=1)
+        else:
+            #send shift tab once
+            robo_keyboard_press_tab_shift(delay=0.5, repeat=1)
+            #send max dimension
+            robo_keyboard_send(string=str(max_dimension), delay=1)
+        #press enter
+        robo_keyboard_press_enter(delay=0.5)
+        #turn off the lock aspect ratio
+        if True:            
+            robo_keyboard_press_ctrl_enter(delay=1)
+            #send tab 7 times
+            robo_keyboard_press_tab(delay=0.5, repeat=7)
+            # send space
+            robo_keyboard_press_space(delay=0.5)
+
+    robo_delay(delay=delay)
+        
+
+    
 
 def robo_file_copy(**kwargs):
 
@@ -85,14 +412,61 @@ def robo_keyboard_copy(**kwargs):
         pos = position
         pyautogui.click(pos[0], pos[1])
     #copy the text from the clipboard
-        pyautogui.hotkey('ctrl', 'a')
-        time.sleep(0.5)
+    pyautogui.hotkey('ctrl', 'a')
+    time.sleep(0.5)
     pyautogui.hotkey('ctrl', 'c')
     time.sleep(0.5)
     #get the text from the clipboard
     clip = clipboard.paste()
     robo_delay(delay=delay)
     return clip
+
+def robo_keyboard_press_alt_f(**kwargs):
+    kwargs["string"] = "f"
+    robo_keyboard_press_alt_generic(**kwargs)
+
+def robo_keyboard_press_alt_generic(**kwargs):
+    string = kwargs.get('string', '')
+    delay = kwargs.get('delay', 1)
+    delay_keypress = kwargs.get('delay_keypress', 0.025)
+    repeat = kwargs.get('repeat', 1)
+    #press ctrl + string
+    if repeat > 1:
+        print(f"pressing alt + {string} {repeat} times")
+        for i in range(repeat):
+            pyautogui.hotkey('alt', string)
+            time.sleep(delay_keypress)
+        robo_delay(delay=delay)
+    else:
+        print(f"pressing alt + {string} once")
+        pyautogui.hotkey('alt', string)
+        robo_delay(delay=delay)
+
+def robo_keyboard_press_ctrl_generic(**kwargs):
+    string = kwargs.get('string', '')
+    delay = kwargs.get('delay', 1)
+    delay_keypress = kwargs.get('delay_keypress', 0.025)
+    repeat = kwargs.get('repeat', 1)
+    #press ctrl + string
+    if repeat > 1:
+        print(f"pressing ctrl + {string} {repeat} times")
+        for i in range(repeat):
+            pyautogui.hotkey('ctrl', string)
+            time.sleep(delay_keypress)
+        robo_delay(delay=delay)
+    else:
+        print(f"pressing ctrl + {string} once")
+        pyautogui.hotkey('ctrl', string)
+        robo_delay(delay=delay)
+
+def robo_keyboard_press_ctrl_enter(**kwargs):
+    kwargs["string"] = "enter"
+    robo_keyboard_press_ctrl_generic(**kwargs)
+
+
+def robo_keyboard_press_ctrl_i(**kwargs):
+    kwargs["string"] = "i"
+    robo_keyboard_press_ctrl_generic(**kwargs)
 
 #press esc
 def robo_keyboard_press_escape(**kwargs):
@@ -129,6 +503,15 @@ def robo_keyboard_press_space(**kwargs):
     kwargs["string"] = "space"
     robo_keyboard_press_generic(**kwargs)
 
+#press tab
+def robo_keyboard_press_tab(**kwargs):
+    kwargs["string"] = "tab"
+    robo_keyboard_press_generic(**kwargs)
+
+#press tab
+def robo_keyboard_press_tab_shift(**kwargs):
+    kwargs["string"] = "tab"
+    robo_keyboard_press_shift_generic(**kwargs)
 
 #press string
 def robo_keyboard_send(**kwargs):
@@ -158,6 +541,28 @@ def robo_keyboard_press_generic(**kwargs):
         print(f"pressing {string} once")
         pyautogui.press(string)
         robo_delay(delay=delay)
+
+def robo_keyboard_press_shift_generic(**kwargs):
+    string = kwargs.get('string', '')
+    delay = kwargs.get('delay', 1)
+    delay_keypress = kwargs.get('delay_keypress', 0.258)
+    repeat = kwargs.get('repeat', 1)
+    #press escape to close the menu
+    if repeat > 1:
+        print(f"pressing shift {string} {repeat} times")
+        for i in range(repeat):
+            pyautogui.keyDown('shift')
+            pyautogui.press(string)
+            pyautogui.keyUp('shift')
+            time.sleep(delay_keypress)
+        robo_delay(delay=delay)
+    else:
+        print(f"pressing shift {string} once")
+        pyautogui.keyDown('shift')
+        pyautogui.press(string)
+        pyautogui.keyUp('shift')
+        robo_delay(delay=delay)
+
 
 def robo_keyboard_select_all(**kwargs):
     delay = kwargs.get('delay', 1)
@@ -196,7 +601,7 @@ def robo_delay(**kwargs):
     if delay <= 1:
         time.sleep(delay)
     elif delay > 5:
-        print(f"<<<<<>>>>> waiting for {delay} seconds (press 's' to skip)")
+        print(f"<<<<<>>>>> waiting for {delay} seconds (press 's' to skip) or turn scroll lock off")
     
         splits = 10
         for i in range(splits):
@@ -207,6 +612,15 @@ def robo_delay(**kwargs):
                 key = check_key_pressed()
                 if key == 's':
                     print("\nDelay skipped by pressing 's' key")
+                    time.sleep(1)
+                    return
+                #check scroll lock state
+                import ctypes
+
+                if ctypes.windll.user32.GetKeyState(0x91) & 1 == 1:
+                    print("\Scroll Lock is OFF, skipping delay")
+                    time.sleep(2)
+                    pyautogui.press('scrolllock')
                     return
                 time.sleep(1)
         print("")
