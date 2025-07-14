@@ -266,7 +266,7 @@ def robo_corel_trace_clipart(**kwargs):
     #send ctrl select all
     robo_keyboard_press_ctrl_generic(string='a', delay=1)
     #send 10
-    robo_keyboard_send(string='10', delay=20)
+    robo_keyboard_send(string='0', delay=20)
     #press shift tab 4 times
     robo_keyboard_press_tab_shift(delay=0.5, repeat=4)
     #press enter
