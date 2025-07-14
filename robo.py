@@ -106,16 +106,22 @@ def robo_corel_export_file(**kwargs):
         robo_keyboard_press_alt_f(delay=1)
         #send e 
         robo_keyboard_press_generic(string='e', delay=10)
+        #send filename absolute
+        robo_keyboard_send(string=file_name_absolute, delay=2)
+        # #send right
+        # robo_keyboard_press_right(delay=2)
+        # #send left
+        # robo_keyboard_press_left(delay=2)
         #send tab
-        robo_keyboard_press_tab(delay=5, repeat=1)
+        #robo_keyboard_press_tab(delay=5, repeat=1)
+        #mouse click because tab doesn't always work
+        robo_mouse_click(position=[200, 475], delay=5)
+        robo_mouse_click(position=[200, 475], delay=5)
         #send file type
         robo_keyboard_send(string=file_type, delay=5)
         #send enter
-        robo_keyboard_press_enter(delay=5)
-        #shift tab once
-        robo_keyboard_press_tab_shift(delay=0.5, repeat=1)
-        #send filename absolute
-        robo_keyboard_send(string=file_name_absolute, delay=2)
+        robo_keyboard_press_enter(delay=5)      
+        
         #press enter to confirm
         robo_keyboard_press_enter(delay=2)
         #send y to overwrite
