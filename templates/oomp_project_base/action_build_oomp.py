@@ -1,5 +1,5 @@
 import os
-
+import copy
 
 def main(**kwargs):
     #clone or pull oomlout_oompbuilder into temporary/oomlout_oomp_builder
@@ -34,5 +34,13 @@ def main(**kwargs):
 
 
 if __name__ == '__main__':
-    kwargs = {}
+    #add args parse and add a filter -f option
+    import argparse
+    parser = argparse.ArgumentParser(description="Build OOMP parts using oomlout_oomp_builder.")
+    parser.add_argument('-f', '--filter', type=str, help="Filter for the build process.")
+    args = parser.parse_args()
+    #convert args to kwargs
+    kwargs = copy.deepcopy(vars(args))
+    print(f"kwargs: {kwargs}")
+    #kwargs = {}
     main(**kwargs)

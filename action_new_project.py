@@ -69,19 +69,19 @@ def main(**kwargs):
         #use os.walk
         if True:
             for dirpath, dirnames, filenames in os.walk(directory_base_project):
-                #print(f"dirpath: {dirpath}")
-                #print(f"dirnames: {dirnames}")
-                #print(f"filenames: {filenames}")
-                for dirname in dirnames:
-                    #create the directory in the new project
-                    new_dir = os.path.join(directory_project, dirname)
-                    if not os.path.exists(new_dir):
-                        os.mkdir(new_dir)
+                # Calculate the relative path from the base directory
+                relative_path = os.path.relpath(dirpath, directory_base_project)
+                # Construct the new directory path
+                new_dir_path = os.path.join(directory_project, relative_path)
+                # Create the directory in the new project if it doesn't exist
+                if not os.path.exists(new_dir_path):
+                    os.makedirs(new_dir_path)
+                # Copy files while preserving the directory structure
                 for filename in filenames:
                     if filename in file_skip:
                         continue
                     file_path = os.path.join(dirpath, filename)
-                    file_path_new = os.path.join(directory_project, filename)
+                    file_path_new = os.path.join(new_dir_path, filename)
                     shutil.copy(file_path, file_path_new)
 
     #create the working_manual.yaml
