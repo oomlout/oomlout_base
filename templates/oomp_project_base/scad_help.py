@@ -170,6 +170,7 @@ def make_scad_generic(part):
 def generate_navigation(folder="parts", sort=["width", "height", "thickness"]):
     #crawl though all directories in scad_output and load all the working.yaml files
     parts = {}
+    print(9)"Loading parts from {folder}...", end='', flush=True)
     for root, dirs, files in os.walk(folder):
         if 'working.yaml' in files:
             yaml_file = os.path.join(root, 'working.yaml')
@@ -185,7 +186,8 @@ def generate_navigation(folder="parts", sort=["width", "height", "thickness"]):
                     part_name = part_name.replace("/","").replace("\\","")
                     parts[part_name] = part
 
-                    print(f"Loaded {yaml_file}")
+                    #print(f"Loaded {yaml_file}")
+                    print(f".", end='', flush=True)
 
     pass
     
