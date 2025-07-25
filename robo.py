@@ -67,11 +67,11 @@ def robo_corel_close_file(**kwargs):
     #close corel
     print(message)
     #press alt_f
-    robo_keyboard_press_alt_f(delay=1)
+    robo_keyboard_press_alt_f(delay=5)
     #press c
-    robo_keyboard_press_generic(string='c', delay=1)
+    robo_keyboard_press_generic(string='c', delay=5)
     #if save_style is y then save the file    
-    robo_keyboard_send(string=save_style, delay=1)
+    robo_keyboard_send(string=save_style, delay=2)
     #wait for the delay
     robo_delay(delay=delay)
 
@@ -105,9 +105,7 @@ def robo_corel_export_file(**kwargs):
         #send alt f
         robo_keyboard_press_alt_f(delay=1)
         #send e 
-        robo_keyboard_press_generic(string='e', delay=10)
-        #send filename absolute
-        robo_keyboard_send(string=file_name_absolute, delay=2)
+        robo_keyboard_press_generic(string='e', delay=20)
         # #send right
         # robo_keyboard_press_right(delay=2)
         # #send left
@@ -115,13 +113,20 @@ def robo_corel_export_file(**kwargs):
         #send tab
         #robo_keyboard_press_tab(delay=5, repeat=1)
         #mouse click because tab doesn't always work
-        robo_mouse_click(position=[200, 475], delay=5)
-        robo_mouse_click(position=[200, 475], delay=5)
+        robo_mouse_click(position=[200, 429], delay=10)
+        robo_mouse_click(position=[200, 429], delay=10)
         #send file type
-        robo_keyboard_send(string=file_type, delay=5)
+        robo_keyboard_send(string=file_type, delay=10)
         #send enter
-        robo_keyboard_press_enter(delay=5)      
+        robo_keyboard_press_enter(delay=10)      
         
+        #sent shift tab once
+        robo_keyboard_press_tab_shift(delay=2, repeat=1)
+        #send file name absolute
+        #send filename absolute
+        robo_keyboard_send(string=file_name_absolute, delay=5)
+        
+
         #press enter to confirm
         robo_keyboard_press_enter(delay=2)
         #send y to overwrite
@@ -233,17 +238,65 @@ def robo_corel_save_as(**kwargs):
     #press down 6 times
     robo_keyboard_press_down(delay=0.5, repeat=6)
     #press enter
-    robo_keyboard_press_enter(delay=2)
+    robo_keyboard_press_enter(delay=5)
     #send the file name
-    robo_keyboard_send(string=filename_absolute, delay=2)
+    robo_keyboard_send(string=filename_absolute, delay=5)
     #press enter to confirm
-    robo_keyboard_press_enter(delay=2)
+    robo_keyboard_press_enter(delay=5)
     #y to overwrite
-    robo_keyboard_send(string='y', delay=2)
+    robo_keyboard_send(string='y', delay=5)
     #wait 20 seconds
     robo_delay(delay=20)
 
+def robo_corel_trace(**kwargs):
+    return robo_corel_trace_lineart(**kwargs)
+
 def robo_corel_trace_clipart(**kwargs):
+    message = kwargs.get('message', f"Tracing the clipart")
+    #trace the clipart in corel
+    print(message)
+    #press alt b
+    robo_keyboard_press_alt_generic(string='b', delay=1)
+    #press o
+    robo_keyboard_send(string='o', delay=1)
+    #press right
+    robo_keyboard_press_right(delay=1)
+    #press down 5 times
+    robo_keyboard_press_down(delay=0.5, repeat=3)
+    #press enter
+    robo_keyboard_press_enter(delay=20)
+    #press tab 10 times
+    robo_keyboard_press_tab(delay=0.5, repeat=10)
+    #press space
+    robo_keyboard_press_space(delay=1)
+    #shift tab 6
+    robo_keyboard_press_tab_shift(delay=0.5, repeat=6)
+    #send ctrl select all
+    robo_keyboard_press_ctrl_generic(string='a', delay=1)
+    #send 10
+    robo_keyboard_send(string='0', delay=20)
+    #press shift tab 4 times
+    robo_keyboard_press_tab_shift(delay=0.5, repeat=4)
+    #press enter
+    robo_keyboard_press_enter(delay=10)
+
+def robo_corel_set_position(**kwargs):
+    x = kwargs.get('x', "")
+    y = kwargs.get('y', "")
+    
+    if x != "" and y != "":
+        print(f"Setting the position to {x}, {y}")
+        #send ctrl {enter}
+        robo_keyboard_press_ctrl_enter(delay=1)
+        #send tab
+        robo_keyboard_press_tab(delay=0.5)
+        robo_keyboard_send(string=str(x))
+        robo_keyboard_press_tab(delay=0.5)
+        robo_keyboard_send(string=str(y))
+        #press enter
+        robo_keyboard_press_enter(delay=0.5)
+
+def robo_corel_trace_lineart(**kwargs):
     message = kwargs.get('message', f"Tracing the clipart")
     #trace the clipart in corel
     print(message)
