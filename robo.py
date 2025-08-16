@@ -113,12 +113,12 @@ def robo_corel_export_file(**kwargs):
         #send tab
         #robo_keyboard_press_tab(delay=5, repeat=1)
         #mouse click because tab doesn't always work
-        robo_mouse_click(position=[200, 429], delay=10)
-        robo_mouse_click(position=[200, 429], delay=10)
+        robo_mouse_click(position=[200, 429], delay=3)
+        robo_mouse_click(position=[200, 429], delay=3)
         #send file type
-        robo_keyboard_send(string=file_type, delay=10)
+        robo_keyboard_send(string=file_type, delay=5)
         #send enter
-        robo_keyboard_press_enter(delay=10)      
+        robo_keyboard_press_enter(delay=5)      
         
         #sent shift tab once
         robo_keyboard_press_tab_shift(delay=2, repeat=1)
@@ -148,7 +148,8 @@ def robo_corel_open(**kwargs):
     #open the file in corel
     print(message)
     #os.system(f"start CorelDRW {file_name}")
-    os.system(f"start {file_name}")
+    #os.system(f'start {file_name}')
+    os.system(f'start "" "{file_name}"')
     robo_delay(delay=delay)
 
 
@@ -249,10 +250,11 @@ def robo_corel_save_as(**kwargs):
     robo_delay(delay=20)
 
 def robo_corel_trace(**kwargs):
-    return robo_corel_trace_lineart(**kwargs)
+    return robo_corel_trace_clipart(**kwargs)
+    #return robo_corel_trace_lineart(**kwargs)
 
 def robo_corel_trace_clipart(**kwargs):
-    message = kwargs.get('message', f"Tracing the clipart")
+    message = kwargs.get('message', f"tracing lineart")
     #trace the clipart in corel
     print(message)
     #press alt b
@@ -261,43 +263,37 @@ def robo_corel_trace_clipart(**kwargs):
     robo_keyboard_send(string='o', delay=1)
     #press right
     robo_keyboard_press_right(delay=1)
-    #press down 5 times
+    #press down 0 times
     robo_keyboard_press_down(delay=0.5, repeat=3)
     #press enter
-    robo_keyboard_press_enter(delay=20)
-    #press tab 10 times
-    robo_keyboard_press_tab(delay=0.5, repeat=10)
-    #press space
-    robo_keyboard_press_space(delay=1)
-    #shift tab 6
-    robo_keyboard_press_tab_shift(delay=0.5, repeat=6)
-    #send ctrl select all
-    robo_keyboard_press_ctrl_generic(string='a', delay=1)
-    #send 10
-    robo_keyboard_send(string='0', delay=20)
-    #press shift tab 4 times
-    robo_keyboard_press_tab_shift(delay=0.5, repeat=4)
-    #press enter
-    robo_keyboard_press_enter(delay=10)
-
-def robo_corel_set_position(**kwargs):
-    x = kwargs.get('x', "")
-    y = kwargs.get('y', "")
-    
-    if x != "" and y != "":
-        print(f"Setting the position to {x}, {y}")
-        #send ctrl {enter}
-        robo_keyboard_press_ctrl_enter(delay=1)
-        #send tab
-        robo_keyboard_press_tab(delay=0.5)
-        robo_keyboard_send(string=str(x))
-        robo_keyboard_press_tab(delay=0.5)
-        robo_keyboard_send(string=str(y))
+    robo_keyboard_press_enter(delay=30)
+    #909,568
+    #click to reduce bitmap
+    robo_mouse_click(position=[909, 568], delay=30)
+    #all settings inherited    
+    if False:
+        #press tab 10 times
+        robo_keyboard_press_tab(delay=0.5, repeat=10)
+        #press space
+        robo_keyboard_press_space(delay=1)
+        #shift tab 6
+        robo_keyboard_press_tab_shift(delay=0.5, repeat=6)
+        #send ctrl select all
+        robo_keyboard_press_ctrl_generic(string='a', delay=1)
+        #send 10
+        robo_keyboard_send(string='0', delay=20)
+        #press shift tab 4 times
+        robo_keyboard_press_tab_shift(delay=0.5, repeat=4)
         #press enter
-        robo_keyboard_press_enter(delay=0.5)
+    #click to set detail all but one 1337,366
+    #all but one
+    #robo_mouse_click(position=[1337, 366], delay=10)
+    #max
+    robo_mouse_click(position=[1348, 366], delay=30)
+    robo_keyboard_press_enter(delay=30)
 
 def robo_corel_trace_lineart(**kwargs):
-    message = kwargs.get('message', f"Tracing the clipart")
+    message = kwargs.get('message', f"tracing lineart")
     #trace the clipart in corel
     print(message)
     #press alt b
@@ -306,24 +302,31 @@ def robo_corel_trace_lineart(**kwargs):
     robo_keyboard_send(string='o', delay=1)
     #press right
     robo_keyboard_press_right(delay=1)
-    #press down 5 times
-    robo_keyboard_press_down(delay=0.5, repeat=3)
+    #press down 0 times
+    #robo_keyboard_press_down(delay=0.5, repeat=3)
     #press enter
-    robo_keyboard_press_enter(delay=20)
-    #press tab 10 times
-    robo_keyboard_press_tab(delay=0.5, repeat=10)
-    #press space
-    robo_keyboard_press_space(delay=1)
-    #shift tab 6
-    robo_keyboard_press_tab_shift(delay=0.5, repeat=6)
-    #send ctrl select all
-    robo_keyboard_press_ctrl_generic(string='a', delay=1)
-    #send 10
-    robo_keyboard_send(string='0', delay=20)
-    #press shift tab 4 times
-    robo_keyboard_press_tab_shift(delay=0.5, repeat=4)
-    #press enter
-    robo_keyboard_press_enter(delay=10)
+    robo_keyboard_press_enter(delay=30)
+    #909,568
+    #click to reduce bitmap
+    robo_mouse_click(position=[909, 568], delay=30)
+    #all settings inherited    
+    if False:
+        #press tab 10 times
+        robo_keyboard_press_tab(delay=0.5, repeat=10)
+        #press space
+        robo_keyboard_press_space(delay=1)
+        #shift tab 6
+        robo_keyboard_press_tab_shift(delay=0.5, repeat=6)
+        #send ctrl select all
+        robo_keyboard_press_ctrl_generic(string='a', delay=1)
+        #send 10
+        robo_keyboard_send(string='0', delay=20)
+        #press shift tab 4 times
+        robo_keyboard_press_tab_shift(delay=0.5, repeat=4)
+        #press enter
+    #click to set detail all but one 1337,366
+    robo_mouse_click(position=[1337, 366], delay=10)
+    robo_keyboard_press_enter(delay=30)
 
 def robo_corel_set_position(**kwargs):
     x = kwargs.get('x', "")
