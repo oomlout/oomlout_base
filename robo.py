@@ -259,8 +259,10 @@ def robo_corel_trace_clipart(**kwargs):
     print(message)
     #press alt b
     robo_keyboard_press_alt_generic(string='b', delay=1)
-    #press o
-    robo_keyboard_send(string='o', delay=1)
+    #trace
+    if True:
+        #press o
+        robo_keyboard_send(string='o', delay=1)        
     #press right
     robo_keyboard_press_right(delay=1)
     #press down 0 times
@@ -269,7 +271,8 @@ def robo_corel_trace_clipart(**kwargs):
     robo_keyboard_press_enter(delay=30)
     #909,568
     #click to reduce bitmap
-    robo_mouse_click(position=[909, 568], delay=30)
+    #robo_mouse_click(position=[909, 568], delay=30)
+    robo_mouse_click(position=[1030, 1950], delay=30)
     #all settings inherited    
     if False:
         #press tab 10 times
@@ -288,8 +291,11 @@ def robo_corel_trace_clipart(**kwargs):
     #click to set detail all but one 1337,366
     #all but one
     #robo_mouse_click(position=[1337, 366], delay=10)
+    #max but one
+    #robo_mouse_click(position=[1348, 366], delay=30)
     #max
-    robo_mouse_click(position=[1348, 366], delay=30)
+    #robo_mouse_click(position=[1359, 366], delay=30)
+    robo_mouse_click(position=[1359, 383], delay=30)
     robo_keyboard_press_enter(delay=30)
 
 def robo_corel_trace_lineart(**kwargs):
