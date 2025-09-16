@@ -47,6 +47,36 @@ def robo_chrome_open_url(**kwargs):
 
 #corel things
 
+def robo_corel_add_text(**kwargs):
+    text = kwargs.get('text', 'Sample Text')
+    font = kwargs.get('font', 'Arial')
+    font_size = kwargs.get('font_size', '24')
+    x = kwargs.get('x', 100)
+    y = kwargs.get('y', 100)
+    delay = kwargs.get('delay', 5)
+    message = kwargs.get('message', f"Adding text: {text} at position {x}, {y} with font {font} and size {font_size}...")
+    #add text to corel
+    print(message)
+    #type text
+    if True:
+        #press f8 to select the text tool
+        robo_keyboard_press_generic(string='f8', delay=2)
+        #click at position x, y
+        robo_mouse_click(position=[300, 300], delay=2)
+        #type the text
+        pyautogui.typewrite(text, interval=0.25)
+        time.sleep(1)
+        #press alt f
+        #click pointer 16,145
+        robo_mouse_click(position=[16, 145], delay=2)
+    #set font
+    if True:
+        pass
+    #set position
+    if True:
+        robo_corel_set_position(x=x, y=y, delay=2)    
+    robo_delay(delay=delay)
+
 def robo_corel_copy(**kwargs):
     delay = kwargs.get('delay', 1)
     copy_mode = kwargs.get('copy_mode', 'all')
@@ -136,7 +166,26 @@ def robo_corel_export_file(**kwargs):
         
         robo_delay(delay=delay)
 
-        
+def robo_corel_object_order(**kwargs):
+    order = kwargs.get('order', 'to_front')
+    message = kwargs.get('message', f"Changing object order to: {order}")
+    delay = kwargs.get('delay', 2)
+    print(message)
+    # Send the appropriate keyboard shortcuts to change the object order
+    if order == 'to_front':
+        #press shift down
+        pyautogui.keyDown('ctrl')
+        time.sleep(0.1)
+        pyautogui.hotkey('home')
+        time.sleep(0.1)
+        pyautogui.keyUp('ctrl')
+    elif order == 'to_back':
+        pyautogui.keyDown('ctrl')
+        time.sleep(0.1)
+        pyautogui.hotkey('end')
+        time.sleep(0.1)
+        pyautogui.keyUp('ctrl')
+    robo_delay(delay=delay)
 
 def robo_corel_open(**kwargs):
     file_name = kwargs.get('file_name', '')
