@@ -37,7 +37,7 @@ if __name__ == '__main__':
     #add args parse and add a filter -f option
     import argparse
     parser = argparse.ArgumentParser(description="Build OOMP parts using oomlout_oomp_builder.")
-    parser.add_argument('-f', '--filter', type=str, help="Filter for the build process.")
+    parser.add_argument('-f', '--filter', default="", type=str, help="Filter for the build process.")
     args = parser.parse_args()
     #convert args to kwargs
     kwargs = copy.deepcopy(vars(args))
