@@ -4,6 +4,9 @@ import random
 import time
 import os
 import sys
+import io
+import jinja2
+import pickle
 
 # Import platform-specific key detection modules
 if sys.platform == "win32":
@@ -518,6 +521,33 @@ def robo_file_copy(**kwargs):
                 print(f"file {file_source} does not exist")
 
 
+def robo_git_clone_repo(**kwargs):
+    repo = kwargs.get('repo', '')
+    folder = kwargs.get('folder', 'c:\gh')
+    folder_repo = os.path.join(folder, repo)
+    update = kwargs.get('update', False)
+
+    folder_utility = f"c:\\gh\\{repo}"
+        #if folder doesn't exist theb clone it
+    if not os.path.exists(folder_utility):
+        print(f"Cloning {repo} to {folder_utility}")
+        # Clone the repository if folder doesn't exist
+        clone_command = f"git clone https://github.com/oomlout/{repo}.git {folder_repo}"
+        os.system(clone_command) 
+    else:
+        print(f"Folder {folder_utility} already exists")
+
+    if update:
+        os_directory_current = os.getcwd()
+        print(f"Updating {repo} in {folder_utility}")
+        # Change to the repository directory
+        os.chdir(folder_utility)
+        # Pull the latest changes
+        os.system("git pull")
+        #reset os directory
+        os.chdir(os_directory_current)
+
+
 def robo_keyboard_close_tab(**kwargs):
     robo_chrome_close_tab(**kwargs)
 
@@ -765,6 +795,62 @@ def robo_mouse_click(**kwargs):
     pyautogui.click(pos[0], pos[1], button=button)
     robo_delay(delay=delay)
 
+
+def robo_text_jinja_template(**kwargs):
+    # import cProfile
+    # profiler = cProfile.Profile()
+    # profiler.enable()
+    
+    file_template = kwargs.get("file_template","")
+    file_output = kwargs.get("file_output","")
+    file_source = kwargs.get("file_source","")
+    
+    dict_data = kwargs.get("dict_data",{})
+
+    if dict_data == {} and file_source != "":
+        #load yaml file
+        import yaml
+        with open(file_source, "r") as infile:
+            dict_data = yaml.safe_load(infile)
+
+    markdown_string = ""
+    #if running in windows
+    if os.name == "nt":
+        file_template = file_template.replace("/", "\\")
+    else:
+        file_template = file_template.replace("\\", "/")
+    with open(file_template, "r") as infile:
+        markdown_string = infile.read()
+    #data2 = copy.deepcopy(dict_data)
+    #use pickle to deep copy the dictionary
+    data2 = pickle.loads(pickle.dumps(dict_data, -1))
+
+
+    try:
+        markdown_string = jinja2.Template(markdown_string).render(p=data2)
+    except Exception as e:
+        print(f"error in jinja2 template: {file_template}")
+        print(e)
+        markdown_string = f"markdown_string_error\n{e}"
+    #make directory if it doesn't exist
+    directory = os.path.dirname(file_output)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    
+    #mode = "open"
+    mode = "buffer"
+    
+    if mode == "open":
+        with open(file_output, "w", encoding="utf-8") as outfile:
+            outfile.write(markdown_string)
+            
+    elif mode == "buffer":
+        #write to a buffer then save for speen
+        with io.StringIO() as outfile:
+            outfile.write(markdown_string)
+            with open(file_output, "w", encoding="utf-8") as outfile2:
+                outfile2.write(outfile.getvalue())
+
 def robo_screenshot(**kwargs):
     position = kwargs.get('position', [0, 0])
     #if position is only two values add size to it
@@ -787,6 +873,9 @@ def robo_screenshot(**kwargs):
         screenshot.save(file_name)
     robo_delay(delay=delay)
     
+def robo_convert_svg_to_pdf(**kwargs):
+    robo_pdf_from_svg(**kwargs)
+
 def robo_pdf_from_svg(**kwargs):
     file_input = kwargs.get('file_input', '')
     file_output = kwargs.get('file_output', '')
