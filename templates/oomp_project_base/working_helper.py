@@ -15,6 +15,19 @@ def run_utility(**kwargs):
     template['repo'] = 'oomlout_organizing_paper_divider_binder'
     template['path'] = 'template\\template_1'
     job["template"] = template
+    #jobs.append(job)
+
+    job = {}    
+    job['utility'] = 'oomlout_utility_image_tile_collage'    
+    #directory_iterative
+    job["directory_iterative"] = 'parts'
+    #photo["file_image_source"] = "working.png"
+    #load_working_yaml
+    job["load_working_yaml"] = True
+    job["command_line_args"] = {}
+    job["command_line_args"]['directory_iterative'] = 'parts'
+    #job["command_line_args"]['file_output'] = job["file_output"]
+    job["command_line_args"]['load_working_yaml'] = True
     jobs.append(job)
 
     for job in jobs:
@@ -36,7 +49,8 @@ def run_utility(**kwargs):
         #get repos in
         if True:
             robo.robo_git_clone_repo(repo=utility)
-            robo.robo_git_clone_repo(repo=template_repo)
+            if template is not None:
+                robo.robo_git_clone_repo(repo=template_repo)
         
         #build the call
         if True:
@@ -49,7 +63,15 @@ def run_utility(**kwargs):
                 print(command_line)
                 os.system(command_line)
             elif mode == "python":
-                pass
+                #import the file c:gh\gh\{utility}\working.py and run main using jobs as kwarg
+                import importlib.util
+                spec = importlib.util.spec_from_file_location("working_module", path_utility)
+                working_module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(working_module)
+                working_module.main(**job)
+
+                
+                
 
 
         #get tempalte repo in
