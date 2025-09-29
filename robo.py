@@ -285,7 +285,7 @@ def robo_corel_save_as(**kwargs):
         robo_keyboard_press_left(delay=1)
         #send right
         robo_keyboard_press_right(delay=1)
-    
+
     #press alt f
     robo_keyboard_press_alt_f(delay=1)
     #press down 6 times

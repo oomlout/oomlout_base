@@ -13,8 +13,9 @@ import working_helper
 def main(**kwargs):
     pass
     #make_readme(**kwargs)
-    working_helper.run_utility(**kwargs)
-    
+    #working_helper.run_utility(**kwargs)
+    kwargs["mode"] = "ai"
+    working_helper.run_robo_ai(**kwargs)
 
 
         #get tempalte repo in

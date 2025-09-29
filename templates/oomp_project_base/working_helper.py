@@ -1,6 +1,67 @@
 import robo
 import os
 
+def run_robo_ai(**kwargs):
+    import oomlout_ai_roboclick
+    pass
+
+    
+
+    # Set the directory for parts
+    directory = kwargs.get("directory", "parts")
+    
+    kwargs["directory"] = directory
+    # Set the mode
+    # Set the mode
+    
+    
+    #mod = "all"
+    mod = "ai"
+    #mod = "corel"
+
+    mod2 = kwargs.get("mode", mod)
+
+    kwargs["mode"] = mod2
+    mod = mod2
+    #mode = "oomlout_ai_roboclick"
+    #mode = "oomlout_corel_roboclick"                            
+    #filt = "sticker_sheet"
+    #filt = "postcard"
+    #filt = "sticker"
+    #filt = "stamp"
+
+    
+    #filt = "postcard_regional_united_kingdom_wales_swansea_sa68_dance_camp_wales"
+
+    filt = ""
+    kwargs["filter"] = filt
+
+
+    directory = kwargs.get("directory", "parts")
+    kwargs["directory"] = directory
+    if True:        
+        
+        if "all" in mod or "ai" in mod:
+            
+            mode = "oomlout_ai_roboclick"
+            kwargs["mode"] = mode
+            oomlout_ai_roboclick.main(**kwargs)
+
+            for i in range(1, 10):
+                mode = f"oomlout_ai_roboclick_{i}"
+                kwargs["mode"] = mode
+                oomlout_ai_roboclick.main(**kwargs)
+
+        if "corel" in mod or "all" in mod:
+            mode = "oomlout_corel_roboclick"
+            kwargs["mode"] = mode
+            oomlout_ai_roboclick.main(**kwargs)
+
+            for i in range(1, 10):
+                mode = f"oomlout_corel_roboclick_{i}"
+                kwargs["mode"] = mode
+                oomlout_ai_roboclick.main(**kwargs)
+
    
 def run_utility(**kwargs):
     jobs = []
