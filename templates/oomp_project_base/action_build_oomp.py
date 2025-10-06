@@ -2,6 +2,10 @@ import os
 import copy
 
 def main(**kwargs):
+
+    commit_to_git = False
+    #commit_to_git = True
+
     #clone or pull oomlout_oompbuilder into temporary/oomlout_oomp_builder
     repo_url = "https://github.com/oomlout/oomlout_oomp_builder"
     repo_dir = "temporary\\oomlout_oomp_builder"
@@ -29,7 +33,10 @@ def main(**kwargs):
     import run
     run.main(**kwargs)
 
-
+    if commit_to_git:
+        os.system("git add .")
+        os.system('git commit -m "Build OOMP parts using oomlout_oomp_builder"')
+        os.system("git push")
 
 
 
