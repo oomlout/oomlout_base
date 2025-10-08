@@ -54,6 +54,7 @@ def robo_corel_add_text(**kwargs):
     text = kwargs.get('text', 'Sample Text')
     font = kwargs.get('font', 'Arial')
     font_size = kwargs.get('font_size', '24')
+    font_alignment = kwargs.get('font_alignment', 'center') # left, center, right
     x = kwargs.get('x', 100)
     y = kwargs.get('y', 100)
     delay = kwargs.get('delay', 5)
@@ -72,12 +73,31 @@ def robo_corel_add_text(**kwargs):
         #press alt f
         #click pointer 16,145
         robo_mouse_click(position=[16, 145], delay=2)
+        #set position
+    if True:
+        robo_corel_set_position(x=x, y=y, delay=2)
     #set font
     if True:
-        pass
-    #set position
-    if True:
-        robo_corel_set_position(x=x, y=y, delay=2)    
+        #press ctrl enter
+        robo_keyboard_press_ctrl_enter(delay=2)
+        #press tab 9 times
+        robo_keyboard_press_tab(delay=0.5, repeat=9)
+        if font != "":
+            #type the font
+            pyautogui.typewrite(font, interval=0.025)
+            time.sleep(1)
+            #press enter
+        #press tab once
+        robo_keyboard_press_tab(delay=0.5)
+        if font_size != "":
+            #type the font size
+            pyautogui.typewrite(str(font_size), interval=0.025)
+            time.sleep(1)
+            #press enter
+            robo_keyboard_press_enter(delay=2)
+        if font_alignment != "":
+            pass
+        
     robo_delay(delay=delay)
 
 def robo_corel_copy(**kwargs):
@@ -307,47 +327,63 @@ def robo_corel_trace(**kwargs):
 
 def robo_corel_trace_clipart(**kwargs):
     message = kwargs.get('message', f"tracing lineart")
+    number_of_colors = kwargs.get('number_of_colors', None)
+    remove_background_color_from_entire_image = kwargs.get('remove_background_color_from_entire_image', False)
     #trace the clipart in corel
     print(message)
-    #press alt b
-    robo_keyboard_press_alt_generic(string='b', delay=1)
-    #trace
+    #open trace menu
     if True:
+        #press alt b
+        robo_keyboard_press_alt_generic(string='b', delay=1)
+        #trace    
         #press o
         robo_keyboard_send(string='o', delay=1)        
-    #press right
-    robo_keyboard_press_right(delay=1)
-    #press down 0 times
-    robo_keyboard_press_down(delay=0.5, repeat=3)
-    #press enter
-    robo_keyboard_press_enter(delay=30)
-    #909,568
-    #click to reduce bitmap
-    #robo_mouse_click(position=[909, 568], delay=30)
-    robo_mouse_click(position=[1030, 1950], delay=30)
-    #all settings inherited    
-    if False:
+        #press right
+        robo_keyboard_press_right(delay=1)
+        #press down 0 times
+        robo_keyboard_press_down(delay=0.5, repeat=3)
+        #press enter
+        robo_keyboard_press_enter(delay=10)
+        #909,568
+        #click to reduce bitmap
+        if True:
+            robo_keyboard_press_enter(delay=30)
+            #robo_mouse_click(position=[909, 568], delay=30)
+            #robo_mouse_click(position=[1030, 1950], delay=30)
+            #all settings inherited    
+    if remove_background_color_from_entire_image:
         #press tab 10 times
         robo_keyboard_press_tab(delay=0.5, repeat=10)
         #press space
         robo_keyboard_press_space(delay=1)
         #shift tab 6
-        robo_keyboard_press_tab_shift(delay=0.5, repeat=6)
-        #send ctrl select all
-        robo_keyboard_press_ctrl_generic(string='a', delay=1)
-        #send 10
-        robo_keyboard_send(string='0', delay=20)
-        #press shift tab 4 times
-        robo_keyboard_press_tab_shift(delay=0.5, repeat=4)
-        #press enter
-    #click to set detail all but one 1337,366
-    #all but one
-    #robo_mouse_click(position=[1337, 366], delay=10)
-    #max but one
-    #robo_mouse_click(position=[1348, 366], delay=30)
-    #max
-    #robo_mouse_click(position=[1359, 366], delay=30)
-    robo_mouse_click(position=[1359, 383], delay=30)
+        robo_keyboard_press_tab_shift(delay=0.5, repeat=10)
+    #select max detail
+    if True:
+        #press tab 3 times
+        robo_keyboard_press_tab(delay=0.5, repeat=3)
+        #press up 20 times
+        robo_keyboard_press_up(delay=0.15, repeat=20)
+        #robo_mouse_click(position=[1359, 383], delay=30)
+        #press shift tab 3 times
+        robo_keyboard_press_tab_shift(delay=0.5, repeat=3)
+        #wait 30 seconds
+        robo_delay(delay=30)
+    #set colors
+    if number_of_colors is not None:
+        #shift tab 11
+        robo_keyboard_press_tab_shift(delay=0.5, repeat=11)
+        #press right
+        robo_keyboard_press_right(delay=0.5, repeat=1)
+        #shift tab 9 times
+        robo_keyboard_press_tab_shift(delay=0.25, repeat=9)
+        #press number_of_colors
+        robo_keyboard_send(string=str(number_of_colors), delay=1)
+        #tab 10 times
+        robo_keyboard_press_tab(delay=0.25, repeat=10)
+        #delay 5 seconds
+        robo_delay(delay=20)
+
     robo_keyboard_press_enter(delay=30)
 
 def robo_corel_trace_lineart(**kwargs):

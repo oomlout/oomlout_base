@@ -47,22 +47,13 @@ def run_robo_ai(**kwargs):
             kwargs["mode"] = mode
             oomlout_ai_roboclick.main(**kwargs)
 
-            for i in range(1, 10):
-                mode = f"oomlout_ai_roboclick_{i}"
-                kwargs["mode"] = mode
-                oomlout_ai_roboclick.main(**kwargs)
-
         if "corel" in mod or "all" in mod:
             mode = "oomlout_corel_roboclick"
             kwargs["mode"] = mode
             oomlout_ai_roboclick.main(**kwargs)
 
-            for i in range(1, 10):
-                mode = f"oomlout_corel_roboclick_{i}"
-                kwargs["mode"] = mode
-                oomlout_ai_roboclick.main(**kwargs)
-
-   
+            
+           
 def run_utility(**kwargs):
     jobs = []
 
