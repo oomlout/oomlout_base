@@ -64,6 +64,31 @@ def main(**kwargs):
             print('Folder does not exist: ' + folder)
 
 
+    #delete files recursively
+
+    delete_list = []
+    # delete_item = {}
+    # delete_item["path"] = 'parts'
+    # delete_item["files"] = []
+    # delete_item["files"].append('initial_generated_card.pdf')
+    # delete_list.append(delete_item)
+    
+
+    for delete_item in delete_list:
+        path = delete_item["path"]
+        files = delete_item["files"]
+        print('Deleting files in path: ' + path)
+        for root, dirs, file_names in os.walk(path):
+            for file_name in file_names:
+                if file_name in files:
+                    file_path = os.path.join(root, file_name)
+                    if os.path.exists(file_path):
+                        os.remove(file_path)
+                        print('Deleted file: ' + file_path)
+                    else:
+                        pass
+                        print('File does not exist: ' + file_path)
+
     print('Done')
 
 
