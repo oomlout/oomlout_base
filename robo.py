@@ -560,7 +560,7 @@ def robo_file_copy(**kwargs):
 
 def robo_git_clone_repo(**kwargs):
     repo = kwargs.get('repo', '')
-    folder = kwargs.get('folder', 'c:\gh')
+    folder = kwargs.get('folder', 'c:\\gh')
     folder_repo = os.path.join(folder, repo)
     update = kwargs.get('update', False)
 
@@ -850,7 +850,7 @@ def robo_delay(**kwargs):
                 import ctypes
 
                 if ctypes.windll.user32.GetKeyState(0x91) & 1 == 1:
-                    print("\Scroll Lock is OFF, skipping delay")
+                    print("Scroll Lock is OFF, skipping delay")
                     time.sleep(2)
                     pyautogui.press('scrolllock')
                     return
