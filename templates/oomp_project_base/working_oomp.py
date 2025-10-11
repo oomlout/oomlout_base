@@ -144,6 +144,22 @@ def create_generic(**kwargs):
 
     oomp.add_parts(parts, **kwargs)
 
+    #dd file copy
+    for part in parts:
+        file_copies = part.get("file_copy", [])
+        if file_copies != []:
+            for file_copy in file_copies:
+                directory = part.get("directory", "")
+                if directory != "":
+                    file_source = f"{file_copy["file_source"]}"
+                    file_destination = f"{directory}\\{file_copy["file_destination"]}"
+                    import shutil
+                    print(f"      copying {file_source} to {file_destination}")
+                    try:
+                        shutil.copyfile(file_source, file_destination)
+                    except Exception as e:
+                        print(f"      error copying file: {e}") 
+
     import time
     time.sleep(2)
 
