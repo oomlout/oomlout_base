@@ -101,6 +101,69 @@ def robo_corel_add_text(**kwargs):
         
     robo_delay(delay=delay)
 
+def robo_corel_add_text_box(**kwargs):
+    text = kwargs.get('text', 'Sample Text')
+    font = kwargs.get('font', 'Arial')
+    font_size = kwargs.get('font_size', '24')
+    font_alignment = kwargs.get('font_alignment', 'center') # left, center, right
+    x = kwargs.get('x', 100)
+    y = kwargs.get('y', 100)
+    width = kwargs.get('width', 200)
+    height = kwargs.get('height', 100)
+    delay = kwargs.get('delay', 5)
+    message = kwargs.get('message', f"Adding text: {text} at position {x}, {y} with font {font} and size {font_size}...")
+    #add text to corel
+    print(message)
+    #type text
+    if True:        
+        #press f8 to select the text tool
+        robo_keyboard_press_generic(string='f8', delay=2)
+        #click at position x, y
+        robo_mouse_drag(position=[300, 300], move=[200, 200], delay=2)
+        #type the text
+        if "<b>" in text:
+            text_blocks = text.split("<b>")
+            for i in text_blocks:
+                pyautogui.typewrite(i, interval=0.25)
+                robo_delay(delay=0.5)
+                #send ctrl b
+                robo_keyboard_press_ctrl_generic(string='b', delay=0.5)
+        else:
+            pyautogui.typewrite(text, interval=0.25)
+            time.sleep(1)
+        #press alt f
+        #click pointer 16,145
+        robo_mouse_click(position=[16, 145], delay=2)
+        #set position
+    if True:
+        robo_corel_set_position(x=x, y=y, delay=2)
+    #set font
+    if True:
+        #press ctrl enter
+        robo_keyboard_press_ctrl_enter(delay=2)
+        #press tab 9 times
+        robo_keyboard_press_tab(delay=0.5, repeat=9)
+        if font != "":
+            #type the font
+            pyautogui.typewrite(font, interval=0.025)
+            time.sleep(1)
+            #press enter
+        #press tab once
+        robo_keyboard_press_tab(delay=0.5)
+        if font_size != "":
+            #type the font size
+            pyautogui.typewrite(str(font_size), interval=0.025)
+            time.sleep(1)
+            #press enter
+            robo_keyboard_press_enter(delay=2)
+        if font_alignment != "":
+            pass
+    #set size
+    if True:
+        robo_corel_set_size(width=width, height=height, delay=2)
+        
+    robo_delay(delay=delay)
+
 def robo_corel_copy(**kwargs):
     delay = kwargs.get('delay', 1)
     copy_mode = kwargs.get('copy_mode', 'all')
@@ -880,6 +943,24 @@ def robo_mouse_click(**kwargs):
     pyautogui.click(pos[0], pos[1], button=button)
     robo_delay(delay=delay)
 
+def robo_mouse_drag(**kwargs):
+    position = kwargs.get('position', [0, 0])
+    move = kwargs.get('move', [100, 100])
+    position_start = kwargs.get('position_start', [])
+    position_end = kwargs.get('position_end', [])
+    delay = kwargs.get('delay', 1)
+    duration = kwargs.get('duration', 0.5)
+    button = kwargs.get('button', 'left')
+    #drag the mouse from position_start to position_end
+    print(f"Dragging from {position_start} to {position_end}...")
+    pos_start = position
+    pos_end = [position[0] + move[0], position[1] + move[1]]
+    if position_start != [] and position_end != []:
+        pos_start = position_start        
+        pos_end = position_end
+    pyautogui.moveTo(pos_start[0], pos_start[1])
+    pyautogui.dragTo(pos_end[0], pos_end[1], duration=duration, button=button)
+    robo_delay(delay=delay)
 
 def robo_text_jinja_template(**kwargs):
     # import cProfile
