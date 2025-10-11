@@ -7,6 +7,7 @@ import sys
 import io
 import jinja2
 import pickle
+import copy
 
 # Import platform-specific key detection modules
 if sys.platform == "win32":
@@ -583,6 +584,54 @@ def robo_git_clone_repo(**kwargs):
         #reset os directory
         os.chdir(os_directory_current)
 
+#image
+def robo_image_upscale(**kwargs):
+    action = kwargs.get("action", {})
+    if action == {}:
+        action = copy.deepcopy(kwargs)
+    directory = kwargs.get("directory", "")
+    file_input = action.get("file_input", "")
+    file_input = os.path.join(directory, file_input)
+    file_input_full = os.path.abspath(file_input)
+    #png or jpeg or jpg
+    file_output_default = file_input.replace(".png", "_upscaled.png").replace(".jpg", "_upscaled.jpg").replace(".jpeg", "_upscaled.jpeg")
+    file_output = action.get("file_output", file_output_default)
+    if directory not in file_output:
+        file_output = os.path.join(directory, file_output)
+    upscale_factor = action.get("upscale_factor", 2)
+    
+    print(f"Upscaling image function file: {file_input_full} to {file_output} by a factor of {upscale_factor}")
+    #robo_delay(delay=300)
+    
+    
+    #if file_input is a file
+    if os.path.isfile(file_input):
+        #use pil; LANCZOS to upscale the image
+        from PIL import Image
+        try:
+            #if outpurt file exists, delete
+            if os.path.exists(file_output):
+                os.remove(file_output)
+                print(f"Removed existing output file {file_output}")
+            with Image.open(file_input_full) as img:
+                # Calculate new size
+                new_size = (int(img.width * upscale_factor), int(img.height * upscale_factor))
+                # Resize the image
+                #img = img.resize(new_size, Image.LANCZOS)
+                #use nearest
+                img = img.resize(new_size, Image.NEAREST)
+                # Save the upscaled image
+                img.save(file_output)
+                print(f"Image upscaled and saved to {file_output}")
+                
+                
+        except Exception as e:
+            print(f"Error upscaling image {file_input_full}: {e}")
+            return
+    else:
+        print(f"file_input {file_input} does not exist, skipping image upscale")
+        return
+    #robo_delay(delay=20)
 
 def robo_keyboard_close_tab(**kwargs):
     robo_chrome_close_tab(**kwargs)
