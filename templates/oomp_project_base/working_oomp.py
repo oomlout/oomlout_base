@@ -1,6 +1,9 @@
 import oomp
 import copy
 
+def main(**kwargs):
+    load_parts(**kwargs)
+
 def load_parts(**kwargs):
     make_files = kwargs.get("make_files", True)
     #print "loading parts" plus the module name get the module name from the filename using __name__
