@@ -221,9 +221,11 @@ def generate_navigation(folder="parts", sort=["width", "height", "thickness"]):
                     os.makedirs(folder_destination)
                 if os.name == 'nt':
                     #copy a full directory auto overwrite
-                    command = f'xcopy "{folder_source}" "{folder_destination}" /E /I /Y'
-                    print(command)
-                    os.system(command)
+                    # command = f'xcopy "{folder_source}" "{folder_destination}" /E /I /Y'
+                    # print(command)
+                    # os.system(command)
+                    import shutil
+                    shutil.copytree(folder_source, folder_destination, dirs_exist_ok=True)
                 else:
                     os.system(f"cp {folder_source} {folder_destination}")
 
