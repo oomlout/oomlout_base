@@ -1,6 +1,7 @@
 import oom_markdown
 import os
 import argparse
+
 import robo
 import working_helper
 
@@ -12,10 +13,18 @@ import working_helper
 
 def main(**kwargs):
     pass
+    
+
     #make_readme(**kwargs)
     #working_helper.run_utility(**kwargs)
-    #kwargs["mode"] = "ai"
-    working_helper.run_robo_ai(**kwargs)
+    
+    
+    #ai_stuff
+    if True:
+        import working_oomp
+        working_oomp.main(**kwargs)
+        #kwargs["mode"] = "ai"
+        working_helper.run_robo_ai(**kwargs)
 
 
         #get tempalte repo in
