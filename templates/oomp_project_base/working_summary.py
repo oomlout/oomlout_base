@@ -43,7 +43,7 @@ def main(**kwargs):
             #go through the parts directory and put all the trace.pdf files in a folder with "sticker" in its name into a single pdf output\sticker_trace_summarry.pdf
             
             summaries = []
-            summaries.append("game_type")
+            summaries.append("")
             
 
             summaries_filters = kwargs.get("summaries_filters", None)
@@ -53,7 +53,7 @@ def main(**kwargs):
             if summaries_filters is not None:
                 filters = summaries_filters
             else:
-                filters.append(["food_fruit_game_type","fruit"])
+                filters.append(["","all"])
             #dates
             if False:
                 #go through all the folders in parts and extract the date portion from helen_school_spelling_forced_spelling_word_unicorns_word_11_september_2025_date
@@ -73,8 +73,8 @@ def main(**kwargs):
 
 
             summary_filenames = []
-            summary_filenames.append("initial_generated_card.pdf")
-            summary_filenames.append("initial_generated_card_multiple.pdf")
+            summary_filenames.append("working.pdf")
+            #summary_filenames.append("initial_generated_card_multiple.pdf")
 
             for filt in filters:
                 filt_main = filt[0]

@@ -19,15 +19,21 @@ def main(**kwargs):
     #working_helper.run_utility(**kwargs)
     
     
-    #ai_stuff
+   #ai_stuff
     if True:
         import working_oomp
         working_oomp.main(**kwargs)
-        #kwargs["mode"] = "ai"
+        kwargs["mode"] = "all"
         working_helper.run_robo_ai(**kwargs)
 
 
-        #get tempalte repo in
+    #summary
+    if True:
+        import working_summary
+        summaries_filters = []
+        summaries_filters.append(["","all"])
+        kwargs["summaries_filters"] = summaries_filters
+        working_summary.main(**kwargs)
         
         
 
