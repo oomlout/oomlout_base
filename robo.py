@@ -147,7 +147,6 @@ def robo_corel_add_text_box(**kwargs):
             #type the font
             pyautogui.typewrite(font, interval=0.025)
             time.sleep(1)
-            #press enter
         #press tab once
         robo_keyboard_press_tab(delay=0.5)
         if font_size != "":
