@@ -144,7 +144,7 @@ def create_generic(**kwargs):
                 action["file_source_trace"] = f"initial_generated.png"
                 action["file_destination"] = f"trace.cdr"
                 action["max_dimension"] = 280
-                #maximum colors 2
+                action["remove_background_color_from_entire_image"] = True
                 action["number_of_colors"] = 2
                 #cordinates 31,50
                 action["x"] = 105
