@@ -15,49 +15,60 @@ def create_generic(**kwargs):
     parts = []
 
     part_details = {}
-    part_details["classification"] = "personal"
-    part_details["type"] = "helen"
-    part_details["size"] = "school"
-    part_details["color"] = "voting"
-    part_details["description_main"] = "year_3"
+    part_details["classification"] = "printer"
+    part_details["type"] = "risograph"
+    part_details["size"] = "testing"
+    part_details["color"] = ""
+    part_details["description_main"] = ""
     part_details["description_extra"] = ""
     part_details["manufacturer"] = ""
     part_details["part_number"] = ""
 
     default_empty = part_details.copy()
 
-    people = {}
-    person = {}
-    person["id"] = "person_1"
-    person["name"] = "Rayan"
-    person["slogan"] = "You won't regret it!"
-    person["style"] = "spotty"
-    person["color"] = "pastel"
-    people[person["id"]] = person
-
-
-
-
-    for person in people:
-        current = people[person]
-        part = copy.deepcopy(part_details)        
-        part["description_main"] = person
+    things = {}    
+    thing = {}
+    name_thing = "fruit_and_vegetable"
+    thing["name"] = "vegetable_design"
+    things[name_thing] = thing
+    #robot
+    thing = {}
+    name_thing = "robot_design"
+    thing["name"] = "robot design"
+    things[name_thing] = thing
+    #fruit
+    thing = {}
+    name_thing = "fruit_design"
+    thing["name"] = "fruit design"
+    things[name_thing] = thing
+    #medicine
+    thing = {}
+    name_thing = "medicine_design"
+    thing["name"] = "medicine design"
+    things[name_thing] = thing
+    #flower
+    thing = {}
+    name_thing = "flower_design"
+    thing["name"] = "flower design"
+    things[name_thing] = thing
         
-        name = current["name"]
-        slogan = current["slogan"]
-        style = current["style"]
-        color = current["color"]
 
-        prompts = []
-        wordlist = ["Vote For", name, slogan]
 
-        for words in wordlist:
-            prompt_1 = f'please generate. A bold 3D block text design that says "{words}" in a playful but striking style, sized for a 3 wide by 2 tall landscape postcard. The design should avoid soft shading and instead use sharp angular planes with a limited {color}, making it screen-print friendly. The 3D text should look dynamic and fun, popping forward with strong outlines and a {style} pattern. The background should be plain white with no drop shadows. No gradients, only solid patches of colour. Make the design clean, bold, and eye-catching, with a balance between text and background so the message is clear. Square corners, no border. it must be 3x2 and on a plain white background with no drop shadow'
-            prompts.append(prompt_1)
 
+
+
+    for thing in things:
+        current = things[thing]        
+        part = copy.deepcopy(part_details)        
+        #coplot = "test_print_design"
+        part["color"] = "test_print_design"
+        part["description_main"] = thing
+        
+        
+        
 
         #image
-        if True:
+        if False:
             count = 1
             for prompt in prompts:
             #creating actions                
@@ -104,33 +115,33 @@ def create_generic(**kwargs):
         if True:
             #trace file
             count = 1
-            for prompt in prompts:
-                if True:
-                    actions = []
+        
+            if True:
+                actions = []
 
-                    #wait_for_file initial_generation.png
-                    action = {}
-                    action["command"] = "wait_for_file"
-                    action["file_name"] = f"initial_generated_{count}.png"                
-                    actions.append(copy.deepcopy(action))
+                #wait_for_file initial_generation.png
+                action = {}
+                action["command"] = "wait_for_file"
+                action["file_name"] = f"initial_generated_{count}.png"                
+                actions.append(copy.deepcopy(action))
 
-                    action = {}
-                    action["command"] = "corel_trace_full"
-                    action["file_source"] = f"source_files\\working_landscape\\working.cdr"
-                    action["file_source_trace"] = f"initial_generated_{count}.png"
-                    action["file_destination"] = f"trace_{count}.cdr"
-                    action["max_dimension"] = 150
-                    #cordinates 31,50
-                    action["x"] = 75
-                    action["y"] = 50
-                    actions.append(copy.deepcopy(action))
-                    
-                    base  = {}
-                    base["actions"] = copy.deepcopy(actions)
-                    #the file that is created so skips if done
-                    file_test = f"trace_{count}.png"
-                    base["file_test"] = file_test
-                    part["oomlout_corel_roboclick_1"] = base
+                action = {}
+                action["command"] = "corel_trace_full"
+                action["file_source"] = f"source_files\\working_landscape\\working.cdr"
+                action["file_source_trace"] = f"initial_generated_{count}.png"
+                action["file_destination"] = f"trace_{count}.cdr"
+                action["max_dimension"] = 150
+                #cordinates 31,50
+                action["x"] = 75
+                action["y"] = 50
+                actions.append(copy.deepcopy(action))
+                
+                base  = {}
+                base["actions"] = copy.deepcopy(actions)
+                #the file that is created so skips if done
+                file_test = f"trace_{count}.png"
+                base["file_test"] = file_test
+                part["oomlout_corel_roboclick_1"] = base
 
         #trace
                 
