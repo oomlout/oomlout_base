@@ -28,29 +28,36 @@ def create_generic(**kwargs):
 
     things = {}    
     thing = {}
-    name_thing = "fruit_and_vegetable"
-    thing["name"] = "vegetable_design"
+    name_thing = "vegetable_design"
+    thing["name"] = name_thing
     things[name_thing] = thing
     #robot
     thing = {}
     name_thing = "robot_design"
-    thing["name"] = "robot design"
+    thing["name"] = name_thing
     things[name_thing] = thing
     #fruit
     thing = {}
     name_thing = "fruit_design"
-    thing["name"] = "fruit design"
+    thing["name"] = name_thing
     things[name_thing] = thing
     #medicine
     thing = {}
     name_thing = "medicine_design"
-    thing["name"] = "medicine design"
+    thing["name"] = name_thing
     things[name_thing] = thing
     #flower
     thing = {}
     name_thing = "flower_design"
-    thing["name"] = "flower design"
+    thing["name"] = name_thing
     things[name_thing] = thing
+    #transportation
+    thing = {}
+    name_thing = "transportation_design"
+    thing["name"] = name_thing
+    things[name_thing] = thing
+
+    
         
 
 
@@ -58,11 +65,17 @@ def create_generic(**kwargs):
 
 
     for thing in things:
-        current = things[thing]        
+        current = things[thing]                
         part = copy.deepcopy(part_details)        
         #coplot = "test_print_design"
         part["color"] = "test_print_design"
         part["description_main"] = thing
+
+        #name stuff
+        part["name"] = thing
+        part["name_space"] = thing.replace("_", " ")
+        part["name_proper"] = part["name_space"].title()
+        part["name_upper"] = part["name_space"].upper()
         
         
         
@@ -122,24 +135,26 @@ def create_generic(**kwargs):
                 #wait_for_file initial_generation.png
                 action = {}
                 action["command"] = "wait_for_file"
-                action["file_name"] = f"initial_generated_{count}.png"                
+                action["file_name"] = f"initial_generated.png"                
                 actions.append(copy.deepcopy(action))
 
                 action = {}
                 action["command"] = "corel_trace_full"
-                action["file_source"] = f"source_files\\working_landscape\\working.cdr"
-                action["file_source_trace"] = f"initial_generated_{count}.png"
-                action["file_destination"] = f"trace_{count}.cdr"
-                action["max_dimension"] = 150
+                action["file_source"] = f"template\\working\\working.cdr"
+                action["file_source_trace"] = f"initial_generated.png"
+                action["file_destination"] = f"trace.cdr"
+                action["max_dimension"] = 280
+                #maximum colors 2
+                action["number_of_colors"] = 2
                 #cordinates 31,50
-                action["x"] = 75
-                action["y"] = 50
+                action["x"] = 105
+                action["y"] = 297/2
                 actions.append(copy.deepcopy(action))
                 
                 base  = {}
                 base["actions"] = copy.deepcopy(actions)
                 #the file that is created so skips if done
-                file_test = f"trace_{count}.png"
+                file_test = f"trace.png"
                 base["file_test"] = file_test
                 part["oomlout_corel_roboclick_1"] = base
 
