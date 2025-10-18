@@ -16,7 +16,7 @@ def run_robo_ai(**kwargs):
     
     
     #mod = "all"
-    mod = "ai"
+    #mod = "ai"
     #mod = "corel"
 
     mod2 = kwargs.get("mode", mod)
