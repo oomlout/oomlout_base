@@ -17,14 +17,14 @@ def main(**kwargs):
     install = True
     
     #git_long_directory = False
-    pip = False
+    #pip = False
     path = False
     pythonpath = False
-    openscadpath = False
+    #openscadpath = False
     #clone = False
     #install = False
 
-    if git_long_directory:
+    if git_long_directory: 
         print("doing all the git stuff")
         os.system("action_git_long_directory.bat")
         
@@ -56,6 +56,8 @@ def main(**kwargs):
         folder_path.append("C:\\Program Files\\Inkscape\\bin")
         #oolc
         folder_path.append("C:\\gh\\oomlout_oolc_oopen_laser_cutting_production_format")
+        #ai_roboclick
+        folder_path.append("C:\\gh\\oomlout_ai_chat_gpt_robo_click")
         
 
         kwargs["folder_path"] = folder_path
@@ -72,6 +74,8 @@ def main(**kwargs):
         folder_pythonpath.append("C:\\gh\\oomlout_oomp_part_generation_version_1")
         # oolc
         folder_pythonpath.append("C:\\gh\\oomlout_oolc_oopen_laser_cutting_production_format")
+        # ai_robo_click
+        folder_pythonpath.append("C:\\gh\\oomlout_ai_chat_gpt_robo_click")
 
         kwargs["folder_pythonpath"] = folder_pythonpath
         set_folder_pythonpath(**kwargs)
