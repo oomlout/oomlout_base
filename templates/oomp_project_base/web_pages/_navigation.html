@@ -1,0 +1,9 @@
+{% set active = page_meta.get("highlight") if page_meta is defined and page_meta else None %}
+<nav class="side-nav">
+  <h2>Pages</h2>
+  <ul class="nav-list">
+    <li class="{{ 'is-active' if active == 'index' else '' }}"><a href="/">Home</a></li>
+    <li class="{{ 'is-active' if active == 'example' else '' }}"><a href="/example">Example</a></li>
+    <li class="{{ 'is-active' if active == 'example_form' else '' }}"><a href="/example_form">Form</a></li>
+  </ul>
+</nav>

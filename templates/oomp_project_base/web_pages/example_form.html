@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="info-card">
+  <h2>Sample Form</h2>
+  <form method="post" class="simple-form">
+    <label>
+      Label
+      <input type="text" name="sample_text" value="{{ form_data.get('sample_text', '') }}" />
+    </label>
+    <label>
+      Choice
+      <select name="sample_choice">
+        <option value="one" {% if form_data.get('sample_choice') == 'one' %}selected{% endif %}>One</option>
+        <option value="two" {% if form_data.get('sample_choice') == 'two' %}selected{% endif %}>Two</option>
+      </select>
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+{% if form_submitted %}
+<section class="info-card">
+  <h2>Posted</h2>
+  <pre>{{ form_data | tojson(indent=2) }}</pre>
+</section>
+{% endif %}
+{% endblock %}

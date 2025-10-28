@@ -275,6 +275,9 @@ def robo_corel_object_order(**kwargs):
 
 def robo_corel_open(**kwargs):
     file_name = kwargs.get('file_name', '')
+    #if file_name = try file_source
+    if file_name == '':
+        file_name = kwargs.get('file_source', '')
     directory = kwargs.get('directory', '')
     if directory != '':
         file_name = os.path.join(directory, file_name)
