@@ -16,11 +16,11 @@ def main(**kwargs):
     clone = True
     install = True
     
-    #git_long_directory = False
-    #pip = False
+    git_long_directory = False
+    pip = False
     path = False
     pythonpath = False
-    #openscadpath = False
+    openscadpath = False
     #clone = False
     #install = False
 
