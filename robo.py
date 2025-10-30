@@ -277,6 +277,7 @@ def robo_corel_open(**kwargs):
     file_name = kwargs.get('file_name', '')
     #if file_name = try file_source
     if file_name == '':
+
         file_name = kwargs.get('file_source', '')
     directory = kwargs.get('directory', '')
     if directory != '':
@@ -395,6 +396,7 @@ def robo_corel_trace_clipart(**kwargs):
     message = kwargs.get('message', f"tracing lineart")
     number_of_colors = kwargs.get('number_of_colors', None)
     remove_background_color_from_entire_image = kwargs.get('remove_background_color_from_entire_image', False)
+    detail_minus = kwargs.get('detail_minus', 0)
     #trace the clipart in corel
     print(message)
     #open trace menu
@@ -431,8 +433,11 @@ def robo_corel_trace_clipart(**kwargs):
         #press up 20 times
         robo_keyboard_press_up(delay=0.15, repeat=20)
         #robo_mouse_click(position=[1359, 383], delay=30)
+        if detail_minus > 0:
+            #press down detail_minus times
+            robo_keyboard_press_down(delay=0.5, repeat=detail_minus)
         #press shift tab 3 times
-        robo_keyboard_press_tab_shift(delay=0.5, repeat=3)
+        robo_keyboard_press_tab_shift(delay=2, repeat=3)
         #wait 30 seconds
         robo_delay(delay=30)
     #set colors
