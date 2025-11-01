@@ -219,7 +219,7 @@ def robo_corel_export_file(**kwargs):
         #select all
         robo_keyboard_select_all(delay=2)
         #send alt f
-        robo_keyboard_press_alt_f(delay=1)
+        robo_keyboard_press_alt_f(delay=3)
         #send e 
         robo_keyboard_press_generic(string='e', delay=20)
         # #send right
@@ -248,9 +248,9 @@ def robo_corel_export_file(**kwargs):
         #send y to overwrite
         robo_keyboard_send(string='y', delay=5)
         #press enter to confirm
-        robo_keyboard_press_enter(delay=5)
+        robo_keyboard_press_enter(delay=delay)
         
-        robo_delay(delay=delay)
+        robo_delay(delay=10)
 
 def robo_corel_object_order(**kwargs):
     order = kwargs.get('order', 'to_front')
@@ -392,6 +392,8 @@ def robo_corel_trace_clipart(**kwargs):
     message = kwargs.get('message', f"tracing lineart")
     number_of_colors = kwargs.get('number_of_colors', None)
     remove_background_color_from_entire_image = kwargs.get('remove_background_color_from_entire_image', False)
+    delay= kwargs.get('delay', 30)
+    delay_trace = kwargs.get('delay_trace', 30)
     #trace the clipart in corel
     print(message)
     #open trace menu
@@ -410,7 +412,7 @@ def robo_corel_trace_clipart(**kwargs):
         #909,568
         #click to reduce bitmap
         if True:
-            robo_keyboard_press_enter(delay=30)
+            robo_keyboard_press_enter(delay=delay_trace)
             #robo_mouse_click(position=[909, 568], delay=30)
             #robo_mouse_click(position=[1030, 1950], delay=30)
             #all settings inherited    
@@ -431,7 +433,7 @@ def robo_corel_trace_clipart(**kwargs):
         #press shift tab 3 times
         robo_keyboard_press_tab_shift(delay=0.5, repeat=3)
         #wait 30 seconds
-        robo_delay(delay=30)
+        robo_delay(delay=delay_trace)
     #set colors
     if number_of_colors is not None:
         #shift tab 11
@@ -442,12 +444,14 @@ def robo_corel_trace_clipart(**kwargs):
         robo_keyboard_press_tab_shift(delay=0.25, repeat=9)
         #press number_of_colors
         robo_keyboard_send(string=str(number_of_colors), delay=1)
+        robo_keyboard_press_tab(delay=0.25, repeat=1)
+        robo_delay(delay=delay_trace)
         #tab 10 times
-        robo_keyboard_press_tab(delay=0.25, repeat=10)
+        robo_keyboard_press_tab(delay=0.25, repeat=9)
         #delay 5 seconds
-        robo_delay(delay=20)
+        robo_delay(delay=delay_trace)
 
-    robo_keyboard_press_enter(delay=30)
+    robo_keyboard_press_enter(delay=delay_trace)
 
 def robo_corel_trace_lineart(**kwargs):
     message = kwargs.get('message', f"tracing lineart")
