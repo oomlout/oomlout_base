@@ -1058,6 +1058,18 @@ def robo_pdf_from_svg(**kwargs):
     print(f"Converting {file_input} to {file_output}...")
     os.system(f"inkscape {file_input} --export-filename={file_output}")
 
+def robo_convert_svg_to_png(**kwargs):
+    robo_png_from_svg(**kwargs)
+
+def robo_png_from_svg(**kwargs):
+    file_input = kwargs.get('file_input', '')
+    file_output = kwargs.get('file_output', '')
+    if file_output == '':
+        file_output = file_input.replace('.svg', '.png')
+    #convert using call to inkscape command line
+    print(f"Converting {file_input} to {file_output}...")
+    os.system(f"inkscape {file_input} --export-filename={file_output}")
+
 def robo_pdf_merge(**kwargs):
     import PyPDF2
     folder = kwargs.get('folder', '')
