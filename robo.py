@@ -275,6 +275,10 @@ def robo_corel_object_order(**kwargs):
 
 def robo_corel_open(**kwargs):
     file_name = kwargs.get('file_name', '')
+    #if file_name = try file_source
+    if file_name == '':
+
+        file_name = kwargs.get('file_source', '')
     directory = kwargs.get('directory', '')
     if directory != '':
         file_name = os.path.join(directory, file_name)
@@ -392,8 +396,9 @@ def robo_corel_trace_clipart(**kwargs):
     message = kwargs.get('message', f"tracing lineart")
     number_of_colors = kwargs.get('number_of_colors', None)
     remove_background_color_from_entire_image = kwargs.get('remove_background_color_from_entire_image', False)
-    delay= kwargs.get('delay', 30)
+    
     delay_trace = kwargs.get('delay_trace', 30)
+    detail_minus = kwargs.get('detail_minus', 0)
     #trace the clipart in corel
     print(message)
     #open trace menu
@@ -430,8 +435,11 @@ def robo_corel_trace_clipart(**kwargs):
         #press up 20 times
         robo_keyboard_press_up(delay=0.15, repeat=20)
         #robo_mouse_click(position=[1359, 383], delay=30)
+        if detail_minus > 0:
+            #press down detail_minus times
+            robo_keyboard_press_down(delay=0.5, repeat=detail_minus)
         #press shift tab 3 times
-        robo_keyboard_press_tab_shift(delay=0.5, repeat=3)
+        robo_keyboard_press_tab_shift(delay=2, repeat=3)
         #wait 30 seconds
         robo_delay(delay=delay_trace)
     #set colors
@@ -1050,6 +1058,18 @@ def robo_pdf_from_svg(**kwargs):
     file_output = kwargs.get('file_output', '')
     if file_output == '':
         file_output = file_input.replace('.svg', '.pdf')
+    #convert using call to inkscape command line
+    print(f"Converting {file_input} to {file_output}...")
+    os.system(f"inkscape {file_input} --export-filename={file_output}")
+
+def robo_convert_svg_to_png(**kwargs):
+    robo_png_from_svg(**kwargs)
+
+def robo_png_from_svg(**kwargs):
+    file_input = kwargs.get('file_input', '')
+    file_output = kwargs.get('file_output', '')
+    if file_output == '':
+        file_output = file_input.replace('.svg', '.png')
     #convert using call to inkscape command line
     print(f"Converting {file_input} to {file_output}...")
     os.system(f"inkscape {file_input} --export-filename={file_output}")
