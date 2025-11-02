@@ -437,7 +437,7 @@ def robo_corel_trace_clipart(**kwargs):
         #robo_mouse_click(position=[1359, 383], delay=30)
         if detail_minus > 0:
             #press down detail_minus times
-            robo_keyboard_press_down(delay=0.5, repeat=detail_minus)
+            robo_keyboard_press_down(delay=0.25, repeat=detail_minus)
         #press shift tab 3 times
         robo_keyboard_press_tab_shift(delay=2, repeat=3)
         #wait 30 seconds
