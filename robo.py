@@ -248,7 +248,7 @@ def robo_corel_export_file(**kwargs):
         #send y to overwrite
         robo_keyboard_send(string='y', delay=5)
         #press enter to confirm
-        robo_keyboard_press_enter(delay=delay)
+        robo_keyboard_press_enter(delay=20)
         
         robo_delay(delay=10)
 
@@ -434,10 +434,11 @@ def robo_corel_trace_clipart(**kwargs):
         robo_keyboard_press_tab(delay=0.5, repeat=3)
         #press up 20 times
         robo_keyboard_press_up(delay=0.15, repeat=20)
-        #robo_mouse_click(position=[1359, 383], delay=30)
+        #robo_mouse_click(position=[1359, 383], delay=30)        
         if detail_minus > 0:
+            robo_delay(delay=delay_trace)
             #press down detail_minus times
-            robo_keyboard_press_down(delay=0.25, repeat=detail_minus)
+            robo_keyboard_press_down(delay=0.15, repeat=detail_minus)
         #press shift tab 3 times
         robo_keyboard_press_tab_shift(delay=2, repeat=3)
         #wait 30 seconds

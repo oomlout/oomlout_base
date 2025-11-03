@@ -8,6 +8,7 @@ backup_*
 working-backups/
 Backup_*
 _autosave
+lock/
 
 
 
