@@ -399,6 +399,8 @@ def robo_corel_trace_clipart(**kwargs):
     
     delay_trace = kwargs.get('delay_trace', 30)
     detail_minus = kwargs.get('detail_minus', 0)
+    smoothing = kwargs.get('smoothing', 25)
+    corner_smoothness = kwargs.get('corner_smoothness', 0)
     #trace the clipart in corel
     print(message)
     #open trace menu
@@ -432,18 +434,50 @@ def robo_corel_trace_clipart(**kwargs):
     if True:
         #press tab 3 times
         robo_keyboard_press_tab(delay=0.5, repeat=3)
-        #press up 20 times
-        robo_keyboard_press_up(delay=0.15, repeat=20)
-        #robo_mouse_click(position=[1359, 383], delay=30)        
-        if detail_minus > 0:
+        #smoothing
+        if smoothing != 25:
+            #press tab once
+            robo_keyboard_press_tab(delay=0.5)
+            #press delete 3 times
+            robo_keyboard_press_delete(delay=0.5, repeat=3)
+            #delay 2
+            robo_delay(delay=2)
+            #send smoothing
+            smoothing_str = str(smoothing)
+            robo_keyboard_send(string=smoothing_str, delay=5)
+            #delay delay
+            robo_delay(delay=delay_trace)            
+            #send shift tab once
+            robo_keyboard_press_tab_shift(delay=0.5, repeat=1)
+        #corner smoothness
+        if corner_smoothness != 0:
+            #press tab twice
+            robo_keyboard_press_tab(delay=0.5, repeat=2)
+            #press delete 3 times
+            robo_keyboard_press_delete(delay=0.5, repeat=3)
+            #send corner_smoothness
+            robo_keyboard_send(string=str(corner_smoothness), delay=1)
+            #delay delay
             robo_delay(delay=delay_trace)
-            #press down detail_minus times
-            robo_keyboard_press_down(delay=0.15, repeat=detail_minus)
+            #send shift tab twice
+            robo_keyboard_press_tab_shift(delay=0.5, repeat=2)
+            
+        #detail
+        if True:
+            #press up 20 times
+
+            robo_keyboard_press_up(delay=0.15, repeat=20)
+            #robo_mouse_click(position=[1359, 383], delay=30)        
+            if detail_minus > 0:
+                robo_delay(delay=delay_trace)
+                #press down detail_minus times
+                robo_keyboard_press_down(delay=0.15, repeat=detail_minus)
         #press shift tab 3 times
         robo_keyboard_press_tab_shift(delay=2, repeat=3)
         #wait 30 seconds
         robo_delay(delay=delay_trace)
     #set colors
+
     if number_of_colors is not None:
         #shift tab 11
         robo_keyboard_press_tab_shift(delay=0.5, repeat=11)
@@ -454,12 +488,23 @@ def robo_corel_trace_clipart(**kwargs):
         #press number_of_colors
         robo_keyboard_send(string=str(number_of_colors), delay=1)
         robo_keyboard_press_tab(delay=0.25, repeat=1)
+        #test to see if too few
+        if True:
+            #copy
+            print("Testing to see if number of colors is too few...")
+            test = robo_keyboard_copy(delay=2)
+            if "value must be" in test.lower():
+                print(f"Number of colors {number_of_colors} is too few, increasing to 256")
+                #send enter
+                robo_keyboard_press_enter(delay=2)
+                #send one tab
+                robo_keyboard_press_tab(delay=0.25, repeat=1)
         robo_delay(delay=delay_trace)
         #tab 10 times
         robo_keyboard_press_tab(delay=0.25, repeat=9)
         #delay 5 seconds
         robo_delay(delay=delay_trace)
-
+    robo_keyboard_press_enter(delay=5)
     robo_keyboard_press_enter(delay=delay_trace)
 
 def robo_corel_trace_lineart(**kwargs):
@@ -800,6 +845,11 @@ def robo_keyboard_press_right(**kwargs):
     kwargs["string"] = "right"
     robo_keyboard_press_generic(**kwargs)
 
+#delete
+def robo_keyboard_press_delete(**kwargs):
+    kwargs["string"] = "delete"
+    robo_keyboard_press_generic(**kwargs)
+
 #press enter
 def robo_keyboard_press_enter(**kwargs):
     kwargs["string"] = "enter"
@@ -819,6 +869,8 @@ def robo_keyboard_press_tab(**kwargs):
 def robo_keyboard_press_tab_shift(**kwargs):
     kwargs["string"] = "tab"
     robo_keyboard_press_shift_generic(**kwargs)
+
+
 
 #press string
 def robo_keyboard_send(**kwargs):
