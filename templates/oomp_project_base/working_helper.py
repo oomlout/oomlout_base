@@ -15,7 +15,7 @@ def run_robo_ai(**kwargs):
     # Set the mode
     
     
-    #mod = "all"
+    mod = "all"
     #mod = "ai"
     #mod = "corel"
 
