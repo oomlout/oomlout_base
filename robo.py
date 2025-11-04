@@ -246,7 +246,7 @@ def robo_corel_export_file(**kwargs):
         #press enter to confirm
         robo_keyboard_press_enter(delay=2)
         #send y to overwrite
-        robo_keyboard_send(string='y', delay=5)
+        robo_keyboard_send(string='y', delay=20)
         #press enter to confirm
         robo_keyboard_press_enter(delay=20)
         
@@ -494,11 +494,9 @@ def robo_corel_trace_clipart(**kwargs):
             print("Testing to see if number of colors is too few...")
             test = robo_keyboard_copy(delay=2)
             if "value must be" in test.lower():
-                print(f"Number of colors {number_of_colors} is too few, increasing to 256")
+                print(f"   Number of colors {number_of_colors} is too few, increasing to 256")
                 #send enter
-                robo_keyboard_press_enter(delay=2)
-                #send one tab
-                robo_keyboard_press_tab(delay=0.25, repeat=1)
+                robo_keyboard_press_enter(delay=2)                
         robo_delay(delay=delay_trace)
         #tab 10 times
         robo_keyboard_press_tab(delay=0.25, repeat=9)
