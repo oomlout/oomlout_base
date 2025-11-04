@@ -161,27 +161,28 @@ def get_base(thing, **kwargs):
     extra = kwargs.get("extra", "")
     
     #add plate
-    p3 = copy.deepcopy(kwargs)
-    p3["type"] = "positive"
-    p3["shape"] = f"oobb_plate"    
-    p3["depth"] = depth
-    #p3["holes"] = True         uncomment to include default holes
-    #p3["m"] = "#"
-    pos1 = copy.deepcopy(pos)         
-    p3["pos"] = pos1
-    oobb_base.append_full(thing,**p3)
-    
-    #add holes seperate
-    p3 = copy.deepcopy(kwargs)
-    p3["type"] = "p"
-    p3["shape"] = f"oobb_holes"
-    p3["both_holes"] = True  
-    p3["depth"] = depth
-    p3["holes"] = "perimeter"
-    #p3["m"] = "#"
-    pos1 = copy.deepcopy(pos)         
-    p3["pos"] = pos1
-    oobb_base.append_full(thing,**p3)
+    if True:
+        p3 = copy.deepcopy(kwargs)
+        p3["type"] = "positive"
+        p3["shape"] = f"oobb_plate"    
+        p3["depth"] = depth
+        #p3["holes"] = True         uncomment to include default holes
+        #p3["m"] = "#"
+        pos1 = copy.deepcopy(pos)         
+        p3["pos"] = pos1
+        oobb_base.append_full(thing,**p3)
+        
+        #add holes seperate
+        p3 = copy.deepcopy(kwargs)
+        p3["type"] = "p"
+        p3["shape"] = f"oobb_holes"
+        p3["both_holes"] = True  
+        p3["depth"] = depth
+        p3["holes"] = "perimeter"
+        #p3["m"] = "#"
+        pos1 = copy.deepcopy(pos)         
+        p3["pos"] = pos1
+        oobb_base.append_full(thing,**p3)
 
     if prepare_print:
         #put into a rotation object
