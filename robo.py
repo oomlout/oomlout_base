@@ -848,6 +848,11 @@ def robo_keyboard_press_delete(**kwargs):
     kwargs["string"] = "delete"
     robo_keyboard_press_generic(**kwargs)
 
+#press back space
+def robo_keyboard_press_backspace(**kwargs):
+    kwargs["string"] = "backspace"
+    robo_keyboard_press_generic(**kwargs)
+
 #press enter
 def robo_keyboard_press_enter(**kwargs):
     kwargs["string"] = "enter"
