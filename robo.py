@@ -813,6 +813,9 @@ def robo_keyboard_press_ctrl_enter(**kwargs):
     kwargs["string"] = "enter"
     robo_keyboard_press_ctrl_generic(**kwargs)
 
+def robo_keyboard_press_shift_enter(**kwargs):
+    kwargs["string"] = "enter"
+    robo_keyboard_press_shift_generic(**kwargs)
 
 def robo_keyboard_press_ctrl_i(**kwargs):
     kwargs["string"] = "i"
