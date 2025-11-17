@@ -150,9 +150,12 @@ def robo_corel_add_text_box(**kwargs):
         robo_keyboard_press_tab(delay=0.5, repeat=9)
         if font != "":
             print(f"Setting font... {font}")
+            #mouse click 510 110
+            robo_mouse_click(position=[510, 110], delay=1)
             #type the font
-            pyautogui.typewrite(font, interval=0.25)
-            time.sleep(5)
+            robo_delay(delay=1)
+            pyautogui.typewrite(font, interval=0.1)
+            robo_delay(delay=2)  
         #press tab once
         robo_keyboard_press_tab(delay=0.5)
         if font_size != "":
