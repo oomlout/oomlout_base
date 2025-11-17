@@ -89,7 +89,11 @@ def robo_corel_add_text(**kwargs):
             #type the font
             robo_delay(delay=1)
             pyautogui.typewrite(font, interval=0.1)
-            robo_delay(delay=2)            
+            robo_delay(delay=2)         
+            #press down one time            
+            robo_keyboard_press_down(delay=0.5)
+            #[ress up 
+            robo_keyboard_press_up(delay=0.5)
             #press enter
             robo_keyboard_press_enter(delay=2)
             #ctrl enter again to get back
