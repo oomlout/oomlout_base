@@ -69,7 +69,7 @@ def robo_corel_add_text(**kwargs):
         #click at position x, y
         robo_mouse_click(position=[300, 300], delay=2)
         #type the text
-        pyautogui.typewrite(text, interval=0.25)
+        pyautogui.typewrite(str(text), interval=0.25)
         time.sleep(1)
         #press alt f
         #click pointer 16,145
@@ -79,21 +79,24 @@ def robo_corel_add_text(**kwargs):
         robo_corel_set_position(x=x, y=y, delay=2)
     #set font
     if True:
+        
         #press ctrl enter
         robo_keyboard_press_ctrl_enter(delay=2)
         #press tab 9 times
         robo_keyboard_press_tab(delay=0.5, repeat=9)
         if font != "":
+            print(f"Setting font... {font}")
             #type the font
-            pyautogui.typewrite(font, interval=0.025)
-            time.sleep(1)
+            robo_delay(delay=1)
+            pyautogui.typewrite(font, interval=1)
+            robo_delay(delay=5)
             #press enter
         #press tab once
         robo_keyboard_press_tab(delay=0.5)
         if font_size != "":
             #type the font size
             pyautogui.typewrite(str(font_size), interval=0.025)
-            time.sleep(1)
+            time.sleep(5)
             #press enter
             robo_keyboard_press_enter(delay=2)
         if font_alignment != "":
@@ -144,15 +147,16 @@ def robo_corel_add_text_box(**kwargs):
         #press tab 9 times
         robo_keyboard_press_tab(delay=0.5, repeat=9)
         if font != "":
+            print(f"Setting font... {font}")
             #type the font
-            pyautogui.typewrite(font, interval=0.025)
-            time.sleep(1)
+            pyautogui.typewrite(font, interval=0.25)
+            time.sleep(5)
         #press tab once
         robo_keyboard_press_tab(delay=0.5)
         if font_size != "":
             #type the font size
             pyautogui.typewrite(str(font_size), interval=0.025)
-            time.sleep(1)
+            time.sleep(5)
             #press enter
             robo_keyboard_press_enter(delay=2)
         if font_alignment != "":
