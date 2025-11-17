@@ -88,9 +88,14 @@ def robo_corel_add_text(**kwargs):
             print(f"Setting font... {font}")
             #type the font
             robo_delay(delay=1)
-            pyautogui.typewrite(font, interval=1)
-            robo_delay(delay=5)
+            pyautogui.typewrite(font, interval=0.1)
+            robo_delay(delay=2)            
             #press enter
+            robo_keyboard_press_enter(delay=2)
+            #ctrl enter again to get back
+            robo_keyboard_press_ctrl_enter(delay=2)
+            #tab 9 times again
+            robo_keyboard_press_tab(delay=0.5, repeat=9)
         #press tab once
         robo_keyboard_press_tab(delay=0.5)
         if font_size != "":
