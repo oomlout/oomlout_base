@@ -74,9 +74,7 @@ def robo_corel_add_text(**kwargs):
         #press alt f
         #click pointer 16,145
         robo_mouse_click(position=[16, 145], delay=2)
-        #set position
-    if True:
-        robo_corel_set_position(x=x, y=y, delay=2)
+        
     #set font
     if True:
         
@@ -103,6 +101,9 @@ def robo_corel_add_text(**kwargs):
             robo_keyboard_press_enter(delay=2)
         if font_alignment != "":
             pass
+    #set position
+    if True:
+        robo_corel_set_position(x=x, y=y, delay=2)
         
     robo_delay(delay=delay)
 
@@ -140,8 +141,6 @@ def robo_corel_add_text_box(**kwargs):
         #click pointer 16,145
         robo_mouse_click(position=[16, 145], delay=2)
         #set position
-    if True:
-        robo_corel_set_position(x=x, y=y, delay=2)
     #set font
     if True:
         #press ctrl enter
@@ -169,7 +168,12 @@ def robo_corel_add_text_box(**kwargs):
     #set size
     if True:
         robo_corel_set_size(width=width, height=height, delay=2)
-        
+        #press enter
+        robo_keyboard_press_enter(delay=2)
+    #set position    
+    if True:
+        robo_corel_set_position(x=x, y=y, delay=2)
+    
     robo_delay(delay=delay)
 
 def robo_corel_copy(**kwargs):
