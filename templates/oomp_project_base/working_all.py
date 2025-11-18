@@ -12,7 +12,7 @@ def main(**kwargs):
     print("Starting working_all")    
     import working_oomp
     print("Starting working_oomp")
-    kwargs = working_oomp.main(**kwargs)
+    working_oomp.main(**kwargs)
     
     
     #do ai work
