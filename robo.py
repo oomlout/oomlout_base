@@ -99,6 +99,10 @@ def robo_corel_add_text(**kwargs):
             time.sleep(5)
             #press enter
             robo_keyboard_press_enter(delay=2)
+            #press down
+            robo_keyboard_press_down(delay=1)
+            #press up
+            robo_keyboard_press_up(delay=1)
         if font_alignment != "":
             pass
     #set position
@@ -304,12 +308,22 @@ def robo_corel_open(**kwargs):
     os.system(f'start "" "{file_name}"')
     robo_delay(delay=delay)
 
+def robo_corel_group(**kwargs):
+    delay = kwargs.get('delay', 2)
+    select_all = kwargs.get('select_all', True)
+    message = kwargs.get('message', f"Grouping the selected items in Corel...")
+    #group the selected items in corel
+    print(message)
+    #press ctrl g
+    robo_keyboard_press_ctrl_generic(string='g', delay=delay)
+    robo_delay(delay=delay)
 
 def robo_corel_import_file(**kwargs):
     file_name = kwargs.get('file_name', '')
     directory = kwargs.get('directory', '')
     x = kwargs.get('x', "")
     y = kwargs.get('y', "")
+    angle = kwargs.get('angle', "")
     width = kwargs.get('width', "")
     height = kwargs.get('height', "")
     max_dimension = kwargs.get('max_dimension', "")
@@ -330,6 +344,8 @@ def robo_corel_import_file(**kwargs):
     robo_mouse_click(position=[300, 300], delay=5)
     #robo_mouse_click(position=[300, 300], delay=5)
     #if x, y, width, height are all skipped then just return
+    if angle != "":
+        robo_corel_set_rotation(**kwargs)
     if x == "" and y == "" and width == "" and height == "" and max_dimension == "":
 
         return
@@ -338,6 +354,7 @@ def robo_corel_import_file(**kwargs):
             robo_corel_set_position(**kwargs)
         if width != "" or height != "" or max_dimension != "":
             robo_corel_set_size(**kwargs)
+    
 
 def robo_corel_paste(**kwargs):
     delay = kwargs.get('delay', 1)
@@ -567,6 +584,20 @@ def robo_corel_set_position(**kwargs):
         robo_keyboard_send(string=str(x))
         robo_keyboard_press_tab(delay=0.5)
         robo_keyboard_send(string=str(y))
+        #press enter
+        robo_keyboard_press_enter(delay=0.5)
+
+#set angle
+def robo_corel_set_rotation(**kwargs):
+    angle = kwargs.get('angle', "")
+    if angle != "":
+        print(f"Setting the rotation to {angle} degrees")
+        #send ctrl {enter}
+        robo_keyboard_press_ctrl_enter(delay=1)
+        #send tab 5 times
+        robo_keyboard_press_tab(delay=0.5, repeat=8)
+        #send angle
+        robo_keyboard_send(string=str(angle), delay=1)
         #press enter
         robo_keyboard_press_enter(delay=0.5)
 
