@@ -33,8 +33,8 @@ def run_robo_ai(**kwargs):
     
     #filt = "postcard_regional_united_kingdom_wales_swansea_sa68_dance_camp_wales"
 
-    filt = ""
-    kwargs["filter"] = filt
+    #filt = ""
+    #kwargs["filter"] = filt
 
 
     directory = kwargs.get("directory", "parts")

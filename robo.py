@@ -130,27 +130,29 @@ def robo_corel_add_text_box(**kwargs):
         robo_keyboard_press_generic(string='f8', delay=2)
         #click at position x, y
         robo_mouse_drag(position=[300, 300], move=[200, 200], delay=2)
-        #type the text
+        #type the tex
+        #remove double new lines
+        text = text.replace("\\n\\n", "\\n")
         #split for \n
-        text_lines = text.split("\n")
+        text_lines = text.split("\\n")
         count = 0
         for text in text_lines:            
             if "<b>" in text:
                 text_blocks = text.split("<b>")
                 for i in text_blocks:
-                    pyautogui.typewrite(i, interval=0.25)
+                    pyautogui.typewrite(i, interval=0.05)
                     robo_delay(delay=0.5)
                     #send ctrl b
                     robo_keyboard_press_ctrl_generic(string='b', delay=0.5)
             else:
-                pyautogui.typewrite(text, interval=0.25)
-                time.sleep(1)
+                pyautogui.typewrite(text, interval=0.05)
+                time.sleep(0.5)
             if len(text_lines) > 1 and count < len(text_lines) - 1:
-                robo_keyboard_press_enter(delay=1)
+                robo_keyboard_press_enter(delay=0.25)
             count += 1
         #press alt f
         #click pointer 16,145
-        robo_mouse_click(position=[16, 145], delay=2)
+        robo_mouse_click(position=[20, 145], delay=2)
         #set position
     #set font
     if True:
