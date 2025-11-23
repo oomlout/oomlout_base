@@ -339,16 +339,22 @@ def robo_corel_import_file(**kwargs):
     if directory != '':
         file_name = os.path.join(directory, file_name)
     file_name_absolute = os.path.abspath(file_name)
+    #check if file exists
+    if not os.path.exists(file_name_absolute):
+        print(f"    Error: file {file_name_absolute} does not exist")
+        robo_delay(delay=2)
+        return
     delay = kwargs.get('delay', 10)
     message = kwargs.get('message', f"Importing the file: {file_name} at position {x}, {y} with size {width}x{height} and max dimension {max_dimension}...")
     print(message)
     #import the file in corel
     #press ctrl i
     robo_keyboard_press_ctrl_i(delay=10)
-    #send file name absolute
-    robo_keyboard_send(string=file_name_absolute, delay=2)
-    #press enter to confirm
-    robo_keyboard_press_enter(delay=5)
+    if True:
+        #send file name absolute
+        robo_keyboard_send(string=file_name_absolute, delay=2)
+        #press enter to confirm
+        robo_keyboard_press_enter(delay=5)
     #click in window
     robo_mouse_click(position=[300, 300], delay=5)
     #robo_mouse_click(position=[300, 300], delay=5)
