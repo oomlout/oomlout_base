@@ -53,7 +53,7 @@ def robo_chrome_open_url(**kwargs):
 
 def robo_corel_add_text(**kwargs):
     text = kwargs.get('text', 'Sample Text')
-    font = kwargs.get('font', 'Arial')
+    font = kwargs.get('font', '')
     font_size = kwargs.get('font_size', '24')
     font_alignment = kwargs.get('font_alignment', 'center') # left, center, right
     x = kwargs.get('x', 100)
@@ -88,7 +88,8 @@ def robo_corel_add_text(**kwargs):
             robo_mouse_click(position=[510, 110], delay=1)
             #type the font
             robo_delay(delay=1)
-            pyautogui.typewrite(font, interval=0.1)
+            if font != "":
+                pyautogui.typewrite(font, interval=0.1)
             robo_delay(delay=2)         
             
         #press tab once
@@ -113,7 +114,7 @@ def robo_corel_add_text(**kwargs):
 
 def robo_corel_add_text_box(**kwargs):
     text = kwargs.get('text', 'Sample Text')
-    font = kwargs.get('font', 'Arial')
+    font = kwargs.get('font', '')
     font_size = kwargs.get('font_size', '24')
     font_alignment = kwargs.get('font_alignment', 'center') # left, center, right
     x = kwargs.get('x', 100)
@@ -166,7 +167,8 @@ def robo_corel_add_text_box(**kwargs):
             robo_mouse_click(position=[510, 110], delay=1)
             #type the font
             robo_delay(delay=1)
-            pyautogui.typewrite(font, interval=0.1)
+            if font != "":
+                pyautogui.typewrite(font, interval=0.1)
             robo_delay(delay=2)  
         #press tab once
         robo_keyboard_press_tab(delay=0.5)
@@ -443,7 +445,7 @@ def robo_corel_trace_clipart(**kwargs):
     remove_background_color_from_entire_image = kwargs.get('remove_background_color_from_entire_image', False)
     
     delay_trace = kwargs.get('delay_trace', 30)
-    detail_minus = kwargs.get('detail_minus', 0)
+    detail_minus = kwargs.get('detail_minus', 5)
     smoothing = kwargs.get('smoothing', 25)
     corner_smoothness = kwargs.get('corner_smoothness', 0)
     #trace the clipart in corel
