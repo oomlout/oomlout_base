@@ -85,7 +85,7 @@ def robo_corel_add_text(**kwargs):
         if font != "":
             print(f"Setting font... {font}")
             #mouse click 510 110
-            robo_mouse_click(position=[510, 110], delay=1)
+            robo_mouse_click(position=[510, 105], delay=1)
             #type the font
             robo_delay(delay=1)
             if font != "":
@@ -164,7 +164,7 @@ def robo_corel_add_text_box(**kwargs):
         if font != "":
             print(f"Setting font... {font}")
             #mouse click 510 110
-            robo_mouse_click(position=[510, 110], delay=1)
+            robo_mouse_click(position=[510, 105], delay=1)
             #type the font
             robo_delay(delay=1)
             if font != "":
