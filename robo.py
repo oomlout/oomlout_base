@@ -194,12 +194,15 @@ def robo_corel_add_text_box(**kwargs):
 def robo_corel_copy(**kwargs):
     delay = kwargs.get('delay', 1)
     copy_mode = kwargs.get('copy_mode', 'all')
+    select_all = kwargs.get('select_all', False)
+    if copy_mode == 'all':
+        select_all = True
     message = kwargs.get('message', f"Copying the selected items in Corel...")
     #copy the selected items in corel
     print(message)
     #press ctrl a
-    if copy_mode == 'all':        
-        robo_keyboard_press_ctrl_generic(string='a', delay=delay)
+    if select_all:        
+        robo_corel_select_all(delay=2)
     #press ctrl c
     robo_keyboard_press_ctrl_generic(string='c', delay=delay)
     robo_delay(delay=delay)
@@ -218,6 +221,24 @@ def robo_corel_close_file(**kwargs):
     robo_keyboard_send(string=save_style, delay=2)
     #wait for the delay
     robo_delay(delay=delay)
+
+def robo_corel_convert_to_curves(**kwargs):
+    delay = kwargs.get('delay', 5)
+    delay_keypress = kwargs.get('delay_keypress', 0.5)
+    group = kwargs.get('group', True)
+    repeats = kwargs.get('repeats', 50)
+    message = kwargs.get('message', f"Converting selected items to curves in Corel...")
+    #convert selected items to curves in corel
+    print(message)
+    #press ctrl q
+    for _ in range(repeats):
+        robo_keyboard_press_ctrl_generic(string='q', delay=delay_keypress)
+        #press tab
+        robo_keyboard_press_tab(delay=delay_keypress)
+    if group:
+        robo_corel_group(select_all = True, delay=2)
+    robo_delay(delay=delay)
+    
 
 def robo_corel_export_file(**kwargs):
     file_name = kwargs.get('file_name', '')
@@ -324,6 +345,8 @@ def robo_corel_group(**kwargs):
     select_all = kwargs.get('select_all', True)
     message = kwargs.get('message', f"Grouping the selected items in Corel...")
     #group the selected items in corel
+    if select_all:
+        robo_corel_select_all(delay=2)
     print(message)
     #press ctrl g
     robo_keyboard_press_ctrl_generic(string='g', delay=delay)
@@ -434,6 +457,19 @@ def robo_corel_save_as(**kwargs):
     robo_keyboard_send(string='y', delay=5)
     #wait 20 seconds
     robo_delay(delay=20)
+
+def robo_corel_select_all(**kwargs):
+    delay = kwargs.get('delay', 1)
+    message = kwargs.get('message', f"Selecting all items in Corel...")
+    #select all items in corel
+    print(message)
+    #click on pointer first
+    robo_mouse_click(position=[24, 147], delay=1)
+    #click 200,200
+    robo_mouse_click(position=[200, 200], delay=1)
+    #press ctrl a
+    robo_keyboard_select_all(delay=delay)
+    robo_delay(delay=delay)
 
 def robo_corel_trace(**kwargs):
     return robo_corel_trace_clipart(**kwargs)
