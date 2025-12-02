@@ -63,8 +63,8 @@ def create_generic(**kwargs):
 
 
 
-
-    for thing in things:
+    if False:
+    #for thing in things:
         current = things[thing]                
         part = copy.deepcopy(part_details)        
         #coplot = "test_print_design"
