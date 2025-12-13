@@ -4,13 +4,14 @@ from importlib import import_module, reload
 from pathlib import Path
 from typing import Any, Dict
 
+import yaml
 from flask import Flask, abort, render_template, request
 from jinja2 import TemplateNotFound
 
 
 TEMPLATE_DIR = Path(__file__).parent / "web_pages"
 STATIC_DIR = TEMPLATE_DIR / "static"
-SITE_TITLE = "Flask Working Pages"
+SITE_TITLE = Path(__file__).parent.name
 app = Flask(
     __name__,
     template_folder=str(TEMPLATE_DIR),
@@ -74,12 +75,6 @@ def index():
     return render_page("index.html", page_title="Flask Index")
 
 
-@app.route("/example_form", methods=["GET", "POST"])
-def example_form():
-    """Minimal example form handler."""
-    return render_page("example_form.html", page_title="Example Form")
-
-
 @app.route("/<path:page_name>")
 def serve_page(page_name: str):
     """Serve any template from the web_pages directory."""
@@ -88,4 +83,13 @@ def serve_page(page_name: str):
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    # Load port from web_port.yaml file
+    port = 5000  # Default port
+    port_file = Path(__file__).parent / "web_port.yaml"
+    if port_file.exists():
+        with open(port_file, 'r') as f:
+            port_config = yaml.safe_load(f)
+            if port_config and 'port' in port_config:
+                port = port_config['port']
+    
+    app.run(host="0.0.0.0", port=port, debug=True)

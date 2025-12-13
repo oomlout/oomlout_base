@@ -1,0 +1,84 @@
+{% extends "_layout.html" %}
+
+{% block content %}
+<section class="info-card">
+  <h2>Reload Data</h2>
+  <p>
+    Reload template and metadata files from disk to pick up changes made since the server started.
+    The summary below reflects the most recent reload.
+  </p>
+  <form method="post" class="reload-form">
+    <button type="submit">Reload Now</button>
+    <a class="plain-link" href="/reload?refresh=1">Force Reload via GET</a>
+  </form>
+</section>
+
+<section class="info-card">
+  <h3>Current Snapshot</h3>
+  {% if reload_summary %}
+  <ul class="reload-stats">
+    <li><strong>Last reload:</strong> {{ reload_summary.timestamp or 'n/a' }}</li>
+    <li><strong>Indexed parts:</strong> {{ reload_summary.indexed_part_count or 0 }}</li>
+    <li><strong>Source groups:</strong> {{ reload_summary.group_count or 0 }}</li>
+    <li><strong>BIP-39 word count:</strong> {{ reload_summary.bip39_word_count or 0 }}</li>
+    <li><strong>BIP-39 word list:</strong> {{ reload_summary.bip39_wordlist_path or 'not found' }}</li>
+  </ul>
+  <details class="reload-sources">
+    <summary>Source directories</summary>
+    <ul>
+      {% for name, path in (reload_summary.source_paths or {}).items() %}
+      <li><strong>{{ name }}:</strong> {{ path }}</li>
+      {% endfor %}
+    </ul>
+  </details>
+  {% else %}
+  <p>No reload has been performed in this session yet.</p>
+  {% endif %}
+</section>
+
+<style>
+  .reload-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .reload-form button {
+    font: inherit;
+    padding: 0.6rem 1.4rem;
+    border-radius: 10px;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-panel);
+  }
+
+  .reload-form button:hover {
+    background: var(--accent-strong);
+  }
+
+  .reload-form .plain-link {
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .reload-stats {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .reload-sources ul {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% set active = page_meta.get("highlight") if page_meta is defined and page_meta else None %}
+<nav class="side-nav">
+  <h2>Pages</h2>
+  <ul class="nav-list">
+    <li class="{{ 'is-active' if active == 'index' else '' }}"><a href="/">Home</a></li>
+    <li class="{{ 'is-active' if active == 'filter' else '' }}"><a href="/filter">Filter</a></li>
+    <li class="{{ 'is-active' if active == 'filter_file' else '' }}"><a href="/filter_file">File Filter</a></li>
+    <li class="{{ 'is-active' if active == 'bip39_navigation' else '' }}"><a href="/bip39_navigation">BIP-39 Navigation</a></li>
+    <li class="{{ 'is-active' if active == 'oomp_navigation' else '' }}"><a href="/oomp_navigation">OOMP Navigation</a></li>
+    <li class="{{ 'is-active' if active == 'reload' else '' }}"><a href="/reload">Reload</a></li>
+  </ul>
+</nav>
