@@ -1138,13 +1138,20 @@ def robo_text_jinja_template(**kwargs):
     file_output = kwargs.get("file_output","")
     file_source = kwargs.get("file_source","")
     
+    search_and_replace = kwargs.get("search_and_replace",[])
+
     dict_data = kwargs.get("dict_data",{})
 
     if dict_data == {} and file_source != "":
         #load yaml file
         import yaml
-        with open(file_source, "r") as infile:
-            dict_data = yaml.safe_load(infile)
+        old = False
+
+        if old:
+            with open(file_source, "r") as infile:
+                dict_data = yaml.safe_load(infile)
+        else:
+            dict_data = load_yaml_unicode_test(file_source) 
 
     markdown_string = ""
     #if running in windows
@@ -1158,6 +1165,20 @@ def robo_text_jinja_template(**kwargs):
     #use pickle to deep copy the dictionary
     data2 = pickle.loads(pickle.dumps(dict_data, -1))
 
+    pass
+
+    #def fix search and replace for special characters
+    data2 = fix_search_replace_special_characters(data2)
+
+    #do search and replace
+    if search_and_replace != []:
+        for item in search_and_replace:
+            search = item[0]
+            replace = item[1]
+            if search != "":
+                for key in data2:
+                    if isinstance(data2[key], str):
+                        data2[key] = data2[key].replace(search, replace)
 
     try:
         markdown_string = jinja2.Template(markdown_string).render(p=data2)
@@ -1183,6 +1204,199 @@ def robo_text_jinja_template(**kwargs):
             outfile.write(markdown_string)
             with open(file_output, "w", encoding="utf-8") as outfile2:
                 outfile2.write(outfile.getvalue())
+
+def fix_search_replace_special_characters(data):
+    """
+    Recursively process a dictionary/list and replace special Unicode characters
+    with their XML/SVG entity equivalents (&#xHHHH; format)
+    """
+    def fix_corrupted_utf8(text):
+        """Fix common UTF-8 corruption patterns for various languages"""
+        if not isinstance(text, str):
+            return text
+        
+        # Map of corrupted character sequences to their correct Unicode code points
+        # Process uppercase versions first to avoid case conflicts
+        corrections = {
+            # Romanian characters - UPPERCASE FIRST
+            'A\xc8\u2122-': 'AȘ-',  # Special case for CARAȘ-SEVERIN pattern
+            'E\xc8\u2122': 'EȘ',    # For MUREȘ, etc.
+            'O\xc8\u2122': 'OȘ',    # For BOTOȘANI pattern  
+            'A\xc8\u2122I': 'AȘI',  # For IAȘI pattern
+            'A\xc8\u2122O': 'AȘO',  # For BRAȘOV pattern
+            '\xc8\u2122I': 'ȘI',    # For CĂLĂRAȘI pattern
+            '\xc8\u2122A': 'ȘA',    # For various patterns
+            
+            # Regular Romanian characters
+            '\xc8\u203a': '\u021b',  # ț - Latin small letter t with comma below
+            '\xc8\u203A': '\u021A',  # Ț - Latin capital letter T with comma below
+            '\xc8\u0161': '\u0219',  # ș - Latin small letter s with comma below
+            '\xc8\u0160': '\u0218',  # Ș - Latin capital letter S with comma below
+            '\xc8\u2122': '\u0219',  # ș - Latin small letter s with comma below (lowercase variant)
+            '\xc8\u2021': '\u0218',  # Ș - Latin capital letter S with comma below (uppercase variant)
+            '\xc4\u0192': '\u0103',  # ă - Latin small letter a with breve
+            '\xc4\u0191': '\u0102',  # Ă - Latin capital letter A with breve
+            '\xc3\xa2': '\u00e2',    # â - Latin small letter a with circumflex
+            '\xc3\xA2': '\u00e2',    # â - variant
+            'È\u203a': '\u021b',     # Alternative: ț
+            'È\u203A': '\u021A',     # Alternative: Ț
+            'È\u0161': '\u0219',     # Alternative: ș
+            'È\u0160': '\u0218',     # Alternative: Ș
+            'È\u2122': '\u0219',     # Alternative: ș (lowercase, common in Romanian regions)
+            'È\u2021': '\u0218',     # Alternative: Ș (uppercase variant)
+            'Ä\u0192': '\u0103',     # Alternative: ă
+            'Ä\u0191': '\u0102',     # Alternative: Ă
+            'Ã\xa2': '\u00e2',       # Alternative: â
+            'Ã\xA2': '\u00e2',       # Alternative: â
+            
+            # French characters
+            '\xc3\xa9': '\u00e9',    # é - Latin small letter e with acute
+            '\xc3\xa8': '\u00e8',    # è - Latin small letter e with grave
+            '\xc3\xaa': '\u00ea',    # ê - Latin small letter e with circumflex
+            '\xc3\xab': '\u00eb',    # ë - Latin small letter e with diaeresis
+            '\xc3\xa0': '\u00e0',    # à - Latin small letter a with grave
+            '\xc3\xa2': '\u00e2',    # â - Latin small letter a with circumflex
+            '\xc3\xa7': '\u00e7',    # ç - Latin small letter c with cedilla
+            '\xc3\xb9': '\u00f9',    # ù - Latin small letter u with grave
+            '\xc3\xbb': '\u00fb',    # û - Latin small letter u with circumflex
+            '\xc3\xbc': '\u00fc',    # ü - Latin small letter u with diaeresis
+            '\xc3\xae': '\u00ee',    # î - Latin small letter i with circumflex
+            '\xc3\xaf': '\u00ef',    # ï - Latin small letter i with diaeresis
+            '\xc5\u201c': '\u0153',  # œ - Latin small ligature oe
+            'Ã\xa9': '\u00e9',       # Alternative: é
+            'Ã\xa8': '\u00e8',       # Alternative: è
+            'Ã\xa7': '\u00e7',       # Alternative: ç
+            
+            # German characters
+            '\xc3\xa4': '\u00e4',    # ä - Latin small letter a with diaeresis
+            '\xc3\xb6': '\u00f6',    # ö - Latin small letter o with diaeresis
+            '\xc3\x9f': '\u00df',    # ß - Latin small letter sharp s
+            '\xc3\x84': '\u00c4',    # Ä - Latin capital letter A with diaeresis
+            '\xc3\x96': '\u00d6',    # Ö - Latin capital letter O with diaeresis
+            '\xc3\x9c': '\u00dc',    # Ü - Latin capital letter U with diaeresis
+            'Ã\xa4': '\u00e4',       # Alternative: ä
+            'Ã\xb6': '\u00f6',       # Alternative: ö
+            'Ã\x9f': '\u00df',       # Alternative: ß
+            
+            # Spanish characters
+            '\xc3\xb1': '\u00f1',    # ñ - Latin small letter n with tilde
+            '\xc3\x91': '\u00d1',    # Ñ - Latin capital letter N with tilde
+            '\xc3\xad': '\u00ed',    # í - Latin small letter i with acute
+            '\xc3\xb3': '\u00f3',    # ó - Latin small letter o with acute
+            '\xc3\xba': '\u00fa',    # ú - Latin small letter u with acute
+            '\xc2\xa1': '\u00a1',    # ¡ - Inverted exclamation mark
+            '\xc2\xbf': '\u00bf',    # ¿ - Inverted question mark
+            'Ã\xb1': '\u00f1',       # Alternative: ñ
+            'Ã\xad': '\u00ed',       # Alternative: í
+            'Ã\xb3': '\u00f3',       # Alternative: ó
+            
+            # Portuguese characters
+            '\xc3\xa3': '\u00e3',    # ã - Latin small letter a with tilde
+            '\xc3\xb5': '\u00f5',    # õ - Latin small letter o with tilde
+            'Ã\xa3': '\u00e3',       # Alternative: ã
+            'Ã\xb5': '\u00f5',       # Alternative: õ
+            
+            # Polish characters
+            '\xc5\u0201': '\u0105',  # ą - Latin small letter a with ogonek
+            '\xc4\u2021': '\u0107',  # ć - Latin small letter c with acute
+            '\xc4\u2122': '\u0119',  # ę - Latin small letter e with ogonek
+            '\xc5\u201a': '\u0142',  # ł - Latin small letter l with stroke
+            '\xc5\u201e': '\u0144',  # ń - Latin small letter n with acute
+            '\xc3\xb3': '\u00f3',    # ó - Latin small letter o with acute (shared with Spanish)
+            '\xc5\u0161': '\u015b',  # ś - Latin small letter s with acute
+            '\xc5\xba': '\u017a',    # ź - Latin small letter z with acute
+            '\xc5\xbc': '\u017c',    # ż - Latin small letter z with dot above
+            
+            # Czech characters
+            '\xc4\u008d': '\u010d',  # č - Latin small letter c with caron
+            '\xc4\u017e': '\u010f',  # ď - Latin small letter d with caron
+            '\xc4\u203a': '\u011b',  # ě - Latin small letter e with caron
+            '\xc5\u2122': '\u0148',  # ň - Latin small letter n with caron
+            '\xc5\u2122': '\u0159',  # ř - Latin small letter r with caron
+            '\xc5\u0161': '\u0161',  # š - Latin small letter s with caron
+            '\xc5\u2022': '\u0165',  # ť - Latin small letter t with caron
+            '\xc5\u00af': '\u016f',  # ů - Latin small letter u with ring above
+            '\xc5\xbe': '\u017e',    # ž - Latin small letter z with caron
+            
+            # Greek characters (common ones)
+            '\xce\xb1': '\u03b1',    # α - Greek small letter alpha
+            '\xce\xb2': '\u03b2',    # β - Greek small letter beta
+            '\xce\xb3': '\u03b3',    # γ - Greek small letter gamma
+            '\xce\xb4': '\u03b4',    # δ - Greek small letter delta
+            '\xce\xb5': '\u03b5',    # ε - Greek small letter epsilon
+            
+            # Currency and common symbols
+            '\xc2\xa3': '\u00a3',    # £ - Pound sign
+            '\xc2\xa5': '\u00a5',    # ¥ - Yen sign
+            '\xe2\u201a\xac': '\u20ac',  # € - Euro sign
+            '\xc2\xa9': '\u00a9',    # © - Copyright sign
+            '\xc2\xae': '\u00ae',    # ® - Registered sign
+            '\xe2\u201e\xa2': '\u2122',  # ™ - Trademark sign
+            '\xc2\xb0': '\u00b0',    # ° - Degree sign
+            '\xc2\xb1': '\u00b1',    # ± - Plus-minus sign
+            '\xc3\u2014': '\u00d7',  # × - Multiplication sign
+            '\xc3\xb7': '\u00f7',    # ÷ - Division sign
+            
+            # Quotation marks and dashes
+            '\xe2\u20ac\u0153': '\u2018',  # ' - Left single quotation mark
+            '\xe2\u20ac': '\u2019',    # ' - Right single quotation mark
+            '\xe2\u20ac\u0153': '\u201c',  # " - Left double quotation mark
+            '\xe2\u20ac': '\u201d',    # " - Right double quotation mark
+            '\xe2\u20ac\u201c': '\u2013',  # – - En dash
+            '\xe2\u20ac\u201d': '\u2014',  # — - Em dash
+            '\xc2\xab': '\u00ab',    # « - Left-pointing double angle quotation mark
+            '\xc2\xbb': '\u00bb',    # » - Right-pointing double angle quotation mark
+        }
+        
+        result = text
+        for corrupted, correct in corrections.items():
+            result = result.replace(corrupted, correct)
+        
+        return result
+    
+    def unicode_to_svg_entity(text):
+        """Convert a string with Unicode characters to SVG-safe entities"""
+        if not isinstance(text, str):
+            return text
+        
+        # First fix any corrupted UTF-8
+        text = fix_corrupted_utf8(text)
+        
+        result = []
+        for char in text:
+            code_point = ord(char)
+            # Only escape non-ASCII characters (code point > 127)
+            # Keep regular ASCII characters as-is
+            if code_point > 127:
+                # Convert to XML/SVG entity format: &#xHEX;
+                result.append(f'&#x{code_point:04X};')
+            else:
+                result.append(char)
+        
+        return ''.join(result)
+    
+    def process_value(obj):
+        """Recursively process dictionary/list/string values"""
+        if isinstance(obj, dict):
+            return {k: process_value(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [process_value(item) for item in obj]
+        elif isinstance(obj, str):
+            return unicode_to_svg_entity(obj)
+        else:
+            return obj
+    
+    return process_value(data)
+
+def load_yaml_unicode_test(file_path):
+    import yaml
+
+    # Load YAML - it should already be UTF-8 encoded correctly
+    # Don't apply any transformations that might corrupt the characters
+    with open(file_path, 'r', encoding='utf-8') as infile:
+        data = yaml.safe_load(infile)
+    
+    return data
 
 def robo_screenshot(**kwargs):
     position = kwargs.get('position', [0, 0])
