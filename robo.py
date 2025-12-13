@@ -868,6 +868,21 @@ def robo_keyboard_copy(**kwargs):
     robo_delay(delay=delay)
     return clip
 
+def robo_keyboard_paste(**kwargs):
+    delay = kwargs.get('delay', 1)
+    position = kwargs.get('position', [0, 0])
+    text = kwargs.get('text', '')
+    #click positionem of 
+    if position != [0, 0]:
+        pos = position
+        pyautogui.click(pos[0], pos[1])
+    #set the clipboard to the text
+    clipboard.copy(text)
+    #paste the text from the clipboard
+    pyautogui.hotkey('ctrl', 'v')
+    
+
+
 def robo_keyboard_press_alt_f(**kwargs):
     kwargs["string"] = "f"
     robo_keyboard_press_alt_generic(**kwargs)
