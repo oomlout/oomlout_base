@@ -382,7 +382,7 @@ def robo_corel_import_file(**kwargs):
         robo_keyboard_press_enter(delay=5)
     #click in window
     robo_mouse_click(position=[300, 300], delay=5)
-    #robo_mouse_click(position=[300, 300], delay=5)
+    robo_mouse_click(position=[300, 300], delay=5)
     #if x, y, width, height are all skipped then just return
     if angle != "":
         robo_corel_set_rotation(**kwargs)
