@@ -27,42 +27,12 @@ def create_generic(**kwargs):
     default_empty = part_details.copy()
 
     things = {}    
+    
     thing = {}
     name_thing = "vegetable_design"
     thing["name"] = name_thing
     things[name_thing] = thing
-    #robot
-    thing = {}
-    name_thing = "robot_design"
-    thing["name"] = name_thing
-    things[name_thing] = thing
-    #fruit
-    thing = {}
-    name_thing = "fruit_design"
-    thing["name"] = name_thing
-    things[name_thing] = thing
-    #medicine
-    thing = {}
-    name_thing = "medicine_design"
-    thing["name"] = name_thing
-    things[name_thing] = thing
-    #flower
-    thing = {}
-    name_thing = "flower_design"
-    thing["name"] = name_thing
-    things[name_thing] = thing
-    #transportation
-    thing = {}
-    name_thing = "transportation_design"
-    thing["name"] = name_thing
-    things[name_thing] = thing
-
     
-        
-
-
-
-
     if False:
     #for thing in things:
         current = things[thing]                
