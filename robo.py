@@ -286,7 +286,7 @@ def robo_corel_export_file(**kwargs):
         robo_keyboard_press_enter(delay=5)      
         
         #sent shift tab once
-        robo_keyboard_press_tab_shift(delay=2, repeat=1)
+        robo_keyboard_press_tab_shift(delay=5, repeat=1)
         #send file name absolute
         #send filename absolute
         robo_keyboard_send(string=file_name_absolute, delay=5)
