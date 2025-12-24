@@ -1,2 +1,1 @@
-cd "c:\od\OneDrive\docs\ai_holiday_gift_wrap_generator"
-python "working_all.py"
+cd /d "C:\od\OneDrive\docs\ai_generation_from_yaml_launcher" && python working_all.py
