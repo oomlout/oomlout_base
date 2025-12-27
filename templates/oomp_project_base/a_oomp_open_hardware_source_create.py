@@ -121,14 +121,24 @@ def create_oomp_id(**kwargs):
     id_elements.append("oomp_manufacturer")
     id_elements.append("oomp_part_number")
 
-    oomp_id = ''
+    oomp_id_parts = []
     for element in id_elements:
         ele = kwargs.get(element,"")
         if ele != "":
-            oomp_id += ele + '_'
+            # Clean the element: replace spaces and punctuation with underscore
+            import re
+            cleaned = re.sub(r'[^a-zA-Z0-9]+', '_', ele)
+            # Remove leading/trailing underscores
+            cleaned = cleaned.strip('_')
+            # Replace multiple underscores with single underscore
+            cleaned = re.sub(r'_+', '_', cleaned)
+            if cleaned:  # Only add non-empty cleaned strings
+                oomp_id_parts.append(cleaned)
         element_name_raw = element.replace('oomp_','')
-        kwargs.update({element_name_raw:ele})    
-    oomp_id = oomp_id[:-1]
+        kwargs.update({element_name_raw:ele})
+    
+    # Join all parts with single underscore
+    oomp_id = '_'.join(oomp_id_parts)
 
     md5 = md5_from_string(oomp_id)
     kwargs['md5'] = md5
