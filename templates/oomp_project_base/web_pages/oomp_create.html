@@ -1,0 +1,240 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="info-card">
+  <h2>Create OOMP Open Hardware Source</h2>
+  <p>Fill in the details below to create a new OOMP open hardware source entry.</p>
+  
+  <form id="oomp-create-form" method="POST" action="/oomp_create">
+    <div class="form-group">
+      <label for="oomp_classification">Classification:</label>
+      <input type="text" id="oomp_classification" name="oomp_classification" value="{{ oomp_defaults.oomp_classification }}" placeholder="e.g., electronic, mechanical" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="oomp_type">Type:</label>
+      <input type="text" id="oomp_type" name="oomp_type" value="{{ oomp_defaults.oomp_type }}" placeholder="e.g., resistor, capacitor" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="oomp_size">Size:</label>
+      <input type="text" id="oomp_size" name="oomp_size" value="{{ oomp_defaults.oomp_size }}" placeholder="e.g., 0805, 1206" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="oomp_color">Color:</label>
+      <input type="text" id="oomp_color" name="oomp_color" value="{{ oomp_defaults.oomp_color }}" placeholder="e.g., red, blue, black" />
+    </div>
+    
+    <div class="form-group">
+      <label for="oomp_description_main">Description Main:</label>
+      <input type="text" id="oomp_description_main" name="oomp_description_main" value="{{ oomp_defaults.oomp_description_main }}" placeholder="Main description" required />
+    </div>
+    
+    <div class="form-group">
+      <label for="oomp_description_extra">Description Extra:</label>
+      <input type="text" id="oomp_description_extra" name="oomp_description_extra" value="{{ oomp_defaults.oomp_description_extra }}" placeholder="Additional description" />
+    </div>
+    
+    <div class="form-group">
+      <label for="oomp_manufacturer">Manufacturer:</label>
+      <input type="text" id="oomp_manufacturer" name="oomp_manufacturer" value="{{ oomp_defaults.oomp_manufacturer }}" placeholder="e.g., yageo, samsung" />
+    </div>
+    
+    <div class="form-group">
+      <label for="oomp_part_number">Part Number:</label>
+      <input type="text" id="oomp_part_number" name="oomp_part_number" value="{{ oomp_defaults.oomp_part_number }}" placeholder="Manufacturer part number" />
+    </div>
+    
+    <div class="form-group">
+      <label for="extra">Extra:</label>
+      <input type="text" id="extra" name="extra" value="{{ oomp_defaults.extra }}" placeholder="Additional information" />
+    </div>
+    
+    <div class="form-actions">
+      <button type="submit" class="btn-primary">Create OOMP Entry</button>
+      <button type="button" id="run-working-all" class="btn-secondary">Run Working All</button>
+      <button type="reset" class="btn-reset">Reset Form</button>
+    </div>
+  </form>
+  
+  <div id="result-message" class="result-message" style="display: none;"></div>
+</section>
+
+<style>
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .btn-primary,
+  .btn-secondary,
+  .btn-reset {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-primary {
+    background: #28a745;
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+  }
+  
+  .btn-secondary {
+    background: #0066cc;
+    color: white;
+  }
+  
+  .btn-secondary:hover {
+    background: #0052a3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+  }
+  
+  .btn-reset {
+    background: #6c757d;
+    color: white;
+  }
+  
+  .btn-reset:hover {
+    background: #5a6268;
+  }
+  
+  .result-message {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  
+  .result-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .result-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .result-message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+  }
+</style>
+
+<script>
+  (function() {
+    const form = document.getElementById('oomp-create-form');
+    const runWorkingAllBtn = document.getElementById('run-working-all');
+    const resultMessage = document.getElementById('result-message');
+    
+    function showMessage(message, type) {
+      resultMessage.textContent = message;
+      resultMessage.className = `result-message ${type}`;
+      resultMessage.style.display = 'block';
+      
+      // Auto-hide after 5 seconds for success messages
+      if (type === 'success' || type === 'info') {
+        setTimeout(() => {
+          resultMessage.style.display = 'none';
+        }, 5000);
+      }
+    }
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      
+      try {
+        const response = await fetch('/oomp_create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+          showMessage(result.message || 'OOMP entry created successfully!', 'success');
+          if (result.oomp_id) {
+            showMessage(`Created: ${result.oomp_id}`, 'success');
+          }
+        } else {
+          showMessage(result.error || 'Failed to create OOMP entry', 'error');
+        }
+      } catch (error) {
+        showMessage('Error: ' + error.message, 'error');
+      }
+    });
+    
+    runWorkingAllBtn.addEventListener('click', async () => {
+      try {
+        showMessage('Starting working_all.py...', 'info');
+        
+        const response = await fetch('/run_working_all', {
+          method: 'POST',
+        });
+        
+        const result = await response.json();
+        const message = result.message || 'working_all.py started';
+        
+        // Show queue messages as info, regular start as success
+        if (message.includes('queue') || message.includes('already running')) {
+          showMessage(message, 'info');
+        } else {
+          showMessage(message, 'success');
+        }
+      } catch (error) {
+        showMessage('Error starting working_all: ' + error.message, 'error');
+      }
+    });
+  })();
+</script>
+{% endblock %}

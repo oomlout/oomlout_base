@@ -226,15 +226,23 @@ def robo_corel_convert_to_curves(**kwargs):
     delay = kwargs.get('delay', 5)
     delay_keypress = kwargs.get('delay_keypress', 0.5)
     group = kwargs.get('group', True)
+    ungroup = kwargs.get('ungroup', False)
     repeats = kwargs.get('repeats', 50)
     message = kwargs.get('message', f"Converting selected items to curves in Corel...")
     #convert selected items to curves in corel
     print(message)
+    if ungroup:
+        robo_corel_ungroup(select_all = True, delay=2)
     #press ctrl q
     for _ in range(repeats):
         robo_keyboard_press_ctrl_generic(string='q', delay=delay_keypress)
         #press tab
         robo_keyboard_press_tab(delay=delay_keypress)
+    #mouse click 300,300
+    if True:
+        robo_mouse_click(position=[300, 300], delay=2)
+    
+
     if group:
         robo_corel_group(select_all = True, delay=2)
     robo_delay(delay=delay)
@@ -624,6 +632,33 @@ def robo_corel_trace_lineart(**kwargs):
     robo_mouse_click(position=[1337, 366], delay=10)
     robo_keyboard_press_enter(delay=30)
 
+def robo_corel_ungroup(**kwargs):
+    delay = kwargs.get('delay', 2)
+    repeats = kwargs.get('repeats', 50)
+    message = kwargs.get('message', f"Ungrouping the selected items in Corel...")
+    
+    #press ctrl u
+    for _ in range(repeats):        
+        robo_keyboard_press_ctrl_generic(string='u', delay=1)
+        #press tab
+        robo_keyboard_press_tab(delay=0.25)
+        print(".", end='', flush=True)
+    print("")
+    robo_delay(delay=delay)
+
+def robo_corel_page_goto(**kwargs):
+    page_number = kwargs.get('page_number', 1)
+    delay = kwargs.get('delay', 5)
+    message = kwargs.get('message', f"Going to page number: {page_number} in Corel...")
+    print(message)
+    #mouse click at 132 965
+    robo_mouse_click(position=[132, 965], delay=2)
+    #send page number
+    robo_keyboard_send(string=str(page_number), delay=2)
+    #press enter
+    robo_keyboard_press_enter(delay=2)
+    robo_delay(delay=delay)
+
 def robo_corel_set_position(**kwargs):
     x = kwargs.get('x', "")
     y = kwargs.get('y', "")
@@ -659,7 +694,10 @@ def robo_corel_set_size(**kwargs):
     height = kwargs.get('height', "")
     max_dimension = kwargs.get('max_dimension', "")
     delay = kwargs.get('delay', 2)
+    select_all = kwargs.get('select_all', False)
 
+    if select_all:
+        robo_corel_select_all(delay=2)
     if width != "" and height != "":
         #set the size of the object        
         print(f"Setting the size to {width}x{height}")
