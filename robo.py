@@ -646,6 +646,19 @@ def robo_corel_ungroup(**kwargs):
     print("")
     robo_delay(delay=delay)
 
+def robo_corel_page_goto(**kwargs):
+    page_number = kwargs.get('page_number', 1)
+    delay = kwargs.get('delay', 5)
+    message = kwargs.get('message', f"Going to page number: {page_number} in Corel...")
+    print(message)
+    #mouse click at 132 965
+    robo_mouse_click(position=[132, 965], delay=2)
+    #send page number
+    robo_keyboard_send(string=str(page_number), delay=2)
+    #press enter
+    robo_keyboard_press_enter(delay=2)
+    robo_delay(delay=delay)
+
 def robo_corel_set_position(**kwargs):
     x = kwargs.get('x', "")
     y = kwargs.get('y', "")
