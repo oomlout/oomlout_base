@@ -58,3 +58,4 @@ pip install qrcode[pil]
 pip install PyPDF2
 pip install schedule
 pip install mkdocs
+pip install CairoSVG
