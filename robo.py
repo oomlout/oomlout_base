@@ -369,6 +369,7 @@ def robo_corel_import_file(**kwargs):
     width = kwargs.get('width', "")
     height = kwargs.get('height', "")
     max_dimension = kwargs.get('max_dimension', "")
+    special = kwargs.get('special', "")
     if directory != '':
         file_name = os.path.join(directory, file_name)
     file_name_absolute = os.path.abspath(file_name)
@@ -390,7 +391,8 @@ def robo_corel_import_file(**kwargs):
         robo_keyboard_press_enter(delay=5)
     #click in window
     robo_mouse_click(position=[300, 300], delay=5)
-    robo_mouse_click(position=[300, 300], delay=5)
+    if special == "":
+        robo_mouse_click(position=[300, 300], delay=5)
     #if x, y, width, height are all skipped then just return
     if angle != "":
         robo_corel_set_rotation(**kwargs)
