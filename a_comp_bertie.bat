@@ -17,3 +17,6 @@ call C:\Users\aaron\AppData\Local\GitHubDesktop\GitHubDesktop.exe
 
 @REM start python c:\od\OneDrive\docs\ai_generation_from_yaml_launcher\working_web.py
 @REM start python c:\od\OneDrive\docs\ai_generation_from_yaml_launcher\working_web_oomp.py
+
+start python C:\od\OneDrive\docs\ai_story_book_base\working_web.py
+start python C:\od\OneDrive\docs\ai_story_book_base\working_web_oomp.py
