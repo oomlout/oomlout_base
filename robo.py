@@ -392,6 +392,7 @@ def robo_corel_import_file(**kwargs):
     #click in window
     robo_mouse_click(position=[300, 300], delay=5)
     if special == "":
+        
         robo_mouse_click(position=[300, 300], delay=5)
     #if x, y, width, height are all skipped then just return
     if angle != "":
