@@ -813,6 +813,54 @@ def robo_file_copy(**kwargs):
             else:
                 print(f"file {file_source} does not exist")
 
+## google_doc stuf
+def robo_google_doc_new(**kwargs):
+    delay = kwargs.get('delay', 5)
+    message = kwargs.get('message', f"Creating a new Google Doc...")
+    template = kwargs.get('template', '')
+    title = kwargs.get('title', '')
+    folder = kwargs.get('folder', '')
+    if template == '':
+        template = 'https://docs.google.com/document/u/0/create'
+        #create a new google doc
+    print(message)
+    #open new google doc
+    os.system(f"start {template}")    
+    robo_delay(delay=10)
+    #use key strokes to create a copy alt_f, down three times enter, wait, send title, tab 5, enter, wait 10 send title
+    if True:
+        #press alt f
+        robo_keyboard_press_alt_f(delay=2)
+        #press down three times
+        robo_keyboard_press_down(delay=0.5, repeat=3)
+        #press enter
+        robo_keyboard_press_enter(delay=5)
+        if title != "":
+            #send title
+            robo_keyboard_send(string=title, delay=2)
+        #press tab 5 times
+        robo_keyboard_press_tab(delay=0.5, repeat=5)
+        #press enter
+        robo_keyboard_press_enter(delay=10)
+    if title != "":
+        #send title
+        robo_keyboard_send(string=title, delay=2)
+    if folder != "": #down four times then send folder name
+        #press tab 4 times
+        robo_keyboard_press_down(delay=0.5, repeat=4)
+        #send folder name
+        robo_keyboard_send(string=folder, delay=2)
+    #use keyboard to get url to clipboard and return it ctrtl l to focus ctrl a ctrl c
+    robo_keyboard_press_ctrl_generic(string='l', delay=2)
+    robo_keyboard_press_ctrl_generic(string='a', delay=2)
+    robo_keyboard_press_ctrl_generic(string='c', delay=2)
+    #load from clipboard
+    url = clipboard.paste()
+    print(f"New Google Doc URL: {url}")
+    robo_delay(delay=delay)
+    return_value = {"url_google_doc": url}
+    return return_value
+
 
 def robo_git_clone_repo(**kwargs):
     repo = kwargs.get('repo', '')
