@@ -76,6 +76,8 @@ def main(**kwargs):
         folder_pythonpath.append("C:\\gh\\oomlout_oolc_oopen_laser_cutting_production_format")
         # ai_robo_click
         folder_pythonpath.append("C:\\gh\\oomlout_ai_chat_gpt_robo_click")
+        #C:\gh\oomlout_oobb_version_4
+        folder_pythonpath.append("C:\\gh\\oomlout_oobb_version_4")
 
         kwargs["folder_pythonpath"] = folder_pythonpath
         set_folder_pythonpath(**kwargs)
