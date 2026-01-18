@@ -1,0 +1,2 @@
+cd C:\gh\oomlout_base_webserver_flask_template_oomp\web_pages_oomp
+code index.html
