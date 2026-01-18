@@ -41,13 +41,115 @@ def robo_chrome_close_tab(**kwargs):
 
 def robo_chrome_open_url(**kwargs):
     url = kwargs.get('url', '')
-    delay = kwargs.get('delay', 1)
+    delay = kwargs.get('delay', 10)
     message = kwargs.get('message', f"Opening the url: {url}...")
     #open the url in chrome
     print(message)
     os.system(f"start chrome {url}")
     robo_delay(delay=delay)
 
+def robo_chrome_save_url(**kwargs):
+    url = kwargs.get('url', '')
+    url_directory = kwargs.get('url_directory', '')
+    directory = kwargs.get('directory', "")
+    save_modes = kwargs.get('save_modes', ["txt","singlefile", "save_dialog", "raw"])
+    
+    
+    file_name_singlefile = "singlefile.mhtml"
+    file_name_save_dialog = "save_dialog.html"
+    file_name_raw = "raw.html"
+    file_name_txt = "page.txt"
+    
+    url_path = os.path.join(directory, url_directory)
+    if not os.path.exists(url_path):
+        os.makedirs(url_path)
+    delay = kwargs.get('delay', 5)
+    
+    #open url
+    robo_chrome_open_url(url=url, delay=15)
+    
+    message = kwargs.get('message', f"Saving the url: {url} to file: {url_path}...")
+    print(message)
+    if "raw" in save_modes:
+    
+        file_path = os.path.join(url_path, file_name_raw)
+        #press ctrl u wait ctrl a, ctrl c, save clipboard to file
+        robo_keyboard_press_ctrl_generic(string='u', delay=5)
+        robo_delay(delay=5)
+        robo_keyboard_select_all(delay=2)
+        robo_keyboard_press_ctrl_generic(string='c', delay=2)
+        content = clipboard.paste()
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        #close tab
+        robo_chrome_close_tab(delay=2)
+    if "singlefile" in save_modes:
+        coordinate_single_file = [1608, 76]
+        file_path = os.path.join(url_path, file_name_singlefile)
+        
+        # Get the downloads directory
+        import shutil
+        downloads_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
+        
+        # Get initial list of files in downloads directory
+        initial_files = set(os.listdir(downloads_dir))
+        print(f"Initial files in downloads: {len(initial_files)}")
+        
+        # Click the SingleFile button
+        print(f"Clicking SingleFile button at {coordinate_single_file}")
+        robo_mouse_click(position=coordinate_single_file, delay=2)
+        
+        # Wait 15 seconds for download to start
+        print("Waiting 15 seconds for download...")
+        robo_delay(delay=15)
+        
+        # Check for new files
+        current_files = set(os.listdir(downloads_dir))
+        new_files = current_files - initial_files
+        
+        if not new_files:
+            print("No new file found after 15 seconds, waiting another 30 seconds...")
+            robo_delay(delay=30)
+            current_files = set(os.listdir(downloads_dir))
+            new_files = current_files - initial_files
+        
+        if not new_files:
+            print("ERROR: No new file appeared in downloads directory after 45 seconds")
+        else:
+            # Get the newest file (in case multiple files appeared)
+            new_file_name = max(new_files, key=lambda f: os.path.getctime(os.path.join(downloads_dir, f)))
+            source_file = os.path.join(downloads_dir, new_file_name)
+            
+            print(f"Found new file: {new_file_name}")
+            print(f"Moving from {source_file} to {file_path}")
+            
+            # Move the file to destination
+            shutil.move(source_file, file_path)
+            print(f"Successfully moved file to {file_path}")
+    if "save_dialog" in save_modes:
+        #press ctrl s wait type absolute path, press enter
+        file_path = os.path.join(url_path, file_name_save_dialog)
+        file_path_absolute = os.path.abspath(file_path)
+        robo_keyboard_press_ctrl_generic(string='s', delay=5)
+        robo_delay(delay=5)
+        robo_keyboard_send(string=file_path_absolute, delay=2)
+        robo_keyboard_press_enter(delay=5)
+    if "txt" in save_modes:
+        #ctrl a ctrl c then save to text file
+        file_path = os.path.join(url_path, file_name_txt)
+        robo_keyboard_select_all(delay=2)
+        robo_keyboard_press_ctrl_generic(string='c', delay=2)
+        content = clipboard.paste()
+        with open(file_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+    #close tab
+    robo_chrome_close_tab(delay=2)
+        
+                                  
+    #save the url to a text file
+    
+    
+    robo_delay(delay=delay)
 
 #corel things
 
