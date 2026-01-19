@@ -17,3 +17,6 @@ start python C:\od\OneDrive\docs\helen_school_english_spelling_editing\working_w
 
 start python c:\od\OneDrive\docs\ai_generation_from_yaml_launcher\working_web.py
 start python c:\od\OneDrive\docs\ai_generation_from_yaml_launcher\working_web_oomp.py
+
+start python c:\od\OneDrive\docs\food_recipe_automation\working_web.py
+start python c:\od\OneDrive\docs\food_recipe_automation\working_web_oomp.py
