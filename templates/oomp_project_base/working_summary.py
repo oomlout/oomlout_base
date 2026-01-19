@@ -85,6 +85,10 @@ def main(**kwargs):
                         folder = f"parts"
                         files = []
                         # loop through the parts directory and find all files with "sticker" in their name
+                        #check if directory exists
+                        if not os.path.exists(folder):
+                            print(f"Directory {folder} does not exist")
+                            continue                        
                         folders = os.listdir(folder)
                         for folder in folders:
                             if sum in folder and filt_main in folder:
