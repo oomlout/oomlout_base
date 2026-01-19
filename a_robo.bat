@@ -1,0 +1,2 @@
+cd C:\gh\oomlout_ai_chat_gpt_robo_click
+chrome action_documentation.html
