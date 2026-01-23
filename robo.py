@@ -1629,6 +1629,10 @@ def robo_screenshot(**kwargs):
 def robo_convert_svg_to_pdf(**kwargs):
     robo_pdf_from_svg(**kwargs)
 
+
+def robo_convert_svg_to_png(**kwargs):
+    robo_png_from_svg(**kwargs)
+
 def robo_pdf_from_svg(**kwargs):
     file_input = kwargs.get('file_input', '')
     file_output = kwargs.get('file_output', '')
