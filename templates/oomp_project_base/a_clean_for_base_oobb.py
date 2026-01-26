@@ -45,7 +45,7 @@ def main(**kwargs):
     folders_to_delete = []
     folders_to_delete.append('kicad')
     folders_to_delete.append('oolc_production')
-    folders_to_delete.append('source_files')
+    #folders_to_delete.append('source_files')
     folders_to_delete.append('three_d_printing')
     folders_to_delete.append('navigation_oobb')
     folders_to_delete.append('navigation_oomp')
