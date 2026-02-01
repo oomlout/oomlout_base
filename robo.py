@@ -131,10 +131,12 @@ def robo_chrome_save_url(**kwargs):
         file_path = os.path.join(url_path, file_name_save_dialog)
         file_path_absolute = os.path.abspath(file_path)
         robo_keyboard_press_ctrl_generic(string='s', delay=5)
-        robo_delay(delay=5)
+        robo_delay(delay=10)
         robo_keyboard_send(string=file_path_absolute, delay=2)
-        robo_keyboard_press_enter(delay=5)
+        robo_keyboard_press_enter(delay=20)
     if "txt" in save_modes:
+        #mouse click 300,300
+        robo_mouse_click(position=[300, 300], delay=2)
         #ctrl a ctrl c then save to text file
         file_path = os.path.join(url_path, file_name_txt)
         robo_keyboard_select_all(delay=2)
@@ -412,19 +414,19 @@ def robo_corel_export_file(**kwargs):
         robo_delay(delay=10)
 
 def robo_corel_object_order(**kwargs):
-    order = kwargs.get('order', 'to_front')
+    order = kwargs.get('order', 'to_front')    
     message = kwargs.get('message', f"Changing object order to: {order}")
     delay = kwargs.get('delay', 2)
     print(message)
     # Send the appropriate keyboard shortcuts to change the object order
-    if order == 'to_front':
+    if order == 'to_front' or order == 'front':
         #press shift down
         pyautogui.keyDown('ctrl')
         time.sleep(0.1)
         pyautogui.hotkey('home')
         time.sleep(0.1)
         pyautogui.keyUp('ctrl')
-    elif order == 'to_back':
+    elif order == 'to_back' or order == 'back':
         pyautogui.keyDown('ctrl')
         time.sleep(0.1)
         pyautogui.hotkey('end')
@@ -916,6 +918,50 @@ def robo_file_copy(**kwargs):
                 print(f"file {file_source} does not exist")
 
 ## google_doc stuf
+#add text to google doc
+def robo_google_doc_add_text(**kwargs):
+    url = kwargs.get('url', '')
+    text = kwargs.get('text', '')
+    position = kwargs.get('position', 'end') # start, end
+    delay = kwargs.get('delay', 5)
+    format = kwargs.get('format', True) # bold, italic, underline
+    down_times = kwargs.get('down_times', 20)
+
+    if format:
+        #remove double and triple new lines
+        text = text.replace("\\n\\n", "\\n").replace("\\n\\n", "\\n")
+        while "\n\n" in text:
+            text = text.replace("\n\n", "\n")
+        #/n/r with just /n
+        text = text.replace("\\n\\r", "\\n").replace("\\r\\n", "\\n")
+        #replace \t with {tab}
+        text = text.replace("\\t", "{tab}")
+        
+
+
+    message = kwargs.get('message', f"Adding text to Google Doc at {url}...")
+    #add text to google doc
+    print(message)
+    #open google doc
+    os.system(f"start {url}")    
+    robo_delay(delay=10)
+    #move to position
+    if position == 'start':
+        robo_keyboard_press_ctrl_generic(string='home', delay=2)
+    elif position == 'end':
+        #press down 100 times to go to end
+        robo_keyboard_press_down(delay=0.1, repeat=down_times)
+        #add new line
+        robo_keyboard_press_enter(delay=2)        
+    #type text
+
+
+
+
+    robo_keyboard_send(string=text, delay=2)
+    robo_delay(delay=delay)
+
+
 def robo_google_doc_new(**kwargs):
     delay = kwargs.get('delay', 5)
     message = kwargs.get('message', f"Creating a new Google Doc...")
