@@ -20,3 +20,6 @@ start python c:\od\OneDrive\docs\ai_generation_from_yaml_launcher\working_web_oo
 
 start python c:\od\OneDrive\docs\food_recipe_automation\working_web.py
 start python c:\od\OneDrive\docs\food_recipe_automation\working_web_oomp.py
+
+start python c:\od\OneDrive\docs\household_label_ai_generator\working_web.py
+start python c:\od\OneDrive\docs\household_label_ai_generator\working_web_oomp.py
