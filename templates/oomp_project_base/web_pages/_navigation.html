@@ -2,7 +2,11 @@
 <nav class="side-nav">
   <h2>Pages</h2>
   <ul class="nav-list">
-    <li class="{{ 'is-active' if active == 'index' else '' }}"><a href="/">Home</a></li>
-    <li class="{{ 'is-active' if active == 'oomp_create' else '' }}"><a href="/oomp_create">Create OOMP</a></li>
+    {# Dynamically generate navigation links from nav_pages context #}
+    {% for page in nav_pages %}
+      <li class="{{ 'is-active' if active == page.name else '' }}">
+        <a href="{{ page.url }}">{{ page.title }}</a>
+      </li>
+    {% endfor %}
   </ul>
 </nav>

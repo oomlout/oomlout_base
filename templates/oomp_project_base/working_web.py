@@ -1,3 +1,23 @@
+
+# This route provides a form for creating a new part source entry.
+# When submitted, it creates a directory in parts_source/ and writes all form values to working.yaml.
+# The form fields are defined in part_form_fields, and any new fields added here will automatically be included in the YAML output.
+from flask import redirect, url_for, flash
+
+# List of fields for the create_part_source form.
+# To add a default value, use a 3rd value in the tuple: (field, label, default)
+# Example: ("classification", "Classification", "resistor")
+part_form_fields = [
+    ("classification", "Classification", ""),
+    ("type", "Type", ""),
+    ("size", "Size", ""),
+    ("color", "Color", ""),
+    ("description_main", "Description Main", ""),
+    ("description_extra", "Description Extra", ""),
+    ("manufacturer", "Manufacturer", ""),
+    ("part_number", "Part Number", ""),
+]
+
 """Flask web server that renders pages from the web_pages directory."""
 
 import os
@@ -13,13 +33,20 @@ from flask import Flask, abort, render_template, request
 from jinja2 import TemplateNotFound
 
 
+
+# BASE_DIR: Root directory of the project
 BASE_DIR = Path(__file__).parent
+# TEMPLATE_DIR: All HTML templates for the web server are stored in web_pages/
 TEMPLATE_DIR = BASE_DIR / "web_pages"
+# STATIC_DIR: Static files (CSS, JS, images) are stored in web_pages/static/
 STATIC_DIR = TEMPLATE_DIR / "static"
+# SITE_TITLE: Used for display in templates
 SITE_TITLE = BASE_DIR.name
+# LOCK_FILE: Used to prevent concurrent working_all runs
 LOCK_FILE = Path("C:/gh/oomlout_base/lock/working_all.lock")
 
-# Default values for OOMP form fields
+# Default values for OOMP form fields.
+# Used to pre-populate OOMP creation forms in templates.
 OOMP_DEFAULTS = {
     "oomp_classification": "",
     "oomp_type": "",
@@ -66,57 +93,103 @@ app = Flask(
 )
 app.config["SITE_TITLE"] = SITE_TITLE
 
+# --- Navigation Auto-Generation ---
+# This context processor scans web_pages/ for .html templates (excluding partials/layout) and provides nav_pages to all templates.
+@app.context_processor
+def inject_nav_pages():
+    nav_pages = []
+    for template_file in TEMPLATE_DIR.glob("*.html"):
+        name = template_file.stem
+        # Exclude partials (start with _) and layout.html
+        if name.startswith("_") or name == "layout":
+            continue
+        # Human-friendly title
+        title = name.replace("_", " ").title()
+        nav_pages.append({
+            "name": name,
+            "title": title,
+            "url": f"/{name}" if name != "index" else "/"
+        })
+    # Sort: index first, then alphabetical
+    nav_pages.sort(key=lambda x: (x["name"] != "index", x["title"]))
+    return {"nav_pages": nav_pages}
+
+# --- Launch working_all Endpoint ---
+# This endpoint launches action_run_working_all.bat when triggered from the parts source page.
+@app.route("/launch_working_all", methods=["POST"])
+def launch_working_all():
+    """
+    Launch action_run_working_all.bat in a new CMD window and redirect back to the create_part_source page.
+    """
+    try:
+        cmd = 'start "Run Working All" cmd /c "action_run_working_all.bat"'
+        subprocess.Popen(cmd, shell=True, cwd=Path(__file__).parent)
+    except Exception as e:
+        # Optionally, log or handle errors here
+        pass
+    # Always redirect back to the form
+    return redirect(url_for("create_part_source"))
+# --- Part Source Creation Route ---
+
 # No background monitoring - keep it simple
 
 
+@app.route("/create_part_source", methods=["GET", "POST"])
+def create_part_source():
+    """
+    Render a form for creating a new part source entry and handle its submission.
+    On POST, creates a directory in parts_source/ and writes all form values to working.yaml.
+    The form fields are defined in part_form_fields above. To add new fields, simply add to that list.
+    """
+    if request.method == "POST":
+        # Collect all form values into a dictionary (all fields optional, use default if blank)
+        form_data = {}
+        for field_tuple in part_form_fields:
+            if len(field_tuple) == 3:
+                field, _, default = field_tuple
+            else:
+                field, _ = field_tuple
+                default = ""
+            form_data[field] = request.form.get(field, default)
+        # Directory name is a combination of all field values, joined by underscores ("none" for empty fields)
+        dir_name = "_".join([form_data[field].replace(" ", "_") or "none" for field_tuple in part_form_fields for field in [field_tuple[0]]])
+        part_dir = BASE_DIR / "parts_source" / dir_name
+        part_dir.mkdir(parents=True, exist_ok=True)
+        # Write all form data to working.yaml in the new directory
+        with open(part_dir / "working.yaml", "w", encoding="utf-8") as f:
+            yaml.dump(form_data, f, allow_unicode=True)
+        # Redirect to the form with a success query parameter (no flash, no secret key needed)
+        return redirect(url_for("create_part_source", created=dir_name))
+    # On GET, render the form
+    # Pass a list of (field, label, default) to the template for easy rendering
+    form_fields_for_template = []
+    for field_tuple in part_form_fields:
+        if len(field_tuple) == 3:
+            field, label, default = field_tuple
+        else:
+            field, label = field_tuple
+            default = ""
+        form_fields_for_template.append((field, label, default))
+    return render_template(
+        "create_part_source.html",
+        page_title="Create Part Source",
+        part_form_fields=form_fields_for_template,
+    )
+
 def run_working_all_with_file_lock():
-    """Run working_all with file-based locking to prevent multiple instances."""
-    
-    # Check if already running
-    if LOCK_FILE.exists():
-        # Check if process is actually running (stale lock cleanup)
-        try:
-            with open(LOCK_FILE, 'r') as f:
-                pid = int(f.read().strip())
-            
-            # Try to check if process exists (Windows compatible)
-            try:
-                os.kill(pid, 0)  # This will raise if process doesn't exist
-                # Process exists, refuse to run
-                app.logger.info("working_all is already running, refusing to start another instance")
-                return False
-            except OSError:
-                # Process doesn't exist, remove stale lock
-                LOCK_FILE.unlink(missing_ok=True)
-                
-        except (ValueError, FileNotFoundError):
-            # Invalid lock file, remove it
-                LOCK_FILE.unlink(missing_ok=True)
-    
-    # Launch directly without threading to avoid Flask socket issues
+    """
+    Launch action_run_working_all.bat in a new CMD window and close the window after execution.
+    Lock file checking is removed for simplicity.
+    """
     try:
-        # Create lock file first
-        current_pid = os.getpid()
-        with open(LOCK_FILE, 'w') as f:
-            f.write(str(current_pid))
-        app.logger.info(f"Created lock file with PID {current_pid}")
-        
-        # Create command to run working_all in new CMD window
-        # This will show all output and close automatically when done
-        cmd = f'''start "Working All Process" cmd /c "echo Starting working_all.py... && python working_all.py && echo First run complete. Checking for new entries... && python working_all.py && echo Second run complete. && del "{LOCK_FILE}" && echo Lock removed. Processing complete!"'''
-        
-        app.logger.info("Launching working_all in new CMD window...")
-        
-        # Use subprocess.Popen instead of os.system to avoid Flask socket issues
+        # Command to run the batch file and close the window after execution
+        cmd = 'start "Run Working All" cmd /c "action_run_working_all.bat"'
+        app.logger.info("Launching action_run_working_all.bat in new CMD window...")
         subprocess.Popen(cmd, shell=True, cwd=Path(__file__).parent)
-        
         app.logger.info("CMD window launched successfully")
         return True
-        
     except Exception as e:
-        app.logger.error(f"Error launching working_all in CMD window: {e}")
-        # Fallback: remove lock file if we couldn't start
-        LOCK_FILE.unlink(missing_ok=True)
+        app.logger.error(f"Error launching action_run_working_all.bat: {e}")
         return False
 def get_working_all_status():
     """Get the current status of working_all execution."""
@@ -158,7 +231,11 @@ def _derive_page_title(template_name: str) -> str:
 
 
 def render_page(template_name: str, **context: Any):
-    """Render a template and run optional hooks around the render."""
+    """
+    Render a template and run optional hooks around the render.
+    This function is the main entry point for rendering HTML pages.
+    It also injects navigation and debug context for templates.
+    """
     hooks = _load_page_hooks()
     context_data: Dict[str, Any] = {
         "site_title": app.config.get("SITE_TITLE", SITE_TITLE),
@@ -188,19 +265,22 @@ def render_page(template_name: str, **context: Any):
 
 @app.route("/")
 def index():
-    """Serve the index page with spelling cards form."""
-    return render_page("index.html", page_title="Make Spelling Cards")
+    """
+    Serve the main index page.
+    This is the homepage for the web server. It renders index.html from web_pages/.
+    """
+    return render_page("index.html", page_title="Home")
 
 
-@app.route("/make_spelling_cards", methods=["GET", "POST"])
-def make_spelling_cards():
-    """Make spelling cards form handler."""
-    return render_page("make_spelling_cards.html", page_title="Make Spelling Cards")
-
+## Route removed: /make_spelling_cards
+# This route was removed because its template does not exist. If you wish to restore it, add make_spelling_cards.html to web_pages/ and re-add the route.
 
 @app.route("/run_batch_only", methods=["POST"])
 def run_batch_only():
-    """Run the batch file without adding anything to working.yaml."""
+    """
+    Run the batch file without adding anything to working.yaml.
+    Used for manual batch processing. Launches run_working_all.bat in a new window.
+    """
     import os
     from pathlib import Path
     
@@ -214,14 +294,20 @@ def run_batch_only():
 
 @app.route("/working_all_status")
 def working_all_status():
-    """Return the status of working_all execution."""
+    """
+    Return the status of working_all execution.
+    Returns a JSON with lock file and PID if running.
+    """
     status = get_working_all_status()
     return status
 
 
 @app.route("/run_working_all", methods=["POST"])
 def trigger_working_all():
-    """Manually trigger working_all execution."""
+    """
+    Manually trigger working_all execution.
+    Handles lock file logic and batch queuing for safe concurrent runs.
+    """
     if LOCK_FILE.exists():
         print("[DEBUG] Lock file exists - entering queue mode")
         # Add run instruction to batch file for queuing
@@ -284,71 +370,18 @@ pause
     return {"message": "Started working_all in new window"}
 
 
-@app.route("/oomp_create", methods=["GET", "POST"])
-def oomp_create():
-    """Handle OOMP open hardware source creation."""
-    print(f"[DEBUG] oomp_create route hit - method: {request.method}")
-    
-    if request.method == "GET":
-        print("[DEBUG] Rendering oomp_create.html")
-        return render_page("oomp_create.html", page_title="Create OOMP Entry", oomp_defaults=OOMP_DEFAULTS)
-    
-    # POST request - create the OOMP entry
-    try:
-        import re
-        data = request.get_json()
-        
-        # Build OOMP ID from form data
-        id_elements = [
-            "oomp_classification",
-            "oomp_type",
-            "oomp_size",
-            "oomp_color",
-            "oomp_description_main",
-            "oomp_description_extra",
-            "oomp_manufacturer",
-            "oomp_part_number",
-        ]
-        
-        oomp_id_parts = []
-        for element in id_elements:
-            ele = data.get(element, "")
-            if ele:
-                # Clean the element: replace spaces and punctuation with underscore
-                cleaned = re.sub(r'[^a-zA-Z0-9]+', '_', ele)
-                # Remove leading/trailing underscores
-                cleaned = cleaned.strip('_')
-                # Replace multiple underscores with single underscore
-                cleaned = re.sub(r'_+', '_', cleaned)
-                if cleaned:  # Only add non-empty cleaned strings
-                    oomp_id_parts.append(cleaned)
-        
-        # Join all parts with single underscore
-        oomp_id = '_'.join(oomp_id_parts)
-        
-        # Create parts_source directory if it doesn't exist
-        parts_dir = BASE_DIR / "parts_source" / oomp_id
-        parts_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Save working.yaml in the parts_source directory
-        working_file = parts_dir / "working.yaml"
-        with open(working_file, 'w') as f:
-            yaml.dump(data, f)
-        
-        print(f"[DEBUG] Created OOMP entry: {oomp_id}")
-        print(f"[DEBUG] Saved to: {working_file}")
-        
-        return {"message": f"OOMP entry created successfully", "oomp_id": oomp_id, "path": str(parts_dir)}
-    except Exception as e:
-        import traceback
-        print(f"[ERROR] {e}")
-        print(traceback.format_exc())
-        return {"error": str(e), "traceback": traceback.format_exc()}, 400
-
+## Route removed: /oomp_create
+# This route was removed as part of the cleanup. The page is now only accessible as a static template if present in web_pages/.
 
 @app.route("/<path:page_name>")
 def serve_page(page_name: str):
-    """Serve any template from the web_pages directory."""
+    """
+    Serve any template from the web_pages directory.
+    This dynamic route allows any .html file in web_pages/ to be accessed directly by its name.
+    Example: /index or /oomp_create will serve index.html or oomp_create.html if present.
+    SECURITY NOTE: Only .html files in web_pages/ are accessible. This prevents access to non-template files.
+    If a template does not exist, a 404 is returned.
+    """
     template_name = page_name if page_name.endswith(".html") else f"{page_name}.html"
     return render_page(template_name)
 
@@ -356,10 +389,10 @@ def serve_page(page_name: str):
 if __name__ == "__main__":
     port = _load_port_config()
     print(f"[config] Starting server on port {port}")
-    
-    # Print registered routes for debugging
+    # Print all registered routes for debugging and future maintainers.
+    # Remove or comment out in production for security.
     print("[routes] Registered routes:")
     for rule in app.url_map.iter_rules():
         print(f"  {rule.endpoint}: {rule.rule} [{','.join(rule.methods)}]")
-    
+    # Start the Flask server
     app.run(host="0.0.0.0", port=port, debug=False)

@@ -11,37 +11,45 @@ def load_parts(**kwargs):
     create_generic(**kwargs)
 
 def create_generic(**kwargs):
-    print(f"  creating sellers")
-    parts = []
-
-    part_details = {}
-    part_details["classification"] = "printer"
-    part_details["type"] = "risograph"
-    part_details["size"] = "testing"
-    part_details["color"] = ""
-    part_details["description_main"] = ""
-    part_details["description_extra"] = ""
-    part_details["manufacturer"] = ""
-    part_details["part_number"] = ""
-
-    default_empty = part_details.copy()
-
+    print(f"  loading parts from part_source")
     things = {}    
     
-    thing = {}
-    name_thing = "vegetable_design"
-    thing["name"] = name_thing
-    things[name_thing] = thing
-    
-    if False:
-    #for thing in things:
-        current = things[thing]                
-        part = copy.deepcopy(part_details)        
-        #coplot = "test_print_design"
-        part["color"] = "test_print_design"
-        part["description_main"] = thing
+    #load parts from parts_source directory
+    directory = "part_source"
+    import os
+    if not os.path.exists(directory):
+        print(f"      directory {directory} does not exist, creating it")
+        #create it
+        os.makedirs(directory)
+    for filename in os.listdir(directory):
+        import yaml
+        #go through directories and load working.yaml files
+        # only load .yaml files
+        if "working.yaml" in filename:
+            file_path = os.path.join(directory, filename)
+            with open(file_path, 'r', encoding='utf-8') as file:
+                data = yaml.safe_load(file)
+                for thing in data:
+                    things[thing] = data[thing]
 
+    default_empty = {}
+    default_empty["classification"] = ""
+    default_empty["type"] = ""
+    default_empty["size"] = ""
+    default_empty["color"] = ""
+    default_empty["description_main"] = ""
+    default_empty["description_extra"] = ""
+    default_empty["manufacturer"] = ""
+    default_empty["part_number"] = ""
+
+
+    parts = []
+
+    for thing in things:
+        current = things[thing]                
         #name stuff
+        part = copy.deepcopy(default_empty)
+        part.update(current)
         part["name"] = thing
         part["name_space"] = thing.replace("_", " ")
         part["name_proper"] = part["name_space"].title()
