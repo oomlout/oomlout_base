@@ -117,9 +117,9 @@ def main(**kwargs):
         #file_path = os.path.join(directory_project, "oolc_production/working.yaml")
         #with open(file_path, 'w') as file:            
         #    yaml.dump(details, file, sort_keys=False)
-        file_path = os.path.join(directory_project, "oolc_production/working.yaml")
-        with open(file_path, 'w') as file:
-            file.write(working_yaml_string)
+        # file_path = os.path.join(directory_project, "oolc_production/working.yaml")
+        # with open(file_path, 'w') as file:
+        #     file.write(working_yaml_string)
 
 
     #run working.py to create the readme
