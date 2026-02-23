@@ -8,5 +8,5 @@ git clone https://github.com/oomlout/oomlout_oomp_version_1_only_yaml
 start python C:\gh\oomlout_base_webserver_flask_template_oomp\working_web_oomp.py 
 start python C:\gh\oomp_part_generation_1_web_interface\working_web_oomp.py 
 rem call code z:\oomlout_oomp_version_1_messy
-start C:\od\OneDrive\docs\food_recipe_automation\working_web.py
-start C:\od\OneDrive\docs\food_recipe_automation\working_web_oomp.py
+rem start C:\od\OneDrive\docs\food_recipe_automation\working_web.py
+rem start C:\od\OneDrive\docs\food_recipe_automation\working_web_oomp.py

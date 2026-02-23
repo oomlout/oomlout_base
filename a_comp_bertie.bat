@@ -1,5 +1,7 @@
 call C:\Users\aaron\AppData\Local\GitHubDesktop\GitHubDesktop.exe
 
+start C:\od\OneDrive\docs\food_recipe_automation\working_web.py
+
 @REM start python C:\od\OneDrive\docs\ai_holiday_gift_wrap_generator\working_web.py
 @REM start python C:\od\OneDrive\docs\ai_holiday_gift_wrap_generator\working_web_oomp.py
 
