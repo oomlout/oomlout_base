@@ -1,0 +1,713 @@
+classification: helen
+classification_capital: Helen
+classification_first_letter: h
+classification_first_letter_upper: H
+classification_upper: HELEN
+color: spelling
+color_capital: Spelling
+color_first_letter: s
+color_first_letter_upper: S
+color_upper: SPELLING
+definition: deep love and admiration for someone or something
+description_extra: adoration
+description_extra_capital: Adoration
+description_extra_first_letter: a
+description_extra_first_letter_upper: A
+description_extra_upper: ADORATION
+description_main: keystage_two_word_card
+description_main_capital: Keystage Two Word Card
+description_main_first_letter: k
+description_main_first_letter_upper: K
+description_main_upper: KEYSTAGE_TWO_WORD_CARD
+description_only_numbers: ''
+description_only_numbers_short: ' '
+description_or_color: 'S '
+description_or_color_upper: 'S '
+directory: parts/helen_school_english_spelling_keystage_two_word_card_adoration
+distributors: []
+explanation: models KS2 noun suffix ation and silent e drop
+file_input: ''
+id: helen_school_english_spelling_keystage_two_word_card_adoration
+id_no_class: school_english_spelling_keystage_two_word_card_adoration
+id_no_size: spelling_keystage_two_word_card_adoration
+id_no_type: english_spelling_keystage_two_word_card_adoration
+link_github: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_school_english_spelling_keystage_two_word_card_adoration
+link_main: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_school_english_spelling_keystage_two_word_card_adoration
+link_redirect: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_school_english_spelling_keystage_two_word_card_adoration
+manufacturer: ''
+manufacturer_capital: ''
+manufacturer_first_letter: ''
+manufacturer_first_letter_upper: ''
+manufacturer_upper: ''
+manufacturers: []
+markdown_full: '[helen_school_english_spelling_keystage_two_word_card_adoration](none)<br>[](none)<br>[Helen
+    School English Spelling Keystage Two Word Card Adoration](none)<br><br>'
+markdown_short: '[helen_school_english_spelling_keystage_two_word_card_adoration](none)<br><br>'
+md5: d90d27c3cfcde9bca8cbe3dfd4c0aafe
+md5_10: d90d27c3cf
+md5_10_upper: D90D27C3CF
+md5_5: d90d2
+md5_5_upper: D90D2
+md5_6: d90d27
+md5_6_alpha: 8gvtz
+md5_6_alpha_upper: 8GVTZ
+md5_6_upper: D90D27
+name: Helen School English Spelling Keystage Two Word Card Adoration
+name_no_class: School English Spelling Keystage Two Word Card Adoration
+name_no_size: Spelling Keystage Two Word Card Adoration
+name_no_size_short: Spelling Keystage Two Word Card Adoration
+name_no_type: English Spelling Keystage Two Word Card Adoration
+name_proper: Adoration
+name_space: adoration
+name_upper: ADORATION
+oomlout_ai_roboclick_1:
+    actions:
+    -   command: new_chat
+        description: rice image adoration
+    -   command: query
+        delay: 240
+        method: paste
+        text: "\nYou are an expert UK Key Stage 2 spelling researcher and visual-learning\
+            \ designer.\n\nTASK:\nResearch the spelling word: adoration\nYour job\
+            \ is to explain why this word matters for Key Stage 2 learners and propose\
+            \ strong visual cues/metaphors that help children (ages 7-11) remember\
+            \ BOTH:\n1) the meaning, and\n2) the spelling (especially tricky letter\
+            \ patterns).\n\nPROCESS (do not skip):\n1) KS2 RELEVANCE CHECK\n   - Identify\
+            \ which KS2 spelling pattern(s), morphology, or phonics/spelling rule(s)\
+            \ the word connects to.\n   - If it is a \u201Ccommon exception / statutory\
+            \ / commonly taught\u201D style word, say so.\n   - Explain (briefly)\
+            \ where pupils are likely to meet it: reading, writing genres, curriculum\
+            \ topics, school life.\n   - Note any common misspellings and WHY they\
+            \ occur.\n\n2) WORD STRUCTURE ANALYSIS\n   - Break the word into syllables\
+            \ (UK pronunciation).\n   - Identify graphemes/phonemes that may confuse\
+            \ learners (e.g., /i/ spelled \u201Cy\u201D, /\u028C/ spelled \u201Cou\u201D\
+            , doubled consonant before a vowel suffix, silent letters, prefixes/suffixes,\
+            \ etymology if helpful).\n   - Identify morphemes (root + prefixes/suffixes)\
+            \ and any related word family forms.\n\n3) VISUAL MEMORY DESIGN (the core)\n\
+            \   - Generate 8-12 visual cue ideas designed for spelling retention.\n\
+            \   - At least half of the cues must explicitly encode the tricky spelling\
+            \ part visually (not just the meaning).\n   - Mix these types:\n     a)\
+            \ Literal meaning scene (simple)\n     b) Spelling-feature highlight (letters\
+            \ become objects, glowing, colour-coded, duplicated, etc.)\n     c) Mnemonic\
+            \ / metaphor / silly-but-safe scene\n     d) Word family cue (showing\
+            \ related forms, if relevant)\n   - Keep them age-appropriate, non-scary,\
+            \ and classroom-safe.\n\n4) EVALUATE & SELECT\n   - Choose the best 3\
+            \ visual cue concepts for KS2.\n   - For each of the top 3, explain:\n\
+            \     - Why it helps memory\n     - Which spelling feature it targets\n\
+            \     - What a child is likely to recall later when spelling\n\nOUTPUT\
+            \ FORMAT (use exactly these headings):\nA) KS2 Importance\nB) Spelling\
+            \ Rule Links\nC) Common Misspellings & Causes\nD) Syllables + Sounds (UK)\n\
+            E) Morphemes / Word Family\nF) Tricky Spelling Features (bullet list)\n\
+            G) Visual Cue Bank (8-12 numbered ideas)\nH) Top 3 Concepts (ranked 1-3\
+            \ with reasons)\nI) \u201CPrompt Seeds\u201D (write 3 short image-prompt\
+            \ seed lines, one per top concept, each under 25 words, and each must\
+            \ include the word exactly once: adoration)\n\nCONSTRAINTS:\n- Focus on\
+            \ UK Key Stage 2 context.\n- Avoid using long quotations from sources.\n\
+            - If you are uncertain about a rule link, say \u201Clikely\u201D and explain\
+            \ why.\n- Keep explanations concise but specific.\n\nBEGIN NOW with the\
+            \ word: adoration\n\n\n"
+    -   command: query
+        delay: 120
+        method: paste
+        text: "\nROLE RESET:\nYou are NO LONGER acting as a researcher.\nYou are now\
+            \ acting as an expert CGI chibi image-generation prompt engineer.\n\n\
+            CONTEXT CLARIFICATION:\n- The IMMEDIATELY PRECEDING assistant message\
+            \ in this conversation is the COMPLETE research output.\n- Treat that\
+            \ message as authoritative input data.\n- Do NOT repeat or re-research\
+            \ the word.\n- Do NOT explain your reasoning.\n- Your job is to TRANSFORM\
+            \ that research into a final image prompt.\n\nINPUT:\n- Target spelling\
+            \ word: adoration\n- Age range: 7-11 (UK Key Stage 2)\n- Research source:\
+            \ the immediately previous assistant response\n\nGOAL:\nProduce ONE final,\
+            \ production-ready image-generation prompt in STRICT JSON format.\nThe\
+            \ image must help a UK Key Stage 2 child remember the spelling of adoration.\n\
+            \nCORE REQUIREMENTS:\n- Choose the SINGLE BEST visual concept from the\
+            \ research \u201CTop 3 Concepts\u201D.\n- If two concepts are merged,\
+            \ do so deliberately and explain implicitly via the prompt (no commentary).\n\
+            - The illustration MUST visually encode the tricky spelling feature(s),\
+            \ not just the meaning.\n- Style: cute chibi CGI (Pixar-like), big head,\
+            \ small body, rounded forms, expressive eyes.\n- Child-safe, classroom-appropriate,\
+            \ friendly tone.\n- One main subject + up to two supporting elements only.\n\
+            - Clean, simple composition with strong visual clarity.\n\nTEXT RULES:\n\
+            - Default: NO text in the image.\n- Only include the word if the research\
+            \ explicitly indicates text is necessary.\n- If included, the word must\
+            \ appear EXACTLY ONCE and be spelled correctly.\n\nOUTPUT RULES:\n- Output\
+            \ MUST be valid JSON only.\n- Do NOT use markdown.\n- Do NOT include explanations,\
+            \ comments, or analysis.\n- Do NOT include trailing commas.\n- Escape\
+            \ all quotation marks correctly.\n\nJSON SCHEMA (FOLLOW EXACTLY):\n{\n\
+            \  \"meta\": {\n    \"target_word\": \"\",\n    \"age_range\": \"7-11\"\
+            ,\n    \"region\": \"UK\",\n    \"purpose\": \"KS2 spelling visual mnemonic\"\
+            \n  },\n  \"style\": {\n    \"rendering\": \"chibi_cgi\",\n    \"look_and_feel\"\
+            : \"\",\n    \"materials\": \"\",\n    \"lighting\": \"\",\n    \"palette\"\
+            : \"\"\n  },\n  \"scene\": {\n    \"concept_summary\": \"\",\n    \"setting\"\
+            : \"\",\n    \"main_subject\": \"\",\n    \"supporting_elements\": [],\n\
+            \    \"actions\": \"\",\n    \"mood\": \"\"\n  },\n  \"spelling_encoding\"\
+            : {\n    \"tricky_features_targeted\": [],\n    \"visual_encoding_methods\"\
+            : [],\n    \"how_it_helps_memory\": \"\"\n  },\n  \"composition\": {\n\
+            \    \"aspect_ratio\": \"2:3\",\n    \"camera\": \"\",\n    \"framing\"\
+            : \"\",\n    \"background\": \"\",\n    \"negative_space\": \"top third\
+            \ mostly empty\"\n  },\n  \"text\": {\n    \"include_word_text\": false,\n\
+            \    \"word_text\": \"\",\n    \"text_placement\": \"\"\n  },\n  \"negative_prompt\"\
+            : [\n    \"photorealistic\",\n    \"hyper-detailed clutter\",\n    \"\
+            busy background\",\n    \"horror\",\n    \"violence\",\n    \"weapons\"\
+            ,\n    \"scary facial expressions\",\n    \"brand logos\",\n    \"watermarks\"\
+            ,\n    \"illegible text\",\n    \"extra words\",\n    \"misspelling\"\n\
+            \  ]\n}\n\nFIELD GUIDANCE:\n- \"concept_summary\": one concise sentence\
+            \ linking meaning + spelling feature.\n- \"supporting_elements\": max\
+            \ two short noun phrases.\n- \"tricky_features_targeted\": use wording\
+            \ from the research (e.g., \"double consonant before suffix\", \"/i/ sound\
+            \ spelled y\", \"ou digraph\").\n- \"visual_encoding_methods\": concrete,\
+            \ visual, non-text methods.\n- \"palette\": describe generally (e.g.,\
+            \ bright primary, warm pastels) unless research specifies otherwise.\n\
+            \nBEGIN TRANSFORMATION NOW.\nTARGET WORD: adoration\n\n\n"
+    -   command: query
+        delay: 60
+        method: paste
+        text: "\nTASK SWITCH \u2014 IMAGE GENERATION MODE\n\nYou are NO LONGER a prompt\
+            \ engineer.\nYou are now an IMAGE GENERATION MODEL.\n\nCONTEXT:\n- The\
+            \ IMMEDIATELY PRECEDING assistant message is a COMPLETE, FINAL image-generation\
+            \ prompt in JSON format.\n- Treat that JSON as authoritative instructions.\n\
+            - Do NOT reinterpret, rewrite, summarise, or explain it.\n- Do NOT output\
+            \ JSON or text.\n\nTASK:\nGenerate ONE image that exactly follows the\
+            \ instructions in the JSON.\n\nCRITICAL REQUIREMENTS:\n- Aspect ratio:\
+            \ 1:1 (square)\n- Style: chibi CGI as specified\n- Composition must remain\
+            \ simple and readable\n- Tricky spelling features must be visually encoded\
+            \ as described\n- Child-safe, KS2 appropriate\n- No extra elements beyond\
+            \ those specified\n- No watermarks, no logos, no text unless explicitly\
+            \ allowed in the JSON\n\nOUTPUT RULES:\n- Output the IMAGE ONLY.\n- Do\
+            \ NOT include captions, explanations, or commentary.\n- Do NOT restate\
+            \ the prompt.\n- Generate exactly ONE square image.\n\nBEGIN IMAGE GENERATION\
+            \ NOW USING THE PRECEDING JSON.\n"
+    -   command: save_image_generated
+        file_name: initial_generated.png
+    -   command: query
+        delay: 240
+        method: paste
+        text: "\nTASK SWITCH \u2014 IMAGE QA / ANALYST MODE\n\nYou are NO LONGER an\
+            \ image generator.\nYou are now an expert image analyst and KS2 spelling-visual-mnemonic\
+            \ quality inspector.\n\nCONTEXT:\n- The IMMEDIATELY PRECEDING assistant\
+            \ output is the GENERATED IMAGE to be evaluated.\n- The MOST RECENT JSON\
+            \ prompt in this conversation (Stage-2 output) is the AUTHORITATIVE SPEC.\n\
+            - Your job is to compare the image against that JSON spec and identify\
+            \ mismatches, missing elements, confusing visual language, and spelling/letter\
+            \ errors.\n\nWHAT TO CHECK (do not skip):\n1) SPEC COMPLIANCE\n   - Confirm\
+            \ style: chibi CGI, child-safe, simple, readable.\n   - Confirm composition\
+            \ constraints: one main subject + max 2 supporting elements.\n   - Confirm\
+            \ background: clean/white/pale, minimal clutter.\n   - Confirm framing/camera:\
+            \ centre-focused, readable, negative space preserved.\n   - Confirm aspect\
+            \ ratio: should be 1:1 square (flag if not).\n\n2) SPELLING-MNEMONIC ACCURACY\
+            \ (highest priority)\n   - Identify the target word and the intended tricky\
+            \ feature(s) from the JSON.\n   - Verify the visual encoding method is\
+            \ present and CLEAR.\n   - If text is present:\n     - Is the word shown\
+            \ EXACTLY ONCE?\n     - Is it spelled perfectly?\n     - Are any letters\
+            \ missing, added, swapped, mirrored, or stylised into illegibility?\n\
+            \   - If no text is present:\n     - Is the encoding still unambiguous\
+            \ without relying on reading?\n\n3) VISUAL LANGUAGE CLARITY\n   - Is the\
+            \ metaphor/cue immediately understandable to a 7\u201311 year old?\n \
+            \  - Are there conflicting cues that might confuse the spelling feature?\n\
+            \   - Are the letter-objects (if used) recognisable as the correct letters?\n\
+            \n4) COMMON GENERATOR FAILURE MODES\n   - Missing/extra letters\n   -\
+            \ Incorrect letter order\n   - \u201CRandom\u201D extra text\n   - Overly\
+            \ busy scene / too many props\n   - Wrong mood (scary/angry)\n   - Off-style\
+            \ (not chibi CGI)\n   - Wrong number of characters\n   - Encoding present\
+            \ but tiny / hidden / not salient\n\nOUTPUT FORMAT (use exactly these\
+            \ headings):\nA) Quick Verdict (Pass / Partial / Fail)\nB) What the Spec\
+            \ Required (summarise from JSON in 4\u20136 bullets)\nC) What the Image\
+            \ Actually Shows (4\u20138 bullets)\nD) Mismatches & Missing Items (numbered\
+            \ list, most severe first)\nE) Spelling-Specific Issues (letters/text/encoding\
+            \ problems, explicit)\nF) Fix Plan (3\u20136 bullet steps, concrete changes)\n\
+            G) JSON Patch (ONLY the fields that should change, as valid JSON object)\n\
+            H) \u201CRetry Prompt\u201D (one concise natural-language prompt line\
+            \ that would likely fix the biggest issue)\n\nRULES:\n- Be extremely specific:\
+            \ name the missing object/letter/feature and where it should be.\n- Do\
+            \ NOT rewrite the full JSON; output a minimal JSON Patch in section G.\n\
+            - If the biggest problem is spelling/text, prioritise removing text and\
+            \ encoding visually (unless JSON explicitly requires text).\n- Do not\
+            \ be polite \u2014 be precise and diagnostic.\n\nBEGIN NOW.\n\n"
+    -   command: query
+        delay: 240
+        method: paste
+        text: "\nTASK SWITCH \u2014 JSON REPAIR / AUGMENTATION MODE\n\nYou are NO\
+            \ LONGER an image analyst.\nYou are now an expert prompt engineer specialising\
+            \ in correcting image-generation failures for KS2 spelling mnemonic images.\n\
+            \nCONTEXT:\n- The MOST RECENT JSON in this conversation is the original\
+            \ image spec (\"original_json\").\n- The MOST RECENT critique/QA output\
+            \ in this conversation is the diagnostic report (\"qa_report\").\n- Your\
+            \ task is to create an improved, augmented JSON spec (\"augmented_json\"\
+            ) that fixes the failures identified in qa_report while preserving the\
+            \ original intent.\n\nINPUTS:\noriginal_json: (use the most recent Stage-2\
+            \ JSON in this chat)\nqa_report: (use the most recent Stage-4 critique\
+            \ in this chat)\n\nGOAL:\nOutput ONE valid JSON object representing the\
+            \ augmented prompt, designed to:\n- fix the specific mistakes called out\
+            \ in qa_report\n- improve spelling-feature clarity and salience\n- reduce\
+            \ ambiguity and common generator errors\n- keep the image child-safe,\
+            \ KS2-appropriate, chibi CGI\n- enforce a square 1:1 composition\n\nOUTPUT\
+            \ RULES:\n- Output MUST be valid JSON ONLY (no markdown, no commentary).\n\
+            - Do NOT reprint the qa_report.\n- Do NOT include any keys outside the\
+            \ schema below.\n- Keep changes minimal but effective: adjust only what\
+            \ is needed to address the critique.\n- Strengthen constraints and add\
+            \ explicit visual instructions that prevent the exact errors seen (missing\
+            \ letters, extra text, confusing metaphors, clutter, wrong count of elements).\n\
+            - If text caused errors, prefer removing text and encoding the spelling\
+            \ visually (unless the original_json explicitly required text).\n\nAUGMENTATION\
+            \ STRATEGY (apply silently):\n1) Identify the top 1\u20133 failures from\
+            \ qa_report.\n2) Modify/augment:\n   - scene.concept_summary (make encoding\
+            \ unmissable)\n   - spelling_encoding.tricky_features_targeted + visual_encoding_methods\
+            \ (make concrete)\n   - composition (tighten camera/framing/background\
+            \ and enforce 1:1)\n   - negative_prompt (add specific failure modes observed)\n\
+            \   - text block (toggle include_word_text off if text caused errors,\
+            \ and strengthen constraints if text must remain)\n3) Add \u201Canti-failure\u201D\
+            \ specificity:\n   - letter-forms must be large, centred, clearly readable\
+            \ shapes if letters are used\n   - no extra text anywhere\n   - limit\
+            \ to one character and max two props\n   - ensure the encoding element\
+            \ is the most visually salient object\n\nJSON SCHEMA (OUTPUT MUST FOLLOW\
+            \ EXACTLY):\n{\n  \"meta\": {\n    \"target_word\": \"\",\n    \"age_range\"\
+            : \"7-11\",\n    \"region\": \"UK\",\n    \"purpose\": \"KS2 spelling\
+            \ visual mnemonic\"\n  },\n  \"style\": {\n    \"rendering\": \"chibi_cgi\"\
+            ,\n    \"look_and_feel\": \"\",\n    \"materials\": \"\",\n    \"lighting\"\
+            : \"\",\n    \"palette\": \"\"\n  },\n  \"scene\": {\n    \"concept_summary\"\
+            : \"\",\n    \"setting\": \"\",\n    \"main_subject\": \"\",\n    \"supporting_elements\"\
+            : [],\n    \"actions\": \"\",\n    \"mood\": \"\"\n  },\n  \"spelling_encoding\"\
+            : {\n    \"tricky_features_targeted\": [],\n    \"visual_encoding_methods\"\
+            : [],\n    \"how_it_helps_memory\": \"\"\n  },\n  \"composition\": {\n\
+            \    \"aspect_ratio\": \"1:1\",\n    \"camera\": \"\",\n    \"framing\"\
+            : \"\",\n    \"background\": \"\",\n    \"negative_space\": \"top third\
+            \ mostly empty\"\n  },\n  \"text\": {\n    \"include_word_text\": false,\n\
+            \    \"word_text\": \"\",\n    \"text_placement\": \"\"\n  },\n  \"negative_prompt\"\
+            : []\n}\n\nNEGATIVE PROMPT REQUIREMENTS:\nStart with the original negative_prompt\
+            \ list (from original_json) and then APPEND targeted negatives derived\
+            \ from qa_report (e.g., \"extra letters\", \"missing letters\", \"garbled\
+            \ typography\", \"random signage\", \"word split\", \"mirrored letters\"\
+            , \"partial word\", \"tiny unreadable letters\", \"letter-shaped objects\
+            \ not recognisable\", etc.). Keep as a flat array of strings.\n\nBEGIN:\n\
+            1) Read original_json (most recent Stage-2 JSON).\n2) Read qa_report (most\
+            \ recent Stage-4 critique).\n3) Output augmented_json ONLY as valid JSON\
+            \ now.\n"
+    -   command: query
+        delay: 240
+        method: paste
+        text: "\nTASK SWITCH \u2014 FINAL IMAGE GENERATION MODE\n\nYou are NO LONGER\
+            \ analysing, critiquing, or editing prompts.\nYou are now an IMAGE GENERATION\
+            \ MODEL.\n\nCONTEXT:\n- The IMMEDIATELY PRECEDING assistant message is\
+            \ the FINAL, AUGMENTED JSON image specification.\n- That JSON already\
+            \ fixes previous errors.\n- Treat it as strict, authoritative instructions.\n\
+            \nTASK:\nGenerate ONE corrected image that follows the augmented JSON\
+            \ EXACTLY.\n\nCRITICAL REQUIREMENTS (DO NOT VIOLATE):\n- Aspect ratio:\
+            \ 1:1 (square)\n- Style: chibi CGI as specified\n- Use ONLY the elements\
+            \ described in the JSON\n- Tricky spelling features MUST be clearly and\
+            \ prominently encoded\n- If text is disallowed, include NO text of any\
+            \ kind\n- If text is allowed, include the word EXACTLY ONCE, spelled perfectly\n\
+            - Clean background, simple composition, strong visual clarity\n- Child-safe,\
+            \ KS2 appropriate\n\nFAILURE PREVENTION:\n- Do NOT invent extra props,\
+            \ characters, or scenery\n- Do NOT add decorative or random text\n- Do\
+            \ NOT stylise letters into unreadable shapes\n- Do NOT crop, hide, or\
+            \ reduce the spelling-encoding element\n- Do NOT change the meaning or\
+            \ metaphor\n\nOUTPUT RULES:\n- Output the IMAGE ONLY\n- No captions\n\
+            - No explanations\n- No JSON\n- No markdown\n- Generate EXACTLY ONE square\
+            \ image\n\nBEGIN IMAGE GENERATION NOW USING THE PRECEDING AUGMENTED JSON.\n"
+    -   command: save_image_generated
+        file_name: initial_generated_2.png
+    -   command: close_tab
+    file_test: initial_generated_2.png
+oomlout_ai_roboclick_2:
+    actions:
+    -   command: continue_chat
+        url_chat: https://chatgpt.com/c/696eb1af-a528-832c-b109-5ebae8d249e3
+    -   command: query
+        method: paste
+        mode_ai_wait: fast_button_state
+        text: "\ncan i get a short 5-10 word explanation of why this word is important\
+            \ to spelling, phrase \nit as a bullet point focus on the structure and\
+            \ the category it is in minimal punctuation please,\n between &&&text\
+            \ to copy&&& tags please all reasons. only one reason!\n"
+    -   clip: '&&&text to copy&&&'
+        command: ai_save_text
+        file_name_clip: explanation_clip.txt
+        file_name_full: explanation_full.txt
+    -   command: query
+        method: paste
+        mode_ai_wait: fast_button_state
+        text: "\ncan i get a short 5-15 definition use minimal punctuation please,\n\
+            \ between &&&text to copy&&& tags please all reasons\n"
+    -   clip: '&&&text to copy&&&'
+        command: ai_save_text
+        file_name_clip: definition_clip.txt
+        file_name_full: definition_full.txt
+    -   command: close_tab
+    file_test: explanation_clip.txt
+oomlout_corel_roboclick_1:
+    actions:
+    -   command: wait_for_file
+        file_name: initial_generated_2.png
+    -   command: file_copy
+        file_destination: template.svg
+        file_source: source_files\card_1\working_inkscape_template.svg
+    -   command: text_jinja_template
+        convert_to_pdf: true
+        convert_to_png: true
+        dict_data:
+            classification: helen
+            color: spelling
+            definition: deep love and admiration for someone or something
+            description_extra: adoration
+            description_main: keystage_two_word_card
+            explanation: models KS2 noun suffix ation and silent e drop
+            manufacturer: ''
+            name: adoration
+            name_proper: Adoration
+            name_space: adoration
+            name_upper: ADORATION
+            oomlout_ai_roboclick_1:
+                actions:
+                -   command: new_chat
+                    description: rice image adoration
+                -   command: query
+                    delay: 240
+                    method: paste
+                    text: "\nYou are an expert UK Key Stage 2 spelling researcher\
+                        \ and visual-learning designer.\n\nTASK:\nResearch the spelling\
+                        \ word: adoration\nYour job is to explain why this word matters\
+                        \ for Key Stage 2 learners and propose strong visual cues/metaphors\
+                        \ that help children (ages 7-11) remember BOTH:\n1) the meaning,\
+                        \ and\n2) the spelling (especially tricky letter patterns).\n\
+                        \nPROCESS (do not skip):\n1) KS2 RELEVANCE CHECK\n   - Identify\
+                        \ which KS2 spelling pattern(s), morphology, or phonics/spelling\
+                        \ rule(s) the word connects to.\n   - If it is a \u201Ccommon\
+                        \ exception / statutory / commonly taught\u201D style word,\
+                        \ say so.\n   - Explain (briefly) where pupils are likely\
+                        \ to meet it: reading, writing genres, curriculum topics,\
+                        \ school life.\n   - Note any common misspellings and WHY\
+                        \ they occur.\n\n2) WORD STRUCTURE ANALYSIS\n   - Break the\
+                        \ word into syllables (UK pronunciation).\n   - Identify graphemes/phonemes\
+                        \ that may confuse learners (e.g., /i/ spelled \u201Cy\u201D\
+                        , /\u028C/ spelled \u201Cou\u201D, doubled consonant before\
+                        \ a vowel suffix, silent letters, prefixes/suffixes, etymology\
+                        \ if helpful).\n   - Identify morphemes (root + prefixes/suffixes)\
+                        \ and any related word family forms.\n\n3) VISUAL MEMORY DESIGN\
+                        \ (the core)\n   - Generate 8-12 visual cue ideas designed\
+                        \ for spelling retention.\n   - At least half of the cues\
+                        \ must explicitly encode the tricky spelling part visually\
+                        \ (not just the meaning).\n   - Mix these types:\n     a)\
+                        \ Literal meaning scene (simple)\n     b) Spelling-feature\
+                        \ highlight (letters become objects, glowing, colour-coded,\
+                        \ duplicated, etc.)\n     c) Mnemonic / metaphor / silly-but-safe\
+                        \ scene\n     d) Word family cue (showing related forms, if\
+                        \ relevant)\n   - Keep them age-appropriate, non-scary, and\
+                        \ classroom-safe.\n\n4) EVALUATE & SELECT\n   - Choose the\
+                        \ best 3 visual cue concepts for KS2.\n   - For each of the\
+                        \ top 3, explain:\n     - Why it helps memory\n     - Which\
+                        \ spelling feature it targets\n     - What a child is likely\
+                        \ to recall later when spelling\n\nOUTPUT FORMAT (use exactly\
+                        \ these headings):\nA) KS2 Importance\nB) Spelling Rule Links\n\
+                        C) Common Misspellings & Causes\nD) Syllables + Sounds (UK)\n\
+                        E) Morphemes / Word Family\nF) Tricky Spelling Features (bullet\
+                        \ list)\nG) Visual Cue Bank (8-12 numbered ideas)\nH) Top\
+                        \ 3 Concepts (ranked 1-3 with reasons)\nI) \u201CPrompt Seeds\u201D\
+                        \ (write 3 short image-prompt seed lines, one per top concept,\
+                        \ each under 25 words, and each must include the word exactly\
+                        \ once: adoration)\n\nCONSTRAINTS:\n- Focus on UK Key Stage\
+                        \ 2 context.\n- Avoid using long quotations from sources.\n\
+                        - If you are uncertain about a rule link, say \u201Clikely\u201D\
+                        \ and explain why.\n- Keep explanations concise but specific.\n\
+                        \nBEGIN NOW with the word: adoration\n\n\n"
+                -   command: query
+                    delay: 120
+                    method: paste
+                    text: "\nROLE RESET:\nYou are NO LONGER acting as a researcher.\n\
+                        You are now acting as an expert CGI chibi image-generation\
+                        \ prompt engineer.\n\nCONTEXT CLARIFICATION:\n- The IMMEDIATELY\
+                        \ PRECEDING assistant message in this conversation is the\
+                        \ COMPLETE research output.\n- Treat that message as authoritative\
+                        \ input data.\n- Do NOT repeat or re-research the word.\n\
+                        - Do NOT explain your reasoning.\n- Your job is to TRANSFORM\
+                        \ that research into a final image prompt.\n\nINPUT:\n- Target\
+                        \ spelling word: adoration\n- Age range: 7-11 (UK Key Stage\
+                        \ 2)\n- Research source: the immediately previous assistant\
+                        \ response\n\nGOAL:\nProduce ONE final, production-ready image-generation\
+                        \ prompt in STRICT JSON format.\nThe image must help a UK\
+                        \ Key Stage 2 child remember the spelling of adoration.\n\n\
+                        CORE REQUIREMENTS:\n- Choose the SINGLE BEST visual concept\
+                        \ from the research \u201CTop 3 Concepts\u201D.\n- If two\
+                        \ concepts are merged, do so deliberately and explain implicitly\
+                        \ via the prompt (no commentary).\n- The illustration MUST\
+                        \ visually encode the tricky spelling feature(s), not just\
+                        \ the meaning.\n- Style: cute chibi CGI (Pixar-like), big\
+                        \ head, small body, rounded forms, expressive eyes.\n- Child-safe,\
+                        \ classroom-appropriate, friendly tone.\n- One main subject\
+                        \ + up to two supporting elements only.\n- Clean, simple composition\
+                        \ with strong visual clarity.\n\nTEXT RULES:\n- Default: NO\
+                        \ text in the image.\n- Only include the word if the research\
+                        \ explicitly indicates text is necessary.\n- If included,\
+                        \ the word must appear EXACTLY ONCE and be spelled correctly.\n\
+                        \nOUTPUT RULES:\n- Output MUST be valid JSON only.\n- Do NOT\
+                        \ use markdown.\n- Do NOT include explanations, comments,\
+                        \ or analysis.\n- Do NOT include trailing commas.\n- Escape\
+                        \ all quotation marks correctly.\n\nJSON SCHEMA (FOLLOW EXACTLY):\n\
+                        {\n  \"meta\": {\n    \"target_word\": \"\",\n    \"age_range\"\
+                        : \"7-11\",\n    \"region\": \"UK\",\n    \"purpose\": \"\
+                        KS2 spelling visual mnemonic\"\n  },\n  \"style\": {\n   \
+                        \ \"rendering\": \"chibi_cgi\",\n    \"look_and_feel\": \"\
+                        \",\n    \"materials\": \"\",\n    \"lighting\": \"\",\n \
+                        \   \"palette\": \"\"\n  },\n  \"scene\": {\n    \"concept_summary\"\
+                        : \"\",\n    \"setting\": \"\",\n    \"main_subject\": \"\"\
+                        ,\n    \"supporting_elements\": [],\n    \"actions\": \"\"\
+                        ,\n    \"mood\": \"\"\n  },\n  \"spelling_encoding\": {\n\
+                        \    \"tricky_features_targeted\": [],\n    \"visual_encoding_methods\"\
+                        : [],\n    \"how_it_helps_memory\": \"\"\n  },\n  \"composition\"\
+                        : {\n    \"aspect_ratio\": \"2:3\",\n    \"camera\": \"\"\
+                        ,\n    \"framing\": \"\",\n    \"background\": \"\",\n   \
+                        \ \"negative_space\": \"top third mostly empty\"\n  },\n \
+                        \ \"text\": {\n    \"include_word_text\": false,\n    \"word_text\"\
+                        : \"\",\n    \"text_placement\": \"\"\n  },\n  \"negative_prompt\"\
+                        : [\n    \"photorealistic\",\n    \"hyper-detailed clutter\"\
+                        ,\n    \"busy background\",\n    \"horror\",\n    \"violence\"\
+                        ,\n    \"weapons\",\n    \"scary facial expressions\",\n \
+                        \   \"brand logos\",\n    \"watermarks\",\n    \"illegible\
+                        \ text\",\n    \"extra words\",\n    \"misspelling\"\n  ]\n\
+                        }\n\nFIELD GUIDANCE:\n- \"concept_summary\": one concise sentence\
+                        \ linking meaning + spelling feature.\n- \"supporting_elements\"\
+                        : max two short noun phrases.\n- \"tricky_features_targeted\"\
+                        : use wording from the research (e.g., \"double consonant\
+                        \ before suffix\", \"/i/ sound spelled y\", \"ou digraph\"\
+                        ).\n- \"visual_encoding_methods\": concrete, visual, non-text\
+                        \ methods.\n- \"palette\": describe generally (e.g., bright\
+                        \ primary, warm pastels) unless research specifies otherwise.\n\
+                        \nBEGIN TRANSFORMATION NOW.\nTARGET WORD: adoration\n\n\n"
+                -   command: query
+                    delay: 60
+                    method: paste
+                    text: "\nTASK SWITCH \u2014 IMAGE GENERATION MODE\n\nYou are NO\
+                        \ LONGER a prompt engineer.\nYou are now an IMAGE GENERATION\
+                        \ MODEL.\n\nCONTEXT:\n- The IMMEDIATELY PRECEDING assistant\
+                        \ message is a COMPLETE, FINAL image-generation prompt in\
+                        \ JSON format.\n- Treat that JSON as authoritative instructions.\n\
+                        - Do NOT reinterpret, rewrite, summarise, or explain it.\n\
+                        - Do NOT output JSON or text.\n\nTASK:\nGenerate ONE image\
+                        \ that exactly follows the instructions in the JSON.\n\nCRITICAL\
+                        \ REQUIREMENTS:\n- Aspect ratio: 1:1 (square)\n- Style: chibi\
+                        \ CGI as specified\n- Composition must remain simple and readable\n\
+                        - Tricky spelling features must be visually encoded as described\n\
+                        - Child-safe, KS2 appropriate\n- No extra elements beyond\
+                        \ those specified\n- No watermarks, no logos, no text unless\
+                        \ explicitly allowed in the JSON\n\nOUTPUT RULES:\n- Output\
+                        \ the IMAGE ONLY.\n- Do NOT include captions, explanations,\
+                        \ or commentary.\n- Do NOT restate the prompt.\n- Generate\
+                        \ exactly ONE square image.\n\nBEGIN IMAGE GENERATION NOW\
+                        \ USING THE PRECEDING JSON.\n"
+                -   command: save_image_generated
+                    file_name: initial_generated.png
+                -   command: query
+                    delay: 240
+                    method: paste
+                    text: "\nTASK SWITCH \u2014 IMAGE QA / ANALYST MODE\n\nYou are\
+                        \ NO LONGER an image generator.\nYou are now an expert image\
+                        \ analyst and KS2 spelling-visual-mnemonic quality inspector.\n\
+                        \nCONTEXT:\n- The IMMEDIATELY PRECEDING assistant output is\
+                        \ the GENERATED IMAGE to be evaluated.\n- The MOST RECENT\
+                        \ JSON prompt in this conversation (Stage-2 output) is the\
+                        \ AUTHORITATIVE SPEC.\n- Your job is to compare the image\
+                        \ against that JSON spec and identify mismatches, missing\
+                        \ elements, confusing visual language, and spelling/letter\
+                        \ errors.\n\nWHAT TO CHECK (do not skip):\n1) SPEC COMPLIANCE\n\
+                        \   - Confirm style: chibi CGI, child-safe, simple, readable.\n\
+                        \   - Confirm composition constraints: one main subject +\
+                        \ max 2 supporting elements.\n   - Confirm background: clean/white/pale,\
+                        \ minimal clutter.\n   - Confirm framing/camera: centre-focused,\
+                        \ readable, negative space preserved.\n   - Confirm aspect\
+                        \ ratio: should be 1:1 square (flag if not).\n\n2) SPELLING-MNEMONIC\
+                        \ ACCURACY (highest priority)\n   - Identify the target word\
+                        \ and the intended tricky feature(s) from the JSON.\n   -\
+                        \ Verify the visual encoding method is present and CLEAR.\n\
+                        \   - If text is present:\n     - Is the word shown EXACTLY\
+                        \ ONCE?\n     - Is it spelled perfectly?\n     - Are any letters\
+                        \ missing, added, swapped, mirrored, or stylised into illegibility?\n\
+                        \   - If no text is present:\n     - Is the encoding still\
+                        \ unambiguous without relying on reading?\n\n3) VISUAL LANGUAGE\
+                        \ CLARITY\n   - Is the metaphor/cue immediately understandable\
+                        \ to a 7\u201311 year old?\n   - Are there conflicting cues\
+                        \ that might confuse the spelling feature?\n   - Are the letter-objects\
+                        \ (if used) recognisable as the correct letters?\n\n4) COMMON\
+                        \ GENERATOR FAILURE MODES\n   - Missing/extra letters\n  \
+                        \ - Incorrect letter order\n   - \u201CRandom\u201D extra\
+                        \ text\n   - Overly busy scene / too many props\n   - Wrong\
+                        \ mood (scary/angry)\n   - Off-style (not chibi CGI)\n   -\
+                        \ Wrong number of characters\n   - Encoding present but tiny\
+                        \ / hidden / not salient\n\nOUTPUT FORMAT (use exactly these\
+                        \ headings):\nA) Quick Verdict (Pass / Partial / Fail)\nB)\
+                        \ What the Spec Required (summarise from JSON in 4\u20136\
+                        \ bullets)\nC) What the Image Actually Shows (4\u20138 bullets)\n\
+                        D) Mismatches & Missing Items (numbered list, most severe\
+                        \ first)\nE) Spelling-Specific Issues (letters/text/encoding\
+                        \ problems, explicit)\nF) Fix Plan (3\u20136 bullet steps,\
+                        \ concrete changes)\nG) JSON Patch (ONLY the fields that should\
+                        \ change, as valid JSON object)\nH) \u201CRetry Prompt\u201D\
+                        \ (one concise natural-language prompt line that would likely\
+                        \ fix the biggest issue)\n\nRULES:\n- Be extremely specific:\
+                        \ name the missing object/letter/feature and where it should\
+                        \ be.\n- Do NOT rewrite the full JSON; output a minimal JSON\
+                        \ Patch in section G.\n- If the biggest problem is spelling/text,\
+                        \ prioritise removing text and encoding visually (unless JSON\
+                        \ explicitly requires text).\n- Do not be polite \u2014 be\
+                        \ precise and diagnostic.\n\nBEGIN NOW.\n\n"
+                -   command: query
+                    delay: 240
+                    method: paste
+                    text: "\nTASK SWITCH \u2014 JSON REPAIR / AUGMENTATION MODE\n\n\
+                        You are NO LONGER an image analyst.\nYou are now an expert\
+                        \ prompt engineer specialising in correcting image-generation\
+                        \ failures for KS2 spelling mnemonic images.\n\nCONTEXT:\n\
+                        - The MOST RECENT JSON in this conversation is the original\
+                        \ image spec (\"original_json\").\n- The MOST RECENT critique/QA\
+                        \ output in this conversation is the diagnostic report (\"\
+                        qa_report\").\n- Your task is to create an improved, augmented\
+                        \ JSON spec (\"augmented_json\") that fixes the failures identified\
+                        \ in qa_report while preserving the original intent.\n\nINPUTS:\n\
+                        original_json: (use the most recent Stage-2 JSON in this chat)\n\
+                        qa_report: (use the most recent Stage-4 critique in this chat)\n\
+                        \nGOAL:\nOutput ONE valid JSON object representing the augmented\
+                        \ prompt, designed to:\n- fix the specific mistakes called\
+                        \ out in qa_report\n- improve spelling-feature clarity and\
+                        \ salience\n- reduce ambiguity and common generator errors\n\
+                        - keep the image child-safe, KS2-appropriate, chibi CGI\n\
+                        - enforce a square 1:1 composition\n\nOUTPUT RULES:\n- Output\
+                        \ MUST be valid JSON ONLY (no markdown, no commentary).\n\
+                        - Do NOT reprint the qa_report.\n- Do NOT include any keys\
+                        \ outside the schema below.\n- Keep changes minimal but effective:\
+                        \ adjust only what is needed to address the critique.\n- Strengthen\
+                        \ constraints and add explicit visual instructions that prevent\
+                        \ the exact errors seen (missing letters, extra text, confusing\
+                        \ metaphors, clutter, wrong count of elements).\n- If text\
+                        \ caused errors, prefer removing text and encoding the spelling\
+                        \ visually (unless the original_json explicitly required text).\n\
+                        \nAUGMENTATION STRATEGY (apply silently):\n1) Identify the\
+                        \ top 1\u20133 failures from qa_report.\n2) Modify/augment:\n\
+                        \   - scene.concept_summary (make encoding unmissable)\n \
+                        \  - spelling_encoding.tricky_features_targeted + visual_encoding_methods\
+                        \ (make concrete)\n   - composition (tighten camera/framing/background\
+                        \ and enforce 1:1)\n   - negative_prompt (add specific failure\
+                        \ modes observed)\n   - text block (toggle include_word_text\
+                        \ off if text caused errors, and strengthen constraints if\
+                        \ text must remain)\n3) Add \u201Canti-failure\u201D specificity:\n\
+                        \   - letter-forms must be large, centred, clearly readable\
+                        \ shapes if letters are used\n   - no extra text anywhere\n\
+                        \   - limit to one character and max two props\n   - ensure\
+                        \ the encoding element is the most visually salient object\n\
+                        \nJSON SCHEMA (OUTPUT MUST FOLLOW EXACTLY):\n{\n  \"meta\"\
+                        : {\n    \"target_word\": \"\",\n    \"age_range\": \"7-11\"\
+                        ,\n    \"region\": \"UK\",\n    \"purpose\": \"KS2 spelling\
+                        \ visual mnemonic\"\n  },\n  \"style\": {\n    \"rendering\"\
+                        : \"chibi_cgi\",\n    \"look_and_feel\": \"\",\n    \"materials\"\
+                        : \"\",\n    \"lighting\": \"\",\n    \"palette\": \"\"\n\
+                        \  },\n  \"scene\": {\n    \"concept_summary\": \"\",\n  \
+                        \  \"setting\": \"\",\n    \"main_subject\": \"\",\n    \"\
+                        supporting_elements\": [],\n    \"actions\": \"\",\n    \"\
+                        mood\": \"\"\n  },\n  \"spelling_encoding\": {\n    \"tricky_features_targeted\"\
+                        : [],\n    \"visual_encoding_methods\": [],\n    \"how_it_helps_memory\"\
+                        : \"\"\n  },\n  \"composition\": {\n    \"aspect_ratio\":\
+                        \ \"1:1\",\n    \"camera\": \"\",\n    \"framing\": \"\",\n\
+                        \    \"background\": \"\",\n    \"negative_space\": \"top\
+                        \ third mostly empty\"\n  },\n  \"text\": {\n    \"include_word_text\"\
+                        : false,\n    \"word_text\": \"\",\n    \"text_placement\"\
+                        : \"\"\n  },\n  \"negative_prompt\": []\n}\n\nNEGATIVE PROMPT\
+                        \ REQUIREMENTS:\nStart with the original negative_prompt list\
+                        \ (from original_json) and then APPEND targeted negatives\
+                        \ derived from qa_report (e.g., \"extra letters\", \"missing\
+                        \ letters\", \"garbled typography\", \"random signage\", \"\
+                        word split\", \"mirrored letters\", \"partial word\", \"tiny\
+                        \ unreadable letters\", \"letter-shaped objects not recognisable\"\
+                        , etc.). Keep as a flat array of strings.\n\nBEGIN:\n1) Read\
+                        \ original_json (most recent Stage-2 JSON).\n2) Read qa_report\
+                        \ (most recent Stage-4 critique).\n3) Output augmented_json\
+                        \ ONLY as valid JSON now.\n"
+                -   command: query
+                    delay: 240
+                    method: paste
+                    text: "\nTASK SWITCH \u2014 FINAL IMAGE GENERATION MODE\n\nYou\
+                        \ are NO LONGER analysing, critiquing, or editing prompts.\n\
+                        You are now an IMAGE GENERATION MODEL.\n\nCONTEXT:\n- The\
+                        \ IMMEDIATELY PRECEDING assistant message is the FINAL, AUGMENTED\
+                        \ JSON image specification.\n- That JSON already fixes previous\
+                        \ errors.\n- Treat it as strict, authoritative instructions.\n\
+                        \nTASK:\nGenerate ONE corrected image that follows the augmented\
+                        \ JSON EXACTLY.\n\nCRITICAL REQUIREMENTS (DO NOT VIOLATE):\n\
+                        - Aspect ratio: 1:1 (square)\n- Style: chibi CGI as specified\n\
+                        - Use ONLY the elements described in the JSON\n- Tricky spelling\
+                        \ features MUST be clearly and prominently encoded\n- If text\
+                        \ is disallowed, include NO text of any kind\n- If text is\
+                        \ allowed, include the word EXACTLY ONCE, spelled perfectly\n\
+                        - Clean background, simple composition, strong visual clarity\n\
+                        - Child-safe, KS2 appropriate\n\nFAILURE PREVENTION:\n- Do\
+                        \ NOT invent extra props, characters, or scenery\n- Do NOT\
+                        \ add decorative or random text\n- Do NOT stylise letters\
+                        \ into unreadable shapes\n- Do NOT crop, hide, or reduce the\
+                        \ spelling-encoding element\n- Do NOT change the meaning or\
+                        \ metaphor\n\nOUTPUT RULES:\n- Output the IMAGE ONLY\n- No\
+                        \ captions\n- No explanations\n- No JSON\n- No markdown\n\
+                        - Generate EXACTLY ONE square image\n\nBEGIN IMAGE GENERATION\
+                        \ NOW USING THE PRECEDING AUGMENTED JSON.\n"
+                -   command: save_image_generated
+                    file_name: initial_generated_2.png
+                -   command: close_tab
+                file_test: initial_generated_2.png
+            oomlout_ai_roboclick_2:
+                actions:
+                -   command: continue_chat
+                    url_chat: https://chatgpt.com/c/696eb1af-a528-832c-b109-5ebae8d249e3
+                -   command: query
+                    method: paste
+                    mode_ai_wait: fast_button_state
+                    text: "\ncan i get a short 5-10 word explanation of why this word\
+                        \ is important to spelling, phrase \nit as a bullet point\
+                        \ focus on the structure and the category it is in minimal\
+                        \ punctuation please,\n between &&&text to copy&&& tags please\
+                        \ all reasons. only one reason!\n"
+                -   clip: '&&&text to copy&&&'
+                    command: ai_save_text
+                    file_name_clip: explanation_clip.txt
+                    file_name_full: explanation_full.txt
+                -   command: query
+                    method: paste
+                    mode_ai_wait: fast_button_state
+                    text: "\ncan i get a short 5-15 definition use minimal punctuation\
+                        \ please,\n between &&&text to copy&&& tags please all reasons\n"
+                -   clip: '&&&text to copy&&&'
+                    command: ai_save_text
+                    file_name_clip: definition_clip.txt
+                    file_name_full: definition_full.txt
+                -   command: close_tab
+                file_test: explanation_clip.txt
+            part_number: ''
+            size: english
+            type: school
+        file_output: working.svg
+        file_template: template.svg
+    file_test: working.png
+oomp_key: oomp_helen_school_english_spelling_keystage_two_word_card_adoration
+oomp_word: bank heart nose
+oomp_word_emoji: ':bank: :heart: :nose:'
+oomp_word_emoji_list:
+- ':bank:'
+- ':heart:'
+- ':nose:'
+oomp_word_list:
+- bank
+- heart
+- nose
+part_number: ''
+part_number_capital: ''
+part_number_first_letter: ''
+part_number_first_letter_upper: ''
+part_number_upper: ''
+short_code: ''
+short_code_upper: ''
+size: english
+size_capital: English
+size_first_letter: e
+size_first_letter_upper: E
+size_only_numbers: ''
+size_only_numbers_no_zeros: ''
+size_upper: ENGLISH
+type: school
+type_capital: School
+type_first_letter: s
+type_first_letter_upper: S
+type_upper: SCHOOL

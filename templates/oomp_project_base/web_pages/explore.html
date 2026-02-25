@@ -1,0 +1,228 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="page-hero">
+    <h1 style="margin: 0 0 0.5rem 0; font-size: 1.8rem; font-weight: 700;">Explore Gallery</h1>
+</div>
+<div class="info-card" style="margin-bottom: 1.5rem;">
+    <div class="simple-form" style="gap: 0.7rem;">
+        <label style="gap: 0.3rem; width: 100%;">
+            <span style="font-size: 0.9rem;">Filter by word:</span>
+            <input type="text" 
+                   id="filter-input"
+                   placeholder="Type to filter words..." 
+                   style="width: 100%; max-width: 500px;"
+                   autofocus>
+        </label>
+    </div>
+</div>
+<!-- Detail View Container (Hidden by default) -->
+<div id="detail-container" style="display: none; margin-bottom: 1.5rem;"></div>
+
+<div class="info-card" style="margin-bottom: 1.5rem;">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.7rem;">
+        <div style="color: var(--text-muted); font-size: 0.95rem;">
+            Showing <span id="visible-count">{{ total_items }}</span> of {{ total_items }} words
+        </div>
+    </div>
+</div>
+
+<div id="word-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+    {% for word_item in words %}
+        <div class="card word-card" 
+            data-word="{{ word_item.word | lower }}"
+            data-word-dir="{{ word_item.dir_name }}"
+            data-word-display="{{ word_item.word }}"
+            data-archive="{{ word_item.archive }}"
+             onclick="loadWordDetail('{{ word_item.dir_name }}', '{{ word_item.word }}', {{ 'true' if word_item.archive else 'false' }})"
+            style="text-decoration: none; display: flex; flex-direction: column; overflow: hidden; transition: transform 0.15s ease, box-shadow 0.15s ease; cursor: pointer;">
+        <div style="width: 100%; height: 200px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            {% if word_item.has_preview %}
+            <img src="/serve_file/{{ word_item.preview_path }}" 
+                 alt="{{ word_item.word }}"
+                 style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            {% else %}
+            <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" fill="#f5f5f5" rx="12"/>
+                <text x="50%" y="50%" text-anchor="middle" dy=".3em" 
+                      font-family="Inter, sans-serif" font-size="14" fill="#7a869a">No Preview</text>
+            </svg>
+            {% endif %}
+        </div>
+        <div class="card-body" style="padding: 0.7rem; display: flex; flex-direction: column; gap: 0.3rem;">
+            <div style="font-weight: 600; color: var(--text-primary); font-size: 1rem;">{{ word_item.word }}
+                {% if word_item.archive %}
+                <span style="background: #e0e0e0; color: #b00; font-size: 0.75rem; font-weight: 500; border-radius: 4px; padding: 2px 6px; margin-left: 6px;">Archive</span>
+                {% endif %}
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ word_item.dir_name }}</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+const filterInput = document.getElementById('filter-input');
+const wordCards = document.querySelectorAll('.word-card');
+const visibleCount = document.getElementById('visible-count');
+const detailContainer = document.getElementById('detail-container');
+
+let currentWordIndex = -1;
+let visibleWords = [];
+
+// Update visible words list when filtering
+function updateVisibleWords() {
+    visibleWords = [];
+    wordCards.forEach((card, index) => {
+        if (card.style.display !== 'none') {
+            visibleWords.push({
+                index: index,
+                card: card,
+                wordDir: card.getAttribute('data-word-dir'),
+                wordDisplay: card.getAttribute('data-word-display')
+            });
+        }
+    });
+}
+
+filterInput.addEventListener('input', function() {
+    const filterValue = this.value.toLowerCase().trim();
+    let count = 0;
+    
+    wordCards.forEach(card => {
+        const word = card.getAttribute('data-word');
+        
+        if (filterValue === '' || word.includes(filterValue)) {
+            card.style.display = '';
+            count++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    visibleCount.textContent = count;
+    updateVisibleWords();
+    
+    // Hide detail if current word is filtered out
+    if (currentWordIndex !== -1) {
+        const currentCard = wordCards[currentWordIndex];
+        if (currentCard.style.display === 'none') {
+            detailContainer.style.display = 'none';
+            currentWordIndex = -1;
+        }
+    }
+});
+
+async function loadWordDetail(wordDir, wordDisplay, archive) {
+    try {
+        const response = await fetch(`/explore/${wordDir}${archive ? '?archive=1' : ''}`);
+        const html = await response.text();
+        
+        // Extract just the content block (everything between the content block markers)
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const content = doc.querySelector('[data-content]') || doc.body;
+        
+        // Find current word index
+        wordCards.forEach((card, index) => {
+            if (card.getAttribute('data-word-dir') === wordDir) {
+                currentWordIndex = index;
+            }
+        });
+        
+        updateVisibleWords();
+        
+        // Build detail view with navigation
+        const visibleIndex = visibleWords.findIndex(w => w.index === currentWordIndex);
+        const hasPrev = visibleIndex > 0;
+        const hasNext = visibleIndex < visibleWords.length - 1;
+        
+        detailContainer.innerHTML = `
+            <div class="glass-card" style="padding: 1.5rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; gap: 1rem;">
+                    <button onclick="navigateWord(-1)" 
+                            ${!hasPrev ? 'disabled' : ''}
+                            class="simple-form button"
+                            style="padding: 0.5rem 1rem; background: ${hasPrev ? 'linear-gradient(135deg, #7c3aed, #2563eb)' : 'var(--border)'}; color: ${hasPrev ? '#fff' : 'var(--text-muted)'}; border: none; border-radius: 10px; font-weight: 600; cursor: ${hasPrev ? 'pointer' : 'not-allowed'};">
+                        ← Previous
+                    </button>
+                    <button onclick="closeDetail()" 
+                            class="simple-form button"
+                            style="padding: 0.4rem 0.8rem; background: var(--border); color: var(--text-primary); border: none; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                        ✕ Close
+                    </button>
+                    <button onclick="navigateWord(1)" 
+                            ${!hasNext ? 'disabled' : ''}
+                            class="simple-form button"
+                            style="padding: 0.5rem 1rem; background: ${hasNext ? 'linear-gradient(135deg, #7c3aed, #2563eb)' : 'var(--border)'}; color: ${hasNext ? '#fff' : 'var(--text-muted)'}; border: none; border-radius: 10px; font-weight: 600; cursor: ${hasNext ? 'pointer' : 'not-allowed'};">
+                        Next →
+                    </button>
+                </div>
+                <div id="detail-content"></div>
+            </div>
+        `;
+        
+        // Load the full detail page content into an iframe or fetch and inject
+        document.getElementById('detail-content').innerHTML = `<iframe src="/explore/${wordDir}${archive ? '?archive=1' : ''}" style="width: 100%; min-height: 600px; border: none; border-radius: 10px;"></iframe>`;
+        
+        detailContainer.style.display = 'block';
+        detailContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+    } catch (error) {
+        console.error('Error loading detail:', error);
+        alert('Error loading word details');
+    }
+}
+
+function navigateWord(direction) {
+    updateVisibleWords();
+    const visibleIndex = visibleWords.findIndex(w => w.index === currentWordIndex);
+    
+    if (visibleIndex === -1) return;
+    
+    const newIndex = visibleIndex + direction;
+    if (newIndex >= 0 && newIndex < visibleWords.length) {
+        const nextWord = visibleWords[newIndex];
+        loadWordDetail(nextWord.wordDir, nextWord.wordDisplay);
+    }
+}
+
+function closeDetail() {
+    detailContainer.style.display = 'none';
+    currentWordIndex = -1;
+}
+
+// Initialize visible words list
+updateVisibleWords();
+
+// Auto-focus on page load
+filterInput.focus();
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (currentWordIndex === -1) return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    
+    if (e.key === 'ArrowLeft') {
+        navigateWord(-1);
+    } else if (e.key === 'ArrowRight') {
+        navigateWord(1);
+    } else if (e.key === 'Escape') {
+        closeDetail();
+    }
+});
+</script>
+
+<style>
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -16px rgba(124, 58, 237, 0.15);
+}
+
+.card.active {
+    border: 2px solid #7c3aed;
+    box-shadow: 0 8px 32px -8px rgba(124, 58, 237, 0.3);
+}
+</style>
+
+{% endblock %}

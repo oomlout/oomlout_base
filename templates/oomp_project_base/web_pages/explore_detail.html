@@ -1,0 +1,543 @@
+{% set info_tags = [
+    {'key': 'explanation_clip.txt', 'display': 'Explanation'},
+    {'key': 'definition', 'display': 'Definition'}
+] %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ word }} - Detail</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+        :root {
+            color-scheme: light;
+            --bg-base: #f7f8fa;
+            --bg-panel: #fff;
+            --glass: rgba(255,255,255,0.85);
+            --border: #e3e7ef;
+            --border-strong: #c7ced8;
+            --text-primary: #23272f;
+            --text-muted: #7a869a;
+            --accent: #7c3aed;
+            --accent-strong: #5b21b6;
+            --accent-soft: rgba(124, 58, 237, 0.12);
+            --danger: #ef4444;
+            --success: #22c55e;
+            --radius: 12px;
+            --shadow-panel: 0 8px 32px -12px rgba(124, 58, 237, 0.08);
+            font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(120deg, #f7f8fa 60%, #e9eaf3 100%);
+            color: var(--text-primary);
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+            padding: 1rem;
+        }
+
+        /* When in iframe, simpler background */
+        body.in-iframe {
+            background: #fff;
+            padding: 0;
+        }
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--accent-strong);
+        }
+
+        .card, .glass-card {
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            background: #fff;
+            box-shadow: var(--shadow-panel);
+            color: var(--text-primary);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 0.5rem 0.9rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            background: #f7f8fa;
+        }
+
+        .card-body {
+            padding: 0.7rem 1rem;
+        }
+
+        .info-card {
+            padding: 0.7rem 1rem;
+            display: grid;
+            gap: 0.45rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg-panel);
+            box-shadow: var(--shadow-panel);
+            backdrop-filter: blur(6px);
+        }
+
+        .simple-form {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .simple-form label {
+            display: grid;
+            gap: 0.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .simple-form input, .simple-form select {
+            font: inherit;
+            padding: 0.35rem 0.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-strong);
+            background: #fff;
+            color: var(--text-primary);
+        }
+
+        .simple-form input:focus, .simple-form select:focus {
+            outline: 2px solid rgba(124, 58, 237, 0.18);
+            border-color: var(--accent);
+        }
+
+        .simple-form button {
+            justify-self: start;
+            padding: 0.35rem 0.8rem;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 140ms ease, box-shadow 140ms ease;
+            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.18);
+        }
+
+        .simple-form button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(124, 58, 237, 0.22);
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.18rem 0.6rem;
+            border-radius: 999px;
+            background: #f3f4fa;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+
+        .badge-chip {
+            display: inline-flex;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            font-weight: 650;
+            font-size: 0.8rem;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .page-hero {
+            margin-bottom: 1.5rem;
+        }
+
+        .thumbnail-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px -8px rgba(124, 58, 237, 0.25);
+            border-color: #7c3aed !important;
+        }
+
+        .thumbnail-card:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .glass-card > div > div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+{% block content %}
+<div class="page-hero" id="page-hero">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <div>
+            <h1 style="margin: 0 0 0.3rem 0; font-size: 1.8rem; font-weight: 700;">{{ word }}</h1>
+            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">{{ word_dir }}</p>
+        </div>
+        <a href="/explore" id="back-to-gallery" style="padding: 0.5rem 1rem; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); text-decoration: none; font-weight: 600;">
+            ← Back to Gallery
+        </a>
+    </div>
+</div>
+
+<script>
+// Hide navigation when loaded in iframe
+if (window.self !== window.top) {
+    const pageHero = document.getElementById('page-hero');
+    if (pageHero) {
+        pageHero.style.display = 'none';
+    }
+}
+</script>
+
+<div style="display: grid; gap: 0.75rem;">
+    <!-- Main Image Display with Explanation and Definition -->
+    <div class="glass-card" style="padding: 0.75rem;">
+        <h2 style="margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 650;">{{ word }}</h2>
+        <div style="display: grid; grid-template-columns: auto 100px 1fr; gap: 0.75rem; align-items: start;">
+            <!-- Left: Main Image with Delete Button -->
+            <div style="min-width: 200px;">
+                {% if main_image %}
+                <div style="display: flex; align-items: center; justify-content: center; background: #f5f5f5; border-radius: 8px; padding: 0.25rem; margin-bottom: 0.25rem;">
+                    <img id="main-image" 
+                         src="/serve_file/{{ main_image.path }}" 
+                         alt="{{ main_image.filename }}"
+                         data-path="{{ main_image.path }}"
+                         style="max-width: 100%; max-height: 250px; object-fit: contain; cursor: pointer;"
+                         onclick="openImageModal('/serve_file/{{ main_image.path }}', '{{ main_image.filename }}')">
+                </div>
+                <div style="text-align: center;">
+                    <div id="current-image-name" style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+                        {{ main_image.filename }}
+                    </div>
+                    <div style="display: flex; gap: 0.25rem; justify-content: center;">
+                        <a id="download-current-btn" href="/serve_file/{{ main_image.path }}" download="{{ main_image.filename }}"
+                           class="simple-form button"
+                           style="padding: 0.25rem 0.5rem; background: linear-gradient(135deg, #22c55e, #16a34a); font-size: 0.75rem; text-decoration: none; display: inline-block; color: #fff;">
+                            ⬇ Download
+                        </a>
+                        <button id="delete-current-btn" onclick="deleteCurrentImage()" 
+                                class="simple-form button"
+                                style="padding: 0.25rem 0.5rem; background: linear-gradient(135deg, #ef4444, #dc2626); font-size: 0.75rem;">
+                            🗑️ Delete
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Middle: Image Gallery Thumbnails (vertical) -->
+            {% if images|length > 0 %}
+            <div style="max-height: 300px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.35rem;">
+                {% for img in images %}
+                {% if not img.filename.lower().endswith('.svg') %}
+                <div class="thumbnail-card" 
+                     data-img-path="{{ img.path }}"
+                     data-img-filename="{{ img.filename }}"
+                     style="border: 2px solid {% if main_image and img.path == main_image.path %}#7c3aed{% else %}var(--border){% endif %}; border-radius: 6px; padding: 0.2rem; background: #fff; cursor: pointer; transition: all 0.15s ease;"
+                     onclick="updateMainImage('{{ img.path }}', '{{ img.filename }}')">
+                    <div style="width: 100%; height: 60px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; border-radius: 4px; overflow: hidden;">
+                        <img src="/serve_file/{{ img.path }}" 
+                             alt="{{ img.filename }}"
+                             style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            <!-- Right: Info Tags Display -->
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                {% for tag in info_tags %}
+                    {% if explanations.get(tag.key) %}
+                        <div>
+                            <h3 style="margin: 0 0 0.25rem 0; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">{{ tag.display }}</h3>
+                            <div style="padding: 0.4rem 0.6rem; background: #f5f5f5; border-radius: 6px; color: var(--text-primary); font-size: 0.85rem; line-height: 1.4;">
+                                {{ explanations[tag.key] }}
+                            </div>
+                        </div>
+                    {% elif yaml_content and yaml_content.get(tag.key) %}
+                        <div>
+                            <h3 style="margin: 0 0 0.25rem 0; font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">{{ tag.display }}</h3>
+                            <div style="padding: 0.4rem 0.6rem; background: #f0f9ff; border-radius: 6px; color: var(--text-primary); font-size: 0.85rem; line-height: 1.4;">
+                                {{ yaml_content.get(tag.key) }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Files List with Delete Actions -->
+    <div class="glass-card" style="padding: 0.75rem;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+            <h2 style="margin: 0; font-size: 1rem; font-weight: 650;">Files ({{ files|length }})</h2>
+            <div style="display: flex; gap: 0.35rem;">
+                <button onclick="deleteInitialGenerated()" 
+                        class="simple-form button"
+                        style="padding: 0.25rem 0.5rem; background: linear-gradient(135deg, #ef4444, #dc2626); font-size: 0.75rem;">
+                    Delete initial_generated*.png
+                </button>
+                <button onclick="deleteAllFiles()" 
+                        class="simple-form button"
+                        style="padding: 0.25rem 0.5rem; background: linear-gradient(135deg, #ef4444, #dc2626); font-size: 0.75rem;">
+                    Delete All Files
+                </button>
+            </div>
+        </div>
+        
+        <div style="max-height: 150px; overflow-y: auto; overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 0.8rem;">
+                <thead>
+                    <tr style="border-bottom: 1px solid var(--border); text-align: left;">
+                        <th style="padding: 0.25rem; font-weight: 600; color: var(--text-muted);">Filename</th>
+                        <th style="padding: 0.25rem; font-weight: 600; color: var(--text-muted);">Type</th>
+                        <th style="padding: 0.25rem; font-weight: 600; color: var(--text-muted);">Size</th>
+                        <th style="padding: 0.25rem; font-weight: 600; color: var(--text-muted);">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for file in files %}
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 0.25rem;">{{ file.filename }}</td>
+                        <td style="padding: 0.25rem; color: var(--text-muted);">{{ file.ext }}</td>
+                        <td style="padding: 0.25rem; color: var(--text-muted);">{{ (file.size / 1024) | round(1) }} KB</td>
+                        <td style="padding: 0.25rem;">
+                            {% if file.is_yaml %}
+                            <span style="font-size: 0.75rem; color: var(--text-muted);">Protected</span>
+                            {% else %}
+                            <button onclick="deleteFile('{{ file.path }}')" 
+                                    style="padding: 0.15rem 0.4rem; background: var(--danger); color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.75rem; font-weight: 600;">
+                                Delete
+                            </button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal Overlay for Full-Size Images -->
+<div id="image-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); z-index: 9999; align-items: center; justify-content: center;">
+    <div class="glass-card" style="max-width: 90vw; max-height: 90vh; padding: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; background: rgba(255, 255, 255, 0.95);">
+        <img id="modal-image" src="" alt="" style="max-width: 100%; max-height: 70vh; object-fit: contain;">
+        <div id="modal-filename" style="font-size: 1rem; color: var(--text-primary); font-weight: 600;"></div>
+        <button onclick="closeImageModal()" 
+                class="simple-form button"
+                style="padding: 0.5rem 1.5rem; background: linear-gradient(135deg, #7c3aed, #2563eb);">
+            Close
+        </button>
+    </div>
+</div>
+
+<script>
+function updateMainImage(imgPath, imgFilename) {
+    const mainImg = document.getElementById('main-image');
+    const imgNameDiv = document.getElementById('current-image-name');
+    const deleteBtn = document.getElementById('delete-current-btn');
+    const downloadBtn = document.getElementById('download-current-btn');
+    
+    if (mainImg) {
+        mainImg.src = '/serve_file/' + imgPath;
+        mainImg.alt = imgFilename;
+        mainImg.setAttribute('data-path', imgPath);
+        mainImg.onclick = function() { openImageModal('/serve_file/' + imgPath, imgFilename); };
+    }
+    
+    if (imgNameDiv) {
+        imgNameDiv.textContent = imgFilename;
+    }
+    
+    if (deleteBtn) {
+        deleteBtn.disabled = false;
+    }
+    
+    if (downloadBtn) {
+        downloadBtn.href = '/serve_file/' + imgPath;
+        downloadBtn.download = imgFilename;
+    }
+    
+    // Update thumbnail borders to highlight selected
+    document.querySelectorAll('.thumbnail-card').forEach(card => {
+        const cardPath = card.getAttribute('data-img-path');
+        if (cardPath === imgPath) {
+            card.style.borderColor = '#7c3aed';
+            card.style.borderWidth = '2px';
+        } else {
+            card.style.borderColor = 'var(--border)';
+            card.style.borderWidth = '2px';
+        }
+    });
+}
+
+function deleteCurrentImage() {
+    const mainImg = document.getElementById('main-image');
+    if (!mainImg) return;
+    
+    const imgPath = mainImg.getAttribute('data-path');
+    const imgFilename = mainImg.alt;
+    
+    if (!confirm(`Delete ${imgFilename}? This action cannot be undone.`)) {
+        return;
+    }
+    
+    fetch('/delete_image/' + encodeURIComponent(imgPath), {
+        method: 'POST'
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            window.location.reload();
+        } else {
+            alert('Error: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(err => alert('Error deleting image: ' + err));
+}
+
+function openImageModal(imageSrc, filename) {
+    const modal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalFilename = document.getElementById('modal-filename');
+    
+    modalImage.src = imageSrc;
+    modalImage.alt = filename;
+    modalFilename.textContent = filename;
+    modal.style.display = 'flex';
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('image-modal');
+    modal.style.display = 'none';
+}
+
+// Close modal on backdrop click
+document.getElementById('image-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeImageModal();
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeImageModal();
+    }
+});
+
+function deleteFile(filePath) {
+    if (!confirm('Delete this file? This action cannot be undone.')) {
+        return;
+    }
+    
+    fetch('/delete_image/' + encodeURIComponent(filePath), {
+        method: 'POST'
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            window.location.reload();
+        } else {
+            alert('Error: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(err => alert('Error deleting file: ' + err));
+}
+
+function deleteAllFiles() {
+    if (!confirm('Delete ALL files except working.yaml? This action cannot be undone.')) {
+        return;
+    }
+    if (!confirm('FINAL CONFIRMATION: This will permanently delete all files. Continue?')) {
+        return;
+    }
+    
+    fetch('/delete_all_files/{{ word_dir }}', {
+        method: 'POST'
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            window.location.reload();
+        } else {
+            alert('Error: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(err => alert('Error: ' + err));
+}
+
+function deleteInitialGenerated() {
+    if (!confirm('Delete all initial_generated*.png files? This action cannot be undone.')) {
+        return;
+    }
+    
+    fetch('/delete_initial_generated/{{ word_dir }}', {
+        method: 'POST'
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            window.location.reload();
+        } else {
+            alert('Error: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(err => alert('Error: ' + err));
+}
+
+function deleteExplanationClip() {
+    if (!confirm('Delete explanation_clip.txt? This action cannot be undone.')) {
+        return;
+    }
+    
+    const filePath = 'parts/{{ word_dir }}/explanation_clip.txt';
+    fetch('/delete_image/' + encodeURIComponent(filePath), {
+        method: 'POST'
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message);
+            window.location.reload();
+        } else {
+            alert('Error: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(err => alert('Error deleting explanation_clip.txt: ' + err));
+}
+
+// Detect if in iframe and adjust styling
+if (window.self !== window.top) {
+    document.body.classList.add('in-iframe');
+}
+</script>
+
+{% endblock %}
+
+</body>
+</html>

@@ -48,6 +48,24 @@ def _handle_example_form(context: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _handle_explore(context: Dict[str, Any]) -> Dict[str, Any]:
+    """Collect metadata specific to the explore page."""
+    context.setdefault("page_meta", {})["highlight"] = "explore"
+    return {
+        "branch": "Explore gallery page active.",
+        "notes": ["Explore gallery with pagination."],
+    }
+
+
+def _handle_explore_detail(context: Dict[str, Any]) -> Dict[str, Any]:
+    """Collect metadata specific to the explore detail page."""
+    context.setdefault("page_meta", {})["highlight"] = "explore"
+    return {
+        "branch": "Explore detail page active.",
+        "notes": ["Showing detailed word view."],
+    }
+
+
 def _handle_default(context: Dict[str, Any], template_name: str) -> Dict[str, Any]:
     """Fallback handler for pages without a dedicated routine."""
     context.setdefault("page_meta", {})["highlight"] = template_name
@@ -67,6 +85,12 @@ def process_page(template_name: str, context: Dict[str, Any]) -> Dict[str, Any]:
         handler_kwargs = {}
     elif template_name == "example_form.html":
         handler = _handle_example_form
+        handler_kwargs = {}
+    elif template_name == "explore.html":
+        handler = _handle_explore
+        handler_kwargs = {}
+    elif template_name == "explore_detail.html":
+        handler = _handle_explore_detail
         handler_kwargs = {}
     else:
         handler = _handle_default

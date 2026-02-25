@@ -15,23 +15,28 @@ def create_generic(**kwargs):
     things = {}    
     
     #load parts from parts_source directory
-    directory = "part_source"
+    directory_source = "parts_source"
     import os
-    if not os.path.exists(directory):
-        print(f"      directory {directory} does not exist, creating it")
+    if not os.path.exists(directory_source):
+        print(f"      directory {directory_source} does not exist, creating it")
         #create it
-        os.makedirs(directory)
-    for filename in os.listdir(directory):
-        import yaml
-        #go through directories and load working.yaml files
-        # only load .yaml files
-        if "working.yaml" in filename:
-            file_path = os.path.join(directory, filename)
-            with open(file_path, 'r', encoding='utf-8') as file:
-                data = yaml.safe_load(file)
-                for thing in data:
-                    things[thing] = data[thing]
-
+        os.makedirs(directory_source)
+    directories = os.listdir(directory_source)
+    for directory  in directories:
+        directory_full = f"{directory_source}/{directory}"
+        filenames = os.listdir(f"{directory_full}")
+        for filename in filenames:
+            import yaml
+            #go through directories and load working.yaml files
+            # only load .yaml files
+            if "working.yaml" in filename:
+                file_path = os.path.join(directory_full, filename)
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    data = yaml.safe_load(file)
+                    thing_details = {}
+                    for deet in data:
+                        thing_details[deet] = data[deet]
+                    things[directory] = thing_details
     default_empty = {}
     default_empty["classification"] = ""
     default_empty["type"] = ""
@@ -55,7 +60,14 @@ def create_generic(**kwargs):
         part["name_proper"] = part["name_space"].title()
         part["name_upper"] = part["name_space"].upper()
         
-        
+        #convert "oomp_classification to just classification
+        details_list = ["classification", "type", "size", "color", "description_main", "description_extra", "manufacturer", "part_number"]
+        for detail in details_list:
+            key = f"oomp_{detail}"
+            if key in current:
+                part[detail] = current[key]
+                part.pop(key, None)
+
         
 
         #image

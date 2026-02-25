@@ -1,0 +1,163 @@
+classification: helen
+classification_capital: Helen
+classification_first_letter: h
+classification_first_letter_upper: H
+classification_upper: HELEN
+color: spelling
+color_capital: Spelling
+color_first_letter: s
+color_first_letter_upper: S
+color_upper: SPELLING
+description_extra: affect
+description_extra_capital: Affect
+description_extra_first_letter: a
+description_extra_first_letter_upper: A
+description_extra_upper: AFFECT
+description_main: keystage_two_word_card
+description_main_capital: Keystage Two Word Card
+description_main_first_letter: k
+description_main_first_letter_upper: K
+description_main_upper: KEYSTAGE_TWO_WORD_CARD
+description_only_numbers: ''
+description_only_numbers_short: ' '
+description_or_color: 'S '
+description_or_color_upper: 'S '
+directory: parts/helen_school_english_spelling_keystage_two_word_card_affect
+distributors: []
+file_input: ''
+id: helen_school_english_spelling_keystage_two_word_card_affect
+id_no_class: school_english_spelling_keystage_two_word_card_affect
+id_no_size: spelling_keystage_two_word_card_affect
+id_no_type: english_spelling_keystage_two_word_card_affect
+link_github: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_school_english_spelling_keystage_two_word_card_affect
+link_main: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_school_english_spelling_keystage_two_word_card_affect
+link_redirect: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_school_english_spelling_keystage_two_word_card_affect
+manufacturer: ''
+manufacturer_capital: ''
+manufacturer_first_letter: ''
+manufacturer_first_letter_upper: ''
+manufacturer_upper: ''
+manufacturers: []
+markdown_full: '[helen_school_english_spelling_keystage_two_word_card_affect](none)<br>[](none)<br>[Helen
+    School English Spelling Keystage Two Word Card Affect](none)<br><br>'
+markdown_short: '[helen_school_english_spelling_keystage_two_word_card_affect](none)<br><br>'
+md5: 93b522d2613773cfd64f1c6d2de644b0
+md5_10: 93b522d261
+md5_10_upper: 93B522D261
+md5_5: 93b52
+md5_5_upper: 93B52
+md5_6: 93b522
+md5_6_alpha: 5rh9e
+md5_6_alpha_upper: 5RH9E
+md5_6_upper: 93B522
+name: Helen School English Spelling Keystage Two Word Card Affect
+name_no_class: School English Spelling Keystage Two Word Card Affect
+name_no_size: Spelling Keystage Two Word Card Affect
+name_no_size_short: Spelling Keystage Two Word Card Affect
+name_no_type: English Spelling Keystage Two Word Card Affect
+name_proper: Affect
+name_space: affect
+name_upper: AFFECT
+oomlout_ai_roboclick_1:
+    actions:
+    -   command: continue_chat
+        url_chat: https://chatgpt.com/c/696f7035-00bc-832c-a8bd-ae0c50dbbe36
+    -   command: query
+        method: paste
+        text: "\ncan i get a short 5-10 word explanation of why this word is important\
+            \ to spelling, phrase \nit as a bullet point focus on the structure and\
+            \ the category it is in minimal punctuation please,\n between &&&text\
+            \ to copy&&& tags please all reasons. only one reason!\n"
+    -   clip: '&&&text to copy&&&'
+        command: ai_save_text
+        file_name_clip: explanation_clip.txt
+        file_name_full: explanation_full.txt
+    -   command: query
+        method: paste
+        text: "\ncan i get a short 5-15 definition use minimal punctuation please,\n\
+            \ between &&&text to copy&&& tags please all reasons\n"
+    -   clip: '&&&text to copy&&&'
+        command: ai_save_text
+        file_name_clip: definition_clip.txt
+        file_name_full: definition_full.txt
+    file_test: explanation_clip.txt
+oomlout_corel_roboclick_1:
+    actions:
+    -   command: wait_for_file
+        file_name: initial_generated_2.png
+    -   command: file_copy
+        file_destination: template.svg
+        file_source: source_files\card_1\working_inkscape_template.svg
+    -   command: text_jinja_template
+        convert_to_pdf: true
+        convert_to_png: true
+        dict_data:
+            classification: helen
+            color: spelling
+            description_extra: affect
+            description_main: keystage_two_word_card
+            manufacturer: ''
+            name: affect
+            name_proper: Affect
+            name_space: affect
+            name_upper: AFFECT
+            oomlout_ai_roboclick_1:
+                actions:
+                -   command: continue_chat
+                    url_chat: https://chatgpt.com/c/696f7035-00bc-832c-a8bd-ae0c50dbbe36
+                -   command: query
+                    method: paste
+                    text: "\ncan i get a short 5-10 word explanation of why this word\
+                        \ is important to spelling, phrase \nit as a bullet point\
+                        \ focus on the structure and the category it is in minimal\
+                        \ punctuation please,\n between &&&text to copy&&& tags please\
+                        \ all reasons. only one reason!\n"
+                -   clip: '&&&text to copy&&&'
+                    command: ai_save_text
+                    file_name_clip: explanation_clip.txt
+                    file_name_full: explanation_full.txt
+                -   command: query
+                    method: paste
+                    text: "\ncan i get a short 5-15 definition use minimal punctuation\
+                        \ please,\n between &&&text to copy&&& tags please all reasons\n"
+                -   clip: '&&&text to copy&&&'
+                    command: ai_save_text
+                    file_name_clip: definition_clip.txt
+                    file_name_full: definition_full.txt
+                file_test: explanation_clip.txt
+            part_number: ''
+            size: english
+            type: school
+        file_output: working.svg
+        file_template: template.svg
+    file_test: working.png
+oomp_key: oomp_helen_school_english_spelling_keystage_two_word_card_affect
+oomp_word: books tea lips
+oomp_word_emoji: ':books: :tea: :lips:'
+oomp_word_emoji_list:
+- ':books:'
+- ':tea:'
+- ':lips:'
+oomp_word_list:
+- books
+- tea
+- lips
+part_number: ''
+part_number_capital: ''
+part_number_first_letter: ''
+part_number_first_letter_upper: ''
+part_number_upper: ''
+short_code: ''
+short_code_upper: ''
+size: english
+size_capital: English
+size_first_letter: e
+size_first_letter_upper: E
+size_only_numbers: ''
+size_only_numbers_no_zeros: ''
+size_upper: ENGLISH
+type: school
+type_capital: School
+type_first_letter: s
+type_first_letter_upper: S
+type_upper: SCHOOL

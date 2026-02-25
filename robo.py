@@ -926,6 +926,7 @@ def robo_google_doc_add_text(**kwargs):
     delay = kwargs.get('delay', 5)
     format = kwargs.get('format', True) # bold, italic, underline
     down_times = kwargs.get('down_times', 20)
+    method = kwargs.get('method', 'type') # keyboard, api
 
     if format:
         #remove double and triple new lines
@@ -954,12 +955,15 @@ def robo_google_doc_add_text(**kwargs):
         #add new line
         robo_keyboard_press_enter(delay=2)        
     #type text
-
-
-
-
-    robo_keyboard_send(string=text, delay=2)
-    robo_delay(delay=delay)
+    if method == 'type':
+        robo_keyboard_send(string=text, delay=2)
+        robo_delay(delay=delay)
+    elif method == 'paste':
+        #copy text to clipboard
+        clipboard.copy(text)
+        #paste
+        robo_keyboard_press_ctrl_generic(string='v', delay=2)
+        robo_delay(delay=delay)
 
 
 def robo_google_doc_new(**kwargs):

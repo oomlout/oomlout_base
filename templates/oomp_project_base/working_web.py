@@ -1,23 +1,3 @@
-
-# This route provides a form for creating a new part source entry.
-# When submitted, it creates a directory in parts_source/ and writes all form values to working.yaml.
-# The form fields are defined in part_form_fields, and any new fields added here will automatically be included in the YAML output.
-from flask import redirect, url_for, flash
-
-# List of fields for the create_part_source form.
-# To add a default value, use a 3rd value in the tuple: (field, label, default)
-# Example: ("classification", "Classification", "resistor")
-part_form_fields = [
-    ("classification", "Classification", ""),
-    ("type", "Type", ""),
-    ("size", "Size", ""),
-    ("color", "Color", ""),
-    ("description_main", "Description Main", ""),
-    ("description_extra", "Description Extra", ""),
-    ("manufacturer", "Manufacturer", ""),
-    ("part_number", "Part Number", ""),
-]
-
 """Flask web server that renders pages from the web_pages directory."""
 
 import os
@@ -27,26 +7,27 @@ import threading
 from importlib import import_module, reload
 from pathlib import Path
 from typing import Any, Dict
+import json
+import shutil
+import pickle
+from datetime import datetime
 
 import yaml
-from flask import Flask, abort, render_template, request
+from flask import Flask, abort, render_template, request, jsonify, send_from_directory
 from jinja2 import TemplateNotFound
 
 
-
-# BASE_DIR: Root directory of the project
 BASE_DIR = Path(__file__).parent
-# TEMPLATE_DIR: All HTML templates for the web server are stored in web_pages/
 TEMPLATE_DIR = BASE_DIR / "web_pages"
-# STATIC_DIR: Static files (CSS, JS, images) are stored in web_pages/static/
 STATIC_DIR = TEMPLATE_DIR / "static"
-# SITE_TITLE: Used for display in templates
 SITE_TITLE = BASE_DIR.name
-# LOCK_FILE: Used to prevent concurrent working_all runs
 LOCK_FILE = Path("C:/gh/oomlout_base/lock/working_all.lock")
+CACHE_FILE = BASE_DIR / "words_cache.pkl"
 
-# Default values for OOMP form fields.
-# Used to pre-populate OOMP creation forms in templates.
+# Global cache for word data
+WORDS_CACHE = {}
+
+# Default values for OOMP form fields
 OOMP_DEFAULTS = {
     "oomp_classification": "",
     "oomp_type": "",
@@ -93,103 +74,153 @@ app = Flask(
 )
 app.config["SITE_TITLE"] = SITE_TITLE
 
-# --- Navigation Auto-Generation ---
-# This context processor scans web_pages/ for .html templates (excluding partials/layout) and provides nav_pages to all templates.
-@app.context_processor
-def inject_nav_pages():
-    nav_pages = []
-    for template_file in TEMPLATE_DIR.glob("*.html"):
-        name = template_file.stem
-        # Exclude partials (start with _) and layout.html
-        if name.startswith("_") or name == "layout":
-            continue
-        # Human-friendly title
-        title = name.replace("_", " ").title()
-        nav_pages.append({
-            "name": name,
-            "title": title,
-            "url": f"/{name}" if name != "index" else "/"
-        })
-    # Sort: index first, then alphabetical
-    nav_pages.sort(key=lambda x: (x["name"] != "index", x["title"]))
-    return {"nav_pages": nav_pages}
 
-# --- Launch working_all Endpoint ---
-# This endpoint launches action_run_working_all.bat when triggered from the parts source page.
-@app.route("/launch_working_all", methods=["POST"])
-def launch_working_all():
-    """
-    Launch action_run_working_all.bat in a new CMD window and redirect back to the create_part_source page.
-    """
+def load_words_cache():
+    """Load words cache from disk if available."""
+    global WORDS_CACHE
+    
+    if CACHE_FILE.exists():
+        try:
+            print("[cache] Loading words cache from disk...")
+            with open(CACHE_FILE, 'rb') as f:
+                WORDS_CACHE = pickle.load(f)
+            print(f"[cache] Loaded {len(WORDS_CACHE)} words from cache")
+        except Exception as e:
+            print(f"[cache] Error loading cache: {e}")
+            WORDS_CACHE = {}
+    else:
+        print("[cache] No cache file found, will build fresh cache")
+        WORDS_CACHE = {}
+
+
+def save_words_cache():
+    """Save words cache to disk."""
     try:
-        cmd = 'start "Run Working All" cmd /c "action_run_working_all.bat"'
-        subprocess.Popen(cmd, shell=True, cwd=Path(__file__).parent)
+        with open(CACHE_FILE, 'wb') as f:
+            pickle.dump(WORDS_CACHE, f)
+        print(f"[cache] Saved {len(WORDS_CACHE)} words to cache")
     except Exception as e:
-        # Optionally, log or handle errors here
-        pass
-    # Always redirect back to the form
-    return redirect(url_for("create_part_source"))
-# --- Part Source Creation Route ---
+        print(f"[cache] Error saving cache: {e}")
+
+
+def load_all_word_data():
+    """Load all word data from parts directories and cache them."""
+    global WORDS_CACHE
+    
+    parts_dir = BASE_DIR / "parts"
+    prefix = ""
+    
+    if not parts_dir.exists():
+        print("[cache] Parts directory not found")
+        return
+    
+    print("[cache] Loading all word data...")
+    updated_count = 0
+    new_count = 0
+    
+    for item in parts_dir.iterdir():
+        if item.is_dir() and item.name.startswith(prefix):
+            word = item.name.replace(prefix, "")
+            working_yaml_path = item / "working.yaml"
+            
+            # Check if we need to update this word
+            needs_update = True
+            if word in WORDS_CACHE:
+                cached_mtime = WORDS_CACHE[word].get('_mtime', 0)
+                if working_yaml_path.exists():
+                    current_mtime = working_yaml_path.stat().st_mtime
+                    if current_mtime == cached_mtime:
+                        needs_update = False
+            else:
+                new_count += 1
+            
+            if needs_update and working_yaml_path.exists():
+                try:
+                    with open(working_yaml_path, 'r', encoding='utf-8') as f:
+                        yaml_data = yaml.safe_load(f)
+                    
+                    # Store with metadata
+                    WORDS_CACHE[word] = {
+                        'word': word,
+                        'dir_name': item.name,
+                        'data': yaml_data or {},
+                        '_mtime': working_yaml_path.stat().st_mtime,
+                        '_last_updated': datetime.now().isoformat()
+                    }
+                    updated_count += 1
+                except Exception as e:
+                    print(f"[cache] Error loading {word}: {e}")
+                    WORDS_CACHE[word] = {
+                        'word': word,
+                        'dir_name': item.name,
+                        'data': {},
+                        '_error': str(e),
+                        '_mtime': 0,
+                        '_last_updated': datetime.now().isoformat()
+                    }
+    
+    print(f"[cache] Loaded {new_count} new words, updated {updated_count} changed words")
+    print(f"[cache] Total words in cache: {len(WORDS_CACHE)}")
+    
+    # Save the cache
+    save_words_cache()
+
+
+# Load cache on startup
+load_words_cache()
+load_all_word_data()
 
 # No background monitoring - keep it simple
 
 
-@app.route("/create_part_source", methods=["GET", "POST"])
-def create_part_source():
-    """
-    Render a form for creating a new part source entry and handle its submission.
-    On POST, creates a directory in parts_source/ and writes all form values to working.yaml.
-    The form fields are defined in part_form_fields above. To add new fields, simply add to that list.
-    """
-    if request.method == "POST":
-        # Collect all form values into a dictionary (all fields optional, use default if blank)
-        form_data = {}
-        for field_tuple in part_form_fields:
-            if len(field_tuple) == 3:
-                field, _, default = field_tuple
-            else:
-                field, _ = field_tuple
-                default = ""
-            form_data[field] = request.form.get(field, default)
-        # Directory name is a combination of all field values, joined by underscores ("none" for empty fields)
-        dir_name = "_".join([form_data[field].replace(" ", "_") or "none" for field_tuple in part_form_fields for field in [field_tuple[0]]])
-        part_dir = BASE_DIR / "parts_source" / dir_name
-        part_dir.mkdir(parents=True, exist_ok=True)
-        # Write all form data to working.yaml in the new directory
-        with open(part_dir / "working.yaml", "w", encoding="utf-8") as f:
-            yaml.dump(form_data, f, allow_unicode=True)
-        # Redirect to the form with a success query parameter (no flash, no secret key needed)
-        return redirect(url_for("create_part_source", created=dir_name))
-    # On GET, render the form
-    # Pass a list of (field, label, default) to the template for easy rendering
-    form_fields_for_template = []
-    for field_tuple in part_form_fields:
-        if len(field_tuple) == 3:
-            field, label, default = field_tuple
-        else:
-            field, label = field_tuple
-            default = ""
-        form_fields_for_template.append((field, label, default))
-    return render_template(
-        "create_part_source.html",
-        page_title="Create Part Source",
-        part_form_fields=form_fields_for_template,
-    )
-
 def run_working_all_with_file_lock():
-    """
-    Launch action_run_working_all.bat in a new CMD window and close the window after execution.
-    Lock file checking is removed for simplicity.
-    """
+    """Run working_all with file-based locking to prevent multiple instances."""
+    
+    # Check if already running
+    if LOCK_FILE.exists():
+        # Check if process is actually running (stale lock cleanup)
+        try:
+            with open(LOCK_FILE, 'r') as f:
+                pid = int(f.read().strip())
+            
+            # Try to check if process exists (Windows compatible)
+            try:
+                os.kill(pid, 0)  # This will raise if process doesn't exist
+                # Process exists, refuse to run
+                app.logger.info("working_all is already running, refusing to start another instance")
+                return False
+            except OSError:
+                # Process doesn't exist, remove stale lock
+                LOCK_FILE.unlink(missing_ok=True)
+                
+        except (ValueError, FileNotFoundError):
+            # Invalid lock file, remove it
+                LOCK_FILE.unlink(missing_ok=True)
+    
+    # Launch directly without threading to avoid Flask socket issues
     try:
-        # Command to run the batch file and close the window after execution
-        cmd = 'start "Run Working All" cmd /c "action_run_working_all.bat"'
-        app.logger.info("Launching action_run_working_all.bat in new CMD window...")
+        # Create lock file first
+        current_pid = os.getpid()
+        with open(LOCK_FILE, 'w') as f:
+            f.write(str(current_pid))
+        app.logger.info(f"Created lock file with PID {current_pid}")
+        
+        # Create command to run working_all in new CMD window
+        # This will show all output and close automatically when done
+        cmd = f'''start "Working All Process" cmd /c "echo Starting working_all.py... && python working_all.py && echo First run complete. Checking for new entries... && python working_all.py && echo Second run complete. && del "{LOCK_FILE}" && echo Lock removed. Processing complete!"'''
+        
+        app.logger.info("Launching working_all in new CMD window...")
+        
+        # Use subprocess.Popen instead of os.system to avoid Flask socket issues
         subprocess.Popen(cmd, shell=True, cwd=Path(__file__).parent)
+        
         app.logger.info("CMD window launched successfully")
         return True
+        
     except Exception as e:
-        app.logger.error(f"Error launching action_run_working_all.bat: {e}")
+        app.logger.error(f"Error launching working_all in CMD window: {e}")
+        # Fallback: remove lock file if we couldn't start
+        LOCK_FILE.unlink(missing_ok=True)
         return False
 def get_working_all_status():
     """Get the current status of working_all execution."""
@@ -231,11 +262,7 @@ def _derive_page_title(template_name: str) -> str:
 
 
 def render_page(template_name: str, **context: Any):
-    """
-    Render a template and run optional hooks around the render.
-    This function is the main entry point for rendering HTML pages.
-    It also injects navigation and debug context for templates.
-    """
+    """Render a template and run optional hooks around the render."""
     hooks = _load_page_hooks()
     context_data: Dict[str, Any] = {
         "site_title": app.config.get("SITE_TITLE", SITE_TITLE),
@@ -265,22 +292,19 @@ def render_page(template_name: str, **context: Any):
 
 @app.route("/")
 def index():
-    """
-    Serve the main index page.
-    This is the homepage for the web server. It renders index.html from web_pages/.
-    """
-    return render_page("index.html", page_title="Home")
+    """Serve the index page with spelling cards form."""
+    return render_page("index.html", page_title="Make Spelling Cards")
 
 
-## Route removed: /make_spelling_cards
-# This route was removed because its template does not exist. If you wish to restore it, add make_spelling_cards.html to web_pages/ and re-add the route.
+@app.route("/make_spelling_cards", methods=["GET", "POST"])
+def make_spelling_cards():
+    """Make spelling cards form handler."""
+    return render_page("make_spelling_cards.html", page_title="Make Spelling Cards")
+
 
 @app.route("/run_batch_only", methods=["POST"])
 def run_batch_only():
-    """
-    Run the batch file without adding anything to working.yaml.
-    Used for manual batch processing. Launches run_working_all.bat in a new window.
-    """
+    """Run the batch file without adding anything to working.yaml."""
     import os
     from pathlib import Path
     
@@ -294,20 +318,14 @@ def run_batch_only():
 
 @app.route("/working_all_status")
 def working_all_status():
-    """
-    Return the status of working_all execution.
-    Returns a JSON with lock file and PID if running.
-    """
+    """Return the status of working_all execution."""
     status = get_working_all_status()
     return status
 
 
 @app.route("/run_working_all", methods=["POST"])
 def trigger_working_all():
-    """
-    Manually trigger working_all execution.
-    Handles lock file logic and batch queuing for safe concurrent runs.
-    """
+    """Manually trigger working_all execution."""
     if LOCK_FILE.exists():
         print("[DEBUG] Lock file exists - entering queue mode")
         # Add run instruction to batch file for queuing
@@ -370,29 +388,336 @@ pause
     return {"message": "Started working_all in new window"}
 
 
-## Route removed: /oomp_create
-# This route was removed as part of the cleanup. The page is now only accessible as a static template if present in web_pages/.
+@app.route("/oomp_create", methods=["GET", "POST"])
+def oomp_create():
+    """Handle OOMP open hardware source creation."""
+    print(f"[DEBUG] oomp_create route hit - method: {request.method}")
+    
+    if request.method == "GET":
+        print("[DEBUG] Rendering oomp_create.html")
+        return render_page("oomp_create.html", page_title="Create OOMP Entry", oomp_defaults=OOMP_DEFAULTS)
+    
+    # POST request - create the OOMP entry
+    try:
+        import re
+        data = request.get_json()
+        
+        # Build OOMP ID from form data
+        id_elements = [
+            "oomp_classification",
+            "oomp_type",
+            "oomp_size",
+            "oomp_color",
+            "oomp_description_main",
+            "oomp_description_extra",
+            "oomp_manufacturer",
+            "oomp_part_number",
+        ]
+        
+        oomp_id_parts = []
+        for element in id_elements:
+            ele = data.get(element, "")
+            if ele:
+                # Clean the element: replace spaces and punctuation with underscore
+                cleaned = re.sub(r'[^a-zA-Z0-9]+', '_', ele)
+                # Remove leading/trailing underscores
+                cleaned = cleaned.strip('_')
+                # Replace multiple underscores with single underscore
+                cleaned = re.sub(r'_+', '_', cleaned)
+                if cleaned:  # Only add non-empty cleaned strings
+                    oomp_id_parts.append(cleaned)
+        
+        # Join all parts with single underscore
+        oomp_id = '_'.join(oomp_id_parts)
+        
+        # Create parts_source directory if it doesn't exist
+        parts_dir = BASE_DIR / "parts_source" / oomp_id
+        parts_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Save working.yaml in the parts_source directory
+        working_file = parts_dir / "working.yaml"
+        with open(working_file, 'w') as f:
+            yaml.dump(data, f)
+        
+        print(f"[DEBUG] Created OOMP entry: {oomp_id}")
+        print(f"[DEBUG] Saved to: {working_file}")
+        
+        return {"message": f"OOMP entry created successfully", "oomp_id": oomp_id, "path": str(parts_dir)}
+    except Exception as e:
+        import traceback
+        print(f"[ERROR] {e}")
+        print(traceback.format_exc())
+        return {"error": str(e), "traceback": traceback.format_exc()}, 400
+
 
 @app.route("/<path:page_name>")
 def serve_page(page_name: str):
-    """
-    Serve any template from the web_pages directory.
-    This dynamic route allows any .html file in web_pages/ to be accessed directly by its name.
-    Example: /index or /oomp_create will serve index.html or oomp_create.html if present.
-    SECURITY NOTE: Only .html files in web_pages/ are accessible. This prevents access to non-template files.
-    If a template does not exist, a 404 is returned.
-    """
+    """Serve any template from the web_pages directory."""
     template_name = page_name if page_name.endswith(".html") else f"{page_name}.html"
     return render_page(template_name)
+
+
+
+
+
+
+
+
+@app.route("/refresh_cache", methods=['POST'])
+def refresh_cache():
+    """Manually refresh the cache."""
+    load_all_word_data()
+    return jsonify({'success': True, 'message': f'Cache refreshed with {len(WORDS_CACHE)} words'})
+
+
+
+
+
+
+
+
+@app.route("/delete_image/<path:image_path>", methods=['POST'])
+def delete_image(image_path):
+    """Delete a specific image file."""
+    try:
+        print(f"[delete_image] Received imagePath: {image_path}")
+        # Normalize path separators for Windows
+        image_path = image_path.replace('/', os.sep)
+        file_path = BASE_DIR / image_path
+        print(f"[delete_image] Resolved file_path: {file_path}")
+        if file_path.exists() and file_path.is_file():
+            # Don't allow deletion of working.yaml
+            if file_path.name == 'working.yaml':
+                print(f"[delete_image] Attempted to delete working.yaml, aborting.")
+                return jsonify({'error': 'Cannot delete working.yaml'}), 400
+            file_path.unlink()
+            print(f"[delete_image] Deleted file: {file_path}")
+            return jsonify({'success': True, 'message': f'Deleted {file_path.name}'})
+        else:
+            print(f"[delete_image] File not found: {file_path}")
+            return jsonify({'error': 'File not found'}), 404
+    except Exception as e:
+        print(f"[delete_image] Exception: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+from flask import make_response
+
+# Global error handler for 500 errors to always return JSON
+@app.errorhandler(500)
+def internal_error(error):
+    response = jsonify({'error': 'Internal server error', 'details': str(error)})
+    response.status_code = 500
+    return response
+
+
+
+
+@app.route("/serve_file/<path:filepath>")
+def serve_file(filepath):
+    """Serve files from the parts directory."""
+    # Normalize path separators for Windows
+    filepath = filepath.replace('/', os.sep)
+    file_path = BASE_DIR / filepath
+    if file_path.exists() and file_path.is_file():
+        return send_from_directory(file_path.parent, file_path.name)
+    abort(404)
+
+
+@app.route("/explore")
+def explore():
+    """Explore page with live client-side filtering."""
+    # Check for changes in parts and parts_old directories
+    def get_dir_mtime(directory):
+        if not directory.exists():
+            return 0
+        return max((f.stat().st_mtime for f in directory.glob('**/*') if f.is_file()), default=0)
+
+    parts_dir = BASE_DIR / "parts"
+    parts_old_dir = BASE_DIR / "parts_old"
+    cache_mtime = max((WORDS_CACHE[word]['_mtime'] for word in WORDS_CACHE if '_mtime' in WORDS_CACHE[word]), default=0)
+    parts_mtime = get_dir_mtime(parts_dir)
+    parts_old_mtime = get_dir_mtime(parts_old_dir)
+
+    # If either directory has changed, reload all word data
+    if parts_mtime > cache_mtime or parts_old_mtime > cache_mtime:
+        load_all_word_data()
+
+    # Get all words from cache, including archive tag for parts_old
+    all_words = []
+    for word, word_data in WORDS_CACHE.items():
+        # Determine if part is archived
+        archive = False
+        parts_dir = BASE_DIR / "parts" / word_data['dir_name']
+        parts_old_dir = BASE_DIR / "parts_old" / word_data['dir_name']
+        if parts_old_dir.exists():
+            archive = True
+            preview_image = parts_old_dir / "initial_generated_2.png"
+            preview_path = f"parts_old/{word_data['dir_name']}/initial_generated_2.png" if preview_image.exists() else None
+        else:
+            preview_image = parts_dir / "initial_generated_2.png"
+            preview_path = f"parts/{word_data['dir_name']}/initial_generated_2.png" if preview_image.exists() else None
+
+        has_preview = preview_image.exists()
+
+        word_entry = {
+            'word': word,
+            'dir_name': word_data['dir_name'],
+            'data': word_data.get('data', {}),
+            'has_preview': has_preview,
+            'preview_path': preview_path,
+            'archive': archive
+        }
+        all_words.append(word_entry)
+
+    # Sort alphabetically
+    all_words.sort(key=lambda x: x['word'])
+
+    return render_page("explore.html",
+                      words=all_words,
+                      total_items=len(all_words))
+
+
+@app.route("/explore/<word_dir>")
+def explore_detail(word_dir):
+    """Explore detail page with image gallery and file management."""
+    # Support archive query parameter
+    archive = request.args.get('archive', '0') == '1'
+    if archive:
+        parts_dir = BASE_DIR / "parts_old" / word_dir
+    else:
+        parts_dir = BASE_DIR / "parts" / word_dir
+
+    if not parts_dir.exists():
+        abort(404)
+
+    word = word_dir.replace("helen_school_english_spelling_keystage_two_word_card_", "")
+
+    # Get all images
+    image_extensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg']
+    images = []
+    for file in parts_dir.iterdir():
+        if file.is_file() and file.suffix.lower() in image_extensions:
+            # Convert path to use forward slashes for URLs
+            rel_path = str(file.relative_to(BASE_DIR)).replace('\\', '/')
+            images.append({
+                'filename': file.name,
+                'path': rel_path,
+                'size': file.stat().st_size,
+                'is_initial_generated_2': file.name.lower() == 'initial_generated_2.png'
+            })
+
+    # Sort with initial_generated_2.png first
+    images.sort(key=lambda x: (not x['is_initial_generated_2'], x['filename']))
+
+    # Get main display image (initial_generated_2.png or first image or None)
+    main_image = None
+    if images:
+        main_image = next((img for img in images if img['is_initial_generated_2']), images[0])
+
+    # List all files with sizes and types
+    files = []
+    for file in parts_dir.iterdir():
+        if file.is_file():
+            # Convert path to use forward slashes for URLs
+            rel_path = str(file.relative_to(BASE_DIR)).replace('\\', '/')
+            files.append({
+                'filename': file.name,
+                'path': rel_path,
+                'size': file.stat().st_size,
+                'ext': file.suffix.lower(),
+                'is_yaml': file.name == 'working.yaml'
+            })
+    files.sort(key=lambda x: x['filename'])
+
+    # Load YAML data
+    working_yaml_path = parts_dir / "working.yaml"
+    yaml_content = None
+    if working_yaml_path.exists():
+        try:
+            with open(working_yaml_path, 'r', encoding='utf-8') as f:
+                yaml_content = yaml.safe_load(f)
+        except Exception as e:
+            yaml_content = {"error": str(e)}
+
+    # Get explanation files
+    explanations = {}
+    for exp_file in ['explanation_clip.txt', 'explanation_full.txt']:
+        exp_path = parts_dir / exp_file
+        if exp_path.exists():
+            try:
+                with open(exp_path, 'r', encoding='utf-8') as f:
+                    explanations[exp_file] = f.read()
+            except Exception as e:
+                explanations[exp_file] = f"Error reading file: {e}"
+
+    return render_page("explore_detail.html",
+                      word=word,
+                      word_dir=word_dir,
+                      images=images,
+                      main_image=main_image,
+                      files=files,
+                      yaml_content=yaml_content,
+                      explanations=explanations)
+
+
+@app.route("/delete_all_files/<word_dir>", methods=['POST'])
+def delete_all_files(word_dir):
+    """Delete all files in a word directory except working.yaml."""
+    try:
+        archive = request.args.get('archive', '0') == '1'
+        if archive:
+            parts_dir = BASE_DIR / "parts_old" / word_dir
+        else:
+            parts_dir = BASE_DIR / "parts" / word_dir
+        if not parts_dir.exists():
+            return jsonify({'success': False, 'error': 'Word directory not found'}), 404
+        deleted_count = 0
+        for file in parts_dir.iterdir():
+            if file.is_file() and file.name != 'working.yaml':
+                file.unlink()
+                deleted_count += 1
+        return jsonify({
+            'success': True,
+            'message': f'Deleted {deleted_count} files (kept working.yaml)',
+            'count': deleted_count
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route("/delete_initial_generated/<word_dir>", methods=['POST'])
+def delete_initial_generated(word_dir):
+    """Delete only initial_generated*.png files in a word directory."""
+    try:
+        archive = request.args.get('archive', '0') == '1'
+        if archive:
+            parts_dir = BASE_DIR / "parts_old" / word_dir
+        else:
+            parts_dir = BASE_DIR / "parts" / word_dir
+        if not parts_dir.exists():
+            return jsonify({'success': False, 'error': 'Word directory not found'}), 404
+        deleted_count = 0
+        for file in parts_dir.iterdir():
+            if file.is_file() and file.name.lower().startswith('initial_generated') and file.suffix.lower() == '.png':
+                file.unlink()
+                deleted_count += 1
+        return jsonify({
+            'success': True,
+            'message': f'Deleted {deleted_count} initial_generated*.png files',
+            'count': deleted_count
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 if __name__ == "__main__":
     port = _load_port_config()
     print(f"[config] Starting server on port {port}")
-    # Print all registered routes for debugging and future maintainers.
-    # Remove or comment out in production for security.
+    
+    # Print registered routes for debugging
     print("[routes] Registered routes:")
     for rule in app.url_map.iter_rules():
         print(f"  {rule.endpoint}: {rule.rule} [{','.join(rule.methods)}]")
-    # Start the Flask server
+    
     app.run(host="0.0.0.0", port=port, debug=False)
