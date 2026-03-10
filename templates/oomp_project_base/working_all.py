@@ -1,54 +1,59 @@
-import oom_markdown
-import os
+import copy
+
 import argparse
-import robo
-import working_helper
 #process
 #  locations set in working_parts.ods 
 #  export to working_parts.csvhe best letrence_ doside of the board
 #  run this script
 
 def main(**kwargs):
-    print("Starting working_all")    
+    import oomlout_roboclick
     import working_oomp
-    print("Starting working_oomp")
-    working_oomp.main(**kwargs)
-    
-    
-    #do ai work
-    import working
-    if True:
-        print("Starting working")
-        kwargs["mode"] = "ai"
-        filters = ["research", ""]
-        #filters = ["zzzzzz"]
 
-        for filt in filters:
-            kwargs["filter"] = filt        
-            working.main(**kwargs)
-    
-    
-    
-    if True:
-        print("Starting working corel")
-        kwargs["mode"] = "corel"
-        #filters = ["medication", ""]
-        filters = [""]
+    #delete options
+    run_delete = False
+    run_delete = True
+    filter_part_name = ""
 
-        for filt in filters:
-            kwargs["filter"] = filt        
-            working.main(**kwargs)
-    
-    
-    #summary 
-    if True:
-        print("Starting working summary")   
-        import working_summary
-        print("Starting working_summary")
-        working_summary.main(**kwargs)
+    #run delete
+    if run_delete:
+        kwargs2 = copy.deepcopy(kwargs)
+        filter_part_name = filter_part_name
+        filters_to_run = []
+        if True:
+            pass
+            #filters_to_run.append("all")
+            #filters_to_run.append("regenerate_ai")
+            filters_to_run.append("regenerate_corel")
 
-
+        filters_within_directory = {}
+        if True:        
+            filters_within_directory["regenerate_ai"] = ["initial_generated.png", "initial_generated_trace.png"]
+            filters_within_directory["regenerate_corel"] = ["label.png"]
         
+        kwargs2["filters_to_run"] = filters_to_run
+        kwargs2["filters_within_directory"] = filters_within_directory
+        kwargs2["filter_part_name"] = filter_part_name
+        import working_delete
+        working_delete.main(**kwargs2)
+
+    #run oomp creation
+    if True:
+        working_oomp.main(**kwargs)
+
+    #run roboclick_ai
+    if True:
+        directory = "parts"
+        kwargs["directory"] = directory
+        kwargs["mode"] = "ai"
+        oomlout_roboclick.run_folder_recursive(**kwargs)
+
+    #run_roboclick_corel
+    if True:
+        directory = "parts"
+        kwargs["directory"] = directory
+        kwargs["mode"] = "corel"
+        oomlout_roboclick.run_folder_recursive(**kwargs)
 
 
 

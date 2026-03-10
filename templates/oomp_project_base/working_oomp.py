@@ -1,5 +1,6 @@
 import oomp
 import copy
+import oomlout_ai_roboclick
 
 def main(**kwargs):
     load_parts(**kwargs)
@@ -68,7 +69,31 @@ def create_generic(**kwargs):
                 part[detail] = current[key]
                 part.pop(key, None)
 
-        
+
+        folder = oomlout_ai_roboclick.get_directory(part)     
+        url_chat = oomlout_ai_roboclick.get_url(part)   
+
+        mode_ai_wait = "fast"
+
+        #icon
+        if False:
+            file_test = f"intial_generated.png"
+            actions = []
+            action = {}
+            action["command"] = "ai_skill_image_laser_cut_logo_full"            
+            action["file_destination"] = file_test
+            #action["file_destination"] = f"intial_generated_icon.png"
+            detail = name_recipe
+            image_detail = f"an image of {detail}"
+            action["image_detail"] = image_detail
+            #mode_ai_wait fast
+            action["mode_ai_wait"] = mode_ai_wait
+            actions.append(copy.deepcopy(action))
+
+            base  = {}
+            base["actions"] = copy.deepcopy(actions)
+            base["file_test"] = file_test
+            part[f"oomlout_ai_roboclick_9"] = base
 
         #image
         if False:

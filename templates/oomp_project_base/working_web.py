@@ -4,6 +4,7 @@ import os
 import subprocess
 import sys
 import threading
+import hashlib
 from importlib import import_module, reload
 from pathlib import Path
 from typing import Any, Dict
@@ -26,13 +27,14 @@ CACHE_FILE = BASE_DIR / "words_cache.pkl"
 
 # Global cache for word data
 WORDS_CACHE = {}
+LAST_PARTS_FINGERPRINT = ""
 
 # Default values for OOMP form fields
 OOMP_DEFAULTS = {
-    "oomp_classification": "",
-    "oomp_type": "",
-    "oomp_size": "",
-    "oomp_color": "",
+    "oomp_classification": "food",
+    "oomp_type": "recipe",
+    "oomp_size": "planner",
+    "oomp_color": "label",
     "oomp_description_main": "",
     "oomp_description_extra": "",
     "oomp_manufacturer": "",
@@ -103,9 +105,42 @@ def save_words_cache():
         print(f"[cache] Error saving cache: {e}")
 
 
+def _calculate_parts_fingerprint() -> str:
+    """Create a stable fingerprint of parts and parts_old directory state."""
+    hash_obj = hashlib.sha256()
+
+    for base_name in ["parts", "parts_old"]:
+        base_dir = BASE_DIR / base_name
+        if not base_dir.exists():
+            hash_obj.update(f"{base_name}:missing\n".encode("utf-8"))
+            continue
+
+        entries = []
+        for item in base_dir.iterdir():
+            if not item.is_dir():
+                continue
+
+            working_yaml = item / "working.yaml"
+            if working_yaml.exists():
+                mtime = working_yaml.stat().st_mtime
+                size = working_yaml.stat().st_size
+            else:
+                mtime = 0
+                size = 0
+
+            entries.append((item.name, mtime, size))
+
+        entries.sort(key=lambda x: x[0])
+        hash_obj.update(f"{base_name}:count={len(entries)}\n".encode("utf-8"))
+        for name, mtime, size in entries:
+            hash_obj.update(f"{name}|{mtime}|{size}\n".encode("utf-8"))
+
+    return hash_obj.hexdigest()
+
+
 def load_all_word_data():
     """Load all word data from parts directories and cache them."""
-    global WORDS_CACHE
+    global WORDS_CACHE, LAST_PARTS_FINGERPRINT
     
     parts_dir = BASE_DIR / "parts"
     prefix = ""
@@ -117,6 +152,7 @@ def load_all_word_data():
     print("[cache] Loading all word data...")
     updated_count = 0
     new_count = 0
+    fresh_cache = {}
     
     for item in parts_dir.iterdir():
         if item.is_dir() and item.name.startswith(prefix):
@@ -140,7 +176,7 @@ def load_all_word_data():
                         yaml_data = yaml.safe_load(f)
                     
                     # Store with metadata
-                    WORDS_CACHE[word] = {
+                    fresh_cache[word] = {
                         'word': word,
                         'dir_name': item.name,
                         'data': yaml_data or {},
@@ -150,7 +186,7 @@ def load_all_word_data():
                     updated_count += 1
                 except Exception as e:
                     print(f"[cache] Error loading {word}: {e}")
-                    WORDS_CACHE[word] = {
+                    fresh_cache[word] = {
                         'word': word,
                         'dir_name': item.name,
                         'data': {},
@@ -158,12 +194,28 @@ def load_all_word_data():
                         '_mtime': 0,
                         '_last_updated': datetime.now().isoformat()
                     }
+            elif working_yaml_path.exists() and word in WORDS_CACHE:
+                # Keep existing entry when the source file timestamp is unchanged.
+                fresh_cache[word] = WORDS_CACHE[word]
+
+    WORDS_CACHE = fresh_cache
+    LAST_PARTS_FINGERPRINT = _calculate_parts_fingerprint()
     
     print(f"[cache] Loaded {new_count} new words, updated {updated_count} changed words")
     print(f"[cache] Total words in cache: {len(WORDS_CACHE)}")
     
     # Save the cache
     save_words_cache()
+
+
+def ensure_cache_current_for_explore():
+    """Refresh cache when parts content changed since the last check."""
+    global LAST_PARTS_FINGERPRINT
+
+    current_fingerprint = _calculate_parts_fingerprint()
+    if current_fingerprint != LAST_PARTS_FINGERPRINT:
+        print("[cache] Parts change detected on /explore, rebuilding cache")
+        load_all_word_data()
 
 
 # Load cache on startup
@@ -293,7 +345,7 @@ def render_page(template_name: str, **context: Any):
 @app.route("/")
 def index():
     """Serve the index page with spelling cards form."""
-    return render_page("index.html", page_title="Make Spelling Cards")
+    return render_page("index.html", page_title=app.config.get("SITE_TITLE", SITE_TITLE))
 
 
 @app.route("/make_spelling_cards", methods=["GET", "POST"])
@@ -527,21 +579,7 @@ def serve_file(filepath):
 @app.route("/explore")
 def explore():
     """Explore page with live client-side filtering."""
-    # Check for changes in parts and parts_old directories
-    def get_dir_mtime(directory):
-        if not directory.exists():
-            return 0
-        return max((f.stat().st_mtime for f in directory.glob('**/*') if f.is_file()), default=0)
-
-    parts_dir = BASE_DIR / "parts"
-    parts_old_dir = BASE_DIR / "parts_old"
-    cache_mtime = max((WORDS_CACHE[word]['_mtime'] for word in WORDS_CACHE if '_mtime' in WORDS_CACHE[word]), default=0)
-    parts_mtime = get_dir_mtime(parts_dir)
-    parts_old_mtime = get_dir_mtime(parts_old_dir)
-
-    # If either directory has changed, reload all word data
-    if parts_mtime > cache_mtime or parts_old_mtime > cache_mtime:
-        load_all_word_data()
+    ensure_cache_current_for_explore()
 
     # Get all words from cache, including archive tag for parts_old
     all_words = []

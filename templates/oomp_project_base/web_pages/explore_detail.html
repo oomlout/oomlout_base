@@ -320,6 +320,10 @@ if (window.self !== window.top) {
                         <td style="padding: 0.25rem; color: var(--text-muted);">{{ file.ext }}</td>
                         <td style="padding: 0.25rem; color: var(--text-muted);">{{ (file.size / 1024) | round(1) }} KB</td>
                         <td style="padding: 0.25rem;">
+                            <a href="/serve_file/{{ file.path }}" download="{{ file.filename }}"
+                               style="padding: 0.15rem 0.4rem; background: linear-gradient(135deg, #22c55e, #16a34a); color: #fff; border: none; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-decoration: none; display: inline-block; margin-right: 0.35rem;">
+                                Download
+                            </a>
                             {% if file.is_yaml %}
                             <span style="font-size: 0.75rem; color: var(--text-muted);">Protected</span>
                             {% else %}
