@@ -473,7 +473,7 @@ def robo_corel_import_file(**kwargs):
     width = kwargs.get('width', "")
     height = kwargs.get('height', "")
     max_dimension = kwargs.get('max_dimension', "")
-    special = kwargs.get('special', "")
+    special = kwargs.get('special', "no_double_click")
     if directory != '':
         file_name = os.path.join(directory, file_name)
     file_name_absolute = os.path.abspath(file_name)
