@@ -8,7 +8,7 @@ import argparse
 
 def main(**kwargs):
     import oomlout_roboclick
-    import working_oomp
+    import working_oomp_test
 
     #delete options
     run_delete = False
@@ -39,7 +39,7 @@ def main(**kwargs):
 
     #run oomp creation
     if True:
-        working_oomp.main(**kwargs)
+        working_oomp_test.main(**kwargs) 
 
     #run roboclick_ai
     if True:

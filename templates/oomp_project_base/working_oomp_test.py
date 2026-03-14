@@ -42,16 +42,18 @@ def create_generic(**kwargs):
     
     default_empty = {}
     #if adding things by default, currently handled in the web form submission
-    if False:
-        default_empty["classification"] = ""
-        default_empty["type"] = ""
-        default_empty["size"] = ""
-        default_empty["color"] = ""
-        default_empty["description_main"] = ""
-        default_empty["description_extra"] = ""
-        default_empty["manufacturer"] = ""
-        default_empty["part_number"] = ""
-
+    if True:
+        # default_empty["classification"] = ""
+        # default_empty["type"] = ""
+        # default_empty["size"] = ""
+        # default_empty["color"] = ""
+        # default_empty["description_main"] = ""
+        # default_empty["description_extra"] = ""
+        # default_empty["manufacturer"] = ""
+        # default_empty["part_number"] = ""
+        words = ["Happy", "Mother's", "Day"]
+        default_empty["words"] = words
+        default_empty["animal"] = "donkey"
 
     parts = []
 
@@ -85,7 +87,7 @@ def create_generic(**kwargs):
 
 
         #icon
-        if True:
+        if False:
             count += 1            
             action_type = "ai" # "corel"
             
@@ -111,62 +113,70 @@ def create_generic(**kwargs):
 
             oomlout_roboclick.add_action(part=part, action_type=action_type, action_name=action_name, actions=actions, file_test=file_test)
 
-        #prompt verbose
+        #prompt bubble letter
         if True:
-            count += 1            
-            action_type = "ai" # "corel"
-            action_name = f"create_prompt_verbose"
-
-            file_test = "tag" #(creates a tag at the end)
-
-            actions = []
-            
-            ### action 1
-            # new chat
-            action = {}
-            #- command: 'new_chat'
-            action["command"] = "new_chat"  
-            action["description"] = f"{action_name}"
-            actions.append(action)
-            
-            ### action 2
             # prompt change
             prompts = []
-            prompts.append({"file_name" : "prompt\\prompt_1\\working.md", "delay" : "60"})
-            prompts.append({"text" : "You've done a splendid job", "delay" : "60"})
-            prompts.append({"file_name_image" : "initial_generated_2.png", "text" : "Generate an image please, that is vector and no more than eight colors easy to trace", "delay" : "60"})
+            prompts.append({"folder_name" : "prompt\\prompt_bubble_letter_1", "delay" : "60"})
+            #prompts.append({"file_name" : "prompt\\prompt_bubble_letter_1\\working_2.md", "delay" : "60"})
+            words = part.get("words", [])
+            word_count = len(words)
+            for i in range(word_count):            
+                word = words[i]
+                prompts.append({"text" : f"Awesome fill in the json template with {word}"})
+                prompts.append({"file_name_image" : f"initial_generated_{i+1}.png", "text" : f"Generate for it take all the time you need", "delay" : "60"})
 
-            for prompt in prompts:                
-                text = prompt.get("text", "")
-                file_name = prompt.get("file_name", "")
-                file_name_image = prompt.get("file_name_image", "")
-                prompt.pop("file_name_image", None)
-            
-                action = {}
-                action.update(copy.deepcopy(prompt))
-                action["command"] = "ai_query"
-                action["mode_ai_wait"] = mode_ai_wait
-                actions.append(action)
-            
-                if file_name_image != "":
-                    action = {}
-                    #- command: 'save_image'
-                    action["command"] = "save_image_generated"  
-                    action["file_name"] = file_name_image
-                    action["mode_ai_wait"] = mode_ai_wait
-                    actions.append(action)
+            count = ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
 
-            #close tab
-            action = {}
-            action["command"] = "close_tab"
-            actions.append(action)
+        #prompt image
+        if True:
+            # prompt change
+            prompts = []
+            prompts.append({"folder_name" : "prompt\\prompt_image_main_1", "delay" : "60"})                        
+            prompts.append({"file_name_image" : f"image_main.png", "text" : f"Generate it take all the time you need", "delay" : "60"})
+            count = ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
 
-            oomlout_roboclick.add_action(part=part, action_type=action_type, action_name=action_name, actions=actions, file_test=file_test)         
+        #cover_background
+        #prompt image
+        if True:
+            # prompt change
+            prompts = []
+            prompts.append({"folder_name" : "prompt\\prompt_image_cover_background_1", "delay" : "60"})                        
+            prompts.append({"file_name_image" : f"image_cover_background.png", "text" : f"Generate it take all the time you need", "delay" : "60"})
+            count = ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
+
+
+        #internal border
+        #prompt image
+        if True:
+            # prompt change
+            prompts = []
+            prompts.append({"folder_name" : "prompt\\prompt_inside_border_1", "delay" : "60"})                        
+            prompts.append({"file_name_image" : f"image_inside_border.png", "text" : f"Generate it take all the time you need", "delay" : "60"})
+            count = ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
+
+        #logo back
+        #prompt image
+        if True:
+            # prompt change
+            prompts = []
+            prompts.append({"folder_name" : "prompt\\prompt_logo_back_1", "delay" : "60"})                        
+            prompts.append({"file_name_image" : f"image_logo_back.png", "text" : f"Generate it take all the time you need", "delay" : "60"})
+            count = ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
+
+
 
         #trace
-        if True:            
-            files_to_trace = ["initial_generated.png", "initial_generated_2.png"]
-            
+        if True:    
+            words = part.get("words")        
+            files_to_trace = []
+            for i in range(len(words)):
+                files_to_trace.append(f"initial_generated_{i+1}.png")
+            files_to_trace.append("image_main.png")
+            files_to_trace.append("image_cover_background.png")
+            files_to_trace.append("image_inside_border.png")
+            files_to_trace.append("image_logo_back.png")
+
             for file_to_trace in files_to_trace:
                 count += 1            
                 action_type = "ai" # "corel"
@@ -197,7 +207,9 @@ def create_generic(**kwargs):
                 action["file_destination"] = file_name_trace
                 action["max_dimension"] = 95
                 action["remove_background_color_from_entire_image"] = True
-                action["number_of_colors"] = 2
+                #add color to border, logo
+                if "inside_border" in file_to_trace or "logo_back" in file_to_trace:
+                    action["number_of_colors"] = 2
                 #cordinates 31,50
                 action["x"] = 50
                 action["y"] = 50
@@ -231,6 +243,56 @@ def create_generic(**kwargs):
 
     import time
     time.sleep(2)
+
+def ai_query_from_prompts(part,prompts,mode_ai_wait, count):
+    count += 1            
+    action_type = "ai" # "corel"
+    action_name = f"create_prompt_verbose"
+
+    #default to a tag but if an image is created use that instead
+    file_test = "tag" #(creates a tag at the end)
+
+    actions = []
+    
+    ### action 1
+    # new chat
+    action = {}
+    #- command: 'new_chat'
+    action["command"] = "new_chat"  
+    action["description"] = f"{action_name}"
+    actions.append(action)
+    
+    ### action 2
+    
+    
+    
+    for prompt in prompts:                
+        file_name_image = prompt.get("file_name_image", "")
+        prompt.pop("file_name_image", None)
+    
+        action = {}
+        action.update(copy.deepcopy(prompt))
+        action["command"] = "ai_query"
+        action["mode_ai_wait"] = mode_ai_wait
+        actions.append(action)
+    
+        if file_name_image != "":
+            action = {}
+            #- command: 'save_image'
+            action["command"] = "save_image_generated"  
+            action["file_name"] = file_name_image
+            action["mode_ai_wait"] = mode_ai_wait
+            actions.append(action)
+            #if image is created use that rather than tag
+            file_test = file_name_image
+
+    #close tab
+    action = {}
+    action["command"] = "close_tab"
+    actions.append(action)
+
+    oomlout_roboclick.add_action(part=part, action_type=action_type, action_name=action_name, actions=actions, file_test=file_test)  
+    return count       
 
 
 if __name__ == "__main__":

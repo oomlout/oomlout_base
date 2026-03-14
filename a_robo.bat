@@ -1,2 +1,2 @@
-cd C:\gh\oomlout_ai_chat_gpt_robo_click
-start action_documentation.html
+cd C:\gh\oomlout_roboclick
+start documentation.html
