@@ -1,0 +1,298 @@
+animal: donkey
+classification: food
+classification_capital: Food
+classification_first_letter: f
+classification_first_letter_upper: F
+classification_upper: FOOD
+color: label
+color_capital: Label
+color_first_letter: l
+color_first_letter_upper: L
+color_upper: LABEL
+description_extra: ''
+description_extra_capital: ''
+description_extra_first_letter: ''
+description_extra_first_letter_upper: ''
+description_extra_upper: ''
+description_main: sausage_casserole
+description_main_capital: Sausage Casserole
+description_main_first_letter: s
+description_main_first_letter_upper: S
+description_main_upper: SAUSAGE_CASSEROLE
+description_only_numbers: ''
+description_only_numbers_short: ' '
+description_or_color: 'L '
+description_or_color_upper: 'L '
+directory: parts/food_recipe_planner_label_sausage_casserole
+distributors: []
+extra: ''
+file_input: ''
+id: food_recipe_planner_label_sausage_casserole
+id_no_class: recipe_planner_label_sausage_casserole
+id_no_size: label_sausage_casserole
+id_no_type: planner_label_sausage_casserole
+link_github: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/food_recipe_planner_label_sausage_casserole
+link_main: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/food_recipe_planner_label_sausage_casserole
+link_redirect: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/food_recipe_planner_label_sausage_casserole
+manufacturer: ''
+manufacturer_capital: ''
+manufacturer_first_letter: ''
+manufacturer_first_letter_upper: ''
+manufacturer_upper: ''
+manufacturers: []
+markdown_full: '[food_recipe_planner_label_sausage_casserole](none)<br>[](none)<br>[Food
+    Recipe Planner Label Sausage Casserole](none)<br><br>'
+markdown_short: '[food_recipe_planner_label_sausage_casserole](none)<br><br>'
+md5: ab54e0b9bd1aedd93181355ae7d55db6
+md5_10: ab54e0b9bd
+md5_10_upper: AB54E0B9BD
+md5_5: ab54e
+md5_5_upper: AB54E
+md5_6: ab54e0
+md5_6_alpha: 6onvk
+md5_6_alpha_upper: 6ONVK
+md5_6_upper: AB54E0
+name: Food Recipe Planner Label Sausage Casserole
+name_no_class: Recipe Planner Label Sausage Casserole
+name_no_size: Label Sausage Casserole
+name_no_size_short: Label Sausage Casserole
+name_no_type: Planner Label Sausage Casserole
+name_proper: Food Recipe Planner Label Sausage Casserole
+name_space: food recipe planner label sausage casserole
+name_upper: FOOD RECIPE PLANNER LABEL SAUSAGE CASSEROLE
+oomlout_ai_roboclick_1:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: prompt\prompt_bubble_letter_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        mode_ai_wait: fast
+        text: Awesome fill in the json template with Happy
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate for it take all the time you need
+    -   command: save_image_generated
+        file_name: initial_generated_1.png
+        mode_ai_wait: fast
+    -   command: ai_query
+        mode_ai_wait: fast
+        text: Awesome fill in the json template with Mother's
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate for it take all the time you need
+    -   command: save_image_generated
+        file_name: initial_generated_2.png
+        mode_ai_wait: fast
+    -   command: ai_query
+        mode_ai_wait: fast
+        text: Awesome fill in the json template with Day
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate for it take all the time you need
+    -   command: save_image_generated
+        file_name: initial_generated_3.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: initial_generated_3.png
+oomlout_ai_roboclick_10:
+    actions:
+    -   command: wait_for_file
+        file_name: image_cover_background.png
+    -   command: corel_trace_full
+        file_destination: image_cover_background_trace.cdr
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_cover_background.png
+        max_dimension: 95
+        remove_background_color_from_entire_image: true
+        x: 50
+        y: 50
+    file_test: image_cover_background_trace.png
+oomlout_ai_roboclick_11:
+    actions:
+    -   command: wait_for_file
+        file_name: image_inside_border.png
+    -   command: corel_trace_full
+        file_destination: image_inside_border_trace.cdr
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_inside_border.png
+        max_dimension: 95
+        number_of_colors: 2
+        remove_background_color_from_entire_image: true
+        x: 50
+        y: 50
+    file_test: image_inside_border_trace.png
+oomlout_ai_roboclick_12:
+    actions:
+    -   command: wait_for_file
+        file_name: image_logo_back.png
+    -   command: corel_trace_full
+        file_destination: image_logo_back_trace.cdr
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_logo_back.png
+        max_dimension: 95
+        number_of_colors: 2
+        remove_background_color_from_entire_image: true
+        x: 50
+        y: 50
+    file_test: image_logo_back_trace.png
+oomlout_ai_roboclick_2:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: prompt\prompt_image_main_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate it take all the time you need
+    -   command: save_image_generated
+        file_name: image_main.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_main.png
+oomlout_ai_roboclick_3:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: prompt\prompt_image_cover_background_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate it take all the time you need
+    -   command: save_image_generated
+        file_name: image_cover_background.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_cover_background.png
+oomlout_ai_roboclick_4:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: prompt\prompt_inside_border_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate it take all the time you need
+    -   command: save_image_generated
+        file_name: image_inside_border.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_inside_border.png
+oomlout_ai_roboclick_5:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: prompt\prompt_logo_back_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate it take all the time you need
+    -   command: save_image_generated
+        file_name: image_logo_back.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_logo_back.png
+oomlout_ai_roboclick_6:
+    actions:
+    -   command: wait_for_file
+        file_name: initial_generated_1.png
+    -   command: corel_trace_full
+        file_destination: initial_generated_1_trace.cdr
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: initial_generated_1.png
+        max_dimension: 95
+        remove_background_color_from_entire_image: true
+        x: 50
+        y: 50
+    file_test: initial_generated_1_trace.png
+oomlout_ai_roboclick_7:
+    actions:
+    -   command: wait_for_file
+        file_name: initial_generated_2.png
+    -   command: corel_trace_full
+        file_destination: initial_generated_2_trace.cdr
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: initial_generated_2.png
+        max_dimension: 95
+        remove_background_color_from_entire_image: true
+        x: 50
+        y: 50
+    file_test: initial_generated_2_trace.png
+oomlout_ai_roboclick_8:
+    actions:
+    -   command: wait_for_file
+        file_name: initial_generated_3.png
+    -   command: corel_trace_full
+        file_destination: initial_generated_3_trace.cdr
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: initial_generated_3.png
+        max_dimension: 95
+        remove_background_color_from_entire_image: true
+        x: 50
+        y: 50
+    file_test: initial_generated_3_trace.png
+oomlout_ai_roboclick_9:
+    actions:
+    -   command: wait_for_file
+        file_name: image_main.png
+    -   command: corel_trace_full
+        file_destination: image_main_trace.cdr
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_main.png
+        max_dimension: 95
+        remove_background_color_from_entire_image: true
+        x: 50
+        y: 50
+    file_test: image_main_trace.png
+oomp_key: oomp_food_recipe_planner_label_sausage_casserole
+oomp_word: boot whale ship
+oomp_word_emoji: ':boot: :whale: :ship:'
+oomp_word_emoji_list:
+- ':boot:'
+- ':whale:'
+- ':ship:'
+oomp_word_list:
+- boot
+- whale
+- ship
+part_number: ''
+part_number_capital: ''
+part_number_first_letter: ''
+part_number_first_letter_upper: ''
+part_number_upper: ''
+short_code: ''
+short_code_upper: ''
+size: planner
+size_capital: Planner
+size_first_letter: p
+size_first_letter_upper: P
+size_only_numbers: ''
+size_only_numbers_no_zeros: ''
+size_upper: PLANNER
+type: recipe
+type_capital: Recipe
+type_first_letter: r
+type_first_letter_upper: R
+type_upper: RECIPE
+url_chat: https://chatgpt.com/c/69b3d3f8-2e88-8392-84d6-fecef21bcfff
+words:
+- Happy
+- Mother's
+- Day
