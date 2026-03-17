@@ -766,6 +766,17 @@ def robo_corel_page_goto(**kwargs):
     robo_keyboard_press_enter(delay=2)
     robo_delay(delay=delay)
 
+def robo_corel_page_add(**kwargs):
+    repeat = kwargs.get('repeat', 1)
+    delay = kwargs.get('delay', 3)
+    message = kwargs.get('message', f"Going to add {repeat} pages...")
+    print(message)
+    #mouse click at 132 965
+    for i in range(0,repeat):
+        robo_mouse_click(position=[223, 965], delay=2)
+        #send page number
+        robo_delay(delay=delay)
+
 def robo_corel_set_position(**kwargs):
     x = kwargs.get('x', "")
     y = kwargs.get('y', "")
