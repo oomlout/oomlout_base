@@ -42,16 +42,20 @@ def create_generic(**kwargs):
     
     default_empty = {}
     #if adding things by default, currently handled in the web form submission
-    if False:
-        default_empty["classification"] = ""
-        default_empty["type"] = ""
-        default_empty["size"] = ""
-        default_empty["color"] = ""
-        default_empty["description_main"] = ""
-        default_empty["description_extra"] = ""
-        default_empty["manufacturer"] = ""
-        default_empty["part_number"] = ""
-
+    if True:
+        pass
+        # default_empty["classification"] = ""
+        # default_empty["type"] = ""
+        # default_empty["size"] = ""
+        # default_empty["color"] = ""
+        # default_empty["description_main"] = ""
+        # default_empty["description_extra"] = ""
+        # default_empty["manufacturer"] = ""
+        # default_empty["part_number"] = ""
+        
+        #words = ["Have a", "Triffid", "Mother's Day"]
+        #default_empty["words"] = words
+        #default_empty["animal"] = "triffid"
 
     parts = []
 
@@ -60,6 +64,17 @@ def create_generic(**kwargs):
         #name stuff
         part = copy.deepcopy(default_empty)
         part.update(current)
+        
+        
+        #define stage        
+        theme = part.get("oomp_description_extra", "")
+        part["theme"] = theme
+        
+        
+        
+        
+        
+        
         part["name"] = thing
         part["name_space"] = thing.replace("_", " ")
         part["name_proper"] = part["name_space"].title()
@@ -78,6 +93,7 @@ def create_generic(**kwargs):
         part["directory"] = folder  
         url_chat = oomlout_roboclick.get_url(part)   
         part["url_chat"] = url_chat
+        files_to_trace = []
         count = 0
 
         mode_ai_wait = "fast"
@@ -85,7 +101,7 @@ def create_generic(**kwargs):
 
 
         #icon
-        if True:
+        if False:
             count += 1            
             action_type = "ai" # "corel"
             
@@ -111,100 +127,70 @@ def create_generic(**kwargs):
 
             oomlout_roboclick.add_action(part=part, action_type=action_type, action_name=action_name, actions=actions, file_test=file_test)
 
-        #prompt verbose
+        #prompt bubble letter
         if True:
-            count += 1            
-            action_type = "ai" # "corel"
-            action_name = f"create_prompt_verbose"
-
-            file_test = "tag" #(creates a tag at the end)
-
-            actions = []
-            
-            ### action 1
-            # new chat
-            action = {}
-            #- command: 'new_chat'
-            action["command"] = "new_chat"  
-            action["description"] = f"{action_name}"
-            actions.append(action)
-            
-            ### action 2
             # prompt change
             prompts = []
-            prompts.append({"file_name" : "prompt\\prompt_1\\working.md", "delay" : "60"})
-            prompts.append({"text" : "You've done a splendid job", "delay" : "60"})
-            prompts.append({"file_name_image" : "initial_generated_2.png", "text" : "Generate an image please, that is vector and no more than eight colors easy to trace", "delay" : "60"})
+            prompts.append({"folder_name" : "roboclick\\helen_school_english_reading_book_read_chart\\prompt_bubble_letter_1", "delay" : "60"})
+            #prompts.append({"file_name" : "roboclick\\prompt_bubble_letter_1\\working_2.md", "delay" : "60"})
+            words = ["Books Read Chart"]
+            word_count = len(words)
+            for i in range(word_count):            
+                word = words[i]
+                prompts.append({"text" : f'Awesome fill in the json template with "{word}"'})
+                file_name = f"initial_generated_{i+1}.png"
+                prompts.append({"file_name_image" : file_name, "text" : f"Generate it take all the time you need", "delay" : "60"})
+                files_to_trace.append(file_name)
+            count = oomlout_roboclick.ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
 
-            for prompt in prompts:                
-                text = prompt.get("text", "")
-                file_name = prompt.get("file_name", "")
-                file_name_image = prompt.get("file_name_image", "")
-                prompt.pop("file_name_image", None)
-            
-                action = {}
-                action.update(copy.deepcopy(prompt))
-                action["command"] = "ai_query"
-                action["mode_ai_wait"] = mode_ai_wait
-                actions.append(action)
-            
-                if file_name_image != "":
-                    action = {}
-                    #- command: 'save_image'
-                    action["command"] = "save_image_generated"  
-                    action["file_name"] = file_name_image
-                    action["mode_ai_wait"] = mode_ai_wait
-                    actions.append(action)
+        #prompt image
+        if True:
+            # prompt change
+            prompts = []
+            prompts.append({"folder_name" : "roboclick\\helen_school_english_reading_book_read_chart\\prompt_image_main_1", "delay" : "60"})                        
+            file_name = f"image_main.png"
+            prompts.append({"file_name_image" : file_name, "text" : f"Generate it take all the time you need", "delay" : "60"})
+            files_to_trace.append(file_name)
+            count = oomlout_roboclick.ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
 
-            #close tab
-            action = {}
-            action["command"] = "close_tab"
-            actions.append(action)
+        #cover_background
+        #prompt image
+        if True:
+            # prompt change
+            prompts = []
+            prompts.append({"folder_name" : "roboclick\\helen_school_english_reading_book_read_chart\\prompt_image_background_1", "delay" : "60"})                        
+            file_name = f"image_cover_background.png"
+            prompts.append({"file_name_image" : file_name, "text" : f"Generate it take all the time you need", "delay" : "60"})
+            files_to_trace.append(file_name)
+            count = oomlout_roboclick.ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
 
-            oomlout_roboclick.add_action(part=part, action_type=action_type, action_name=action_name, actions=actions, file_test=file_test)         
+
+         
+
 
         #trace
-        if True:            
-            files_to_trace = ["initial_generated.png", "initial_generated_2.png"]
-            
+        if True:  
+
             for file_to_trace in files_to_trace:
-                count += 1            
-                action_type = "ai" # "corel"
-                
-                action_name = f"create_icon"
-                #action_name = f"step_{count}_create_icon"
-                
-                #file_test = f"intial_generated.png" 
-                file_test = "tag" #(creates a tag at the end)
+                folder_name = "roboclick\\action_corel_trace_1" 
+                part2 = copy.deepcopy(part)
+                part2["file_source"] = file_to_trace
+                part2["folder_name"] = folder_name
+                if "inside_border" in file_to_trace or "logo_back" in file_to_trace:
+                    part2["number_of_colors"] = 2
+                if "cover_background" not in file_to_trace:
+                    part2["remove_background_color_from_entire_image"] = True                
+                part2["mode_ai_wait"] = mode_ai_wait
+                part2["file_test"] = "tag"
+                count = oomlout_roboclick.ai_action_from_folder(part=part, part2=part2)
 
-                file_name_source = f"{file_to_trace}"
-                file_name_trace = f"{file_to_trace.replace('.png', '_trace.cdr')}"
+        #make_card
+        if False:
+            folder_name = "roboclick\\action_corel_card_make"
+            part2 = copy.deepcopy(part)
+            part2["folder_name"] = folder_name
+            count = oomlout_roboclick.ai_action_from_folder(part=part, part2=part2)
 
-                ### action 1
-                # wait_for_file
-                actions = []
-                action = {}
-                action["command"] = "wait_for_file"
-                action["file_name"] = file_name_source
-                actions.append(copy.deepcopy(action))
-
-                ### action 2
-                # corel trace_full
-                action = {}
-                action["command"] = "corel_trace_full"
-                action["file_source"] = f"template\\blank_square_100_mm_width_100_mm_height\\working.cdr"
-                action["file_source_trace"] = file_name_source
-                action["file_destination"] = file_name_trace
-                action["max_dimension"] = 95
-                action["remove_background_color_from_entire_image"] = True
-                action["number_of_colors"] = 2
-                #cordinates 31,50
-                action["x"] = 50
-                action["y"] = 50
-                actions.append(copy.deepcopy(action))
-                
-                file_test = file_name_trace.replace(".cdr", ".png")
-                oomlout_roboclick.add_action(part=part, action_type=action_type, action_name=action_name, actions=actions, file_test=file_test)
         
         parts.append(part)
     
@@ -231,6 +217,7 @@ def create_generic(**kwargs):
 
     import time
     time.sleep(2)
+
 
 
 if __name__ == "__main__":

@@ -1,3 +1,1 @@
-let's start here is the initial prompt what questions do you need answering before making it the best!
-
-{prompt}
+Awesome, do some searching and thinking to decide the best answers to your questions

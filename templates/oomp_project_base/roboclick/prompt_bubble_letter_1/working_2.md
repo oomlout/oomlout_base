@@ -1,1 +1,0 @@
-I love take that framework and document it in json format please so I can paste it into a new instance and get the exact style everytime
