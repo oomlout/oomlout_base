@@ -1,0 +1,198 @@
+classification: helen
+classification_capital: Helen
+classification_first_letter: h
+classification_first_letter_upper: H
+classification_upper: HELEN
+color: reading
+color_capital: Reading
+color_first_letter: r
+color_first_letter_upper: R
+color_upper: READING
+description_extra: potato
+description_extra_capital: Potato
+description_extra_first_letter: p
+description_extra_first_letter_upper: P
+description_extra_upper: POTATO
+description_main: book_read_chart
+description_main_capital: Book Read Chart
+description_main_first_letter: b
+description_main_first_letter_upper: B
+description_main_upper: BOOK_READ_CHART
+description_only_numbers: ''
+description_only_numbers_short: ' '
+description_or_color: 'R '
+description_or_color_upper: 'R '
+directory: parts/helen_school_english_reading_book_read_chart_potato
+distributors: []
+extra: ''
+file_input: ''
+id: helen_school_english_reading_book_read_chart_potato
+id_no_class: school_english_reading_book_read_chart_potato
+id_no_size: reading_book_read_chart_potato
+id_no_type: english_reading_book_read_chart_potato
+link_github: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_school_english_reading_book_read_chart_potato
+link_main: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_school_english_reading_book_read_chart_potato
+link_redirect: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_school_english_reading_book_read_chart_potato
+manufacturer: ''
+manufacturer_capital: ''
+manufacturer_first_letter: ''
+manufacturer_first_letter_upper: ''
+manufacturer_upper: ''
+manufacturers: []
+markdown_full: '[helen_school_english_reading_book_read_chart_potato](none)<br>[](none)<br>[Helen
+    School English Reading Book Read Chart Potato](none)<br><br>'
+markdown_short: '[helen_school_english_reading_book_read_chart_potato](none)<br><br>'
+md5: 1025f355ed01f0f2b8b76280b1355843
+md5_10: 1025f355ed
+md5_10_upper: 1025F355ED
+md5_5: 1025f
+md5_5_upper: 1025F
+md5_6: 1025f3
+md5_6_alpha: mokz
+md5_6_alpha_upper: MOKZ
+md5_6_upper: 1025F3
+name: Helen School English Reading Book Read Chart Potato
+name_no_class: School English Reading Book Read Chart Potato
+name_no_size: Reading Book Read Chart Potato
+name_no_size_short: Reading Book Read Chart Potato
+name_no_type: English Reading Book Read Chart Potato
+name_proper: Helen School English Reading Book Read Chart Potato
+name_space: helen school english reading book read chart potato
+name_upper: HELEN SCHOOL ENGLISH READING BOOK READ CHART POTATO
+oomlout_ai_roboclick_1:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: roboclick\helen_school_english_reading_book_read_chart\prompt_bubble_letter_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        mode_ai_wait: fast
+        text: Awesome fill in the json template with "Books Read Chart"
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate it take all the time you need
+    -   command: save_image_generated
+        file_name: initial_generated_1.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: initial_generated_1.png
+oomlout_ai_roboclick_2:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: roboclick\helen_school_english_reading_book_read_chart\prompt_image_main_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate it take all the time you need
+    -   command: save_image_generated
+        file_name: image_main.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_main.png
+oomlout_ai_roboclick_3:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: roboclick\helen_school_english_reading_book_read_chart\prompt_image_background_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate it take all the time you need
+    -   command: save_image_generated
+        file_name: image_cover_background.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_cover_background.png
+oomlout_corel_roboclick_1:
+    actions:
+    -   command: wait_for_file
+        file_name: initial_generated_1.png
+    -   command: corel_trace_full
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: initial_generated_1.png
+        max_dimension: 95
+        number_of_colors: ''
+        remove_background_color_from_entire_image:
+            remove_background_color_from_entire_image: null
+        x: 50
+        y: 50
+    -   command: create_text_file
+        content: Tag for corel_trace_initial_generated_1.png completed.
+        file_name: aaaa_corel_trace_initial_generated_1.png_tag_done.txt
+    file_test: aaaa_corel_trace_initial_generated_1.png_tag_done.txt
+oomlout_corel_roboclick_2:
+    actions:
+    -   command: wait_for_file
+        file_name: image_main.png
+    -   command: corel_trace_full
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_main.png
+        max_dimension: 95
+        number_of_colors: ''
+        remove_background_color_from_entire_image:
+            remove_background_color_from_entire_image: null
+        x: 50
+        y: 50
+    -   command: create_text_file
+        content: Tag for corel_trace_image_main.png completed.
+        file_name: aaaa_corel_trace_image_main.png_tag_done.txt
+    file_test: aaaa_corel_trace_image_main.png_tag_done.txt
+oomlout_corel_roboclick_3:
+    actions:
+    -   command: wait_for_file
+        file_name: image_cover_background.png
+    -   command: corel_trace_full
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_cover_background.png
+        max_dimension: 95
+        number_of_colors: ''
+        remove_background_color_from_entire_image:
+            remove_background_color_from_entire_image: null
+        x: 50
+        y: 50
+    -   command: create_text_file
+        content: Tag for corel_trace_image_cover_background.png completed.
+        file_name: aaaa_corel_trace_image_cover_background.png_tag_done.txt
+    file_test: aaaa_corel_trace_image_cover_background.png_tag_done.txt
+oomp_key: oomp_helen_school_english_reading_book_read_chart_potato
+oomp_word: star ear two
+oomp_word_emoji: ':star: :ear: :two:'
+oomp_word_emoji_list:
+- ':star:'
+- ':ear:'
+- ':two:'
+oomp_word_list:
+- star
+- ear
+- two
+part_number: ''
+part_number_capital: ''
+part_number_first_letter: ''
+part_number_first_letter_upper: ''
+part_number_upper: ''
+short_code: ''
+short_code_upper: ''
+size: english
+size_capital: English
+size_first_letter: e
+size_first_letter_upper: E
+size_only_numbers: ''
+size_only_numbers_no_zeros: ''
+size_upper: ENGLISH
+theme: potato
+type: school
+type_capital: School
+type_first_letter: s
+type_first_letter_upper: S
+type_upper: SCHOOL
+url_chat: ''
