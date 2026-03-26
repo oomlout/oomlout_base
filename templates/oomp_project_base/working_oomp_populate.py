@@ -21,10 +21,10 @@ def build_oomp_id(d):
 def main(**kwargs):
     # Define default input dict with all required fields
     default_input = {
-        "classification": "ai",
-        "type": "data_source",
-        "size": "calendar",
-        "color": "date",
+        "classification": "helen",
+        "type": "personal",
+        "size": "chart",
+        "color": "good_day_bad_day",
         "description_main": "",
         "description_extra": "",
         "manufacturer": "",
@@ -34,24 +34,22 @@ def main(**kwargs):
     
     
     #### define extra entries
+    
+    options = []
+    if True:
+        option = {}
+        option["theme"] = "mommy_claire_wearing_glasses"
+        option["consequence"] = "carrot_stick_with_hot_sauce"
+        options.append(option)
+
     extras = []
-    #iterate through all the days in a year in 2_29 format
-    years = [0]
-    months = [[1,31], [2,29], [3,31], [4,30], [5,31], [6,30], [7,31], [8,31], [9,30], [10,31], [11,30], [12,31]]
-    month_names = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"}
-    for year in years:
-        for month, days in months:
-            for day in range(1, days + 1):
-                
-                extra = {}
-                date_str = str(f'{year}_{month}_{day}')
-                extra["description_main"] = date_str
-                extra["date"] = date_str
-                extra["day"] = day
-                extra["month"] = month
-                extra["month_name"] = month_names.get(month, "")
-                extra["year"] = year
-                extras.append(extra)
+    for option in options:
+        extra = copy.deepcopy(default_input)
+        extra["theme"] = option["theme"]
+        extra["consequence"] = option["consequence"]
+        extra["description_main"] = extra["theme"]
+        extra["description_extra"] = extra["consequence"]
+        extras.append(extra)
 
 
 
