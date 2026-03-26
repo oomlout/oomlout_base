@@ -1,0 +1,559 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hey hey 😄—CHadikins reporting for duty and fully powered up.
+
+Day’s going great now that we’re diving into something together. You know I’m ready to go deep, think properly, and build something solid with you.
+
+What are we tackling today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 23
+
+
+Thought for 2m 16s
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1906
+description_short: "Santos-Dumont's 14-bis flies in Europe"
+description: "Alberto Santos-Dumont completed the first public heavier-than-air flight in Europe with the 14-bis, making a 60-metre hop near Paris. 
+"
+region: "France / Europe"
+notes: "Early aviation milestone."
+importance: 88
+
+date_type: historical_event
+year: 1942
+description_short: "Second Battle of El Alamein begins"
+description: "The British Eighth Army launched the Second Battle of El Alamein, a pivotal Allied victory that marked the beginning of the end for the Axis in North Africa. 
+"
+region: "Egypt / World War II"
+notes: "Major turning point in North Africa."
+importance: 94
+
+date_type: historical_event
+year: 1956
+description_short: "Hungarian Revolution erupts"
+description: "Student demonstrations in Budapest on October 23 helped ignite the Hungarian Revolution against Soviet-backed rule. 
+"
+region: "Hungary"
+notes: "Iconic anti-Soviet uprising."
+importance: 95
+
+date_type: historical_event
+year: 1983
+description_short: "Beirut barracks bombings"
+description: "Suicide truck bomb attacks struck U.S. and French peacekeeping barracks in Beirut, killing 299 people and reshaping Western involvement in Lebanon. 
+"
+region: "Lebanon / Middle East"
+notes: "Major terrorist attack."
+importance: 96
+
+date_type: historical_event
+year: 1989
+description_short: "Republic of Hungary proclaimed"
+description: "Hungary formally became the Republic of Hungary, with constitutional changes opening the way for multiparty democracy. 
+"
+region: "Hungary"
+notes: "Key post-communist transition moment."
+importance: 93
+
+date_type: historical_event
+year: 1991
+description_short: "Paris Peace Agreements signed"
+description: "The Paris Peace Agreements on Cambodia were signed, ending the Cambodian conflict and enabling a major UN peacekeeping role. 
+"
+region: "Cambodia / International"
+notes: "Landmark peace settlement."
+importance: 89
+
+date_type: historical_event
+year: 2001
+description_short: "Apple introduces the iPod"
+description: "Apple introduced the original iPod, a hugely influential portable music player marketed as putting 1,000 songs in your pocket. 
+"
+region: "United States / Global technology"
+notes: "Consumer tech icon launch."
+importance: 92
+
+date_type: birth
+year: 1940
+description_short: "Pelé born"
+description: "Pelé, the Brazilian football legend and three-time World Cup winner, was born in Três Corações, Brazil. 
+"
+region: "Brazil"
+notes: "One of football's greatest figures."
+importance: 97
+
+date_type: birth
+year: 1959
+description_short: "Weird Al Yankovic born"
+description: "Alfred 'Weird Al' Yankovic, famed for musical parody hits such as 'Eat It,' was born in Downey, California. 
+"
+region: "United States"
+notes: "Comedy music innovator."
+importance: 78
+
+date_type: birth
+year: 1976
+description_short: "Ryan Reynolds born"
+description: "Canadian actor Ryan Reynolds was born in Vancouver, British Columbia. 
+"
+region: "Canada"
+notes: "Modern film star."
+importance: 82
+
+date_type: birth
+year: 1986
+description_short: "Emilia Clarke born"
+description: "English actress Emilia Clarke, known especially for Game of Thrones, was born in London. 
+"
+region: "United Kingdom"
+notes: "Major television and film figure."
+importance: 80
+
+date_type: birth
+year: 1954
+description_short: "Ang Lee born"
+description: "Filmmaker Ang Lee, the Taiwan-born director of works such as Crouching Tiger, Hidden Dragon and Brokeback Mountain, was born on this date. 
+"
+region: "Taiwan"
+notes: "Acclaimed international director."
+importance: 84
+
+date_type: birth
+year: 1998
+description_short: "Amandla Stenberg born"
+description: "American actress Amandla Stenberg, known for The Hunger Games and The Hate U Give, was born in Los Angeles. 
+"
+region: "United States"
+notes: "Modern screen actor."
+importance: 68
+
+date_type: death
+year: -42
+description_short: "Brutus dies after Philippi"
+description: "Marcus Junius Brutus, one of the leading conspirators in the assassination of Julius Caesar, died near Philippi. 
+"
+region: "Macedonia / Roman world"
+notes: "End of a central Roman Republic figure."
+importance: 91
+
+date_type: death
+year: 1456
+description_short: "John of Capistrano dies"
+description: "Saint John of Capistrano, the Franciscan preacher and military chaplain, died on this date. 
+"
+region: "Europe / Christianity"
+notes: "Feast day later fixed to October 23."
+importance: 70
+
+date_type: death
+year: 1915
+description_short: "W. G. Grace dies"
+description: "W. G. Grace, the towering Victorian cricketer widely regarded as one of the sport's foundational greats, died in London. 
+"
+region: "United Kingdom"
+notes: "Cricket legend."
+importance: 83
+
+date_type: death
+year: 1939
+description_short: "Zane Grey dies"
+description: "Western novelist Zane Grey died in California; his adventure fiction helped define the popular Western genre. 
+"
+region: "United States"
+notes: "Genre-shaping writer."
+importance: 71
+
+date_type: death
+year: 2016
+description_short: "Pete Burns dies"
+description: "Pete Burns, lead singer of Dead or Alive and voice behind 'You Spin Me Round (Like a Record),' died in London. 
+"
+region: "United Kingdom"
+notes: "Pop culture figure."
+importance: 69
+
+date_type: national_day
+year: null
+description_short: "World Development Information Day"
+description: "The United Nations observes World Development Information Day on October 23. 
+"
+region: "Global"
+notes: "Official UN observance."
+importance: 72
+
+date_type: national_day
+year: null
+description_short: "International Day of the Snow Leopard"
+description: "The UN now observes October 23 as the International Day of the Snow Leopard, proclaimed in 2024 to support conservation cooperation. 
+"
+region: "Global"
+notes: "Recent UN observance."
+importance: 67
+
+date_type: national_day
+year: null
+description_short: "Hungary national holiday"
+description: "October 23 is a national holiday in Hungary, commemorating the 1956 Revolution and the 1989 proclamation of the republic. 
+"
+region: "Hungary"
+notes: "State remembrance day."
+importance: 88
+
+date_type: national_day
+year: null
+description_short: "Chulalongkorn Day"
+description: "Thailand marks Chulalongkorn Day on October 23, commemorating King Chulalongkorn (Rama V) and his reforming reign. 
+"
+region: "Thailand"
+notes: "National public holiday."
+importance: 79
+
+date_type: national_day
+year: null
+description_short: "Day of the Macedonian Revolutionary Struggle"
+description: "North Macedonia observes October 23 as the Day of the Macedonian Revolutionary Struggle, marking the 1893 establishment of the IMRO. 
+"
+region: "North Macedonia"
+notes: "National holiday."
+importance: 73
+
+date_type: national_day
+year: null
+description_short: "Mole Day"
+description: "Mole Day is a widely recognised science-themed observance celebrated on October 23 by chemistry enthusiasts. 
+"
+region: "International / informal"
+notes: "Popular educational fun day."
+importance: 52
+
+date_type: religious
+year: null
+description_short: "Feast of Saint John of Capistrano"
+description: "In the Roman Catholic calendar, October 23 is the feast day of Saint John of Capistrano. 
+"
+region: "Christianity"
+notes: "Fixed annual observance."
+importance: 61
+
+date_type: religious
+year: null
+description_short: "Birth of Bahá'u'lláh may fall on October 23"
+description: "The Bahá'í holy day marking the Birth of Bahá'u'lláh is movable; it fell on October 23 in 2025, but on November 10 in 2026. 
+"
+region: "Bahá'í Faith"
+notes: "Varies by year and calendar."
+importance: 63
+
+date_type: religious
+year: null
+description_short: "Diwali can fall near this date"
+description: "Diwali is a movable Hindu festival that falls between mid-October and mid-November, so it can occasionally land on or near October 23 depending on the year. 
+"
+region: "Hinduism, Jainism, Sikhism, some Buddhist communities"
+notes: "Movable lunisolar observance."
+importance: 74
+&&&tag for copy&&&
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1906
+description_short: "First powered flight in Europe"
+description: "Alberto Santos-Dumont flew the 14-bis publicly in Paris."
+region: "France / Europe"
+notes: "Early aviation milestone."
+importance: 88
+
+date_type: historical_event
+year: 1942
+description_short: "El Alamein battle begins"
+description: "Allied forces launched a decisive offensive in North Africa."
+region: "Egypt / World War II"
+notes: "Turning point against Axis forces."
+importance: 94
+
+date_type: historical_event
+year: 1956
+description_short: "Hungarian Revolution starts"
+description: "Nationwide uprising against Soviet control begins in Budapest."
+region: "Hungary"
+notes: "Symbol of resistance to communism."
+importance: 95
+
+date_type: historical_event
+year: 1983
+description_short: "Beirut barracks bombings"
+description: "Suicide attacks killed US and French peacekeepers."
+region: "Lebanon"
+notes: "Major terrorist attack."
+importance: 96
+
+date_type: historical_event
+year: 1989
+description_short: "Hungary becomes republic"
+description: "Hungary transitions to democratic republic after communism."
+region: "Hungary"
+notes: "End of communist rule."
+importance: 93
+
+date_type: historical_event
+year: 1991
+description_short: "Cambodia peace agreement"
+description: "Paris Peace Agreements signed ending years of conflict."
+region: "Cambodia / International"
+notes: "Major UN peace effort."
+importance: 89
+
+date_type: historical_event
+year: 2001
+description_short: "iPod introduced"
+description: "Apple launches revolutionary portable music player."
+region: "United States / Global"
+notes: "Changed music consumption."
+importance: 92
+
+date_type: birth
+year: 1940
+description_short: "Pelé born"
+description: "Legendary Brazilian footballer and global icon is born."
+region: "Brazil"
+notes: "Three-time World Cup winner."
+importance: 97
+
+date_type: birth
+year: 1959
+description_short: "Weird Al Yankovic born"
+description: "Famous parody musician and performer is born."
+region: "United States"
+notes: "Comedy music pioneer."
+importance: 78
+
+date_type: birth
+year: 1954
+description_short: "Ang Lee born"
+description: "Award-winning film director is born."
+region: "Taiwan"
+notes: "International cinema influence."
+importance: 84
+
+date_type: birth
+year: 1976
+description_short: "Ryan Reynolds born"
+description: "Canadian actor known for major film roles is born."
+region: "Canada"
+notes: "Hollywood leading actor."
+importance: 82
+
+date_type: birth
+year: 1986
+description_short: "Emilia Clarke born"
+description: "British actress known for Game of Thrones is born."
+region: "United Kingdom"
+notes: "Major TV star."
+importance: 80
+
+date_type: death
+year: -42
+description_short: "Brutus dies"
+description: "Roman leader involved in Caesar assassination dies."
+region: "Roman Republic"
+notes: "End of major historical figure."
+importance: 91
+
+date_type: death
+year: 1915
+description_short: "W. G. Grace dies"
+description: "Legendary English cricketer passes away."
+region: "United Kingdom"
+notes: "Foundational sports figure."
+importance: 83
+
+date_type: death
+year: 1939
+description_short: "Zane Grey dies"
+description: "Influential Western novelist dies."
+region: "United States"
+notes: "Defined Western genre."
+importance: 71
+
+date_type: death
+year: 2016
+description_short: "Pete Burns dies"
+description: "Pop singer of Dead or Alive dies."
+region: "United Kingdom"
+notes: "1980s pop icon."
+importance: 69
+
+date_type: national_day
+year: null
+description_short: "World Development Information Day"
+description: "UN observance promoting global development awareness."
+region: "Global"
+notes: "Official UN day."
+importance: 72
+
+date_type: national_day
+year: null
+description_short: "Snow Leopard Day"
+description: "International awareness day for snow leopard conservation."
+region: "Global"
+notes: "Environmental focus."
+importance: 67
+
+date_type: national_day
+year: null
+description_short: "Hungary national holiday"
+description: "Commemorates 1956 revolution and 1989 republic formation."
+region: "Hungary"
+notes: "Major national observance."
+importance: 88
+
+date_type: national_day
+year: null
+description_short: "Chulalongkorn Day"
+description: "Thailand honors King Rama V and his reforms."
+region: "Thailand"
+notes: "Public holiday."
+importance: 79
+
+date_type: national_day
+year: null
+description_short: "Macedonian Revolutionary Day"
+description: "Marks founding of revolutionary movement in 1893."
+region: "North Macedonia"
+notes: "National identity day."
+importance: 73
+
+date_type: national_day
+year: null
+description_short: "Mole Day"
+description: "Science-themed celebration of Avogadro's number."
+region: "International"
+notes: "Educational fun day."
+importance: 52
+
+date_type: religious
+year: null
+description_short: "Feast of St John of Capistrano"
+description: "Catholic feast day honoring the Franciscan preacher."
+region: "Christianity"
+notes: "Fixed annual observance."
+importance: 61
+
+date_type: religious
+year: null
+description_short: "Birth of Baha'u'llah (variable)"
+description: "Important Bahai holy day; date shifts annually."
+region: "Bahai Faith"
+notes: "Movable observance."
+importance: 63
+
+date_type: religious
+year: null
+description_short: "Diwali (may occur)"
+description: "Major Hindu festival of lights may fall near this date."
+region: "Hinduism and related traditions"
+notes: "Lunisolar calendar variation."
+importance: 74
+&&&tag for copy&&&
+
+
+
+
+

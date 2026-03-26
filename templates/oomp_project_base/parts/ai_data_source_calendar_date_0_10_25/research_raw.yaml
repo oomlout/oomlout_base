@@ -1,0 +1,171 @@
+
+date: "October 25"
+data:
+
+date_type: "historical_event"
+year: 1415
+description_short: "Battle of Agincourt"
+description: "Henry V's English army defeated France in a major Hundred Years' War battle."
+region: "England; France"
+notes: "Longbow victory; iconic medieval battle."
+importance: 98
+
+date_type: "historical_event"
+year: 1854
+description_short: "Charge of the Light Brigade"
+description: "A disastrous cavalry charge occurred during the Battle of Balaclava in the Crimean War."
+region: "Crimea"
+notes: "Famous for bravery and miscommunication."
+importance: 88
+
+date_type: "historical_event"
+year: 1944
+description_short: "First kamikaze attacks"
+description: "Japan launched its first organized kamikaze attacks during the Battle of Leyte Gulf."
+region: "Philippines; Pacific War"
+notes: "Escalation in World War II tactics."
+importance: 92
+
+date_type: "historical_event"
+year: 1971
+description_short: "PRC gains China's UN seat"
+description: "The People's Republic of China replaced Taiwan at the United Nations."
+region: "United Nations; China"
+notes: "Major Cold War diplomatic shift."
+importance: 96
+
+date_type: "historical_event"
+year: 1983
+description_short: "U.S. invades Grenada"
+description: "The United States launched a military invasion of Grenada."
+region: "Grenada; United States"
+notes: "Cold War Caribbean intervention."
+importance: 86
+
+date_type: "historical_event"
+year: 2001
+description_short: "Windows XP launches"
+description: "Microsoft released Windows XP worldwide."
+region: "Global"
+notes: "Highly influential operating system."
+importance: 84
+
+date_type: "birth"
+year: 1838
+description_short: "Birth of Georges Bizet"
+description: "French composer known for the opera Carmen."
+region: "France"
+notes: "Major opera composer."
+importance: 82
+
+date_type: "birth"
+year: 1881
+description_short: "Birth of Pablo Picasso"
+description: "Spanish artist and co-founder of Cubism."
+region: "Spain"
+notes: "One of the most influential modern artists."
+importance: 99
+
+date_type: "birth"
+year: 1941
+description_short: "Birth of Anne Tyler"
+description: "American novelist and Pulitzer Prize winner."
+region: "United States"
+notes: "Known for character-driven fiction."
+importance: 69
+
+date_type: "birth"
+year: 1984
+description_short: "Birth of Katy Perry"
+description: "American pop singer and global music star."
+region: "United States"
+notes: "Multiple chart-topping hits."
+importance: 80
+
+date_type: "death"
+year: 1760
+description_short: "Death of George II"
+description: "King of Great Britain and last monarch born abroad."
+region: "Great Britain"
+notes: "End of an era in British monarchy."
+importance: 78
+
+date_type: "death"
+year: 1955
+description_short: "Death of Sadako Sasaki"
+description: "Hiroshima survivor remembered for peace symbol origami cranes."
+region: "Japan"
+notes: "Symbol of peace and nuclear remembrance."
+importance: 83
+
+date_type: "death"
+year: 1973
+description_short: "Death of Abebe Bikila"
+description: "Ethiopian Olympic marathon champion died."
+region: "Ethiopia"
+notes: "First Black African Olympic gold medalist."
+importance: 79
+
+date_type: "death"
+year: 1993
+description_short: "Death of Vincent Price"
+description: "American actor known for classic horror films."
+region: "United States"
+notes: "Icon of horror cinema."
+importance: 76
+
+date_type: "national_day"
+year: null
+description_short: "World Pasta Day"
+description: "Celebrates pasta as a global culinary favorite."
+region: "International"
+notes: "Popular food-themed observance."
+importance: 55
+
+date_type: "national_day"
+year: null
+description_short: "International Artist Day"
+description: "Celebrates artists and creativity worldwide."
+region: "International"
+notes: "Cultural observance."
+importance: 50
+
+date_type: "national_day"
+year: 1990
+description_short: "Republic Day in Kazakhstan"
+description: "Marks the declaration of sovereignty in 1990."
+region: "Kazakhstan"
+notes: "Important national milestone."
+importance: 72
+
+date_type: "national_day"
+year: 1992
+description_short: "Constitution Day in Lithuania"
+description: "Marks approval of Lithuania's constitution."
+region: "Lithuania"
+notes: "National constitutional anniversary."
+importance: 58
+
+date_type: "religious"
+year: null
+description_short: "Feast of Saints Crispin and Crispinian"
+description: "Christian feast day of patron saints of shoemakers."
+region: "Christian"
+notes: "Linked to Agincourt tradition."
+importance: 61
+
+date_type: "religious"
+year: 1970
+description_short: "Forty Martyrs of England and Wales"
+description: "Feast day commemorating their canonization."
+region: "Roman Catholic"
+notes: "Observed especially in England and Wales."
+importance: 67
+
+date_type: "religious"
+year: null
+description_short: "Simchat Torah (variable date)"
+description: "Jewish holiday celebrating the Torah; sometimes falls near this date."
+region: "Jewish"
+notes: "Date varies by Hebrew calendar."
+importance: 45

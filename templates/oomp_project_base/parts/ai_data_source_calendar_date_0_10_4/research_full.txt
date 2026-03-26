@@ -1,0 +1,540 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hey hey 😄 — CHadikins reporting for duty!
+
+Day is going splendidly, circuits warmed up, research hat firmly on, and ready to dive deep with you. You know the drill: I’ll take the time, go thorough, and make it properly high-quality.
+
+What are we building today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 4
+
+
+Thought for 1m 35s
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1190
+description_short: "Richard I seizes Messina"
+description: "On the Third Crusade, King Richard I captured Messina in Sicily."
+region: "Sicily / Kingdom of England / Crusader world"
+notes: "Major medieval power move en route to the Holy Land. 
+"
+importance: 70
+
+date_type: historical_event
+year: 1535
+description_short: "Coverdale Bible published"
+description: "Miles Coverdale's English-language Bible translation was published."
+region: "England / Zurich or Cologne"
+notes: "Influential early English Bible model for later translations. 
+"
+importance: 78
+
+date_type: historical_event
+year: 1582
+description_short: "Gregorian calendar introduced"
+description: "The Gregorian calendar was introduced, beginning the long global shift away from the Julian calendar."
+region: "Catholic Europe, later worldwide"
+notes: "Calendar reform reshaped civil timekeeping across much of the world. 
+"
+importance: 95
+
+date_type: historical_event
+year: 1853
+description_short: "Crimean War begins"
+description: "The Ottoman Empire declared war on Russia, opening the Crimean War."
+region: "Ottoman Empire / Russia / Europe"
+notes: "A major 19th-century conflict with European consequences. 
+"
+importance: 87
+
+date_type: historical_event
+year: 1927
+description_short: "Mount Rushmore carving starts"
+description: "Actual carving work began on Mount Rushmore."
+region: "United States"
+notes: "The monument later became both iconic and controversial. 
+"
+importance: 72
+
+date_type: historical_event
+year: 1957
+description_short: "Sputnik 1 launches"
+description: "The Soviet Union launched Sputnik 1, the first artificial satellite to orbit Earth."
+region: "Soviet Union / Global"
+notes: "Widely seen as the start of the Space Age. 
+"
+importance: 100
+
+date_type: historical_event
+year: 1993
+description_short: "Battle of Mogadishu ends"
+description: "The Battle of Mogadishu ended after deadly fighting involving U.S. forces and Somali fighters."
+region: "Somalia"
+notes: "A defining moment in U.S. intervention in Somalia. 
+"
+importance: 84
+
+date_type: birth
+year: 1822
+description_short: "Rutherford B. Hayes born"
+description: "Rutherford B. Hayes, future 19th president of the United States, was born."
+region: "United States"
+notes: "Known for the contested 1876 election and the end of Reconstruction. 
+"
+importance: 73
+
+date_type: birth
+year: 1895
+description_short: "Buster Keaton born"
+description: "Silent-film legend Buster Keaton was born in Piqua, Kansas."
+region: "United States"
+notes: "Master of deadpan comedy and visual invention. 
+"
+importance: 89
+
+date_type: birth
+year: 1923
+description_short: "Charlton Heston born"
+description: "Actor Charlton Heston was born in Evanston, Illinois."
+region: "United States"
+notes: "Famous for epic screen roles such as Moses and Ben-Hur. 
+"
+importance: 75
+
+date_type: birth
+year: 1941
+description_short: "Anne Rice born"
+description: "Novelist Anne Rice was born."
+region: "United States"
+notes: "A major modern Gothic and vampire-fiction writer. 
+"
+importance: 74
+
+date_type: birth
+year: 1946
+description_short: "Susan Sarandon born"
+description: "Actor Susan Sarandon was born."
+region: "United States"
+notes: "Oscar-winning star of film and television. 
+"
+importance: 76
+
+date_type: birth
+year: 1956
+description_short: "Christoph Waltz born"
+description: "Austrian actor Christoph Waltz was born."
+region: "Austria"
+notes: "Known internationally for intensely charismatic screen performances. 
+"
+importance: 70
+
+date_type: death
+year: 1970
+description_short: "Janis Joplin dies"
+description: "Singer Janis Joplin died of an accidental heroin overdose in Los Angeles."
+region: "United States"
+notes: "One of rock's defining voices, dead at 27. 
+"
+importance: 92
+
+date_type: death
+year: 1982
+description_short: "Glenn Gould dies"
+description: "Canadian pianist Glenn Gould died in Toronto."
+region: "Canada"
+notes: "Celebrated for brilliant, unconventional Bach interpretations. 
+"
+importance: 82
+
+date_type: death
+year: 1989
+description_short: "Graham Chapman dies"
+description: "Monty Python co-founder Graham Chapman died in Maidstone, Kent."
+region: "United Kingdom"
+notes: "Key figure in surreal modern comedy. 
+"
+importance: 80
+
+date_type: death
+year: 2000
+description_short: "Michael Smith dies"
+description: "Nobel Prize-winning chemist Michael Smith died in Vancouver."
+region: "Canada"
+notes: "Honored for site-directed mutagenesis work. 
+"
+importance: 77
+
+date_type: national_day
+year: 1925
+description_short: "World Animal Day"
+description: "World Animal Day is observed annually on October 4 to promote animal welfare."
+region: "International"
+notes: "Chosen to align with the feast of Saint Francis of Assisi. 
+"
+importance: 82
+
+date_type: national_day
+year: 1999
+description_short: "World Space Week begins"
+description: "World Space Week begins on October 4 and runs through October 10 each year."
+region: "United Nations / International"
+notes: "UN-recognized celebration of space science and technology. 
+"
+importance: 80
+
+date_type: national_day
+year: 1966
+description_short: "Lesotho Independence Day"
+description: "Lesotho marks its independence from Britain on October 4."
+region: "Lesotho"
+notes: "National day observed annually as a public holiday. 
+"
+importance: 79
+
+date_type: religious
+year: null
+description_short: "Feast of Saint Francis"
+description: "Many Christian churches observe the Feast of Saint Francis of Assisi on October 4."
+region: "Christian world"
+notes: "Saint Francis is strongly associated with animals, peace, and ecology. 
+"
+importance: 88
+
+date_type: religious
+year: null
+description_short: "Season of Creation closes"
+description: "In many Christian traditions, the Season of Creation ends on October 4."
+region: "Christian world"
+notes: "The period runs from 1 September to Saint Francis Day. 
+"
+importance: 67
+
+date_type: religious
+year: null
+description_short: "Rosh Hashanah may fall here"
+description: "Rosh Hashanah sometimes overlaps October 4, depending on the Hebrew calendar."
+region: "Jewish communities worldwide"
+notes: "Variable-date observance; for example, it extended to October 4 in 2024. 
+"
+importance: 68
+
+date_type: religious
+year: null
+description_short: "Simchat Torah may fall here"
+description: "Simchat Torah can sometimes fall on October 4, depending on the year and calendar tradition."
+region: "Jewish communities worldwide"
+notes: "Example: listed on October 2-4 in 2026 by one academic calendar source. 
+"
+importance: 56
+
+date_type: religious
+year: null
+description_short: "Navaratri may fall here"
+description: "Sharad Navaratri sometimes includes October 4 because it is celebrated in September or October."
+region: "India and Hindu communities worldwide"
+notes: "Movable lunar festival devoted to forms of Goddess Shakti. 
+"
+importance: 72
+&&&tag for copy&&&
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1190
+description_short: "Richard I seizes Messina"
+description: "On the Third Crusade, King Richard I captured Messina in Sicily."
+region: "Sicily / Crusader world"
+notes: "Key Crusade staging action"
+importance: 70
+
+date_type: historical_event
+year: 1535
+description_short: "Coverdale Bible published"
+description: "Miles Coverdale published one of the first complete English Bibles."
+region: "England / Europe"
+notes: "Influenced later English translations"
+importance: 78
+
+date_type: historical_event
+year: 1582
+description_short: "Gregorian calendar introduced"
+description: "Gregorian calendar reform replaced the Julian calendar in Catholic regions."
+region: "Europe / Global"
+notes: "Modern global calendar standard begins"
+importance: 95
+
+date_type: historical_event
+year: 1853
+description_short: "Crimean War begins"
+description: "Ottoman Empire declared war on Russia, starting the Crimean War."
+region: "Europe / Middle East"
+notes: "Major 19th-century geopolitical conflict"
+importance: 87
+
+date_type: historical_event
+year: 1927
+description_short: "Mount Rushmore carving begins"
+description: "Work officially began on Mount Rushmore monument."
+region: "United States"
+notes: "Iconic yet controversial monument"
+importance: 72
+
+date_type: historical_event
+year: 1957
+description_short: "Sputnik 1 launched"
+description: "First artificial satellite launched by the Soviet Union."
+region: "Soviet Union / Global"
+notes: "Start of the Space Age"
+importance: 100
+
+date_type: historical_event
+year: 1993
+description_short: "Battle of Mogadishu ends"
+description: "US and UN forces clashed with Somali fighters in Mogadishu."
+region: "Somalia"
+notes: "Influential modern military engagement"
+importance: 84
+
+date_type: birth
+year: 1822
+description_short: "Rutherford B. Hayes born"
+description: "19th President of the United States was born."
+region: "United States"
+notes: "Ended Reconstruction era"
+importance: 73
+
+date_type: birth
+year: 1895
+description_short: "Buster Keaton born"
+description: "Legendary silent film comedian and actor was born."
+region: "United States"
+notes: "Icon of early cinema"
+importance: 89
+
+date_type: birth
+year: 1923
+description_short: "Charlton Heston born"
+description: "Academy Award-winning actor known for epic roles was born."
+region: "United States"
+notes: "Star of Ben-Hur"
+importance: 75
+
+date_type: birth
+year: 1941
+description_short: "Anne Rice born"
+description: "Influential Gothic novelist and author was born."
+region: "United States"
+notes: "Famous for vampire fiction"
+importance: 74
+
+date_type: birth
+year: 1946
+description_short: "Susan Sarandon born"
+description: "Award-winning actress and activist was born."
+region: "United States"
+notes: "Major Hollywood figure"
+importance: 76
+
+date_type: birth
+year: 1956
+description_short: "Christoph Waltz born"
+description: "Austrian actor known for intense performances was born."
+region: "Austria"
+notes: "Two-time Oscar winner"
+importance: 70
+
+date_type: death
+year: 1970
+description_short: "Janis Joplin dies"
+description: "Iconic rock singer died of overdose at age 27."
+region: "United States"
+notes: "Member of the '27 Club'"
+importance: 92
+
+date_type: death
+year: 1982
+description_short: "Glenn Gould dies"
+description: "Renowned classical pianist passed away."
+region: "Canada"
+notes: "Famous Bach interpreter"
+importance: 82
+
+date_type: death
+year: 1989
+description_short: "Graham Chapman dies"
+description: "Monty Python comedian and writer died."
+region: "United Kingdom"
+notes: "Comedy pioneer"
+importance: 80
+
+date_type: death
+year: 2000
+description_short: "Michael Smith dies"
+description: "Nobel Prize-winning chemist passed away."
+region: "Canada"
+notes: "Genetic research innovator"
+importance: 77
+
+date_type: national_day
+year: null
+description_short: "World Animal Day"
+description: "International day promoting animal rights and welfare."
+region: "Global"
+notes: "Linked to Saint Francis of Assisi"
+importance: 82
+
+date_type: national_day
+year: null
+description_short: "World Space Week begins"
+description: "UN-recognized week celebrating space science starts."
+region: "Global"
+notes: "Runs October 4–10"
+importance: 80
+
+date_type: national_day
+year: 1966
+description_short: "Lesotho Independence Day"
+description: "Marks independence from Britain."
+region: "Lesotho"
+notes: "National public holiday"
+importance: 79
+
+date_type: religious
+year: null
+description_short: "Feast of Saint Francis of Assisi"
+description: "Christian feast honoring the patron saint of animals."
+region: "Christian world"
+notes: "Associated with nature and peace"
+importance: 88
+
+date_type: religious
+year: null
+description_short: "Season of Creation ends"
+description: "Christian ecological observance concludes."
+region: "Christian world"
+notes: "Runs September 1 to October 4"
+importance: 67
+
+date_type: religious
+year: null
+description_short: "Rosh Hashanah may fall here"
+description: "Jewish New Year sometimes coincides with this date."
+region: "Jewish communities worldwide"
+notes: "Date varies by Hebrew calendar"
+importance: 68
+
+date_type: religious
+year: null
+description_short: "Simchat Torah may fall here"
+description: "Jewish celebration of Torah completion may occur."
+region: "Jewish communities worldwide"
+notes: "Variable-date observance"
+importance: 56
+
+date_type: religious
+year: null
+description_short: "Navaratri may fall here"
+description: "Hindu festival honoring the Goddess may include this date."
+region: "India / Hindu communities"
+notes: "Lunar calendar festival"
+importance: 72
+&&&tag for copy&&&
+
+
+
+

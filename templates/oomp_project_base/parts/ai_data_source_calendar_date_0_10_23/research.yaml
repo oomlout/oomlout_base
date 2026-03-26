@@ -1,0 +1,175 @@
+- date_type: historical_event
+  year: 1906
+  description_short: "First powered flight in Europe"
+  description: "Alberto Santos-Dumont flew the 14-bis publicly in Paris."
+  region: "France / Europe"
+  notes: "Early aviation milestone."
+  importance: 88
+- date_type: historical_event
+  year: 1942
+  description_short: "El Alamein battle begins"
+  description: "Allied forces launched a decisive offensive in North Africa."
+  region: "Egypt / World War II"
+  notes: "Turning point against Axis forces."
+  importance: 94
+- date_type: historical_event
+  year: 1956
+  description_short: "Hungarian Revolution starts"
+  description: "Nationwide uprising against Soviet control begins in Budapest."
+  region: "Hungary"
+  notes: "Symbol of resistance to communism."
+  importance: 95
+- date_type: historical_event
+  year: 1983
+  description_short: "Beirut barracks bombings"
+  description: "Suicide attacks killed US and French peacekeepers."
+  region: "Lebanon"
+  notes: "Major terrorist attack."
+  importance: 96
+- date_type: historical_event
+  year: 1989
+  description_short: "Hungary becomes republic"
+  description: "Hungary transitions to democratic republic after communism."
+  region: "Hungary"
+  notes: "End of communist rule."
+  importance: 93
+- date_type: historical_event
+  year: 1991
+  description_short: "Cambodia peace agreement"
+  description: "Paris Peace Agreements signed ending years of conflict."
+  region: "Cambodia / International"
+  notes: "Major UN peace effort."
+  importance: 89
+- date_type: historical_event
+  year: 2001
+  description_short: "iPod introduced"
+  description: "Apple launches revolutionary portable music player."
+  region: "United States / Global"
+  notes: "Changed music consumption."
+  importance: 92
+- date_type: birth
+  year: 1940
+  description_short: "Pelé born"
+  description: "Legendary Brazilian footballer and global icon is born."
+  region: "Brazil"
+  notes: "Three-time World Cup winner."
+  importance: 97
+- date_type: birth
+  year: 1959
+  description_short: "Weird Al Yankovic born"
+  description: "Famous parody musician and performer is born."
+  region: "United States"
+  notes: "Comedy music pioneer."
+  importance: 78
+- date_type: birth
+  year: 1954
+  description_short: "Ang Lee born"
+  description: "Award-winning film director is born."
+  region: "Taiwan"
+  notes: "International cinema influence."
+  importance: 84
+- date_type: birth
+  year: 1976
+  description_short: "Ryan Reynolds born"
+  description: "Canadian actor known for major film roles is born."
+  region: "Canada"
+  notes: "Hollywood leading actor."
+  importance: 82
+- date_type: birth
+  year: 1986
+  description_short: "Emilia Clarke born"
+  description: "British actress known for Game of Thrones is born."
+  region: "United Kingdom"
+  notes: "Major TV star."
+  importance: 80
+- date_type: death
+  year: -42
+  description_short: "Brutus dies"
+  description: "Roman leader involved in Caesar assassination dies."
+  region: "Roman Republic"
+  notes: "End of major historical figure."
+  importance: 91
+- date_type: death
+  year: 1915
+  description_short: "W. G. Grace dies"
+  description: "Legendary English cricketer passes away."
+  region: "United Kingdom"
+  notes: "Foundational sports figure."
+  importance: 83
+- date_type: death
+  year: 1939
+  description_short: "Zane Grey dies"
+  description: "Influential Western novelist dies."
+  region: "United States"
+  notes: "Defined Western genre."
+  importance: 71
+- date_type: death
+  year: 2016
+  description_short: "Pete Burns dies"
+  description: "Pop singer of Dead or Alive dies."
+  region: "United Kingdom"
+  notes: "1980s pop icon."
+  importance: 69
+- date_type: national_day
+  year: null
+  description_short: "World Development Information Day"
+  description: "UN observance promoting global development awareness."
+  region: "Global"
+  notes: "Official UN day."
+  importance: 72
+- date_type: national_day
+  year: null
+  description_short: "Snow Leopard Day"
+  description: "International awareness day for snow leopard conservation."
+  region: "Global"
+  notes: "Environmental focus."
+  importance: 67
+- date_type: national_day
+  year: null
+  description_short: "Hungary national holiday"
+  description: "Commemorates 1956 revolution and 1989 republic formation."
+  region: "Hungary"
+  notes: "Major national observance."
+  importance: 88
+- date_type: national_day
+  year: null
+  description_short: "Chulalongkorn Day"
+  description: "Thailand honors King Rama V and his reforms."
+  region: "Thailand"
+  notes: "Public holiday."
+  importance: 79
+- date_type: national_day
+  year: null
+  description_short: "Macedonian Revolutionary Day"
+  description: "Marks founding of revolutionary movement in 1893."
+  region: "North Macedonia"
+  notes: "National identity day."
+  importance: 73
+- date_type: national_day
+  year: null
+  description_short: "Mole Day"
+  description: "Science-themed celebration of Avogadro's number."
+  region: "International"
+  notes: "Educational fun day."
+  importance: 52
+- date_type: religious
+  year: null
+  description_short: "Feast of St John of Capistrano"
+  description: "Catholic feast day honoring the Franciscan preacher."
+  region: "Christianity"
+  notes: "Fixed annual observance."
+  importance: 61
+- date_type: religious
+  year: null
+  description_short: "Birth of Baha'u'llah (variable)"
+  description: "Important Bahai holy day; date shifts annually."
+  region: "Bahai Faith"
+  notes: "Movable observance."
+  importance: 63
+- date_type: religious
+  year: null
+  description_short: "Diwali (may occur)"
+  description: "Major Hindu festival of lights may fall near this date."
+  region: "Hinduism and related traditions"
+  notes: "Lunisolar calendar variation."
+  importance: 74

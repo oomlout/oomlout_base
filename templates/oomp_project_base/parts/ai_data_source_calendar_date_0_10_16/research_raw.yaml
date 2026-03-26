@@ -1,0 +1,234 @@
+
+data:
+
+date_type: historical_event
+year: 1793
+description_short: Marie Antoinette executed
+description: Marie Antoinette was guillotined during the French Revolution in Paris.
+region: France
+notes: Fall of monarchy symbolism; one of the revolution's defining deaths.
+importance: 96
+
+date_type: historical_event
+year: 1846
+description_short: Ether anesthesia publicly demonstrated
+description: William T. G. Morton demonstrated ether anesthesia at Massachusetts General Hospital.
+region: United States
+notes: Landmark in modern surgery and pain control.
+importance: 95
+
+date_type: historical_event
+year: 1859
+description_short: John Brown raids Harpers Ferry
+description: Abolitionist John Brown launched his raid on the U.S. arsenal.
+region: United States
+notes: Major flashpoint before the American Civil War.
+importance: 93
+
+date_type: historical_event
+year: 1916
+description_short: First U.S. birth control clinic opens
+description: Margaret Sanger opened the first birth control clinic in Brooklyn.
+region: United States
+notes: Key moment in reproductive rights history.
+importance: 90
+
+date_type: historical_event
+year: 1946
+description_short: Nuremberg executions carried out
+description: Ten Nazi leaders were executed following the Nuremberg trials.
+region: Germany
+notes: Symbolic justice after World War II.
+importance: 91
+
+date_type: historical_event
+year: 1964
+description_short: China detonates first atomic bomb
+description: China conducted its first successful nuclear weapons test.
+region: China
+notes: Major Cold War geopolitical shift.
+importance: 94
+
+date_type: historical_event
+year: 1968
+description_short: Black Power salute at Olympics
+description: Tommie Smith and John Carlos gave a Black Power salute at the Olympics.
+region: Mexico / United States
+notes: Iconic political protest in sports history.
+importance: 95
+
+date_type: historical_event
+year: 1978
+description_short: John Paul II elected pope
+description: Karol Wojtyla became Pope John Paul II, first non-Italian in centuries.
+region: Vatican City / Poland
+notes: Influential global religious leader.
+importance: 94
+
+date_type: historical_event
+year: 1995
+description_short: Million Man March held
+description: Over a million gathered in Washington D.C. for unity and civil rights.
+region: United States
+notes: Major African American demonstration.
+importance: 88
+
+date_type: birth
+year: 1758
+description_short: Noah Webster born
+description: American lexicographer who shaped U.S. English language standards.
+region: United States
+notes: Creator of foundational American dictionaries.
+importance: 88
+
+date_type: birth
+year: 1803
+description_short: Robert Stephenson born
+description: British railway engineer and pioneer of early locomotives.
+region: United Kingdom
+notes: Key figure in railway expansion.
+importance: 82
+
+date_type: birth
+year: 1890
+description_short: Michael Collins born
+description: Irish revolutionary leader in the fight for independence.
+region: Ireland
+notes: Central to Irish state formation.
+importance: 91
+
+date_type: birth
+year: 1925
+description_short: Angela Lansbury born
+description: Acclaimed actor across film, theatre, and television.
+region: United Kingdom
+notes: Cultural icon of stage and screen.
+importance: 86
+
+date_type: birth
+year: 1927
+description_short: Gunter Grass born
+description: Nobel Prize-winning German author of The Tin Drum.
+region: Poland / Germany
+notes: Influential postwar writer.
+importance: 87
+
+date_type: birth
+year: 1977
+description_short: John Mayer born
+description: Grammy-winning singer-songwriter and guitarist.
+region: United States
+notes: Known for blues and pop crossover.
+importance: 73
+
+date_type: death
+year: 1555
+description_short: Hugh Latimer dies
+description: Protestant reformer executed as a martyr.
+region: England
+notes: Important figure in English Reformation.
+importance: 78
+
+date_type: death
+year: 1772
+description_short: Ahmad Shah Durrani dies
+description: Founder of the Afghan Empire passed away.
+region: Afghanistan
+notes: Founder of modern Afghan state.
+importance: 84
+
+date_type: death
+year: 1973
+description_short: Gene Krupa dies
+description: Influential jazz drummer known for swing era performances.
+region: United States
+notes: Elevated drummer prominence in jazz.
+importance: 76
+
+date_type: death
+year: 1990
+description_short: Art Blakey dies
+description: Legendary jazz drummer and bandleader passed away.
+region: United States
+notes: Mentor to many jazz musicians.
+importance: 80
+
+date_type: death
+year: 1997
+description_short: James Michener dies
+description: Bestselling author of historical novels died.
+region: United States
+notes: Known for large-scale narrative works.
+importance: 74
+
+date_type: national_day
+year: null
+description_short: World Food Day
+description: UN-recognised day promoting global food security and hunger awareness.
+region: International
+notes: Marks founding of FAO in 1945.
+importance: 93
+
+date_type: national_day
+year: null
+description_short: National Dictionary Day
+description: Celebrates dictionaries and language learning.
+region: United States
+notes: Honours Noah Webster.
+importance: 63
+
+date_type: national_day
+year: null
+description_short: National Boss's Day
+description: Workplace observance recognising employers and managers.
+region: United States
+notes: Popular office celebration.
+importance: 52
+
+date_type: national_day
+year: null
+description_short: National Sports Day
+description: General observance promoting sports and activity.
+region: United States
+notes: Informal commemorative day.
+importance: 42
+
+date_type: religious
+year: null
+description_short: Feast of Saint Hedwig
+description: Catholic feast day of Saint Hedwig of Silesia.
+region: Christian / Catholic
+notes: Fixed annual observance.
+importance: 58
+
+date_type: religious
+year: null
+description_short: Feast of Saint Margaret Mary Alacoque
+description: Catholic saint associated with Sacred Heart devotion.
+region: Christian / Catholic
+notes: Fixed feast day.
+importance: 55
+
+date_type: religious
+year: null
+description_short: Saint Longinus commemorated
+description: Observed in Eastern Orthodox and some Catholic traditions.
+region: Christian / Eastern Orthodox
+notes: Tradition-dependent observance.
+importance: 49
+
+date_type: religious
+year: null
+description_short: Sukkot may overlap October 16
+description: Jewish harvest festival sometimes includes this date.
+region: Jewish
+notes: Movable based on Hebrew calendar.
+importance: 68
+
+date_type: religious
+year: null
+description_short: Karva Chauth near this date
+description: Hindu fasting festival occasionally falls close to this date.
+region: Hindu
+notes: Lunar calendar variation.
+importance: 46

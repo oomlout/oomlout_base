@@ -1,0 +1,470 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hey hey!! 😄
+CHadikins reporting for duty — fully powered up and ready to roll.
+
+What are we building today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for November 1
+
+
+Thought for 2m 5s
+data:
+
+date_type: historical_event
+year: 1512
+description_short: "Sistine Chapel ceiling inaugurated"
+description: "Pope Julius II inaugurated the Sistine Chapel after Michelangelo completed the ceiling frescoes, helping create one of Western art's defining masterpieces. 
+"
+region: "Vatican City"
+notes: "Art history landmark"
+importance: 95
+
+date_type: historical_event
+year: 1755
+description_short: "Great Lisbon earthquake"
+description: "The Lisbon earthquake, followed by fires and a tsunami, devastated Lisbon and became one of the most consequential natural disasters in European history. 
+"
+region: "Portugal"
+notes: "Disaster reshaped philosophy and urban planning"
+importance: 99
+
+date_type: historical_event
+year: 1800
+description_short: "John Adams moved into the White House"
+description: "President John Adams became the first occupant of the White House, even though the building was still unfinished but habitable. 
+"
+region: "United States"
+notes: "Presidential residence milestone"
+importance: 88
+
+date_type: historical_event
+year: 1952
+description_short: "First thermonuclear test"
+description: "The United States detonated Ivy Mike at Enewetak Atoll, widely recognized as the first full-scale thermonuclear or hydrogen bomb test. 
+"
+region: "Marshall Islands / United States"
+notes: "Cold War nuclear escalation"
+importance: 97
+
+date_type: historical_event
+year: 1993
+description_short: "European Union formally established"
+description: "The Maastricht Treaty entered into force, officially establishing the European Union and marking a major step in European integration. 
+"
+region: "Europe"
+notes: "Major political integration milestone"
+importance: 96
+
+date_type: birth
+year: 1757
+description_short: "Antonio Canova born"
+description: "Italian sculptor Antonio Canova, a leading figure of Neoclassicism, was born in Possagno. 
+"
+region: "Italy"
+notes: "Neoclassical master sculptor"
+importance: 84
+
+date_type: birth
+year: 1880
+description_short: "Alfred Wegener born"
+description: "German meteorologist and geophysicist Alfred Wegener was born; he later formulated the first full statement of continental drift. 
+"
+region: "Germany"
+notes: "Foundational Earth science figure"
+importance: 92
+
+date_type: birth
+year: 1946
+description_short: "Yuko Shimizu born"
+description: "Japanese designer Yuko Shimizu, credited as the original creator of Hello Kitty, was born. 
+"
+region: "Japan"
+notes: "Global pop culture relevance"
+importance: 76
+
+date_type: birth
+year: 1960
+description_short: "Tim Cook born"
+description: "Business executive Tim Cook, who became CEO of Apple in 2011, was born in Mobile, Alabama. 
+"
+region: "United States"
+notes: "Modern technology leader"
+importance: 86
+
+date_type: birth
+year: 1962
+description_short: "Anthony Kiedis born"
+description: "Anthony Kiedis, lead vocalist and cofounding member of Red Hot Chili Peppers, was born in Grand Rapids, Michigan. 
+"
+region: "United States"
+notes: "Rock music figure"
+importance: 74
+
+date_type: birth
+year: 1972
+description_short: "Toni Collette born"
+description: "Australian actress Toni Collette, known for her wide-ranging screen performances, was born in Sydney. 
+"
+region: "Australia"
+notes: "Award-winning actor"
+importance: 73
+
+date_type: birth
+year: 1973
+description_short: "Aishwarya Rai Bachchan born"
+description: "Indian actress and model Aishwarya Rai Bachchan, one of Bollywood's most internationally recognized stars, was born in Mangalore. 
+"
+region: "India"
+notes: "Global film and culture figure"
+importance: 82
+
+date_type: death
+year: 1894
+description_short: "Alexander III died"
+description: "Tsar Alexander III of Russia died in Livadiya, ending a reign marked by strong autocracy and Russian nationalism. 
+"
+region: "Russian Empire"
+notes: "Imperial succession moment"
+importance: 82
+
+date_type: death
+year: 1955
+description_short: "Dale Carnegie died"
+description: "Author and lecturer Dale Carnegie, whose books on self-improvement and communication became enduring bestsellers, died in New York. 
+"
+region: "United States"
+notes: "Influential self-help pioneer"
+importance: 83
+
+date_type: death
+year: 1993
+description_short: "Severo Ochoa died"
+description: "Spanish-American biochemist Severo Ochoa, Nobel laureate for work central to RNA research, died in Madrid. 
+"
+region: "Spain"
+notes: "Major biomedical scientist"
+importance: 85
+
+date_type: national_day
+year: 1981
+description_short: "Antigua and Barbuda Independence Day"
+description: "Antigua and Barbuda marks Independence Day on November 1, commemorating independence within the Commonwealth in 1981. 
+"
+region: "Antigua and Barbuda"
+notes: "Official national day"
+importance: 89
+
+date_type: national_day
+year: 1994
+description_short: "World Vegan Day"
+description: "World Vegan Day is observed annually on November 1; it was created in 1994 to mark the 50th anniversary of The Vegan Society. 
+"
+region: "International"
+notes: "Widely recognized modern observance"
+importance: 68
+
+date_type: national_day
+year: null
+description_short: "No fixed UN international day listed"
+description: "The United Nations observances calendar does not list a fixed UN international day for November 1. 
+"
+region: "International"
+notes: "Useful for card-product filtering"
+importance: 40
+
+date_type: national_day
+year: null
+description_short: "Day of the Dead begins"
+description: "Day of the Dead is typically observed on November 1 and 2, with November 1 often associated with remembering deceased children in some traditions. 
+"
+region: "Mexico and Mexican communities worldwide"
+notes: "Cultural and religious blend"
+importance: 78
+
+date_type: religious
+year: null
+description_short: "All Saints' Day"
+description: "All Saints' Day is celebrated on November 1 in Western Christianity and commemorates all saints, known and unknown; in Roman Catholicism it is usually a holy day of obligation. 
+"
+region: "Global Christian observance"
+notes: "Eastern churches often use a different date"
+importance: 93
+
+date_type: religious
+year: null
+description_short: "All Souls context begins next day"
+description: "November 1 leads directly into All Souls' Day on November 2, an important Roman Catholic commemoration of the faithful departed. 
+"
+region: "Global Christian observance"
+notes: "Adjacent observance, not on November 1 itself"
+importance: 64
+
+date_type: religious
+year: null
+description_short: "Diwali may sometimes fall on November 1"
+description: "Diwali is a five-day Hindu, Jain, and Sikh festival whose Gregorian dates vary year to year, usually falling in late October or November, so it can sometimes occur on November 1. 
+"
+region: "India and global diaspora"
+notes: "Date varies by lunar calendar"
+importance: 80
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1512
+description_short: Sistine Chapel ceiling inaugurated
+description: Pope Julius II inaugurated the Sistine Chapel after Michelangelo completed the ceiling frescoes, a defining masterpiece of Western art.
+region: Vatican City
+notes: Art history landmark
+importance: 95
+
+date_type: historical_event
+year: 1755
+description_short: Great Lisbon earthquake
+description: A massive earthquake, fires, and tsunami devastated Lisbon, becoming one of Europes most significant disasters.
+region: Portugal
+notes: Influenced philosophy and urban planning
+importance: 99
+
+date_type: historical_event
+year: 1800
+description_short: First White House residency
+description: John Adams became the first US president to live in the White House, though it was unfinished.
+region: United States
+notes: Presidential residence milestone
+importance: 88
+
+date_type: historical_event
+year: 1952
+description_short: First hydrogen bomb test
+description: The United States detonated Ivy Mike, the first full scale thermonuclear weapon test.
+region: Marshall Islands United States
+notes: Cold War escalation
+importance: 97
+
+date_type: historical_event
+year: 1993
+description_short: European Union established
+description: The Maastricht Treaty came into force, officially forming the European Union.
+region: Europe
+notes: Major political integration milestone
+importance: 96
+
+date_type: birth
+year: 1757
+description_short: Antonio Canova born
+description: Italian sculptor and leading neoclassical artist Antonio Canova was born.
+region: Italy
+notes: Influential sculptor
+importance: 84
+
+date_type: birth
+year: 1880
+description_short: Alfred Wegener born
+description: Scientist Alfred Wegener was born and later proposed the theory of continental drift.
+region: Germany
+notes: Key earth science figure
+importance: 92
+
+date_type: birth
+year: 1946
+description_short: Yuko Shimizu born
+description: Japanese designer credited with creating Hello Kitty was born.
+region: Japan
+notes: Pop culture impact
+importance: 76
+
+date_type: birth
+year: 1960
+description_short: Tim Cook born
+description: Business executive and CEO of Apple Tim Cook was born.
+region: United States
+notes: Tech industry leader
+importance: 86
+
+date_type: birth
+year: 1962
+description_short: Anthony Kiedis born
+description: Lead singer of Red Hot Chili Peppers Anthony Kiedis was born.
+region: United States
+notes: Music figure
+importance: 74
+
+date_type: birth
+year: 1972
+description_short: Toni Collette born
+description: Award winning Australian actress Toni Collette was born.
+region: Australia
+notes: Film and television
+importance: 73
+
+date_type: birth
+year: 1973
+description_short: Aishwarya Rai Bachchan born
+description: Indian actress and global film star Aishwarya Rai Bachchan was born.
+region: India
+notes: International recognition
+importance: 82
+
+date_type: death
+year: 1894
+description_short: Alexander III died
+description: Russian Tsar Alexander III died after ruling with strong autocratic policies.
+region: Russia
+notes: Imperial succession
+importance: 82
+
+date_type: death
+year: 1955
+description_short: Dale Carnegie died
+description: Author of influential self improvement books Dale Carnegie died.
+region: United States
+notes: Communication and leadership pioneer
+importance: 83
+
+date_type: death
+year: 1993
+description_short: Severo Ochoa died
+description: Nobel Prize winning biochemist Severo Ochoa died.
+region: Spain
+notes: RNA research pioneer
+importance: 85
+
+date_type: national_day
+year: 1981
+description_short: Antigua and Barbuda Independence Day
+description: Marks independence from the United Kingdom in 1981.
+region: Antigua and Barbuda
+notes: Official national holiday
+importance: 89
+
+date_type: national_day
+year: 1994
+description_short: World Vegan Day
+description: Celebrates veganism and was established by the Vegan Society.
+region: International
+notes: Modern observance
+importance: 68
+
+date_type: national_day
+year: null
+description_short: Day of the Dead begins
+description: Start of the Day of the Dead celebrations, honoring deceased children in some traditions.
+region: Mexico and global communities
+notes: Cultural tradition
+importance: 78
+
+date_type: religious
+year: null
+description_short: All Saints Day
+description: Christian feast honoring all saints, known and unknown.
+region: Global Christian
+notes: Holy day in many traditions
+importance: 93
+
+date_type: religious
+year: null
+description_short: Diwali may occur
+description: Diwali, a major festival of lights, sometimes falls on this date depending on lunar calendar.
+region: India and global diaspora
+notes: Date varies yearly
+importance: 80
+&&&tag for copy&&&
+
+
+
+

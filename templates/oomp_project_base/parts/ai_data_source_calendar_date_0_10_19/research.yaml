@@ -1,0 +1,161 @@
+- date_type: historical_event
+  year: 1469
+  description_short: Ferdinand and Isabella marry
+  description: Ferdinand II of Aragon married Isabella I of Castile, helping unify Spain.
+  region: Spain
+  notes: Dynastic union shaping Spanish state
+  importance: 93
+- date_type: historical_event
+  year: 1781
+  description_short: Cornwallis surrenders at Yorktown
+  description: British forces under Cornwallis surrendered, ending major American Revolutionary fighting.
+  region: United States / United Kingdom
+  notes: Decisive Revolutionary War victory
+  importance: 98
+- date_type: historical_event
+  year: 1812
+  description_short: Napoleon retreats from Moscow
+  description: Napoleon began retreat from Moscow after failed invasion of Russia.
+  region: Europe
+  notes: Catastrophic military turning point
+  importance: 95
+- date_type: historical_event
+  year: 1847
+  description_short: Jane Eyre published
+  description: Charlotte Bronte's novel Jane Eyre was first published.
+  region: United Kingdom
+  notes: Landmark literary work
+  importance: 84
+- date_type: historical_event
+  year: 1914
+  description_short: First Battle of Ypres begins
+  description: Major WWI battle begins between Allied and German forces.
+  region: Belgium / Europe
+  notes: Early defining Western Front battle
+  importance: 91
+- date_type: historical_event
+  year: 1985
+  description_short: First Blockbuster opens
+  description: First Blockbuster video rental store opens in Dallas.
+  region: United States
+  notes: Icon of home entertainment era
+  importance: 67
+- date_type: historical_event
+  year: 1987
+  description_short: Black Monday crash
+  description: Global stock markets crash, Dow falls 22.6 percent.
+  region: Global
+  notes: Largest single-day Dow drop
+  importance: 97
+- date_type: historical_event
+  year: 1989
+  description_short: Guildford Four freed
+  description: Wrongly convicted Guildford Four released after 15 years.
+  region: United Kingdom
+  notes: Major justice system failure case
+  importance: 83
+- date_type: birth
+  year: 1895
+  description_short: Lewis Mumford born
+  description: Influential historian and urban thinker born.
+  region: United States
+  notes: Urban studies pioneer
+  importance: 70
+- date_type: birth
+  year: 1910
+  description_short: Subrahmanyan Chandrasekhar born
+  description: Nobel Prize-winning astrophysicist born.
+  region: India / United States
+  notes: Chandrasekhar limit theory
+  importance: 92
+- date_type: birth
+  year: 1931
+  description_short: John le Carre born
+  description: Renowned espionage novelist born.
+  region: United Kingdom
+  notes: Cold War fiction master
+  importance: 88
+- date_type: birth
+  year: 1945
+  description_short: Angus Deaton born
+  description: Nobel-winning economist born.
+  region: United Kingdom / United States
+  notes: Poverty and welfare research
+  importance: 76
+- date_type: birth
+  year: 1962
+  description_short: Evander Holyfield born
+  description: Legendary heavyweight boxer born.
+  region: United States
+  notes: Four-time champion
+  importance: 81
+- date_type: death
+  year: 1216
+  description_short: King John dies
+  description: English king dies amid post-Magna Carta conflict.
+  region: England
+  notes: Succession crisis follows
+  importance: 89
+- date_type: death
+  year: 1745
+  description_short: Jonathan Swift dies
+  description: Author of Gullivers Travels dies.
+  region: Ireland
+  notes: Major satirical writer
+  importance: 90
+- date_type: death
+  year: 1936
+  description_short: Lu Xun dies
+  description: Leading modern Chinese writer dies.
+  region: China
+  notes: Influential literary figure
+  importance: 91
+- date_type: death
+  year: 1937
+  description_short: Ernest Rutherford dies
+  description: Pioneering nuclear physicist dies.
+  region: United Kingdom
+  notes: Father of nuclear physics
+  importance: 94
+- date_type: death
+  year: 1961
+  description_short: Sergio Osmena dies
+  description: Former Philippine president dies.
+  region: Philippines
+  notes: Commonwealth era leader
+  importance: 72
+- date_type: national_day
+  year:
+  description_short: Niue National Day
+  description: National Day celebrated in Niue.
+  region: Niue
+  notes: Official national observance
+  importance: 78
+- date_type: religious
+  year:
+  description_short: North American Martyrs feast
+  description: Catholic feast of Canadian martyrs.
+  region: Roman Catholic
+  notes: Fixed liturgical date
+  importance: 69
+- date_type: religious
+  year:
+  description_short: Saint Paul of the Cross feast
+  description: Catholic feast day of Saint Paul of the Cross.
+  region: Roman Catholic
+  notes: Fixed liturgical date
+  importance: 56
+- date_type: religious
+  year:
+  description_short: Rosh Chodesh may occur
+  description: Jewish new month observance can fall on this date.
+  region: Judaism
+  notes: Date varies by lunar calendar
+  importance: 52
+- date_type: religious
+  year:
+  description_short: Diwali may overlap
+  description: Festival of lights may fall around this date.
+  region: Hinduism / Sikhism / Jainism
+  notes: Varies yearly
+  importance: 74

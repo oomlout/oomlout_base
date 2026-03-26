@@ -1,0 +1,479 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hey hey 😄—CHadikins reporting for duty and fully booted up!
+
+Day’s going great on my end now that we’re building something together. You know the drill: I’ll take all the time needed, dig deep, and make it properly good.
+
+Right then… what are we tackling today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 19
+
+
+Thought for 1m 48s
+data:
+  - date_type: historical_event
+    year: 1469
+    description_short: Ferdinand and Isabella marry
+    description: Ferdinand II of Aragon married Isabella I of Castile, a dynastic union that helped lay the groundwork for the political unification of Spain.
+    region: Spain
+    notes: "Marriage in Valladolid; long-term state-building milestone. :contentReference[oaicite:0]{index=0}"
+    importance: 93
+
+  - date_type: historical_event
+    year: 1781
+    description_short: Cornwallis surrenders at Yorktown
+    description: British commander Lord Cornwallis surrendered at Yorktown, effectively ending major fighting in the American Revolution.
+    region: United States / United Kingdom
+    notes: "Decisive American victory. :contentReference[oaicite:1]{index=1}"
+    importance: 98
+
+  - date_type: historical_event
+    year: 1812
+    description_short: Napoleon begins retreat from Moscow
+    description: Napoleon began his retreat from Moscow after failing to force Russia into terms, marking the start of a catastrophic reversal in the 1812 campaign.
+    region: Russia / France / Europe
+    notes: "One of military history's great disasters. :contentReference[oaicite:2]{index=2}"
+    importance: 95
+
+  - date_type: historical_event
+    year: 1847
+    description_short: Jane Eyre is published
+    description: Charlotte Bronte's novel Jane Eyre was published in London under the pseudonym Currer Bell.
+    region: United Kingdom
+    notes: "Major landmark in English literature. :contentReference[oaicite:3]{index=3}"
+    importance: 84
+
+  - date_type: historical_event
+    year: 1914
+    description_short: First Battle of Ypres begins
+    description: Allied and German forces began the First Battle of Ypres, one of the defining early battles on the Western Front in World War I.
+    region: Belgium / Europe
+    notes: "Critical early WWI battle. :contentReference[oaicite:4]{index=4}"
+    importance: 91
+
+  - date_type: historical_event
+    year: 1985
+    description_short: First Blockbuster store opens
+    description: The first Blockbuster video-rental store opened in Dallas, becoming a major symbol of late-20th-century home entertainment culture.
+    region: United States
+    notes: "Strong pop-culture and retail milestone. :contentReference[oaicite:5]{index=5}"
+    importance: 67
+
+  - date_type: historical_event
+    year: 1987
+    description_short: Black Monday stock market crash
+    description: Global stock markets crashed on Black Monday, with the Dow Jones Industrial Average falling 22.6 percent in a single day.
+    region: Global
+    notes: "Largest one-day percentage Dow fall. :contentReference[oaicite:6]{index=6}"
+    importance: 97
+
+  - date_type: historical_event
+    year: 1989
+    description_short: Guildford Four are cleared
+    description: The Guildford Four were cleared of the 1974 IRA pub bombing convictions after spending nearly 15 years in prison.
+    region: United Kingdom
+    notes: "Iconic miscarriage-of-justice case. :contentReference[oaicite:7]{index=7}"
+    importance: 83
+
+  - date_type: birth
+    year: 1895
+    description_short: Lewis Mumford born
+    description: Lewis Mumford, influential American historian, urban thinker, and critic of technology and cities, was born.
+    region: United States
+    notes: "Major voice in urban studies. :contentReference[oaicite:8]{index=8}"
+    importance: 70
+
+  - date_type: birth
+    year: 1910
+    description_short: Subrahmanyan Chandrasekhar born
+    description: Astrophysicist Subrahmanyan Chandrasekhar was born; he later won the Nobel Prize for work central to stellar evolution theory.
+    region: India (now Pakistan) / United States
+    notes: "Chandrasekhar limit pioneer. :contentReference[oaicite:9]{index=9}"
+    importance: 92
+
+  - date_type: birth
+    year: 1931
+    description_short: John le Carre born
+    description: Novelist John le Carre was born; he became one of the most important writers of modern espionage fiction.
+    region: United Kingdom
+    notes: "Author of realistic Cold War spy fiction. :contentReference[oaicite:10]{index=10}"
+    importance: 88
+
+  - date_type: birth
+    year: 1945
+    description_short: Angus Deaton born
+    description: Economist Angus Deaton was born; he later received the Nobel Memorial Prize for work on consumption, poverty, and welfare.
+    region: United Kingdom / United States
+    notes: "Nobel-winning economist. :contentReference[oaicite:11]{index=11}"
+    importance: 76
+
+  - date_type: birth
+    year: 1962
+    description_short: Evander Holyfield born
+    description: Boxer Evander Holyfield was born; he later became the only professional fighter to win the heavyweight championship four separate times.
+    region: United States
+    notes: "Boxing great. :contentReference[oaicite:12]{index=12}"
+    importance: 81
+
+  - date_type: death
+    year: 1216
+    description_short: King John dies
+    description: King John of England died during the civil conflict that followed Magna Carta, leaving the crown to his young son Henry III.
+    region: England
+    notes: "Death linked to Magna Carta era turmoil. :contentReference[oaicite:13]{index=13}"
+    importance: 89
+
+  - date_type: death
+    year: 1745
+    description_short: Jonathan Swift dies
+    description: Jonathan Swift, author of Gulliver's Travels and one of the greatest prose satirists in English, died in Dublin.
+    region: Ireland
+    notes: "Canonical satirist. :contentReference[oaicite:14]{index=14}"
+    importance: 90
+
+  - date_type: death
+    year: 1936
+    description_short: Lu Xun dies
+    description: Lu Xun, widely regarded as the greatest writer in 20th-century Chinese literature, died in Shanghai.
+    region: China
+    notes: "Towering modern Chinese literary figure. :contentReference[oaicite:15]{index=15}"
+    importance: 91
+
+  - date_type: death
+    year: 1937
+    description_short: Ernest Rutherford dies
+    description: Ernest Rutherford, central figure in radioactivity research and nuclear physics, died in Cambridge.
+    region: United Kingdom / New Zealand
+    notes: "Foundational modern physicist. :contentReference[oaicite:16]{index=16}"
+    importance: 94
+
+  - date_type: death
+    year: 1961
+    description_short: Sergio Osmena dies
+    description: Sergio Osmena, former president of the Philippines and a leading statesman of the Commonwealth era, died.
+    region: Philippines
+    notes: "Major 20th-century Philippine political figure. :contentReference[oaicite:17]{index=17}"
+    importance: 72
+
+  - date_type: national_day
+    year:
+    description_short: Niue National Day
+    description: Niue observes its National Day on October 19.
+    region: Niue
+    notes: "Official national day listing. :contentReference[oaicite:18]{index=18}"
+    importance: 78
+
+  - date_type: religious
+    year:
+    description_short: Feast of the North American Martyrs
+    description: In the Roman Catholic calendar, October 19 is the feast of Saints John de Brebeuf, Isaac Jogues, and companions, the Canadian Martyrs.
+    region: Roman Catholic / North America
+    notes: "Fixed Christian feast day. :contentReference[oaicite:19]{index=19}"
+    importance: 69
+
+  - date_type: religious
+    year:
+    description_short: Feast of Saint Paul of the Cross
+    description: Saint Paul of the Cross is also commemorated on October 19 in the Catholic calendar.
+    region: Roman Catholic
+    notes: "Fixed Christian feast day. :contentReference[oaicite:20]{index=20}"
+    importance: 56
+
+  - date_type: religious
+    year:
+    description_short: Rosh Chodesh can fall on October 19
+    description: Rosh Chodesh, the beginning of a new month in the Hebrew calendar, sometimes falls on October 19 depending on the year.
+    region: Judaism
+    notes: "Date varies by lunar-solar calendar; for example Cheshvan began on October 19 in 2025. :contentReference[oaicite:21]{index=21}"
+    importance: 52
+
+  - date_type: religious
+    year:
+    description_short: Diwali can overlap October 19
+    description: Diwali, the Hindu festival of lights, sometimes falls on or overlaps October 19 depending on the lunisolar calendar and regional tradition.
+    region: Hinduism / Jainism / Sikhism
+    notes: "Variable date; celebrated between mid-October and mid-November, with 2025 observances spanning October 19-23 in one published calendar. :contentReference[oaicite:22]{index=22}"
+    importance: 74
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1469
+description_short: Ferdinand and Isabella marry
+description: Ferdinand II of Aragon married Isabella I of Castile, helping unify Spain.
+region: Spain
+notes: Dynastic union shaping Spanish state
+importance: 93
+
+date_type: historical_event
+year: 1781
+description_short: Cornwallis surrenders at Yorktown
+description: British forces under Cornwallis surrendered, ending major American Revolutionary fighting.
+region: United States / United Kingdom
+notes: Decisive Revolutionary War victory
+importance: 98
+
+date_type: historical_event
+year: 1812
+description_short: Napoleon retreats from Moscow
+description: Napoleon began retreat from Moscow after failed invasion of Russia.
+region: Europe
+notes: Catastrophic military turning point
+importance: 95
+
+date_type: historical_event
+year: 1847
+description_short: Jane Eyre published
+description: Charlotte Bronte's novel Jane Eyre was first published.
+region: United Kingdom
+notes: Landmark literary work
+importance: 84
+
+date_type: historical_event
+year: 1914
+description_short: First Battle of Ypres begins
+description: Major WWI battle begins between Allied and German forces.
+region: Belgium / Europe
+notes: Early defining Western Front battle
+importance: 91
+
+date_type: historical_event
+year: 1985
+description_short: First Blockbuster opens
+description: First Blockbuster video rental store opens in Dallas.
+region: United States
+notes: Icon of home entertainment era
+importance: 67
+
+date_type: historical_event
+year: 1987
+description_short: Black Monday crash
+description: Global stock markets crash, Dow falls 22.6 percent.
+region: Global
+notes: Largest single-day Dow drop
+importance: 97
+
+date_type: historical_event
+year: 1989
+description_short: Guildford Four freed
+description: Wrongly convicted Guildford Four released after 15 years.
+region: United Kingdom
+notes: Major justice system failure case
+importance: 83
+
+date_type: birth
+year: 1895
+description_short: Lewis Mumford born
+description: Influential historian and urban thinker born.
+region: United States
+notes: Urban studies pioneer
+importance: 70
+
+date_type: birth
+year: 1910
+description_short: Subrahmanyan Chandrasekhar born
+description: Nobel Prize-winning astrophysicist born.
+region: India / United States
+notes: Chandrasekhar limit theory
+importance: 92
+
+date_type: birth
+year: 1931
+description_short: John le Carre born
+description: Renowned espionage novelist born.
+region: United Kingdom
+notes: Cold War fiction master
+importance: 88
+
+date_type: birth
+year: 1945
+description_short: Angus Deaton born
+description: Nobel-winning economist born.
+region: United Kingdom / United States
+notes: Poverty and welfare research
+importance: 76
+
+date_type: birth
+year: 1962
+description_short: Evander Holyfield born
+description: Legendary heavyweight boxer born.
+region: United States
+notes: Four-time champion
+importance: 81
+
+date_type: death
+year: 1216
+description_short: King John dies
+description: English king dies amid post-Magna Carta conflict.
+region: England
+notes: Succession crisis follows
+importance: 89
+
+date_type: death
+year: 1745
+description_short: Jonathan Swift dies
+description: Author of Gullivers Travels dies.
+region: Ireland
+notes: Major satirical writer
+importance: 90
+
+date_type: death
+year: 1936
+description_short: Lu Xun dies
+description: Leading modern Chinese writer dies.
+region: China
+notes: Influential literary figure
+importance: 91
+
+date_type: death
+year: 1937
+description_short: Ernest Rutherford dies
+description: Pioneering nuclear physicist dies.
+region: United Kingdom
+notes: Father of nuclear physics
+importance: 94
+
+date_type: death
+year: 1961
+description_short: Sergio Osmena dies
+description: Former Philippine president dies.
+region: Philippines
+notes: Commonwealth era leader
+importance: 72
+
+date_type: national_day
+year:
+description_short: Niue National Day
+description: National Day celebrated in Niue.
+region: Niue
+notes: Official national observance
+importance: 78
+
+date_type: religious
+year:
+description_short: North American Martyrs feast
+description: Catholic feast of Canadian martyrs.
+region: Roman Catholic
+notes: Fixed liturgical date
+importance: 69
+
+date_type: religious
+year:
+description_short: Saint Paul of the Cross feast
+description: Catholic feast day of Saint Paul of the Cross.
+region: Roman Catholic
+notes: Fixed liturgical date
+importance: 56
+
+date_type: religious
+year:
+description_short: Rosh Chodesh may occur
+description: Jewish new month observance can fall on this date.
+region: Judaism
+notes: Date varies by lunar calendar
+importance: 52
+
+date_type: religious
+year:
+description_short: Diwali may overlap
+description: Festival of lights may fall around this date.
+region: Hinduism / Sikhism / Jainism
+notes: Varies yearly
+importance: 74
+&&&tag for copy&&&
+
+
+
+

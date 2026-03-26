@@ -1,0 +1,210 @@
+
+data:
+
+date_type: historical_event
+year: 1836
+description_short: Darwin returns to England
+description: Charles Darwin returned to England after the HMS Beagle voyage shaping evolution theory.
+region: United Kingdom / global science
+notes: Science milestone
+importance: 98
+
+date_type: historical_event
+year: 1935
+description_short: Ethiopia mobilizes against Italy
+description: Haile Selassie ordered mobilization after Italian invasion, starting the Italo-Ethiopian War.
+region: Ethiopia / Italy
+notes: Anti-fascist conflict precursor
+importance: 88
+
+date_type: historical_event
+year: 1937
+description_short: Parsley Massacre begins
+description: Mass killing of Haitians began under Trujillo's regime in the Dominican Republic.
+region: Dominican Republic / Haiti
+notes: Mass atrocity
+importance: 90
+
+date_type: historical_event
+year: 1954
+description_short: Elvis appears on Grand Ole Opry
+description: Elvis Presley made his only Grand Ole Opry appearance before later success.
+region: United States
+notes: Early career moment
+importance: 72
+
+date_type: historical_event
+year: 1957
+description_short: Bridge on the River Kwai premieres
+description: Film premiered and later won Best Picture at the Academy Awards.
+region: United Kingdom / United States
+notes: Film milestone
+importance: 74
+
+date_type: historical_event
+year: 1959
+description_short: The Twilight Zone debuts
+description: Influential anthology TV series created by Rod Serling premiered.
+region: United States / global culture
+notes: Television landmark
+importance: 86
+
+date_type: historical_event
+year: 1967
+description_short: Thurgood Marshall sworn in
+description: First African American U.S. Supreme Court justice officially took office.
+region: United States
+notes: Civil rights milestone
+importance: 95
+
+date_type: birth
+year: 1452
+description_short: Richard III born
+description: Last Plantagenet king of England was born.
+region: England
+notes: Medieval monarch
+importance: 80
+
+date_type: birth
+year: 1800
+description_short: Nat Turner born
+description: Leader of a major slave rebellion in U.S. history was born.
+region: United States
+notes: Resistance figure
+importance: 84
+
+date_type: birth
+year: 1869
+description_short: Mahatma Gandhi born
+description: Leader of Indian independence and symbol of nonviolent resistance was born.
+region: India / global
+notes: Nonviolence icon
+importance: 100
+
+date_type: birth
+year: 1904
+description_short: Graham Greene born
+description: Influential English novelist known for political and moral themes was born.
+region: United Kingdom
+notes: Major writer
+importance: 82
+
+date_type: birth
+year: 1904
+description_short: Lal Bahadur Shastri born
+description: Second Prime Minister of India and independence leader was born.
+region: India
+notes: National leader
+importance: 87
+
+date_type: birth
+year: 1949
+description_short: Annie Leibovitz born
+description: Celebrated photographer known for iconic portraits was born.
+region: United States
+notes: Photography icon
+importance: 76
+
+date_type: birth
+year: 1951
+description_short: Sting born
+description: Musician and lead singer of The Police was born.
+region: United Kingdom
+notes: Global music figure
+importance: 78
+
+date_type: death
+year: 1780
+description_short: John Andre executed
+description: British officer executed as a spy during the American Revolution.
+region: United States / United Kingdom
+notes: Revolutionary War event
+importance: 79
+
+date_type: death
+year: 1927
+description_short: Svante Arrhenius dies
+description: Nobel Prize-winning chemist and greenhouse effect pioneer died.
+region: Sweden
+notes: Science pioneer
+importance: 85
+
+date_type: death
+year: 1958
+description_short: Marie Stopes dies
+description: Birth control advocate and clinic founder in the UK died.
+region: United Kingdom
+notes: Social reformer
+importance: 77
+
+date_type: death
+year: 1973
+description_short: Paavo Nurmi dies
+description: Legendary Finnish Olympic distance runner died.
+region: Finland
+notes: Olympic legend
+importance: 80
+
+date_type: death
+year: 1985
+description_short: Rock Hudson dies
+description: Actor whose death raised awareness of AIDS died.
+region: United States / global
+notes: Public health awareness
+importance: 90
+
+date_type: death
+year: 2005
+description_short: August Wilson dies
+description: Pulitzer Prize-winning playwright died.
+region: United States
+notes: Major dramatist
+importance: 78
+
+date_type: death
+year: 2017
+description_short: Tom Petty dies
+description: Influential rock musician died.
+region: United States
+notes: Music icon
+importance: 76
+
+date_type: national_day
+year: 2007
+description_short: International Day of Non-Violence
+description: UN observance honoring Gandhi and promoting nonviolence.
+region: International
+notes: UN observance
+importance: 94
+
+date_type: national_day
+year: null
+description_short: Gandhi Jayanti
+description: Indian national holiday celebrating Gandhi's birth.
+region: India
+notes: National observance
+importance: 95
+
+date_type: national_day
+year: 1958
+description_short: Guinea Independence Day
+description: Guinea celebrates independence from France.
+region: Guinea
+notes: National independence
+importance: 83
+
+date_type: religious
+year: null
+description_short: Guardian Angels Feast
+description: Roman Catholic memorial of the Holy Guardian Angels.
+region: Global Catholic
+notes: Fixed annual observance
+importance: 68
+
+date_type: religious
+year: null
+description_short: Yom Kippur may occur
+description: Jewish Day of Atonement sometimes falls on October 2 depending on calendar.
+region: Global Jewish
+notes: Date varies yearly
+importance: 85

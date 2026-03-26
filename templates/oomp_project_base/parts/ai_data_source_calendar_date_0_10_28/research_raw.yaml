@@ -1,0 +1,202 @@
+
+data:
+
+date_type: historical_event
+year: 312
+description_short: "Battle of the Milvian Bridge"
+description: "Constantine defeated Maxentius near Rome, shaping Roman imperial future."
+region: "Roman Empire"
+notes: "Linked to rise of Christianity in empire."
+importance: 93
+
+date_type: historical_event
+year: 1636
+description_short: "Harvard founded"
+description: "Harvard College established as first higher education institution in colonies."
+region: "United States"
+notes: "Foundation of American higher education."
+importance: 88
+
+date_type: historical_event
+year: 1886
+description_short: "Statue of Liberty dedicated"
+description: "Iconic monument dedicated in New York Harbor as symbol of freedom."
+region: "United States"
+notes: "Gift from France representing liberty and immigration."
+importance: 96
+
+date_type: historical_event
+year: 1918
+description_short: "Czechoslovakia proclaimed"
+description: "Independent Czechoslovak state established after World War I."
+region: "Czech Republic / Slovakia"
+notes: "Major national founding moment."
+importance: 91
+
+date_type: historical_event
+year: 1929
+description_short: "Black Monday crash"
+description: "Major stock market collapse contributing to Great Depression."
+region: "United States / Global"
+notes: "One of worst financial crashes in history."
+importance: 95
+
+date_type: historical_event
+year: 1940
+description_short: "Italy invades Greece"
+description: "Italian forces invaded Greece, opening Greco-Italian War."
+region: "Europe"
+notes: "Marked by Greek resistance and Ohi Day origin."
+importance: 92
+
+date_type: historical_event
+year: 1962
+description_short: "Cuban Missile Crisis ends"
+description: "Soviet Union agreed to remove missiles from Cuba."
+region: "Global"
+notes: "Avoided nuclear war escalation."
+importance: 98
+
+date_type: historical_event
+year: 1965
+description_short: "Gateway Arch completed"
+description: "Construction of iconic St. Louis monument finished."
+region: "United States"
+notes: "Symbol of westward expansion."
+importance: 82
+
+date_type: historical_event
+year: 1998
+description_short: "DMCA signed"
+description: "US law established digital copyright protections."
+region: "United States"
+notes: "Major internet-era legislation."
+importance: 79
+
+date_type: historical_event
+year: 2007
+description_short: "Kirchner elected"
+description: "Cristina Fernandez de Kirchner elected president of Argentina."
+region: "Argentina"
+notes: "First elected female president."
+importance: 81
+
+date_type: birth
+year: 1914
+description_short: "Jonas Salk born"
+description: "Scientist who developed first effective polio vaccine."
+region: "United States"
+notes: "Major public health breakthrough."
+importance: 97
+
+date_type: birth
+year: 1933
+description_short: "Garrincha born"
+description: "Legendary Brazilian footballer known for extraordinary dribbling."
+region: "Brazil"
+notes: "World Cup winner and icon."
+importance: 86
+
+date_type: birth
+year: 1949
+description_short: "Caitlyn Jenner born"
+description: "Olympic champion and media personality."
+region: "United States"
+notes: "Notable sports and cultural figure."
+importance: 73
+
+date_type: birth
+year: 1955
+description_short: "Bill Gates born"
+description: "Microsoft cofounder and global philanthropist."
+region: "United States"
+notes: "Key figure in computing revolution."
+importance: 98
+
+date_type: birth
+year: 1967
+description_short: "Julia Roberts born"
+description: "Award-winning Hollywood actress."
+region: "United States"
+notes: "Global film icon."
+importance: 91
+
+date_type: death
+year: 1704
+description_short: "John Locke died"
+description: "Philosopher of liberalism and natural rights passed away."
+region: "England"
+notes: "Influenced modern democracy."
+importance: 96
+
+date_type: death
+year: 1818
+description_short: "Abigail Adams died"
+description: "Influential early American first lady and writer."
+region: "United States"
+notes: "Prominent political voice."
+importance: 83
+
+date_type: death
+year: 1998
+description_short: "Ted Hughes died"
+description: "English poet laureate passed away."
+region: "United Kingdom"
+notes: "Major literary figure."
+importance: 84
+
+date_type: death
+year: 2023
+description_short: "Matthew Perry died"
+description: "Actor known for role in Friends passed away."
+region: "United States"
+notes: "Major television figure."
+importance: 88
+
+date_type: national_day
+year: 1940
+description_short: "Ohi Day"
+description: "Greek national day marking refusal of Italian ultimatum."
+region: "Greece / Cyprus"
+notes: "Annual patriotic holiday."
+importance: 90
+
+date_type: national_day
+year: 1918
+description_short: "Czechoslovak Independence Day"
+description: "Celebrates founding of independent Czechoslovakia."
+region: "Czech Republic"
+notes: "Major national holiday."
+importance: 89
+
+date_type: national_day
+year: 2002
+description_short: "International Animation Day"
+description: "Celebrates art and history of animation."
+region: "International"
+notes: "Linked to early animation history."
+importance: 61
+
+date_type: national_day
+year: null
+description_short: "Plush Animal Lover's Day"
+description: "Celebrates stuffed animals and plush toys."
+region: "Global"
+notes: "Unofficial fun observance."
+importance: 34
+
+date_type: religious
+year: null
+description_short: "Feast of Saints Simon and Jude"
+description: "Christian feast honoring apostles Simon and Jude."
+region: "Christianity"
+notes: "Fixed Western calendar date."
+importance: 78
+
+date_type: religious
+year: null
+description_short: "Diwali may occur"
+description: "Festival of lights observed in Hindu, Sikh, Jain traditions."
+region: "India and global diaspora"
+notes: "Date varies by lunar calendar."
+importance: 85

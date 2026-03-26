@@ -1,0 +1,126 @@
+classification: ai
+classification_capital: Ai
+classification_first_letter: a
+classification_first_letter_upper: A
+classification_upper: AI
+color: date
+color_capital: Date
+color_first_letter: d
+color_first_letter_upper: D
+color_upper: DATE
+date: 0_8_14
+day: 14
+description_extra: ''
+description_extra_capital: ''
+description_extra_first_letter: ''
+description_extra_first_letter_upper: ''
+description_extra_upper: ''
+description_main: 0_8_14
+description_main_capital: 0 8.14
+description_main_first_letter: '0'
+description_main_first_letter_upper: '0'
+description_main_upper: 0_8_14
+description_only_numbers: 0814
+description_only_numbers_short: '814'
+description_or_color: D814
+description_or_color_upper: D814
+directory: parts/ai_data_source_calendar_date_0_8_14
+distributors: []
+file_input: ''
+id: ai_data_source_calendar_date_0_8_14
+id_no_class: data_source_calendar_date_0_8_14
+id_no_size: date_0_8_14
+id_no_type: calendar_date_0_8_14
+link_github: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/ai_data_source_calendar_date_0_8_14
+link_main: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/ai_data_source_calendar_date_0_8_14
+link_redirect: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/ai_data_source_calendar_date_0_8_14
+manufacturer: ''
+manufacturer_capital: ''
+manufacturer_first_letter: ''
+manufacturer_first_letter_upper: ''
+manufacturer_upper: ''
+manufacturers: []
+markdown_full: '[ai_data_source_calendar_date_0_8_14](none)<br>[](none)<br>[Ai Data
+    Source Calendar Date 0 8 14](none)<br><br>'
+markdown_short: '[ai_data_source_calendar_date_0_8_14](none)<br><br>'
+md5: 4f217e75eb2b7242e39d998bde1900b9
+md5_10: 4f217e75eb
+md5_10_upper: 4F217E75EB
+md5_5: 4f217
+md5_5_upper: 4F217
+md5_6: 4f217e
+md5_6_alpha: 335ha
+md5_6_alpha_upper: 335HA
+md5_6_upper: 4F217E
+month: 8
+month_name: August
+name: Ai Data Source Calendar Date 0 8 14
+name_no_class: Data Source Calendar Date 0 8 14
+name_no_size: Date 0 8 14
+name_no_size_short: Date 0 8 14
+name_no_type: Calendar Date 0 8 14
+name_proper: Ai Data Source Calendar Date 0 8 14
+name_space: ai data source calendar date 0 8 14
+name_upper: AI DATA SOURCE CALENDAR DATE 0 8 14
+oomlout_ai_roboclick_1:
+    actions:
+    -   command: new_chat
+        description: research_day_of_the_year
+    -   command: ai_query
+        delay: '120'
+        folder_name: roboclick\ai_data_source_calendar_date\research_day_of_the_year
+        mode_ai_wait: slow
+    -   command: ai_query
+        mode_ai_wait: slow
+        text: if the above output is yaml please put it in the reply, if it is not
+            please summarize the above information in a yaml format and only return
+            the yaml without any other text. The yaml should be in the format of a
+            dictionary with keys and values. The keys should be descriptive of the
+            information they contain. The values should be the information itself.
+            Please make sure the yaml is between two &&&tag for copy&&& strings
+    -   command: ai_save_text
+        file_name_clip: research_raw.yaml
+        file_name_full: research_full.txt
+    -   command: ai_fix_yaml_copy_paste
+        file_destination: research.yaml
+        file_source: research_raw.yaml
+        new_item_name: date_type
+        remove_top_level: data
+    -   command: close_tab
+    -   command: create_text_file
+        content: Tag for research_day_of_the_year completed.
+        file_name: aaaa_research_day_of_the_year_tag_done.txt
+    file_test: aaaa_research_day_of_the_year_tag_done.txt
+oomp_key: oomp_ai_data_source_calendar_date_0_8_14
+oomp_word: ant feet fax
+oomp_word_emoji: ':ant: :feet: :fax:'
+oomp_word_emoji_list:
+- ':ant:'
+- ':feet:'
+- ':fax:'
+oomp_word_list:
+- ant
+- feet
+- fax
+part_number: ''
+part_number_capital: ''
+part_number_first_letter: ''
+part_number_first_letter_upper: ''
+part_number_upper: ''
+short_code: ''
+short_code_upper: ''
+size: calendar
+size_capital: Calendar
+size_first_letter: c
+size_first_letter_upper: C
+size_only_numbers: ''
+size_only_numbers_no_zeros: ''
+size_upper: CALENDAR
+theme: ''
+type: data_source
+type_capital: Data Source
+type_first_letter: d
+type_first_letter_upper: D
+type_upper: DATA_SOURCE
+url_chat: ''
+year: 0

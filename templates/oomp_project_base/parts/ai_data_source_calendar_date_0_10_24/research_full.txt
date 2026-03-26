@@ -1,0 +1,453 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hiya!! 😄 Chadikins reporting for duty — fully powered up and ready to dive deep with you.
+
+What are we building / researching / crafting today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 24
+
+
+Thought for 1m 5s
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1648
+description_short: "Peace of Westphalia signed"
+description: "Treaties associated with the Peace of Westphalia were signed, ending the Thirty Years' War and reshaping the European state system. 
+"
+region: "Europe"
+notes: "Major diplomatic turning point."
+importance: 95
+
+date_type: historical_event
+year: 1861
+description_short: "First transcontinental telegraph completed"
+description: "Western Union linked eastern and western U.S. telegraph networks, enabling near-instant communication across the country. 
+"
+region: "United States"
+notes: "Communications milestone."
+importance: 88
+
+date_type: historical_event
+year: 1929
+description_short: "Black Thursday shocks Wall Street"
+description: "Black Thursday, the first day of the 1929 stock market crash, triggered panic selling and helped usher in the Great Depression. 
+"
+region: "United States / global impact"
+notes: "Economic turning point."
+importance: 98
+
+date_type: historical_event
+year: 1945
+description_short: "United Nations officially comes into force"
+description: "The UN Charter entered into force, marking the official beginning of the United Nations. 
+"
+region: "Global"
+notes: "Foundation of the modern UN."
+importance: 100
+
+date_type: historical_event
+year: 1951
+description_short: "Truman ends formal U.S. war with Germany"
+description: "President Harry Truman proclaimed that the United States' state of war with Germany was officially over. 
+"
+region: "United States / Germany"
+notes: "Postwar legal closure."
+importance: 82
+
+date_type: birth
+year: 1632
+description_short: "Antonie van Leeuwenhoek born"
+description: "Dutch microscopist Antonie van Leeuwenhoek, pioneer observer of bacteria and protozoa, was born. 
+"
+region: "Netherlands"
+notes: "Foundational figure in microbiology."
+importance: 94
+
+date_type: birth
+year: 1775
+description_short: "Bahadur Shah II born"
+description: "Bahadur Shah II, the last Mughal emperor and a symbolic figure in the 1857 Indian uprising, was born. 
+"
+region: "India"
+notes: "Last Mughal emperor."
+importance: 84
+
+date_type: birth
+year: 1925
+description_short: "Luciano Berio born"
+description: "Italian composer Luciano Berio, noted for innovative modern classical music, was born. 
+"
+region: "Italy"
+notes: "Influential 20th-century composer."
+importance: 76
+
+date_type: birth
+year: 1985
+description_short: "Wayne Rooney born"
+description: "English football star Wayne Rooney was born in Liverpool. 
+"
+region: "United Kingdom"
+notes: "Modern football icon."
+importance: 86
+
+date_type: birth
+year: 1986
+description_short: "Drake born"
+description: "Canadian rapper and actor Drake was born in Toronto. 
+"
+region: "Canada"
+notes: "Major contemporary music figure."
+importance: 84
+
+date_type: death
+year: 2005
+description_short: "Rosa Parks dies"
+description: "American civil rights activist Rosa Parks died in Detroit. 
+"
+region: "United States"
+notes: "Civil rights movement icon."
+importance: 95
+
+date_type: death
+year: 2017
+description_short: "Fats Domino dies"
+description: "Rock-and-roll pioneer Fats Domino died in Louisiana at age 89. 
+"
+region: "United States"
+notes: "Early rock-and-roll legend."
+importance: 85
+
+date_type: death
+year: 2002
+description_short: "Richard Harris dies"
+description: "Irish actor Richard Harris, known for stage and screen roles, died on this date. 
+"
+region: "Ireland / United Kingdom"
+notes: "Notable screen and theatre actor."
+importance: 72
+
+date_type: national_day
+year: 1945
+description_short: "United Nations Day"
+description: "United Nations Day is observed annually on October 24, marking the anniversary of the UN Charter entering into force. 
+"
+region: "Global"
+notes: "Official UN observance."
+importance: 96
+
+date_type: national_day
+year: 1972
+description_short: "World Development Information Day"
+description: "This UN observance highlights development challenges and the importance of information and international cooperation. 
+"
+region: "Global"
+notes: "Official UN observance."
+importance: 78
+
+date_type: national_day
+year: 1964
+description_short: "Zambia Independence Day"
+description: "Zambia celebrates its independence every year on October 24. 
+"
+region: "Zambia"
+notes: "National independence day."
+importance: 90
+
+date_type: national_day
+year: 2011
+description_short: "Food Day"
+description: "Food Day in the United States promotes healthy, sustainable, and equitable food choices on October 24. 
+"
+region: "United States"
+notes: "Widely recognized advocacy day."
+importance: 58
+
+date_type: religious
+year: "annual"
+description_short: "Feast of St. Antony Mary Claret"
+description: "In the Roman Catholic calendar, October 24 is the feast day of St. Antony Mary Claret. 
+"
+region: "Christianity / Roman Catholic"
+notes: "Fixed annual feast."
+importance: 60
+
+date_type: religious
+year: "varies"
+description_short: "Simchat Torah can fall on October 24"
+description: "Simchat Torah, celebrating the completion and restarting of the annual Torah reading cycle, sometimes falls on October 24; for example, it began on October 24 in 2024. 
+"
+region: "Judaism"
+notes: "Date varies by Hebrew calendar."
+importance: 74
+
+date_type: religious
+year: "varies"
+description_short: "Diwali can fall on October 24"
+description: "Diwali, the Hindu festival of lights, falls between mid-October and mid-November and has sometimes occurred on October 24, including in 2022. 
+"
+region: "Hinduism, Jainism, Sikhism"
+notes: "Date varies by lunisolar calendar."
+importance: 82
+&&&tag for copy&&&
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1648
+description_short: "Peace of Westphalia signed"
+description: "Treaties signed ending the Thirty Years' War and reshaping European sovereignty."
+region: "Europe"
+notes: "Major diplomatic turning point."
+importance: 95
+
+date_type: historical_event
+year: 1861
+description_short: "Transcontinental telegraph completed"
+description: "First telegraph line connected U.S. coasts, enabling rapid communication."
+region: "United States"
+notes: "Communications milestone."
+importance: 88
+
+date_type: historical_event
+year: 1929
+description_short: "Black Thursday stock crash begins"
+description: "Mass panic selling on Wall Street triggers the Great Depression."
+region: "United States / global impact"
+notes: "Economic turning point."
+importance: 98
+
+date_type: historical_event
+year: 1945
+description_short: "United Nations officially founded"
+description: "UN Charter comes into force, establishing the United Nations."
+region: "Global"
+notes: "Foundation of modern international cooperation."
+importance: 100
+
+date_type: historical_event
+year: 1951
+description_short: "U.S. war with Germany formally ends"
+description: "President Truman declares official end of wartime status with Germany."
+region: "United States / Germany"
+notes: "Post-WWII legal closure."
+importance: 82
+
+date_type: birth
+year: 1632
+description_short: "Antonie van Leeuwenhoek born"
+description: "Pioneer of microbiology who first observed bacteria and protozoa."
+region: "Netherlands"
+notes: "Foundational scientific figure."
+importance: 94
+
+date_type: birth
+year: 1775
+description_short: "Bahadur Shah II born"
+description: "Last Mughal emperor and symbolic leader during 1857 uprising."
+region: "India"
+notes: "End of Mughal era."
+importance: 84
+
+date_type: birth
+year: 1925
+description_short: "Luciano Berio born"
+description: "Innovative Italian composer known for experimental classical music."
+region: "Italy"
+notes: "Influential modern composer."
+importance: 76
+
+date_type: birth
+year: 1985
+description_short: "Wayne Rooney born"
+description: "English football legend and Manchester United record scorer."
+region: "United Kingdom"
+notes: "Modern football icon."
+importance: 86
+
+date_type: birth
+year: 1986
+description_short: "Drake born"
+description: "Canadian rapper and global music superstar."
+region: "Canada"
+notes: "Major contemporary artist."
+importance: 84
+
+date_type: death
+year: 2005
+description_short: "Rosa Parks dies"
+description: "Civil rights icon known for Montgomery bus protest passes away."
+region: "United States"
+notes: "Symbol of civil rights movement."
+importance: 95
+
+date_type: death
+year: 2017
+description_short: "Fats Domino dies"
+description: "Rock-and-roll pioneer and influential early music star dies."
+region: "United States"
+notes: "Music history figure."
+importance: 85
+
+date_type: death
+year: 2002
+description_short: "Richard Harris dies"
+description: "Irish actor known for film and stage roles passes away."
+region: "Ireland / United Kingdom"
+notes: "Notable performer."
+importance: 72
+
+date_type: national_day
+year: 1945
+description_short: "United Nations Day"
+description: "Marks anniversary of UN Charter entering into force."
+region: "Global"
+notes: "Official UN observance."
+importance: 96
+
+date_type: national_day
+year: 1972
+description_short: "World Development Information Day"
+description: "Highlights global development challenges and information sharing."
+region: "Global"
+notes: "UN observance."
+importance: 78
+
+date_type: national_day
+year: 1964
+description_short: "Zambia Independence Day"
+description: "Celebrates Zambia's independence from British rule."
+region: "Zambia"
+notes: "National celebration."
+importance: 90
+
+date_type: national_day
+year: 2011
+description_short: "Food Day"
+description: "Promotes healthy, sustainable food awareness."
+region: "United States"
+notes: "Advocacy day."
+importance: 58
+
+date_type: religious
+year: "annual"
+description_short: "Feast of St. Antony Mary Claret"
+description: "Catholic feast day honoring St. Antony Mary Claret."
+region: "Christianity / Roman Catholic"
+notes: "Fixed annual observance."
+importance: 60
+
+date_type: religious
+year: "varies"
+description_short: "Simchat Torah may fall on this date"
+description: "Jewish celebration marking completion of Torah reading cycle."
+region: "Judaism"
+notes: "Date varies yearly."
+importance: 74
+
+date_type: religious
+year: "varies"
+description_short: "Diwali may fall on this date"
+description: "Festival of lights celebrated across Hindu, Sikh, and Jain traditions."
+region: "India and global"
+notes: "Lunisolar calendar variation."
+importance: 82
+&&&tag for copy&&&
+
+
+
+

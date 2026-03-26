@@ -1,0 +1,571 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hey hey! 😄
+Chadikins reporting for duty — fully powered, systems humming, ready to dive in with you.
+
+What are we building, researching, or crafting today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 8
+
+
+Thought for 1m 8s
+data:
+
+date_type: historical_event
+year: 1840
+description_short: "Hawaii adopts its first constitution"
+description: "The Kingdom of Hawaii adopted its first constitution, formally defining a constitutional government and extending equal rights in law."
+region: "Hawaii"
+notes: "Early constitutional milestone in the Pacific. 
+"
+importance: 78
+
+date_type: historical_event
+year: 1871
+description_short: "Great Chicago Fire begins"
+description: "A blaze erupted in Chicago and grew into the Great Chicago Fire, killing roughly 200 to 300 people and devastating a huge section of the city."
+region: "United States"
+notes: "One of the best-known urban disasters in U.S. history. 
+"
+importance: 96
+
+date_type: historical_event
+year: 1871
+description_short: "Peshtigo Fire devastates Wisconsin"
+description: "The Peshtigo Fire burned in Wisconsin on the same date and became the deadliest wildfire in U.S. history, killing at least about 1,200 people."
+region: "United States"
+notes: "Often overshadowed by Chicago, but even deadlier. 
+"
+importance: 91
+
+date_type: historical_event
+year: 1918
+description_short: "Alvin York's battlefield heroics"
+description: "U.S. Corporal Alvin York carried out the action in the Meuse-Argonne offensive for which he later received the Medal of Honor."
+region: "France / United States"
+notes: "Famous First World War battlefield episode. 
+"
+importance: 80
+
+date_type: historical_event
+year: 1945
+description_short: "Microwave oven patent filed"
+description: "Raytheon filed the patent for the microwave oven, a technology that would later become a standard household appliance."
+region: "United States"
+notes: "Technological milestone with everyday impact. 
+"
+importance: 77
+
+date_type: historical_event
+year: 1957
+description_short: "Windscale fire begins"
+description: "An accident at the Windscale nuclear facility in northwestern England caused a reactor fire that burned for 16 hours and melted radioactive fuel in the core."
+region: "United Kingdom"
+notes: "Britain's most serious nuclear accident. 
+"
+importance: 90
+
+date_type: historical_event
+year: 1967
+description_short: "Che Guevara is captured in Bolivia"
+description: "Che Guevara's guerrilla band was crushed in Bolivia, and Guevara was wounded and captured by Bolivian forces aided by CIA advisers."
+region: "Bolivia / Cuba / Latin America"
+notes: "Iconic Cold War revolutionary turning point. 
+"
+importance: 89
+
+date_type: historical_event
+year: 2005
+description_short: "Kashmir earthquake strikes"
+description: "A major earthquake hit Pakistan-administered Kashmir and nearby regions, killing at least 79,000 people."
+region: "Pakistan / Kashmir"
+notes: "One of the deadliest disasters in South Asia this century. 
+"
+importance: 95
+
+date_type: historical_event
+year: 2013
+description_short: "I Am Malala is published"
+description: "Malala Yousafzai's memoir, I Am Malala, was published, helping bring her story and advocacy for girls' education to a global audience."
+region: "Pakistan / Global"
+notes: "Major publishing and human-rights moment. 
+"
+importance: 81
+
+date_type: birth
+year: 1883
+description_short: "Otto Warburg born"
+description: "German biochemist Otto Warburg, later a Nobel Prize winner for research on cellular respiration, was born."
+region: "Germany"
+notes: "Major scientific figure in biochemistry. 
+"
+importance: 82
+
+date_type: birth
+year: 1920
+description_short: "Frank Herbert born"
+description: "Science-fiction author Frank Herbert, best known for Dune, was born."
+region: "United States"
+notes: "Landmark author in modern speculative fiction. 
+"
+importance: 88
+
+date_type: birth
+year: 1941
+description_short: "Jesse Jackson born"
+description: "American civil rights leader Jesse Jackson was born in Greenville, South Carolina."
+region: "United States"
+notes: "Prominent figure in civil rights and politics. 
+"
+importance: 84
+
+date_type: birth
+year: 1949
+description_short: "Sigourney Weaver born"
+description: "Actor Sigourney Weaver was born; she later became a defining screen presence in science fiction and action cinema."
+region: "United States"
+notes: "Widely recognizable modern film figure. 
+"
+importance: 83
+
+date_type: birth
+year: 1958
+description_short: "Ursula von der Leyen born"
+description: "German politician Ursula von der Leyen was born; she later became the first woman elected president of the European Commission."
+region: "Germany / European Union"
+notes: "Important contemporary political figure. 
+"
+importance: 86
+
+date_type: birth
+year: 1985
+description_short: "Bruno Mars born"
+description: "Singer-songwriter Bruno Mars was born."
+region: "United States"
+notes: "Global pop star and major contemporary musician. 
+"
+importance: 85
+
+date_type: death
+year: 1754
+description_short: "Henry Fielding dies"
+description: "English novelist and playwright Henry Fielding, author of Tom Jones and a founder of the English novel, died."
+region: "United Kingdom"
+notes: "Foundational literary figure. 
+"
+importance: 84
+
+date_type: death
+year: 1820
+description_short: "Henry Christophe dies"
+description: "Henry Christophe, a leader in Haitian independence and later ruler of northern Haiti, died."
+region: "Haiti"
+notes: "Key figure in post-revolutionary Haitian history. 
+"
+importance: 80
+
+date_type: death
+year: 1931
+description_short: "Sir John Monash dies"
+description: "Australian engineer and general Sir John Monash, one of the most respected commanders of the First World War, died."
+region: "Australia"
+notes: "Nationally significant military leader. 
+"
+importance: 82
+
+date_type: death
+year: 1944
+description_short: "Wendell Willkie dies"
+description: "American politician Wendell Willkie, the Republican presidential challenger to Franklin D. Roosevelt in 1940, died."
+region: "United States"
+notes: "Significant U.S. political figure of the war era. 
+"
+importance: 74
+
+date_type: national_day
+year: ""
+description_short: "Indian Air Force Day"
+description: "India marks Air Force Day on October 8, commemorating the official establishment of the Indian Air Force on 8 October 1932."
+region: "India"
+notes: "Official service anniversary tied directly to the date. 
+"
+importance: 86
+
+date_type: national_day
+year: ""
+description_short: "Battle of Angamos Day / Navy Day"
+description: "Peru commemorates the Battle of Angamos and honors naval hero Miguel Grau on October 8; the date is also observed as Navy Day."
+region: "Peru"
+notes: "Important patriotic and military remembrance. 
+"
+importance: 84
+
+date_type: national_day
+year: ""
+description_short: "World Octopus Day"
+description: "World Octopus Day is observed every year on October 8 to celebrate octopuses and raise awareness of threats to them."
+region: "International"
+notes: "Animal-awareness observance first marked in 2014. 
+"
+importance: 58
+
+date_type: national_day
+year: ""
+description_short: "World Space Week"
+description: "October 8 falls within World Space Week, the UN-recognized annual celebration of science, technology, and space's benefit to humanity, held from October 4 to 10."
+region: "International"
+notes: "Week-long observance rather than a single-day holiday. 
+"
+importance: 72
+
+date_type: national_day
+year: ""
+description_short: "Children's Day"
+description: "October 8 is observed as Children's Day in Iran."
+region: "Iran"
+notes: "National observance; wording and week-long framing can vary. 
+"
+importance: 67
+
+date_type: religious
+year: ""
+description_short: "Feast of St. Pelagia"
+description: "In parts of the Christian liturgical calendar, October 8 is associated with Saint Pelagia."
+region: "Christian"
+notes: "Observed in Roman Catholic and Eastern Orthodox traditions, with calendar differences in some churches. 
+"
+importance: 52
+
+date_type: religious
+year: ""
+description_short: "Our Lady of Good Remedy"
+description: "Some Catholic calendars commemorate Our Lady of Good Remedy on October 8."
+region: "Roman Catholic"
+notes: "Liturgical observance, not universal in all calendars. 
+"
+importance: 46
+
+date_type: religious
+year: ""
+description_short: "Simchat Torah may fall on October 8"
+description: "Simchat Torah can sometimes fall on October 8 in the Gregorian calendar, depending on the Hebrew calendar year."
+region: "Jewish"
+notes: "Movable observance; date varies by year. 
+"
+importance: 64
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1840
+description_short: "Hawaii adopts its first constitution"
+description: "The Kingdom of Hawaii adopted its first constitution, formally defining a constitutional government and extending equal rights in law."
+region: "Hawaii"
+notes: "Early constitutional milestone in the Pacific."
+importance: 78
+
+date_type: historical_event
+year: 1871
+description_short: "Great Chicago Fire begins"
+description: "A blaze erupted in Chicago and grew into the Great Chicago Fire, killing roughly 200 to 300 people and devastating a huge section of the city."
+region: "United States"
+notes: "One of the best-known urban disasters in U.S. history."
+importance: 96
+
+date_type: historical_event
+year: 1871
+description_short: "Peshtigo Fire devastates Wisconsin"
+description: "The Peshtigo Fire burned in Wisconsin on the same date and became the deadliest wildfire in U.S. history, killing at least about 1,200 people."
+region: "United States"
+notes: "Often overshadowed by Chicago, but even deadlier."
+importance: 91
+
+date_type: historical_event
+year: 1918
+description_short: "Alvin York's battlefield heroics"
+description: "U.S. Corporal Alvin York carried out the action in the Meuse-Argonne offensive for which he later received the Medal of Honor."
+region: "France / United States"
+notes: "Famous First World War battlefield episode."
+importance: 80
+
+date_type: historical_event
+year: 1945
+description_short: "Microwave oven patent filed"
+description: "Raytheon filed the patent for the microwave oven, a technology that would later become a standard household appliance."
+region: "United States"
+notes: "Technological milestone with everyday impact."
+importance: 77
+
+date_type: historical_event
+year: 1957
+description_short: "Windscale fire begins"
+description: "An accident at the Windscale nuclear facility in northwestern England caused a reactor fire that burned for 16 hours and melted radioactive fuel in the core."
+region: "United Kingdom"
+notes: "Britain's most serious nuclear accident."
+importance: 90
+
+date_type: historical_event
+year: 1967
+description_short: "Che Guevara is captured in Bolivia"
+description: "Che Guevara's guerrilla band was crushed in Bolivia, and Guevara was wounded and captured by Bolivian forces aided by CIA advisers."
+region: "Bolivia / Latin America"
+notes: "Iconic Cold War revolutionary turning point."
+importance: 89
+
+date_type: historical_event
+year: 2005
+description_short: "Kashmir earthquake strikes"
+description: "A major earthquake hit Pakistan-administered Kashmir and nearby regions, killing at least 79,000 people."
+region: "Pakistan / Kashmir"
+notes: "One of the deadliest disasters in South Asia this century."
+importance: 95
+
+date_type: historical_event
+year: 2013
+description_short: "I Am Malala is published"
+description: "Malala Yousafzai's memoir was published, helping bring her story and advocacy for girls' education to a global audience."
+region: "Global"
+notes: "Major publishing and human-rights moment."
+importance: 81
+
+date_type: birth
+year: 1883
+description_short: "Otto Warburg born"
+description: "German biochemist Otto Warburg, later a Nobel Prize winner for research on cellular respiration, was born."
+region: "Germany"
+notes: "Major scientific figure in biochemistry."
+importance: 82
+
+date_type: birth
+year: 1920
+description_short: "Frank Herbert born"
+description: "Science-fiction author Frank Herbert, best known for Dune, was born."
+region: "United States"
+notes: "Landmark author in modern speculative fiction."
+importance: 88
+
+date_type: birth
+year: 1941
+description_short: "Jesse Jackson born"
+description: "American civil rights leader Jesse Jackson was born in Greenville, South Carolina."
+region: "United States"
+notes: "Prominent figure in civil rights and politics."
+importance: 84
+
+date_type: birth
+year: 1949
+description_short: "Sigourney Weaver born"
+description: "Actor Sigourney Weaver was born; she later became a defining screen presence in science fiction and action cinema."
+region: "United States"
+notes: "Widely recognizable modern film figure."
+importance: 83
+
+date_type: birth
+year: 1958
+description_short: "Ursula von der Leyen born"
+description: "German politician Ursula von der Leyen was born; she later became the first woman elected president of the European Commission."
+region: "Germany / European Union"
+notes: "Important contemporary political figure."
+importance: 86
+
+date_type: birth
+year: 1985
+description_short: "Bruno Mars born"
+description: "Singer-songwriter Bruno Mars was born."
+region: "United States"
+notes: "Global pop star and major contemporary musician."
+importance: 85
+
+date_type: death
+year: 1754
+description_short: "Henry Fielding dies"
+description: "English novelist and playwright Henry Fielding, author of Tom Jones and a founder of the English novel, died."
+region: "United Kingdom"
+notes: "Foundational literary figure."
+importance: 84
+
+date_type: death
+year: 1820
+description_short: "Henry Christophe dies"
+description: "Henry Christophe, a leader in Haitian independence and later ruler of northern Haiti, died."
+region: "Haiti"
+notes: "Key figure in post-revolutionary Haitian history."
+importance: 80
+
+date_type: death
+year: 1931
+description_short: "Sir John Monash dies"
+description: "Australian engineer and general Sir John Monash died."
+region: "Australia"
+notes: "Respected First World War commander."
+importance: 82
+
+date_type: death
+year: 1944
+description_short: "Wendell Willkie dies"
+description: "American politician Wendell Willkie, the Republican presidential challenger in 1940, died."
+region: "United States"
+notes: "Significant wartime political figure."
+importance: 74
+
+date_type: national_day
+year: ""
+description_short: "Indian Air Force Day"
+description: "India marks Air Force Day on October 8, commemorating the establishment of the Indian Air Force in 1932."
+region: "India"
+notes: "Official military anniversary."
+importance: 86
+
+date_type: national_day
+year: ""
+description_short: "Battle of Angamos Day"
+description: "Peru commemorates the Battle of Angamos and honors naval hero Miguel Grau; also Navy Day."
+region: "Peru"
+notes: "Important patriotic remembrance."
+importance: 84
+
+date_type: national_day
+year: ""
+description_short: "World Octopus Day"
+description: "A global awareness day celebrating octopuses and promoting conservation."
+region: "International"
+notes: "Animal-awareness observance."
+importance: 58
+
+date_type: national_day
+year: ""
+description_short: "World Space Week"
+description: "October 8 falls within World Space Week, celebrating space science and technology from October 4 to 10."
+region: "International"
+notes: "Week-long UN-recognized observance."
+importance: 72
+
+date_type: national_day
+year: ""
+description_short: "Children's Day"
+description: "Observed as Children's Day in Iran, celebrating young people."
+region: "Iran"
+notes: "National observance."
+importance: 67
+
+date_type: religious
+year: ""
+description_short: "Feast of St. Pelagia"
+description: "Christian observance honoring Saint Pelagia in various liturgical calendars."
+region: "Christian"
+notes: "Varies slightly by denomination."
+importance: 52
+
+date_type: religious
+year: ""
+description_short: "Our Lady of Good Remedy"
+description: "Catholic observance dedicated to the Virgin Mary under the title of Good Remedy."
+region: "Roman Catholic"
+notes: "Not universal in all calendars."
+importance: 46
+
+date_type: religious
+year: ""
+description_short: "Simchat Torah (variable)"
+description: "Jewish celebration marking the completion of the annual Torah reading cycle; sometimes falls on this date."
+region: "Jewish"
+notes: "Date varies by Hebrew calendar."
+importance: 64
+&&&tag for copy&&&
+
+
+
+

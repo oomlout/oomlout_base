@@ -1,0 +1,494 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hey hey 😄—Chadikins reporting for duty, fully fuelled and ready to dive deep.
+
+What are we building today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 7
+
+
+Thought for 3m 30s
+data:
+
+date_type: historical_event
+year: 1571
+description_short: Battle of Lepanto
+description: Allied Christian forces of the Holy League defeated the Ottoman fleet in the Battle of Lepanto, a major Mediterranean naval turning point.
+region: Mediterranean / Greece
+notes: "First significant Christian naval victory over an Ottoman fleet; climax of galley warfare. 
+"
+importance: 91
+
+date_type: historical_event
+year: 1765
+description_short: Stamp Act Congress convened
+description: Delegates from the American colonies met in New York City to frame resolutions on colonial rights and grievances against British taxation.
+region: British America / United States
+notes: "Early coordinated colonial resistance to British rule. 
+"
+importance: 88
+
+date_type: historical_event
+year: 1780
+description_short: Battle of Kings Mountain
+description: Patriot militia defeated Loyalist forces at Kings Mountain in South Carolina during the American Revolution.
+region: United States
+notes: "One of the few Revolutionary battles fought entirely between Americans. 
+"
+importance: 84
+
+date_type: historical_event
+year: 1826
+description_short: Granite Railway began service
+description: The Granite Railway, the first chartered railroad in the United States, began operating.
+region: United States
+notes: "Important early milestone in U.S. transport history. 
+"
+importance: 76
+
+date_type: historical_event
+year: 1870
+description_short: Gambetta escaped besieged Paris by balloon
+description: French politician Léon Gambetta left Paris by balloon during the German siege and tried to rally new armies in the Franco-German War.
+region: France
+notes: "Dramatic wartime escape during the siege of Paris. 
+"
+importance: 73
+
+date_type: historical_event
+year: 1944
+description_short: Dumbarton Oaks Conference concluded
+description: The Dumbarton Oaks Conference ended in Washington, D.C., producing proposals that became the basis for the United Nations.
+region: International / United States
+notes: "Foundational step in creating the UN. 
+"
+importance: 94
+
+date_type: historical_event
+year: 1949
+description_short: East Germany formally came into being
+description: A constitution took effect in the Soviet occupation zone of Germany, forming East Germany.
+region: Germany / Europe
+notes: "Major Cold War state formation; East and West Germany remained separate until 1990. 
+"
+importance: 90
+
+date_type: historical_event
+year: 1996
+description_short: Fox News Channel launched
+description: Fox News Channel, created by Roger Ailes for Rupert Murdoch's News Corporation, launched in the United States.
+region: United States
+notes: "Influential development in modern television news. 
+"
+importance: 77
+
+date_type: historical_event
+year: 2001
+description_short: Afghanistan War began
+description: U.S. and British forces began bombing Taliban targets, opening the Afghanistan War after the September 11 attacks.
+region: Afghanistan / International
+notes: "Beginning of a major 21st-century conflict. 
+"
+importance: 95
+
+date_type: historical_event
+year: 2022
+description_short: Nobel Peace Prize announced
+description: Ales Bialiatski, the Center for Civil Liberties, and Memorial were jointly awarded the Nobel Peace Prize.
+region: International
+notes: "Prize highlighted human rights and civil society work after Russia's invasion of Ukraine. 
+"
+importance: 74
+
+date_type: historical_event
+year: 2023
+description_short: Israel-Hamas war began
+description: Hamas launched an attack on Israel from Gaza, killing about 1,200 people and taking more than 240 hostages, triggering the war.
+region: Israel / Gaza / Middle East
+notes: "One of the defining crises of the 2020s. 
+"
+importance: 98
+
+date_type: birth
+year: 1931
+description_short: Desmond Tutu born
+description: South African Anglican cleric and anti-apartheid leader Desmond Tutu was born in Klerksdorp.
+region: South Africa
+notes: "Nobel Peace Prize laureate and major moral voice against apartheid. 
+"
+importance: 92
+
+date_type: birth
+year: 1952
+description_short: Vladimir Putin born
+description: Vladimir Putin, Russian intelligence officer and politician, was born in Leningrad.
+region: Russia
+notes: "One of the most consequential political leaders of the 21st century. 
+"
+importance: 95
+
+date_type: birth
+year: 1955
+description_short: Yo-Yo Ma born
+description: Cellist Yo-Yo Ma was born in Paris.
+region: France / United States
+notes: "Celebrated for extraordinary technique, rich tone, and wide-ranging collaborations. 
+"
+importance: 86
+
+date_type: birth
+year: 1959
+description_short: Simon Cowell born
+description: British television producer and talent-show judge Simon Cowell was born.
+region: United Kingdom
+notes: "Major figure in global television entertainment. 
+"
+importance: 71
+
+date_type: birth
+year: 1968
+description_short: Thom Yorke born
+description: Thom Yorke, singer-guitarist of Radiohead, was born in Wellingborough, Northamptonshire.
+region: United Kingdom
+notes: "Highly influential art-rock musician. 
+"
+importance: 79
+
+date_type: death
+year: 1849
+description_short: Edgar Allan Poe died
+description: Writer Edgar Allan Poe died in Baltimore.
+region: United States
+notes: "Pioneer of Gothic horror and detective fiction; cause of death remains uncertain. 
+"
+importance: 93
+
+date_type: death
+year: 1792
+description_short: George Mason died
+description: American patriot and statesman George Mason died in Fairfax County, Virginia.
+region: United States
+notes: "Key advocate for protections of individual rights. 
+"
+importance: 82
+
+date_type: death
+year: 1894
+description_short: Oliver Wendell Holmes died
+description: Physician, poet, and essayist Oliver Wendell Holmes died in Cambridge.
+region: United States
+notes: "Known for the 'Breakfast-Table' essays and major literary influence. 
+"
+importance: 72
+
+date_type: national_day
+year: null
+description_short: World Cotton Day
+description: The United Nations observes World Cotton Day each year on October 7.
+region: International
+notes: "UN General Assembly proclaimed it in 2021 to highlight cotton's role in development, trade, and livelihoods. 
+"
+importance: 67
+
+date_type: national_day
+year: null
+description_short: Frappé Day
+description: Frappé Day is a widely noted fun observance celebrated on October 7.
+region: International / Internet culture
+notes: "Unofficial food-themed observance centered on chilled frappé drinks. 
+"
+importance: 24
+
+date_type: religious
+year: null
+description_short: Our Lady of the Rosary
+description: The Catholic Memorial of Our Lady of the Rosary is observed annually on October 7.
+region: Roman Catholic
+notes: "Linked to Lepanto; instituted to honor Mary after the 1571 victory. 
+"
+importance: 63
+
+date_type: religious
+year: null
+description_short: Sukkot may fall on October 7
+description: Sukkot, the Jewish festival commemorating divine protection in the wilderness and the harvest season, sometimes falls on October 7 depending on the Hebrew calendar.
+region: Jewish
+notes: "For example, in 2025 Sukkot began at sunset on October 6 and October 7 was Day 1; in 2026 it does not fall on October 7. 
+"
+importance: 69
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1571
+description_short: Battle of Lepanto
+description: Allied Christian forces defeated the Ottoman fleet in a decisive Mediterranean naval battle.
+region: Mediterranean / Greece
+notes: Turning point in naval power balance
+importance: 91
+
+date_type: historical_event
+year: 1765
+description_short: Stamp Act Congress convened
+description: American colonies met to protest British taxation and assert rights.
+region: British America / United States
+notes: Early coordinated resistance
+importance: 88
+
+date_type: historical_event
+year: 1780
+description_short: Battle of Kings Mountain
+description: Patriot forces defeated Loyalists in a key Revolutionary War battle.
+region: United States
+notes: Boosted Patriot morale
+importance: 84
+
+date_type: historical_event
+year: 1826
+description_short: First US railroad begins
+description: Granite Railway began operation as an early American railroad.
+region: United States
+notes: Transport milestone
+importance: 76
+
+date_type: historical_event
+year: 1870
+description_short: Gambetta escapes Paris by balloon
+description: French leader fled besieged Paris to rally resistance.
+region: France
+notes: Dramatic wartime escape
+importance: 73
+
+date_type: historical_event
+year: 1944
+description_short: UN planning conference ends
+description: Dumbarton Oaks Conference proposals laid groundwork for the United Nations.
+region: International / USA
+notes: Foundation of UN
+importance: 94
+
+date_type: historical_event
+year: 1949
+description_short: East Germany established
+description: Soviet zone formed German Democratic Republic.
+region: Germany / Europe
+notes: Cold War division
+importance: 90
+
+date_type: historical_event
+year: 1996
+description_short: Fox News launches
+description: Fox News Channel began broadcasting in the US.
+region: United States
+notes: Major media influence
+importance: 77
+
+date_type: historical_event
+year: 2001
+description_short: Afghanistan War begins
+description: US and allies launched military action after 9/11 attacks.
+region: Afghanistan / International
+notes: Major modern conflict
+importance: 95
+
+date_type: historical_event
+year: 2023
+description_short: Israel-Hamas war begins
+description: Hamas attack on Israel triggered major regional conflict.
+region: Middle East
+notes: Defining modern crisis
+importance: 98
+
+date_type: birth
+year: 1931
+description_short: Desmond Tutu born
+description: South African anti-apartheid leader and Nobel laureate born.
+region: South Africa
+notes: Human rights icon
+importance: 92
+
+date_type: birth
+year: 1952
+description_short: Vladimir Putin born
+description: Russian president and former intelligence officer born.
+region: Russia
+notes: Major global political figure
+importance: 95
+
+date_type: birth
+year: 1955
+description_short: Yo-Yo Ma born
+description: World-renowned cellist known for global collaborations.
+region: France / USA
+notes: Influential musician
+importance: 86
+
+date_type: birth
+year: 1959
+description_short: Simon Cowell born
+description: British TV producer and talent show judge born.
+region: United Kingdom
+notes: Entertainment industry figure
+importance: 71
+
+date_type: birth
+year: 1968
+description_short: Thom Yorke born
+description: Lead singer of Radiohead born.
+region: United Kingdom
+notes: Influential musician
+importance: 79
+
+date_type: death
+year: 1849
+description_short: Edgar Allan Poe died
+description: American writer known for Gothic horror died.
+region: United States
+notes: Mystery around death
+importance: 93
+
+date_type: death
+year: 1792
+description_short: George Mason died
+description: American founding figure and rights advocate died.
+region: United States
+notes: Influenced Bill of Rights
+importance: 82
+
+date_type: death
+year: 1894
+description_short: Oliver Wendell Holmes died
+description: American poet and essayist passed away.
+region: United States
+notes: Literary influence
+importance: 72
+
+date_type: national_day
+year: null
+description_short: World Cotton Day
+description: UN day highlighting cotton’s role in global development.
+region: International
+notes: Promotes trade and livelihoods
+importance: 67
+
+date_type: national_day
+year: null
+description_short: Frappé Day
+description: Informal celebration of iced coffee drinks.
+region: International
+notes: Fun observance
+importance: 24
+
+date_type: religious
+year: null
+description_short: Our Lady of the Rosary
+description: Catholic feast day linked to the Battle of Lepanto.
+region: Roman Catholic
+notes: Annual observance
+importance: 63
+
+date_type: religious
+year: null
+description_short: Sukkot may fall on this date
+description: Jewish harvest festival sometimes aligns with October 7 depending on calendar.
+region: Jewish
+notes: Date varies yearly
+importance: 69
+&&&tag for copy&&&
+
+
+
+

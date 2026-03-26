@@ -1,0 +1,568 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hiya! 😄 Chadikins reporting for duty — fully powered up and ready to dive in.
+
+What are we building or researching today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 30
+
+
+Thought for 1m 56s
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1485
+description_short: "Henry VII crowned"
+description: "Henry Tudor was crowned Henry VII of England, beginning the Tudor dynasty."
+region: "England"
+notes: "Ended Wars of the Roses era."
+importance: 92
+
+date_type: historical_event
+year: 1905
+description_short: "October Manifesto issued"
+description: "Tsar Nicholas II issued the October Manifesto, curbing absolute autocracy and promising a representative assembly."
+region: "Russian Empire"
+notes: "Key step toward constitutional monarchy."
+importance: 88
+
+date_type: historical_event
+year: 1938
+description_short: "War of the Worlds broadcast"
+description: "Orson Welles broadcast his radio adaptation of War of the Worlds, famously alarming some listeners."
+region: "United States"
+notes: "Landmark in radio and mass media history."
+importance: 86
+
+date_type: historical_event
+year: 1944
+description_short: "Appalachian Spring premieres"
+description: "Aaron Copland's ballet Appalachian Spring was first performed by Martha Graham's company."
+region: "United States"
+notes: "Later won the Pulitzer Prize for music."
+importance: 75
+
+date_type: historical_event
+year: 1961
+description_short: "Tsar Bomba detonated"
+description: "The Soviet Union detonated Tsar Bomba over Novaya Zemlya, the largest nuclear explosion ever recorded."
+region: "Soviet Union"
+notes: "Most powerful human-made explosion."
+importance: 97
+
+date_type: historical_event
+year: 1974
+description_short: "Rumble in the Jungle"
+description: "Muhammad Ali knocked out George Foreman in Kinshasa to regain the world heavyweight title."
+region: "Zaire, now Democratic Republic of the Congo"
+notes: "One of boxing's most iconic fights."
+importance: 91
+
+date_type: historical_event
+year: 1995
+description_short: "Quebec sovereignty referendum fails"
+description: "Voters in Quebec narrowly rejected a referendum on sovereignty and a new political partnership with Canada."
+region: "Canada"
+notes: "A pivotal moment in modern Canadian politics."
+importance: 84
+
+date_type: historical_event
+year: 2003
+description_short: "LeBron James NBA debut"
+description: "LeBron James made his NBA debut for the Cleveland Cavaliers after being drafted out of high school."
+region: "United States"
+notes: "Start of a historic basketball career."
+importance: 82
+
+date_type: birth
+year: 1735
+description_short: "John Adams born"
+description: "John Adams, Founding Father and second president of the United States, was born."
+region: "British America, now United States"
+notes: "Major figure in the American Revolution."
+importance: 95
+
+date_type: birth
+year: 1839
+description_short: "Alfred Sisley born"
+description: "Impressionist painter Alfred Sisley was born."
+region: "France"
+notes: "Important early Impressionist landscape artist."
+importance: 73
+
+date_type: birth
+year: 1873
+description_short: "Francisco Madero born"
+description: "Francisco I. Madero, revolutionary leader and later president of Mexico, was born."
+region: "Mexico"
+notes: "Central figure in the Mexican Revolution."
+importance: 86
+
+date_type: birth
+year: 1885
+description_short: "Ezra Pound born"
+description: "Poet Ezra Pound was born."
+region: "United States"
+notes: "Influential modernist literary figure."
+importance: 80
+
+date_type: birth
+year: 1909
+description_short: "Homi J. Bhabha born"
+description: "Physicist Homi J. Bhabha, a founder of India's nuclear program, was born."
+region: "India"
+notes: "Major scientist and institution builder."
+importance: 88
+
+date_type: birth
+year: 1930
+description_short: "Clifford Brown born"
+description: "Jazz trumpeter Clifford Brown was born."
+region: "United States"
+notes: "Key hard-bop musician."
+importance: 72
+
+date_type: birth
+year: 1960
+description_short: "Diego Maradona born"
+description: "Football legend Diego Maradona was born."
+region: "Argentina"
+notes: "One of the sport's greatest players."
+importance: 96
+
+date_type: death
+year: 1910
+description_short: "Henri Dunant died"
+description: "Henri Dunant, founder of the Red Cross and co-recipient of the first Nobel Peace Prize, died."
+region: "Switzerland"
+notes: "Foundational humanitarian figure."
+importance: 93
+
+date_type: death
+year: 1923
+description_short: "Bonar Law died"
+description: "Bonar Law, former prime minister of the United Kingdom, died."
+region: "United Kingdom"
+notes: "Only UK prime minister born outside the British Isles."
+importance: 68
+
+date_type: death
+year: 1979
+description_short: "Barnes Wallis died"
+description: "Engineer Barnes Wallis, designer of the World War II dambuster bomb, died."
+region: "United Kingdom"
+notes: "Noted aeronautical and military innovator."
+importance: 77
+
+date_type: death
+year: 2006
+description_short: "Clifford Geertz died"
+description: "Anthropologist Clifford Geertz died."
+region: "United States"
+notes: "Influential interpreter of culture and symbols."
+importance: 74
+
+date_type: death
+year: 2020
+description_short: "Robert Fisk died"
+description: "Journalist and author Robert Fisk died."
+region: "United Kingdom"
+notes: "Renowned Middle East correspondent."
+importance: 71
+
+date_type: national_day
+year: null
+description_short: "World Thrift Day in India"
+description: "India observes World Thrift Day on October 30, promoting saving and financial prudence."
+region: "India"
+notes: "Observed globally on October 31, but on October 30 in India."
+importance: 63
+
+date_type: national_day
+year: 1991
+description_short: "Victims of Political Repression remembrance"
+description: "Russia marks the Day of Remembrance of the Victims of Political Repression on October 30."
+region: "Russia"
+notes: "Official remembrance day established in 1991."
+importance: 76
+
+date_type: national_day
+year: 1993
+description_short: "Declaration of the Slovak Nation anniversary"
+description: "Slovakia commemorates the Anniversary of the Declaration of the Slovak Nation on October 30."
+region: "Slovakia"
+notes: "Commemorates the 1918 Martin Declaration; generally an observance, not a public holiday."
+importance: 58
+
+date_type: national_day
+year: null
+description_short: "Disarmament Week concluding day"
+description: "October 30 falls within the final day of United Nations Disarmament Week."
+region: "International"
+notes: "UN observance week runs from October 24 to 30."
+importance: 55
+
+date_type: religious
+year: null
+description_short: "Diwali may fall on October 30"
+description: "Diwali, the Hindu festival of lights, sometimes falls on October 30 depending on the lunar calendar."
+region: "Hindu communities worldwide"
+notes: "Variable by year; occurred on October 30 in 2016 in some calendars."
+importance: 89
+
+date_type: religious
+year: null
+description_short: "Milad un-Nabi may fall on October 30"
+description: "Milad un-Nabi, commemorating the Prophet Muhammad's birth, can fall on October 30 in some years."
+region: "Muslim communities worldwide"
+notes: "Variable by lunar calendar; observed on October 30 in 2020 in some countries."
+importance: 78
+
+date_type: religious
+year: null
+description_short: "Chhat Puja may fall on October 30"
+description: "Chhat Puja, dedicated to the Sun deity, sometimes falls on October 30."
+region: "India and Nepal"
+notes: "Variable by lunar calendar; observed on October 30 in 2022 in some calendars."
+importance: 70
+
+date_type: religious
+year: null
+description_short: "Christian feast days"
+description: "Several Christian feast days are kept on October 30, including Marcellus of Tangier and Blessed Dominic Collins."
+region: "Christian traditions"
+notes: "Observed chiefly in liturgical calendars."
+importance: 42
+
+Sources for historical events and major biographies: 
+Sources for India World Thrift Day: 
+Sources for Russia remembrance day: 
+Sources for Slovakia observance: 
+Source for UN Disarmament Week: 
+Sources for variable religious observances: 
+&&&tag for copy&&&
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1485
+description_short: "Henry VII crowned"
+description: "Henry Tudor was crowned Henry VII of England, beginning the Tudor dynasty."
+region: "England"
+notes: "Ended Wars of the Roses era."
+importance: 92
+
+date_type: historical_event
+year: 1905
+description_short: "October Manifesto issued"
+description: "Tsar Nicholas II issued the October Manifesto, curbing absolute autocracy and promising a representative assembly."
+region: "Russian Empire"
+notes: "Key step toward constitutional monarchy."
+importance: 88
+
+date_type: historical_event
+year: 1938
+description_short: "War of the Worlds broadcast"
+description: "Orson Welles broadcast his radio adaptation of War of the Worlds, famously alarming some listeners."
+region: "United States"
+notes: "Landmark in radio and mass media history."
+importance: 86
+
+date_type: historical_event
+year: 1944
+description_short: "Appalachian Spring premieres"
+description: "Aaron Copland's ballet Appalachian Spring was first performed by Martha Graham's company."
+region: "United States"
+notes: "Later won the Pulitzer Prize for music."
+importance: 75
+
+date_type: historical_event
+year: 1961
+description_short: "Tsar Bomba detonated"
+description: "The Soviet Union detonated Tsar Bomba over Novaya Zemlya, the largest nuclear explosion ever recorded."
+region: "Soviet Union"
+notes: "Most powerful human-made explosion."
+importance: 97
+
+date_type: historical_event
+year: 1974
+description_short: "Rumble in the Jungle"
+description: "Muhammad Ali knocked out George Foreman in Kinshasa to regain the world heavyweight title."
+region: "Zaire, now Democratic Republic of the Congo"
+notes: "One of boxing's most iconic fights."
+importance: 91
+
+date_type: historical_event
+year: 1995
+description_short: "Quebec sovereignty referendum fails"
+description: "Voters in Quebec narrowly rejected a referendum on sovereignty and a new political partnership with Canada."
+region: "Canada"
+notes: "A pivotal moment in modern Canadian politics."
+importance: 84
+
+date_type: historical_event
+year: 2003
+description_short: "LeBron James NBA debut"
+description: "LeBron James made his NBA debut for the Cleveland Cavaliers after being drafted out of high school."
+region: "United States"
+notes: "Start of a historic basketball career."
+importance: 82
+
+date_type: birth
+year: 1735
+description_short: "John Adams born"
+description: "John Adams, Founding Father and second president of the United States, was born."
+region: "United States"
+notes: "Major figure in the American Revolution."
+importance: 95
+
+date_type: birth
+year: 1839
+description_short: "Alfred Sisley born"
+description: "Impressionist painter Alfred Sisley was born."
+region: "France"
+notes: "Important early Impressionist landscape artist."
+importance: 73
+
+date_type: birth
+year: 1873
+description_short: "Francisco Madero born"
+description: "Francisco I. Madero, revolutionary leader and later president of Mexico, was born."
+region: "Mexico"
+notes: "Central figure in the Mexican Revolution."
+importance: 86
+
+date_type: birth
+year: 1885
+description_short: "Ezra Pound born"
+description: "Poet Ezra Pound was born."
+region: "United States"
+notes: "Influential modernist literary figure."
+importance: 80
+
+date_type: birth
+year: 1909
+description_short: "Homi J. Bhabha born"
+description: "Physicist Homi J. Bhabha, a founder of India's nuclear program, was born."
+region: "India"
+notes: "Major scientist and institution builder."
+importance: 88
+
+date_type: birth
+year: 1930
+description_short: "Clifford Brown born"
+description: "Jazz trumpeter Clifford Brown was born."
+region: "United States"
+notes: "Key hard-bop musician."
+importance: 72
+
+date_type: birth
+year: 1960
+description_short: "Diego Maradona born"
+description: "Football legend Diego Maradona was born."
+region: "Argentina"
+notes: "One of the sport's greatest players."
+importance: 96
+
+date_type: death
+year: 1910
+description_short: "Henri Dunant died"
+description: "Henri Dunant, founder of the Red Cross and co-recipient of the first Nobel Peace Prize, died."
+region: "Switzerland"
+notes: "Foundational humanitarian figure."
+importance: 93
+
+date_type: death
+year: 1923
+description_short: "Bonar Law died"
+description: "Bonar Law, former prime minister of the United Kingdom, died."
+region: "United Kingdom"
+notes: "Only UK prime minister born outside the British Isles."
+importance: 68
+
+date_type: death
+year: 1979
+description_short: "Barnes Wallis died"
+description: "Engineer Barnes Wallis, designer of the World War II dambuster bomb, died."
+region: "United Kingdom"
+notes: "Noted aeronautical and military innovator."
+importance: 77
+
+date_type: death
+year: 2006
+description_short: "Clifford Geertz died"
+description: "Anthropologist Clifford Geertz died."
+region: "United States"
+notes: "Influential interpreter of culture and symbols."
+importance: 74
+
+date_type: death
+year: 2020
+description_short: "Robert Fisk died"
+description: "Journalist and author Robert Fisk died."
+region: "United Kingdom"
+notes: "Renowned Middle East correspondent."
+importance: 71
+
+date_type: national_day
+year: null
+description_short: "World Thrift Day in India"
+description: "India observes World Thrift Day on October 30, promoting saving and financial prudence."
+region: "India"
+notes: "Observed globally on October 31, but on October 30 in India."
+importance: 63
+
+date_type: national_day
+year: 1991
+description_short: "Victims of Political Repression remembrance"
+description: "Russia marks the Day of Remembrance of the Victims of Political Repression on October 30."
+region: "Russia"
+notes: "Official remembrance day established in 1991."
+importance: 76
+
+date_type: national_day
+year: 1993
+description_short: "Declaration of the Slovak Nation anniversary"
+description: "Slovakia commemorates the Anniversary of the Declaration of the Slovak Nation on October 30."
+region: "Slovakia"
+notes: "Commemorates the 1918 Martin Declaration."
+importance: 58
+
+date_type: national_day
+year: null
+description_short: "UN Disarmament Week concludes"
+description: "October 30 marks the final day of United Nations Disarmament Week."
+region: "International"
+notes: "Observed annually from October 24 to 30."
+importance: 55
+
+date_type: religious
+year: null
+description_short: "Diwali may fall on this date"
+description: "Diwali, the Hindu festival of lights, sometimes falls on October 30 depending on the lunar calendar."
+region: "Hindu communities worldwide"
+notes: "Date varies annually."
+importance: 89
+
+date_type: religious
+year: null
+description_short: "Milad un-Nabi may fall on this date"
+description: "Milad un-Nabi, commemorating the Prophet Muhammad's birth, can fall on October 30 in some years."
+region: "Muslim communities worldwide"
+notes: "Date varies annually."
+importance: 78
+
+date_type: religious
+year: null
+description_short: "Chhat Puja may fall on this date"
+description: "Chhat Puja, dedicated to the Sun deity, sometimes falls on October 30."
+region: "India and Nepal"
+notes: "Date varies annually."
+importance: 70
+
+date_type: religious
+year: null
+description_short: "Christian feast days observed"
+description: "Various Christian feast days are observed, including Marcellus of Tangier and Dominic Collins."
+region: "Christian traditions"
+notes: "Liturgical calendar observances."
+importance: 42
+&&&tag for copy&&&
+
+
+
+

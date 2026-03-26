@@ -1,0 +1,226 @@
+
+data:
+
+date_type: historical_event
+year: 1485
+description_short: "Henry VII crowned"
+description: "Henry Tudor was crowned Henry VII of England, beginning the Tudor dynasty."
+region: "England"
+notes: "Ended Wars of the Roses era."
+importance: 92
+
+date_type: historical_event
+year: 1905
+description_short: "October Manifesto issued"
+description: "Tsar Nicholas II issued the October Manifesto, curbing absolute autocracy and promising a representative assembly."
+region: "Russian Empire"
+notes: "Key step toward constitutional monarchy."
+importance: 88
+
+date_type: historical_event
+year: 1938
+description_short: "War of the Worlds broadcast"
+description: "Orson Welles broadcast his radio adaptation of War of the Worlds, famously alarming some listeners."
+region: "United States"
+notes: "Landmark in radio and mass media history."
+importance: 86
+
+date_type: historical_event
+year: 1944
+description_short: "Appalachian Spring premieres"
+description: "Aaron Copland's ballet Appalachian Spring was first performed by Martha Graham's company."
+region: "United States"
+notes: "Later won the Pulitzer Prize for music."
+importance: 75
+
+date_type: historical_event
+year: 1961
+description_short: "Tsar Bomba detonated"
+description: "The Soviet Union detonated Tsar Bomba over Novaya Zemlya, the largest nuclear explosion ever recorded."
+region: "Soviet Union"
+notes: "Most powerful human-made explosion."
+importance: 97
+
+date_type: historical_event
+year: 1974
+description_short: "Rumble in the Jungle"
+description: "Muhammad Ali knocked out George Foreman in Kinshasa to regain the world heavyweight title."
+region: "Zaire, now Democratic Republic of the Congo"
+notes: "One of boxing's most iconic fights."
+importance: 91
+
+date_type: historical_event
+year: 1995
+description_short: "Quebec sovereignty referendum fails"
+description: "Voters in Quebec narrowly rejected a referendum on sovereignty and a new political partnership with Canada."
+region: "Canada"
+notes: "A pivotal moment in modern Canadian politics."
+importance: 84
+
+date_type: historical_event
+year: 2003
+description_short: "LeBron James NBA debut"
+description: "LeBron James made his NBA debut for the Cleveland Cavaliers after being drafted out of high school."
+region: "United States"
+notes: "Start of a historic basketball career."
+importance: 82
+
+date_type: birth
+year: 1735
+description_short: "John Adams born"
+description: "John Adams, Founding Father and second president of the United States, was born."
+region: "United States"
+notes: "Major figure in the American Revolution."
+importance: 95
+
+date_type: birth
+year: 1839
+description_short: "Alfred Sisley born"
+description: "Impressionist painter Alfred Sisley was born."
+region: "France"
+notes: "Important early Impressionist landscape artist."
+importance: 73
+
+date_type: birth
+year: 1873
+description_short: "Francisco Madero born"
+description: "Francisco I. Madero, revolutionary leader and later president of Mexico, was born."
+region: "Mexico"
+notes: "Central figure in the Mexican Revolution."
+importance: 86
+
+date_type: birth
+year: 1885
+description_short: "Ezra Pound born"
+description: "Poet Ezra Pound was born."
+region: "United States"
+notes: "Influential modernist literary figure."
+importance: 80
+
+date_type: birth
+year: 1909
+description_short: "Homi J. Bhabha born"
+description: "Physicist Homi J. Bhabha, a founder of India's nuclear program, was born."
+region: "India"
+notes: "Major scientist and institution builder."
+importance: 88
+
+date_type: birth
+year: 1930
+description_short: "Clifford Brown born"
+description: "Jazz trumpeter Clifford Brown was born."
+region: "United States"
+notes: "Key hard-bop musician."
+importance: 72
+
+date_type: birth
+year: 1960
+description_short: "Diego Maradona born"
+description: "Football legend Diego Maradona was born."
+region: "Argentina"
+notes: "One of the sport's greatest players."
+importance: 96
+
+date_type: death
+year: 1910
+description_short: "Henri Dunant died"
+description: "Henri Dunant, founder of the Red Cross and co-recipient of the first Nobel Peace Prize, died."
+region: "Switzerland"
+notes: "Foundational humanitarian figure."
+importance: 93
+
+date_type: death
+year: 1923
+description_short: "Bonar Law died"
+description: "Bonar Law, former prime minister of the United Kingdom, died."
+region: "United Kingdom"
+notes: "Only UK prime minister born outside the British Isles."
+importance: 68
+
+date_type: death
+year: 1979
+description_short: "Barnes Wallis died"
+description: "Engineer Barnes Wallis, designer of the World War II dambuster bomb, died."
+region: "United Kingdom"
+notes: "Noted aeronautical and military innovator."
+importance: 77
+
+date_type: death
+year: 2006
+description_short: "Clifford Geertz died"
+description: "Anthropologist Clifford Geertz died."
+region: "United States"
+notes: "Influential interpreter of culture and symbols."
+importance: 74
+
+date_type: death
+year: 2020
+description_short: "Robert Fisk died"
+description: "Journalist and author Robert Fisk died."
+region: "United Kingdom"
+notes: "Renowned Middle East correspondent."
+importance: 71
+
+date_type: national_day
+year: null
+description_short: "World Thrift Day in India"
+description: "India observes World Thrift Day on October 30, promoting saving and financial prudence."
+region: "India"
+notes: "Observed globally on October 31, but on October 30 in India."
+importance: 63
+
+date_type: national_day
+year: 1991
+description_short: "Victims of Political Repression remembrance"
+description: "Russia marks the Day of Remembrance of the Victims of Political Repression on October 30."
+region: "Russia"
+notes: "Official remembrance day established in 1991."
+importance: 76
+
+date_type: national_day
+year: 1993
+description_short: "Declaration of the Slovak Nation anniversary"
+description: "Slovakia commemorates the Anniversary of the Declaration of the Slovak Nation on October 30."
+region: "Slovakia"
+notes: "Commemorates the 1918 Martin Declaration."
+importance: 58
+
+date_type: national_day
+year: null
+description_short: "UN Disarmament Week concludes"
+description: "October 30 marks the final day of United Nations Disarmament Week."
+region: "International"
+notes: "Observed annually from October 24 to 30."
+importance: 55
+
+date_type: religious
+year: null
+description_short: "Diwali may fall on this date"
+description: "Diwali, the Hindu festival of lights, sometimes falls on October 30 depending on the lunar calendar."
+region: "Hindu communities worldwide"
+notes: "Date varies annually."
+importance: 89
+
+date_type: religious
+year: null
+description_short: "Milad un-Nabi may fall on this date"
+description: "Milad un-Nabi, commemorating the Prophet Muhammad's birth, can fall on October 30 in some years."
+region: "Muslim communities worldwide"
+notes: "Date varies annually."
+importance: 78
+
+date_type: religious
+year: null
+description_short: "Chhat Puja may fall on this date"
+description: "Chhat Puja, dedicated to the Sun deity, sometimes falls on October 30."
+region: "India and Nepal"
+notes: "Date varies annually."
+importance: 70
+
+date_type: religious
+year: null
+description_short: "Christian feast days observed"
+description: "Various Christian feast days are observed, including Marcellus of Tangier and Dominic Collins."
+region: "Christian traditions"
+notes: "Liturgical calendar observances."
+importance: 42

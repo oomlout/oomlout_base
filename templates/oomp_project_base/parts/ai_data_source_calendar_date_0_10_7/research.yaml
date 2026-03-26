@@ -1,0 +1,154 @@
+- date_type: historical_event
+  year: 1571
+  description_short: Battle of Lepanto
+  description: Allied Christian forces defeated the Ottoman fleet in a decisive Mediterranean naval battle.
+  region: Mediterranean / Greece
+  notes: Turning point in naval power balance
+  importance: 91
+- date_type: historical_event
+  year: 1765
+  description_short: Stamp Act Congress convened
+  description: American colonies met to protest British taxation and assert rights.
+  region: British America / United States
+  notes: Early coordinated resistance
+  importance: 88
+- date_type: historical_event
+  year: 1780
+  description_short: Battle of Kings Mountain
+  description: Patriot forces defeated Loyalists in a key Revolutionary War battle.
+  region: United States
+  notes: Boosted Patriot morale
+  importance: 84
+- date_type: historical_event
+  year: 1826
+  description_short: First US railroad begins
+  description: Granite Railway began operation as an early American railroad.
+  region: United States
+  notes: Transport milestone
+  importance: 76
+- date_type: historical_event
+  year: 1870
+  description_short: Gambetta escapes Paris by balloon
+  description: French leader fled besieged Paris to rally resistance.
+  region: France
+  notes: Dramatic wartime escape
+  importance: 73
+- date_type: historical_event
+  year: 1944
+  description_short: UN planning conference ends
+  description: Dumbarton Oaks Conference proposals laid groundwork for the United Nations.
+  region: International / USA
+  notes: Foundation of UN
+  importance: 94
+- date_type: historical_event
+  year: 1949
+  description_short: East Germany established
+  description: Soviet zone formed German Democratic Republic.
+  region: Germany / Europe
+  notes: Cold War division
+  importance: 90
+- date_type: historical_event
+  year: 1996
+  description_short: Fox News launches
+  description: Fox News Channel began broadcasting in the US.
+  region: United States
+  notes: Major media influence
+  importance: 77
+- date_type: historical_event
+  year: 2001
+  description_short: Afghanistan War begins
+  description: US and allies launched military action after 9/11 attacks.
+  region: Afghanistan / International
+  notes: Major modern conflict
+  importance: 95
+- date_type: historical_event
+  year: 2023
+  description_short: Israel-Hamas war begins
+  description: Hamas attack on Israel triggered major regional conflict.
+  region: Middle East
+  notes: Defining modern crisis
+  importance: 98
+- date_type: birth
+  year: 1931
+  description_short: Desmond Tutu born
+  description: South African anti-apartheid leader and Nobel laureate born.
+  region: South Africa
+  notes: Human rights icon
+  importance: 92
+- date_type: birth
+  year: 1952
+  description_short: Vladimir Putin born
+  description: Russian president and former intelligence officer born.
+  region: Russia
+  notes: Major global political figure
+  importance: 95
+- date_type: birth
+  year: 1955
+  description_short: Yo-Yo Ma born
+  description: World-renowned cellist known for global collaborations.
+  region: France / USA
+  notes: Influential musician
+  importance: 86
+- date_type: birth
+  year: 1959
+  description_short: Simon Cowell born
+  description: British TV producer and talent show judge born.
+  region: United Kingdom
+  notes: Entertainment industry figure
+  importance: 71
+- date_type: birth
+  year: 1968
+  description_short: Thom Yorke born
+  description: Lead singer of Radiohead born.
+  region: United Kingdom
+  notes: Influential musician
+  importance: 79
+- date_type: death
+  year: 1849
+  description_short: Edgar Allan Poe died
+  description: American writer known for Gothic horror died.
+  region: United States
+  notes: Mystery around death
+  importance: 93
+- date_type: death
+  year: 1792
+  description_short: George Mason died
+  description: American founding figure and rights advocate died.
+  region: United States
+  notes: Influenced Bill of Rights
+  importance: 82
+- date_type: death
+  year: 1894
+  description_short: Oliver Wendell Holmes died
+  description: American poet and essayist passed away.
+  region: United States
+  notes: Literary influence
+  importance: 72
+- date_type: national_day
+  year: null
+  description_short: World Cotton Day
+  description: UN day highlighting cotton’s role in global development.
+  region: International
+  notes: Promotes trade and livelihoods
+  importance: 67
+- date_type: national_day
+  year: null
+  description_short: Frappé Day
+  description: Informal celebration of iced coffee drinks.
+  region: International
+  notes: Fun observance
+  importance: 24
+- date_type: religious
+  year: null
+  description_short: Our Lady of the Rosary
+  description: Catholic feast day linked to the Battle of Lepanto.
+  region: Roman Catholic
+  notes: Annual observance
+  importance: 63
+- date_type: religious
+  year: null
+  description_short: Sukkot may fall on this date
+  description: Jewish harvest festival sometimes aligns with October 7 depending on calendar.
+  region: Jewish
+  notes: Date varies yearly
+  importance: 69

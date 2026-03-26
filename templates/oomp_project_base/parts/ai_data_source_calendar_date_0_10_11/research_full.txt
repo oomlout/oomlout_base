@@ -1,0 +1,487 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hey hey! 😄 CHadikins reporting for duty — fully charged, thinking cap on, research engines warmed up.
+
+Let’s get to this.
+
+What are we building today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 11
+
+
+Thought for 44s
+data:
+
+date_type: historical_event
+year: 1776
+description_short: Battle of Valcour Island fought
+description: "American and British forces fought the Battle of Valcour Island on Lake Champlain, an important delaying action in the Revolutionary War. 
+"
+region: "United States / Canada"
+notes: "Strategic delay for American cause"
+importance: 82
+
+date_type: historical_event
+year: 1899
+description_short: Second Boer War began
+description: "The Second Boer War began in southern Africa, pitting the British Empire against the Boer republics. 
+"
+region: "South Africa"
+notes: "Major imperial conflict"
+importance: 88
+
+date_type: historical_event
+year: 1939
+description_short: Einstein letter reached Roosevelt
+description: "Albert Einstein's warning about uranium chain reactions and possible atomic bombs was delivered to President Franklin D. Roosevelt, helping spur U.S. atomic research. 
+"
+region: "United States"
+notes: "Early step toward Manhattan Project"
+importance: 95
+
+date_type: historical_event
+year: 1962
+description_short: Second Vatican Council opened
+description: "Pope John XXIII opened the Second Vatican Council at St. Peter's Basilica, launching one of the most consequential reforms in modern Catholic history. 
+"
+region: "Vatican City"
+notes: "Transformative Catholic council"
+importance: 94
+
+date_type: historical_event
+year: 1968
+description_short: Apollo 7 launched
+description: "NASA launched Apollo 7, the first crewed Apollo mission, a crucial step toward the Moon landing. 
+"
+region: "United States / Space"
+notes: "Restarted crewed Apollo program"
+importance: 93
+
+date_type: historical_event
+year: 1975
+description_short: Saturday Night Live debuted
+description: "Saturday Night Live premiered on NBC and became a defining institution in American television and comedy. 
+"
+region: "United States"
+notes: "Long-running cultural landmark"
+importance: 86
+
+date_type: historical_event
+year: 1984
+description_short: First woman performed a spacewalk
+description: "Astronaut Kathryn D. Sullivan became the first American woman to walk in space. 
+"
+region: "United States / Space"
+notes: "Milestone in space exploration"
+importance: 90
+
+date_type: historical_event
+year: 1991
+description_short: Anita Hill testified
+description: "Anita Hill testified before the U.S. Senate Judiciary Committee during Clarence Thomas's Supreme Court confirmation hearings. 
+"
+region: "United States"
+notes: "Pivotal moment in public debate"
+importance: 89
+
+date_type: birth
+year: 1881
+description_short: Birth of Hans Kelsen
+description: "Hans Kelsen, influential legal philosopher and architect of the 'pure theory' of law, was born. 
+"
+region: "Austria"
+notes: "Major thinker in legal theory"
+importance: 82
+
+date_type: birth
+year: 1885
+description_short: Birth of Francois Mauriac
+description: "French novelist and 1952 Nobel Prize winner Francois Mauriac was born. 
+"
+region: "France"
+notes: "Nobel literature figure"
+importance: 84
+
+date_type: birth
+year: 1932
+description_short: Birth of Dana Scott
+description: "Computer scientist and logician Dana Scott, later a Turing Award winner, was born. 
+"
+region: "United States"
+notes: "Foundational computing theorist"
+importance: 85
+
+date_type: birth
+year: 1942
+description_short: Birth of Rei Kawakubo
+description: "Avant-garde fashion designer Rei Kawakubo, founder of Comme des Garcons, was born. 
+"
+region: "Japan"
+notes: "Highly influential designer"
+importance: 83
+
+date_type: death
+year: 1424
+description_short: Death of Jan Zizka
+description: "Bohemian military leader Jan Zizka, famed for Hussite battlefield innovations, died. 
+"
+region: "Bohemia"
+notes: "Military innovator"
+importance: 81
+
+date_type: death
+year: 1915
+description_short: Death of Jean Henri Fabre
+description: "French entomologist Jean Henri Fabre, celebrated for his studies of insect behaviour, died. 
+"
+region: "France"
+notes: "Beloved naturalist writer"
+importance: 78
+
+date_type: death
+year: 1996
+description_short: Death of William Vickrey
+description: "Economist William Vickrey, Nobel laureate known for pioneering work on auctions and information, died. 
+"
+region: "United States / Canada"
+notes: "Nobel-winning economist"
+importance: 80
+
+date_type: national_day
+year: 2011
+description_short: International Day of the Girl Child
+description: "The United Nations observes October 11 as the International Day of the Girl Child, highlighting girls' rights and challenges worldwide. 
+"
+region: "International"
+notes: "Official UN observance"
+importance: 91
+
+date_type: national_day
+year: 1941
+description_short: Revolution Day in North Macedonia
+description: "North Macedonia marks October 11 as Revolution Day, commemorating the start of the anti-fascist uprising in 1941. 
+"
+region: "North Macedonia"
+notes: "National public holiday"
+importance: 84
+
+date_type: national_day
+year: 1929
+description_short: General Pulaski Memorial Day
+description: "The United States observes General Pulaski Memorial Day on October 11 in honor of Casimir Pulaski and Polish-American heritage. 
+"
+region: "United States"
+notes: "Observed by presidential proclamation"
+importance: 74
+
+date_type: national_day
+year: null
+description_short: National Coming Out Day
+description: "National Coming Out Day is widely observed on October 11 to support LGBTQ+ visibility and acceptance. 
+"
+region: "Primarily United States, widely recognized elsewhere"
+notes: "Widely recognized modern observance"
+importance: 76
+
+date_type: religious
+year: null
+description_short: Feast of Saint John XXIII
+description: "In the Roman Catholic calendar, October 11 is the liturgical memorial of Saint John XXIII, chosen for the anniversary of the opening of the Second Vatican Council. 
+"
+region: "Roman Catholic"
+notes: "Fixed annual observance"
+importance: 79
+
+date_type: religious
+year: null
+description_short: Yom Kippur may fall on October 11
+description: "Yom Kippur, the Jewish Day of Atonement, can fall on October 11 in some years because it follows the Hebrew lunar-solar calendar. 
+"
+region: "Jewish"
+notes: "Date varies by year and begins at sunset"
+importance: 88
+
+date_type: religious
+year: null
+description_short: Sukkot may overlap October 11
+description: "Sukkot, the Jewish Festival of Booths, sometimes includes October 11 depending on the Hebrew calendar year. 
+"
+region: "Jewish"
+notes: "Movable observance; dates vary annually"
+importance: 72
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1776
+description_short: Battle of Valcour Island fought
+description: American forces delay British advance on Lake Champlain
+region: United States / Canada
+notes: Strategic Revolutionary War delay
+importance: 82
+
+date_type: historical_event
+year: 1899
+description_short: Second Boer War began
+description: War erupted between British Empire and Boer republics
+region: South Africa
+notes: Major imperial conflict
+importance: 88
+
+date_type: historical_event
+year: 1939
+description_short: Einstein letter reached Roosevelt
+description: Warning about atomic weapons spurred US nuclear research
+region: United States
+notes: Led to Manhattan Project
+importance: 95
+
+date_type: historical_event
+year: 1962
+description_short: Second Vatican Council opened
+description: Major Catholic reform council convened by Pope John XXIII
+region: Vatican City
+notes: Transformative church reforms
+importance: 94
+
+date_type: historical_event
+year: 1968
+description_short: Apollo 7 launched
+description: First crewed Apollo mission tested systems in orbit
+region: United States / Space
+notes: Key step toward Moon landing
+importance: 93
+
+date_type: historical_event
+year: 1975
+description_short: Saturday Night Live debuted
+description: Influential comedy show premiered on American television
+region: United States
+notes: Long-running cultural impact
+importance: 86
+
+date_type: historical_event
+year: 1984
+description_short: First American woman spacewalk
+description: Kathryn D Sullivan performed historic spacewalk
+region: United States / Space
+notes: Milestone for women in space
+importance: 90
+
+date_type: historical_event
+year: 1991
+description_short: Anita Hill testified
+description: Testimony during Supreme Court hearings sparked national debate
+region: United States
+notes: Major cultural moment
+importance: 89
+
+date_type: birth
+year: 1881
+description_short: Hans Kelsen born
+description: Influential legal philosopher and theorist
+region: Austria
+notes: Pure theory of law
+importance: 82
+
+date_type: birth
+year: 1885
+description_short: Francois Mauriac born
+description: Nobel Prize winning French novelist
+region: France
+notes: Literary significance
+importance: 84
+
+date_type: birth
+year: 1932
+description_short: Dana Scott born
+description: Pioneering computer scientist and logician
+region: United States
+notes: Turing Award winner
+importance: 85
+
+date_type: birth
+year: 1942
+description_short: Rei Kawakubo born
+description: Avant-garde fashion designer founded Comme des Garcons
+region: Japan
+notes: Influential fashion innovator
+importance: 83
+
+date_type: death
+year: 1424
+description_short: Jan Zizka died
+description: Hussite military leader known for battlefield innovations
+region: Bohemia
+notes: Military strategist
+importance: 81
+
+date_type: death
+year: 1915
+description_short: Jean Henri Fabre died
+description: Renowned entomologist who studied insect behavior
+region: France
+notes: Naturalist writer
+importance: 78
+
+date_type: death
+year: 1996
+description_short: William Vickrey died
+description: Nobel Prize winning economist known for auction theory
+region: United States / Canada
+notes: Economic theory pioneer
+importance: 80
+
+date_type: national_day
+year: 2011
+description_short: International Day of the Girl Child
+description: UN day promoting rights and empowerment of girls
+region: International
+notes: Official UN observance
+importance: 91
+
+date_type: national_day
+year: 1941
+description_short: Revolution Day North Macedonia
+description: Commemorates anti fascist uprising in 1941
+region: North Macedonia
+notes: National holiday
+importance: 84
+
+date_type: national_day
+year: 1929
+description_short: General Pulaski Memorial Day
+description: Honors Polish American hero Casimir Pulaski
+region: United States
+notes: Presidential observance
+importance: 74
+
+date_type: national_day
+year: null
+description_short: National Coming Out Day
+description: Celebrates LGBTQ plus visibility and support
+region: International
+notes: Widely recognized observance
+importance: 76
+
+date_type: religious
+year: null
+description_short: Feast of Saint John XXIII
+description: Catholic feast marking opening of Second Vatican Council
+region: Roman Catholic
+notes: Fixed annual date
+importance: 79
+
+date_type: religious
+year: null
+description_short: Yom Kippur may fall
+description: Jewish Day of Atonement sometimes occurs on this date
+region: Jewish
+notes: Varies by lunar calendar
+importance: 88
+
+date_type: religious
+year: null
+description_short: Sukkot may overlap
+description: Jewish Festival of Booths may include this date
+region: Jewish
+notes: Movable festival dates
+importance: 72
+&&&tag for copy&&&
+
+
+
+

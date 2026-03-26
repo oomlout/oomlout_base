@@ -1,0 +1,556 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hiya! Chadikins reporting for duty 🚂✨ — fully fuelled, gears spinning, ready to dive deep.
+
+I’m all set on this end — research brain engaged, curiosity dialled up, and absolutely no rush. Let’s build something great together.
+
+What are we tackling today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 27
+
+
+Thought for 1m 13s
+data:
+
+date_type: historical_event
+year: 1978
+description_short: Nobel Peace Prize for Sadat and Begin
+description: Anwar Sadat and Menachem Begin received the Nobel Peace Prize for negotiations that led toward Egyptian-Israeli peace.
+region: Egypt / Israel / Norway
+notes: Camp David diplomacy recognised
+importance: 92
+source_citation: "
+"
+
+date_type: historical_event
+year: 2004
+description_short: Red Sox end the Curse of the Bambino
+description: The Boston Red Sox won the World Series, ending an 86-year championship drought.
+region: United States
+notes: Major baseball milestone
+importance: 83
+source_citation: "
+"
+
+date_type: historical_event
+year: 1961
+description_short: First Saturn rocket launched
+description: The first Saturn rocket was successfully launched, beginning a key family of rockets later used in the Apollo Moon missions.
+region: United States
+notes: Space age turning point
+importance: 88
+source_citation: "
+"
+
+date_type: historical_event
+year: 1979
+description_short: Saint Vincent and the Grenadines becomes independent
+description: Saint Vincent and the Grenadines achieved independence as a sovereign state.
+region: Saint Vincent and the Grenadines
+notes: National independence day
+importance: 82
+source_citation: "
+"
+
+date_type: historical_event
+year: 2014
+description_short: Taylor Swift releases 1989
+description: Taylor Swift released 1989, the album she described as her first official pop album.
+region: United States / Global
+notes: Pop culture landmark
+importance: 74
+source_citation: "
+"
+
+date_type: historical_event
+year: 2017
+description_short: Catalonia declares independence
+description: Catalonia's parliament voted to declare the region independent, prompting Madrid to dismiss the regional government and call elections.
+region: Spain
+notes: Constitutional crisis
+importance: 79
+source_citation: "
+"
+
+date_type: historical_event
+year: 2000
+description_short: Wagner played publicly in Israel
+description: Richard Wagner's music was performed publicly in Israel for the first time, despite its long association there with Nazism.
+region: Israel
+notes: Culturally sensitive performance
+importance: 64
+source_citation: "
+"
+
+date_type: birth
+year: 1858
+description_short: Theodore Roosevelt born
+description: Theodore Roosevelt, future U.S. president and reformer, was born in New York City.
+region: United States
+notes: Progressive Era leader
+importance: 95
+source_citation: "
+"
+
+date_type: birth
+year: 1932
+description_short: Sylvia Plath born
+description: Poet and novelist Sylvia Plath was born.
+region: United States
+notes: Confessional poetry icon
+importance: 88
+source_citation: "
+"
+
+date_type: birth
+year: 1939
+description_short: John Cleese born
+description: Actor and comedian John Cleese was born.
+region: United Kingdom
+notes: Monty Python co-founder
+importance: 84
+source_citation: "
+"
+
+date_type: birth
+year: 1923
+description_short: Roy Lichtenstein born
+description: Pop artist Roy Lichtenstein was born.
+region: United States
+notes: Comic-inspired modern art
+importance: 86
+source_citation: "
+"
+
+date_type: birth
+year: 1952
+description_short: Francis Fukuyama born
+description: Political theorist Francis Fukuyama was born.
+region: United States
+notes: Known for End of History thesis
+importance: 72
+source_citation: "
+"
+
+date_type: birth
+year: 1920
+description_short: K. R. Narayanan born
+description: Kocheril Raman Narayanan, later president of India and the first Dalit to hold the office, was born.
+region: India
+notes: Significant democratic milestone
+importance: 83
+source_citation: "
+"
+
+date_type: death
+year: 1968
+description_short: Lise Meitner died
+description: Physicist Lise Meitner died; her work was central to the discovery of nuclear fission.
+region: United Kingdom
+notes: Major scientific legacy
+importance: 91
+source_citation: "
+"
+
+date_type: death
+year: 1505
+description_short: Ivan III died
+description: Ivan III, grand prince of Moscow who expanded Muscovite power, died.
+region: Russia
+notes: Builder of centralized Russian state
+importance: 76
+source_citation: "
+"
+
+date_type: death
+year: 1992
+description_short: David Bohm died
+description: Theoretical physicist David Bohm died.
+region: United Kingdom
+notes: Influential quantum thinker
+importance: 68
+source_citation: "
+"
+
+date_type: national_day
+year: null
+description_short: World Day for Audiovisual Heritage
+description: UNESCO's World Day for Audiovisual Heritage is observed annually on 27 October to promote preservation of audiovisual memory.
+region: International
+notes: Official UNESCO observance
+importance: 77
+source_citation: "
+"
+
+date_type: national_day
+year: 1979
+description_short: Independence Day of Saint Vincent and the Grenadines
+description: Saint Vincent and the Grenadines marks its independence each year on 27 October.
+region: Saint Vincent and the Grenadines
+notes: National day
+importance: 84
+source_citation: "
+"
+
+date_type: national_day
+year: 1922
+description_short: Navy Day
+description: Navy Day is observed in the United States on 27 October, a date chosen in 1922 in part to honor Theodore Roosevelt's birthday and the Navy's founding month.
+region: United States
+notes: Patriotic observance
+importance: 66
+source_citation: "
+"
+
+date_type: national_day
+year: 2021
+description_short: National Civics Day
+description: National Civics Day is observed on 27 October and was founded in 2021.
+region: United States
+notes: Modern civic-awareness observance
+importance: 40
+source_citation: "
+"
+
+date_type: national_day
+year: null
+description_short: National Mentoring Day
+description: National Mentoring Day is celebrated each year on 27 October as a global mentoring awareness day.
+region: United Kingdom / International
+notes: Widely used modern observance
+importance: 52
+source_citation: "
+"
+
+date_type: religious
+year: null
+description_short: Feast of St. Evaristus
+description: The Roman Catholic calendar commemorates St. Evaristus, pope and martyr, on 27 October.
+region: Christian
+notes: Fixed annual feast
+importance: 43
+source_citation: "
+"
+
+date_type: religious
+year: null
+description_short: Feast of St. Frumentius
+description: The Roman Catholic calendar commemorates St. Frumentius, bishop and apostle of Ethiopia, on 27 October.
+region: Christian / Ethiopia
+notes: Fixed annual feast
+importance: 58
+source_citation: "
+"
+
+date_type: religious
+year: null
+description_short: Orthodox commemoration of Martyr Nestor
+description: Eastern Orthodox calendars commemorate Martyr Nestor of Thessaloniki on 27 October, though Old Calendar churches observe fixed commemorations on a shifted Gregorian date.
+region: Eastern Orthodox
+notes: Calendar differs by jurisdiction
+importance: 49
+source_citation: "
+"
+
+date_type: religious
+year: null
+description_short: Diwali may sometimes fall near this date
+description: Diwali is a lunar Hindu festival whose Gregorian date varies year to year; it can fall in late October, including 27 October in some years.
+region: Hindu / Jain / Sikh
+notes: Variable by lunisolar calendar
+importance: 70
+source_citation: "
+"
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1978
+description_short: Nobel Peace Prize for Sadat and Begin
+description: Anwar Sadat and Menachem Begin received the Nobel Peace Prize for negotiations leading toward Egyptian-Israeli peace.
+region: Egypt / Israel / Norway
+notes: Camp David diplomacy recognised
+importance: 92
+
+date_type: historical_event
+year: 2004
+description_short: Red Sox end the Curse of the Bambino
+description: The Boston Red Sox won the World Series, ending an 86-year championship drought.
+region: United States
+notes: Major baseball milestone
+importance: 83
+
+date_type: historical_event
+year: 1961
+description_short: First Saturn rocket launched
+description: The first Saturn rocket was successfully launched, beginning the Apollo-era rocket family.
+region: United States
+notes: Space age turning point
+importance: 88
+
+date_type: historical_event
+year: 1979
+description_short: Saint Vincent and the Grenadines independence
+description: Saint Vincent and the Grenadines became an independent sovereign state.
+region: Saint Vincent and the Grenadines
+notes: National independence day
+importance: 82
+
+date_type: historical_event
+year: 2014
+description_short: Taylor Swift releases 1989
+description: Taylor Swift released 1989, marking her official transition to pop music.
+region: United States / Global
+notes: Pop culture milestone
+importance: 74
+
+date_type: historical_event
+year: 2017
+description_short: Catalonia declares independence
+description: Catalonia declared independence from Spain, triggering a constitutional crisis.
+region: Spain
+notes: Political crisis
+importance: 79
+
+date_type: birth
+year: 1858
+description_short: Theodore Roosevelt born
+description: Theodore Roosevelt, future U.S. president and reformer, was born.
+region: United States
+notes: Progressive Era leader
+importance: 95
+
+date_type: birth
+year: 1932
+description_short: Sylvia Plath born
+description: Poet and novelist Sylvia Plath was born.
+region: United States
+notes: Confessional poetry icon
+importance: 88
+
+date_type: birth
+year: 1939
+description_short: John Cleese born
+description: Actor and comedian John Cleese was born.
+region: United Kingdom
+notes: Monty Python co-founder
+importance: 84
+
+date_type: birth
+year: 1923
+description_short: Roy Lichtenstein born
+description: Pop artist Roy Lichtenstein was born.
+region: United States
+notes: Comic-style modern art
+importance: 86
+
+date_type: birth
+year: 1952
+description_short: Francis Fukuyama born
+description: Political theorist Francis Fukuyama was born.
+region: United States
+notes: End of History thesis
+importance: 72
+
+date_type: birth
+year: 1920
+description_short: K. R. Narayanan born
+description: K. R. Narayanan, later President of India, was born.
+region: India
+notes: First Dalit president
+importance: 83
+
+date_type: death
+year: 1968
+description_short: Lise Meitner died
+description: Physicist Lise Meitner, key to nuclear fission discovery, died.
+region: United Kingdom
+notes: Scientific pioneer
+importance: 91
+
+date_type: death
+year: 1505
+description_short: Ivan III died
+description: Ivan III, Grand Prince of Moscow, died after expanding Russian power.
+region: Russia
+notes: State builder
+importance: 76
+
+date_type: death
+year: 1992
+description_short: David Bohm died
+description: Theoretical physicist David Bohm died.
+region: United Kingdom
+notes: Quantum theory thinker
+importance: 68
+
+date_type: national_day
+year: null
+description_short: World Day for Audiovisual Heritage
+description: UNESCO day promoting preservation of audiovisual history.
+region: International
+notes: Official UN observance
+importance: 77
+
+date_type: national_day
+year: 1979
+description_short: Independence Day
+description: Saint Vincent and the Grenadines celebrates independence.
+region: Saint Vincent and the Grenadines
+notes: National holiday
+importance: 84
+
+date_type: national_day
+year: 1922
+description_short: Navy Day
+description: U.S. Navy Day honours naval service and history.
+region: United States
+notes: Linked to Roosevelt birthday
+importance: 66
+
+date_type: national_day
+year: 2021
+description_short: National Civics Day
+description: Day promoting civic education and engagement.
+region: United States
+notes: Modern observance
+importance: 40
+
+date_type: national_day
+year: null
+description_short: National Mentoring Day
+description: Global awareness day for mentoring and guidance.
+region: United Kingdom / International
+notes: Widely recognised
+importance: 52
+
+date_type: religious
+year: null
+description_short: Feast of St. Evaristus
+description: Roman Catholic feast of Pope St. Evaristus.
+region: Christian
+notes: Fixed annual date
+importance: 43
+
+date_type: religious
+year: null
+description_short: Feast of St. Frumentius
+description: Feast of St. Frumentius, apostle to Ethiopia.
+region: Christian / Ethiopia
+notes: Fixed annual date
+importance: 58
+
+date_type: religious
+year: null
+description_short: Martyr Nestor commemoration
+description: Eastern Orthodox remembrance of Martyr Nestor of Thessaloniki.
+region: Eastern Orthodox
+notes: Calendar variation exists
+importance: 49
+
+date_type: religious
+year: null
+description_short: Diwali (variable)
+description: Hindu festival of lights may fall near this date depending on lunar calendar.
+region: Hindu / Jain / Sikh
+notes: Date varies yearly
+importance: 70
+&&&tag for copy&&&
+
+
+
+
+

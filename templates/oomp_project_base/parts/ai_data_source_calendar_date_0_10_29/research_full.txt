@@ -1,0 +1,515 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hey hey 😄—CHadikins reporting for duty, engines warmed up and ready to absolutely dive in.
+
+What are we building / researching / crafting today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 29
+
+
+Thought for 1m 30s
+data:
+  - date_type: historical_event
+    year: 1923
+    description_short: Republic of Turkey proclaimed
+    description: The Grand National Assembly declared Turkey a republic and elected Mustafa Kemal Ataturk as its first president.
+    region: Turkey
+    notes: Foundational state event; still marked annually as Republic Day.
+    importance: 98
+
+  - date_type: historical_event
+    year: 1929
+    description_short: Black Tuesday crashes Wall Street
+    description: A massive selloff on the New York Stock Exchange deepened the 1929 crash and became a defining moment of the Great Depression.
+    region: United States / global economic impact
+    notes: One of the most recognisable financial crash dates.
+    importance: 99
+
+  - date_type: historical_event
+    year: 1956
+    description_short: Suez Crisis begins
+    description: Israeli forces invaded Egypt toward the Suez Canal, triggering the Suez Crisis and a major Cold War confrontation.
+    region: Egypt / Israel / United Kingdom / France
+    notes: Key postwar Middle East turning point.
+    importance: 95
+
+  - date_type: historical_event
+    year: 1965
+    description_short: The Autobiography of Malcolm X published
+    description: The influential posthumous autobiography of Malcolm X, written with Alex Haley, was first published.
+    region: United States
+    notes: Landmark work in Black history and political literature.
+    importance: 86
+
+  - date_type: historical_event
+    year: 1969
+    description_short: First ARPANET message sent
+    description: Researchers at UCLA sent the first electronic message over ARPANET to Stanford Research Institute, a foundational milestone in internet history.
+    region: United States
+    notes: The first attempted message is famously remembered as LO.
+    importance: 97
+
+  - date_type: historical_event
+    year: 2015
+    description_short: China announces end of one-child policy
+    description: China announced that couples would be allowed two children, ending the long-standing one-child policy.
+    region: China
+    notes: Major demographic and social policy shift.
+    importance: 90
+
+  - date_type: birth
+    year: 1740
+    description_short: James Boswell born
+    description: James Boswell, the Scottish biographer and diarist best known for The Life of Samuel Johnson, was born.
+    region: Scotland
+    notes: Major literary and biographical figure.
+    importance: 78
+
+  - date_type: birth
+    year: 1910
+    description_short: A.J. Ayer born
+    description: British philosopher A.J. Ayer, closely associated with logical positivism, was born.
+    region: United Kingdom
+    notes: Important twentieth-century philosopher.
+    importance: 72
+
+  - date_type: birth
+    year: 1938
+    description_short: Ellen Johnson Sirleaf born
+    description: Ellen Johnson Sirleaf, later the first elected female head of state in Africa as president of Liberia, was born.
+    region: Liberia
+    notes: Nobel Peace Prize laureate.
+    importance: 91
+
+  - date_type: birth
+    year: 1942
+    description_short: Bob Ross born
+    description: Painter and television host Bob Ross, beloved for The Joy of Painting, was born.
+    region: United States
+    notes: Popular culture icon of art education.
+    importance: 84
+
+  - date_type: birth
+    year: 1947
+    description_short: Richard Dreyfuss born
+    description: Academy Award-winning actor Richard Dreyfuss was born.
+    region: United States
+    notes: Known for Jaws and The Goodbye Girl.
+    importance: 74
+
+  - date_type: death
+    year: 1618
+    description_short: Sir Walter Raleigh dies
+    description: English courtier, explorer, and writer Sir Walter Raleigh was executed in London.
+    region: England
+    notes: Major Elizabethan figure.
+    importance: 83
+
+  - date_type: death
+    year: 1911
+    description_short: Joseph Pulitzer dies
+    description: Newspaper publisher Joseph Pulitzer, whose name lives on through the Pulitzer Prizes, died.
+    region: United States
+    notes: Transformative figure in journalism.
+    importance: 88
+
+  - date_type: death
+    year: 1924
+    description_short: Frances Hodgson Burnett dies
+    description: The novelist Frances Hodgson Burnett, author of The Secret Garden and Little Lord Fauntleroy, died.
+    region: United States / United Kingdom
+    notes: Classic children's literature author.
+    importance: 79
+
+  - date_type: death
+    year: 1957
+    description_short: Louis B. Mayer dies
+    description: Film executive Louis B. Mayer, a dominant force at MGM during Hollywood's studio era, died.
+    region: United States
+    notes: Central figure in classic Hollywood.
+    importance: 76
+
+  - date_type: national_day
+    year: null
+    description_short: Republic Day
+    description: Turkey celebrates Republic Day on 29 October, marking the proclamation of the republic in 1923.
+    region: Turkey
+    notes: National holiday; fixed annual date.
+    importance: 95
+
+  - date_type: national_day
+    year: null
+    description_short: International Day of Care and Support
+    description: The United Nations observes this day on 29 October to recognize and value care and support work.
+    region: United Nations / international
+    notes: Official UN observance; proclaimed in 2023.
+    importance: 82
+
+  - date_type: national_day
+    year: null
+    description_short: World Stroke Day
+    description: An annual global awareness day focused on stroke prevention, recognition, treatment, and recovery.
+    region: International
+    notes: Fixed annual date on 29 October.
+    importance: 80
+
+  - date_type: national_day
+    year: null
+    description_short: World Psoriasis Day
+    description: An international awareness day highlighting psoriasis and psoriatic arthritis and the people living with them.
+    region: International
+    notes: Fixed annual date on 29 October.
+    importance: 70
+
+  - date_type: national_day
+    year: null
+    description_short: Internet Day
+    description: A widely recognized unofficial internet culture observance tied to the first ARPANET message sent on 29 October 1969.
+    region: International / informal
+    notes: Fun or internet day; unofficial.
+    importance: 58
+
+  - date_type: religious
+    year: null
+    description_short: Feast of Saint Narcissus of Jerusalem
+    description: In the Roman Catholic calendar, 29 October is associated with Saint Narcissus of Jerusalem.
+    region: Christian / Roman Catholic
+    notes: Fixed feast day.
+    importance: 52
+
+  - date_type: religious
+    year: null
+    description_short: Orthodox commemorations on 29 October
+    description: In Eastern Orthodox tradition, 29 October includes commemorations such as Saint Anastasia the Roman and other saints.
+    region: Christian / Eastern Orthodox
+    notes: Fixed liturgical observance; details can vary by calendar usage.
+    importance: 50
+
+  - date_type: religious
+    year: null
+    description_short: Karva Chauth may fall on this date
+    description: The Hindu festival Karva Chauth is lunar and sometimes falls on 29 October, as it does in 2026.
+    region: India / Hindu communities
+    notes: Variable by year and lunar calendar.
+    importance: 63
+
+  - date_type: religious
+    year: null
+    description_short: Mawlid may fall on this date
+    description: Mawlid, the observance of the Prophet Muhammad's birth, is based on the Islamic calendar and can occasionally fall on 29 October in some years.
+    region: Muslim communities worldwide
+    notes: Variable by year and moon sighting/calendar method.
+    importance: 62
+
+  - date_type: religious
+    year: null
+    description_short: Diwali may fall on this date
+    description: Diwali, the festival of lights observed by Hindus, Jains, Sikhs, and some Buddhists, sometimes falls on 29 October, including in 2027.
+    region: India and global South Asian communities
+    notes: Variable by year and lunar calendar.
+    importance: 88
+Sources: Britannica confirms Black Tuesday, the Turkish republic proclamation, China ending the one-child policy, and several October 29 births and deaths. 
+ HISTORY confirms the Suez Crisis start, the 1965 publication of The Autobiography of Malcolm X, and the first ARPANET message. 
+ UN and health bodies confirm the International Day of Care and Support, World Stroke Day, and World Psoriasis Day. 
+ Timeanddate supports Republic Day in Turkey, Internet Day, and variable-date observances such as Diwali. 
+ Catholic and Orthodox sources support the fixed Christian observances on October 29. 
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1923
+description_short: Republic of Turkey proclaimed
+description: The Grand National Assembly declared Turkey a republic and elected Mustafa Kemal Ataturk as its first president.
+region: Turkey
+notes: Foundational state event; still marked annually as Republic Day.
+importance: 98
+
+date_type: historical_event
+year: 1929
+description_short: Black Tuesday crashes Wall Street
+description: A massive selloff on the New York Stock Exchange deepened the 1929 crash and became a defining moment of the Great Depression.
+region: United States / global economic impact
+notes: One of the most recognisable financial crash dates.
+importance: 99
+
+date_type: historical_event
+year: 1956
+description_short: Suez Crisis begins
+description: Israeli forces invaded Egypt toward the Suez Canal, triggering the Suez Crisis and a major Cold War confrontation.
+region: Egypt / Israel / United Kingdom / France
+notes: Key postwar Middle East turning point.
+importance: 95
+
+date_type: historical_event
+year: 1965
+description_short: The Autobiography of Malcolm X published
+description: The influential posthumous autobiography of Malcolm X, written with Alex Haley, was first published.
+region: United States
+notes: Landmark work in Black history and political literature.
+importance: 86
+
+date_type: historical_event
+year: 1969
+description_short: First ARPANET message sent
+description: Researchers at UCLA sent the first electronic message over ARPANET to Stanford Research Institute, a foundational milestone in internet history.
+region: United States
+notes: The first attempted message is famously remembered as LO.
+importance: 97
+
+date_type: historical_event
+year: 2015
+description_short: China ends one-child policy
+description: China announced that couples would be allowed two children, ending the long-standing one-child policy.
+region: China
+notes: Major demographic and social policy shift.
+importance: 90
+
+date_type: birth
+year: 1740
+description_short: James Boswell born
+description: Scottish biographer and diarist known for The Life of Samuel Johnson.
+region: Scotland
+notes: Major literary figure.
+importance: 78
+
+date_type: birth
+year: 1910
+description_short: A.J. Ayer born
+description: British philosopher associated with logical positivism.
+region: United Kingdom
+notes: Influential 20th century thinker.
+importance: 72
+
+date_type: birth
+year: 1938
+description_short: Ellen Johnson Sirleaf born
+description: Future President of Liberia and Nobel Peace Prize laureate.
+region: Liberia
+notes: First elected female African head of state.
+importance: 91
+
+date_type: birth
+year: 1942
+description_short: Bob Ross born
+description: Painter and host of The Joy of Painting.
+region: United States
+notes: Beloved art educator.
+importance: 84
+
+date_type: birth
+year: 1947
+description_short: Richard Dreyfuss born
+description: Academy Award-winning actor known for major film roles.
+region: United States
+notes: Prominent Hollywood figure.
+importance: 74
+
+date_type: death
+year: 1618
+description_short: Sir Walter Raleigh dies
+description: English explorer, courtier, and writer executed in London.
+region: England
+notes: Key Elizabethan figure.
+importance: 83
+
+date_type: death
+year: 1911
+description_short: Joseph Pulitzer dies
+description: Newspaper publisher whose legacy includes the Pulitzer Prizes.
+region: United States
+notes: Major journalism influence.
+importance: 88
+
+date_type: death
+year: 1924
+description_short: Frances Hodgson Burnett dies
+description: Author of The Secret Garden and Little Lord Fauntleroy.
+region: United States / United Kingdom
+notes: Classic children's author.
+importance: 79
+
+date_type: death
+year: 1957
+description_short: Louis B. Mayer dies
+description: Influential Hollywood studio executive at MGM.
+region: United States
+notes: Central film industry figure.
+importance: 76
+
+date_type: national_day
+year: null
+description_short: Republic Day
+description: National holiday marking the founding of the Republic of Turkey.
+region: Turkey
+notes: Fixed annual date.
+importance: 95
+
+date_type: national_day
+year: null
+description_short: International Day of Care and Support
+description: UN observance recognizing the value of care and support work.
+region: International
+notes: Official UN day.
+importance: 82
+
+date_type: national_day
+year: null
+description_short: World Stroke Day
+description: Global awareness day for stroke prevention and treatment.
+region: International
+notes: Fixed annual observance.
+importance: 80
+
+date_type: national_day
+year: null
+description_short: World Psoriasis Day
+description: Awareness day for psoriasis and related conditions.
+region: International
+notes: Fixed annual observance.
+importance: 70
+
+date_type: national_day
+year: null
+description_short: Internet Day
+description: Informal observance linked to the first ARPANET message.
+region: International
+notes: Unofficial cultural day.
+importance: 58
+
+date_type: religious
+year: null
+description_short: Feast of Saint Narcissus
+description: Roman Catholic feast day of Saint Narcissus of Jerusalem.
+region: Christian
+notes: Fixed date.
+importance: 52
+
+date_type: religious
+year: null
+description_short: Orthodox commemorations
+description: Eastern Orthodox remembrance of saints including Anastasia the Roman.
+region: Christian Orthodox
+notes: Fixed date; varies by calendar.
+importance: 50
+
+date_type: religious
+year: null
+description_short: Karva Chauth may occur
+description: Hindu fasting festival for marital devotion, lunar-based.
+region: India
+notes: Date varies by year.
+importance: 63
+
+date_type: religious
+year: null
+description_short: Mawlid may occur
+description: Observance of Prophet Muhammad's birth.
+region: Muslim world
+notes: Lunar calendar; varies by year.
+importance: 62
+
+date_type: religious
+year: null
+description_short: Diwali may occur
+description: Festival of lights celebrated by multiple religions.
+region: India and global diaspora
+notes: Lunar calendar; varies by year.
+importance: 88
+&&&tag for copy&&&
+
+
+
+

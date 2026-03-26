@@ -1320,6 +1320,9 @@ def check_key_pressed():
 
 def robo_delay(**kwargs):
     delay = kwargs.get('delay', 1)
+    #if delay is a string turn it into an int
+    if isinstance(delay, str):
+        delay = int(delay)
     rand = kwargs.get('rand', 0)
     message = kwargs.get('message', f"")
     if message != "":
@@ -1355,7 +1358,7 @@ def robo_delay(**kwargs):
         print("")
     else:
         print(f"waiting for {delay} seconds (press 's' to skip)", end='', flush=True)
-        for i in range(delay):
+        for i in range(int(delay)):
             #print the progress bar
             print(".", end='', flush=True)
             # Check if 's' key is pressed

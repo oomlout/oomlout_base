@@ -1,0 +1,133 @@
+- date_type: historical_event
+  year: 1492
+  description_short: "Columbus reaches the Americas"
+  description: "Christopher Columbus landed in the Caribbean on his first voyage, opening the way for sustained European colonization of the Americas."
+  region: "Atlantic world / Caribbean"
+  notes: "Turning point in global history; also marks start of colonization impacts on Indigenous peoples"
+  importance: 100
+- date_type: historical_event
+  year: 1810
+  description_short: "First Oktoberfest held"
+  description: "The original Oktoberfest began as a celebration of a royal wedding in Munich."
+  region: "Germany"
+  notes: "Became the world’s most famous beer festival"
+  importance: 82
+- date_type: historical_event
+  year: 1964
+  description_short: "Voskhod 1 launched"
+  description: "The Soviet Union launched the first spacecraft to carry multiple people into orbit."
+  region: "Soviet Union / space"
+  notes: "Major milestone in the Space Race"
+  importance: 84
+- date_type: historical_event
+  year: 1968
+  description_short: "Equatorial Guinea independence"
+  description: "Equatorial Guinea gained independence from Spain."
+  region: "Equatorial Guinea"
+  notes: "End of Spanish colonial rule"
+  importance: 86
+- date_type: historical_event
+  year: 1994
+  description_short: "Magellan mission ends"
+  description: "NASA’s Magellan spacecraft completed its mission to Venus and was destroyed in the atmosphere."
+  region: "Space exploration"
+  notes: "Mapped most of Venus’s surface"
+  importance: 78
+- date_type: historical_event
+  year: 2000
+  description_short: "USS Cole attack"
+  description: "A suicide bombing targeted the USS Cole in Yemen, killing 17 sailors."
+  region: "Yemen / United States"
+  notes: "One of the most significant pre-9/11 attacks"
+  importance: 88
+- date_type: birth
+  year: 1872
+  description_short: "Ralph Vaughan Williams born"
+  description: "English composer known for shaping British classical music."
+  region: "United Kingdom"
+  notes: "Major 20th-century composer"
+  importance: 78
+- date_type: birth
+  year: 1935
+  description_short: "Luciano Pavarotti born"
+  description: "Italian opera singer and global music icon."
+  region: "Italy"
+  notes: "Helped popularize opera worldwide"
+  importance: 90
+- date_type: birth
+  year: 1939
+  description_short: "Carolee Schneemann born"
+  description: "American artist known for pioneering feminist performance art."
+  region: "United States"
+  notes: "Influential multimedia artist"
+  importance: 67
+- date_type: birth
+  year: 1968
+  description_short: "Hugh Jackman born"
+  description: "Australian actor known for film, theatre, and musicals."
+  region: "Australia"
+  notes: "Famous for Wolverine and stage roles"
+  importance: 83
+- date_type: death
+  year: 1915
+  description_short: "Edith Cavell executed"
+  description: "British nurse executed during World War I for aiding Allied soldiers."
+  region: "Belgium / United Kingdom"
+  notes: "Symbol of wartime bravery"
+  importance: 85
+- date_type: death
+  year: 1971
+  description_short: "Gene Vincent dies"
+  description: "Rockabilly musician and early rock icon passed away."
+  region: "United States"
+  notes: "Influential in early rock music"
+  importance: 62
+- date_type: death
+  year: 1996
+  description_short: "René Lacoste dies"
+  description: "French tennis champion and businessman passed away."
+  region: "France"
+  notes: "Founder of Lacoste brand"
+  importance: 70
+- date_type: national_day
+  year: 1987
+  description_short: "National Day of Spain"
+  description: "Spain celebrates its national day on October 12."
+  region: "Spain"
+  notes: "Linked to Columbus’s voyage"
+  importance: 90
+- date_type: national_day
+  year: 1996
+  description_short: "World Arthritis Day"
+  description: "Global awareness day for arthritis and musculoskeletal diseases."
+  region: "International"
+  notes: "Promotes education and advocacy"
+  importance: 68
+- date_type: national_day
+  year: null
+  description_short: "Columbus Day (variable)"
+  description: "US federal holiday observed on the second Monday of October."
+  region: "United States"
+  notes: "Sometimes replaced by Indigenous Peoples’ Day; varies by year"
+  importance: 72
+- date_type: religious
+  year: null
+  description_short: "Our Lady of Aparecida"
+  description: "Catholic feast honoring the patron saint of Brazil."
+  region: "Brazil / Catholic Church"
+  notes: "Major national religious celebration"
+  importance: 81
+- date_type: religious
+  year: null
+  description_short: "Our Lady of the Pillar"
+  description: "Catholic feast especially celebrated in Zaragoza."
+  region: "Spain / Catholic Church"
+  notes: "Historic Marian devotion"
+  importance: 74
+- date_type: religious
+  year: null
+  description_short: "Catholic saints feast day"
+  description: "Various saints including St. Edistus and St. Seraphin are commemorated."
+  region: "Catholic Church"
+  notes: "Fixed liturgical observance"
+  importance: 46

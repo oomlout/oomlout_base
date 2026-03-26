@@ -1,0 +1,178 @@
+
+data:
+
+date_type: historical_event
+year: 1066
+description_short: Battle of Hastings
+description: William of Normandy defeated King Harold II, beginning Norman rule in England.
+region: England
+notes: Norman Conquest begins; foundational English history event.
+importance: 100
+
+date_type: historical_event
+year: 1912
+description_short: Theodore Roosevelt survives shooting
+description: Theodore Roosevelt was shot while campaigning but still delivered his speech.
+region: United States
+notes: Famous "Bull Moose" speech moment.
+importance: 84
+
+date_type: historical_event
+year: 1947
+description_short: First supersonic flight
+description: Chuck Yeager broke the sound barrier in the Bell X-1 aircraft.
+region: United States
+notes: Major aviation milestone.
+importance: 92
+
+date_type: historical_event
+year: 1962
+description_short: Cuban Missile Crisis discovery
+description: U-2 photos revealed Soviet missile sites in Cuba, escalating Cold War tensions.
+region: Cuba / USA / USSR
+notes: One of the most dangerous Cold War moments.
+importance: 98
+
+date_type: historical_event
+year: 1964
+description_short: MLK wins Nobel Peace Prize
+description: Martin Luther King Jr. awarded Nobel Peace Prize for civil rights work.
+region: Norway / USA
+notes: Youngest laureate at the time.
+importance: 90
+
+date_type: birth
+year: 1888
+description_short: Katherine Mansfield born
+description: Influential modernist short story writer born in New Zealand.
+region: New Zealand
+notes: Key literary modernist figure.
+importance: 73
+
+date_type: birth
+year: 1890
+description_short: Dwight D. Eisenhower born
+description: Future US president and WWII Allied commander born.
+region: United States
+notes: Major military and political leader.
+importance: 95
+
+date_type: birth
+year: 1894
+description_short: E. E. Cummings born
+description: Innovative modernist poet known for unique style and typography.
+region: United States
+notes: Influential American poet.
+importance: 74
+
+date_type: birth
+year: 1906
+description_short: Hannah Arendt born
+description: Political philosopher known for work on totalitarianism.
+region: Germany / USA
+notes: Major 20th-century thinker.
+importance: 86
+
+date_type: birth
+year: 1927
+description_short: Roger Moore born
+description: Actor famous for portraying James Bond in seven films.
+region: United Kingdom
+notes: Iconic Bond actor.
+importance: 78
+
+date_type: birth
+year: 1978
+description_short: Usher born
+description: Global R&B singer and performer born.
+region: United States
+notes: Major pop culture figure.
+importance: 76
+
+date_type: death
+year: 1066
+description_short: Harold II dies
+description: King Harold II killed at the Battle of Hastings.
+region: England
+notes: End of Anglo-Saxon rule.
+importance: 96
+
+date_type: death
+year: 1959
+description_short: Errol Flynn dies
+description: Hollywood swashbuckling film star dies.
+region: Canada / USA
+notes: Classic cinema icon.
+importance: 71
+
+date_type: death
+year: 1990
+description_short: Leonard Bernstein dies
+description: Renowned composer and conductor passes away.
+region: United States
+notes: Creator of West Side Story.
+importance: 89
+
+date_type: death
+year: 2019
+description_short: Harold Bloom dies
+description: Influential literary critic dies.
+region: United States
+notes: Known for Western canon theory.
+importance: 67
+
+date_type: death
+year: 2022
+description_short: Robbie Coltrane dies
+description: Actor known for Hagrid in Harry Potter films dies.
+region: United Kingdom
+notes: Widely recognised screen actor.
+importance: 72
+
+date_type: national_day
+year: null
+description_short: World Standards Day
+description: Celebrates the importance of international standards.
+region: International
+notes: Led by ISO, IEC, ITU.
+importance: 68
+
+date_type: national_day
+year: null
+description_short: International E-Waste Day
+description: Raises awareness about electronic waste recycling.
+region: International
+notes: Started in 2018.
+importance: 61
+
+date_type: national_day
+year: null
+description_short: National Dessert Day
+description: Celebrates desserts and sweet foods.
+region: United States
+notes: Informal observance.
+importance: 34
+
+date_type: national_day
+year: null
+description_short: Ada Lovelace Day (variable)
+description: Celebrates women in STEM; sometimes falls on October 14.
+region: International
+notes: Date varies annually.
+importance: 57
+
+date_type: religious
+year: null
+description_short: Saint Callistus I feast
+description: Roman Catholic memorial of Pope Callistus I.
+region: Roman Catholic
+notes: Fixed annual observance.
+importance: 46
+
+date_type: religious
+year: null
+description_short: Protection of the Theotokos
+description: Eastern Orthodox feast honoring the Virgin Mary's protection.
+region: Eastern Orthodox
+notes: Important in Slavic traditions.
+importance: 58

@@ -1,0 +1,531 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hiya 😄—Chadikins fully booted up and ready to roll.
+
+All systems go, research hat firmly on, thinking cap tightened to optimal snugness.
+
+What are we building today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 2
+
+
+Thought for 1m 31s
+Compiled from Britannica, the United Nations, India.gov.in, the U.S. National Archives, Timeanddate, Vatican/Catholic liturgical sources, and UN/peacekeeping materials. 
+
+data:
+  - date_type: historical_event
+    year: 1836
+    description_short: Darwin returns to England
+    description: Charles Darwin returned to England after the HMS Beagle voyage that shaped his later theory of evolution by natural selection.
+    region: United Kingdom / global science
+    notes: "Science milestone"
+    importance: 98
+
+  - date_type: historical_event
+    year: 1935
+    description_short: Ethiopia mobilizes against Italy
+    description: Emperor Haile Selassie ordered mobilization after Italian forces crossed the frontier, marking the start of the Italo-Ethiopian War.
+    region: Ethiopia / Italy
+    notes: "Prelude to wider anti-fascist conflict"
+    importance: 88
+
+  - date_type: historical_event
+    year: 1937
+    description_short: Parsley Massacre begins
+    description: Rafael Trujillo's inflammatory speech in Dajabon was followed by the mass killing of Haitians in the Dominican Republic.
+    region: Dominican Republic / Haiti
+    notes: "Mass atrocity"
+    importance: 90
+
+  - date_type: historical_event
+    year: 1954
+    description_short: Elvis appears on Grand Ole Opry
+    description: Elvis Presley made his only appearance on the Grand Ole Opry, receiving a lukewarm response before breaking through elsewhere.
+    region: United States
+    notes: "Early pop-culture turning point"
+    importance: 72
+
+  - date_type: historical_event
+    year: 1957
+    description_short: Bridge on the River Kwai premieres
+    description: The Bridge on the River Kwai had its world premiere and later won the Academy Award for Best Picture.
+    region: United Kingdom / United States
+    notes: "Major film release"
+    importance: 74
+
+  - date_type: historical_event
+    year: 1959
+    description_short: The Twilight Zone debuts
+    description: Rod Serling's The Twilight Zone premiered, becoming one of television's most influential anthology series.
+    region: United States / global culture
+    notes: "Television landmark"
+    importance: 86
+
+  - date_type: historical_event
+    year: 1967
+    description_short: Thurgood Marshall sworn in
+    description: Thurgood Marshall was sworn in as a U.S. Supreme Court justice, becoming the Court's first African American member.
+    region: United States
+    notes: "Civil rights milestone"
+    importance: 95
+
+  - date_type: birth
+    year: 1452
+    description_short: Richard III born
+    description: Richard III, the last Plantagenet and Yorkist king of England, was born.
+    region: England
+    notes: "Late medieval monarch"
+    importance: 80
+
+  - date_type: birth
+    year: 1800
+    description_short: Nat Turner born
+    description: Nat Turner, leader of the most effective sustained slave rebellion in U.S. history, was born.
+    region: United States
+    notes: "Historic resistance figure"
+    importance: 84
+
+  - date_type: birth
+    year: 1869
+    description_short: Mahatma Gandhi born
+    description: Mohandas Karamchand Gandhi, leader of the Indian independence movement and global symbol of nonviolent resistance, was born.
+    region: India / global
+    notes: "Nonviolence icon"
+    importance: 100
+
+  - date_type: birth
+    year: 1904
+    description_short: Graham Greene born
+    description: English novelist Graham Greene, known for morally complex fiction set in political worlds, was born.
+    region: United Kingdom
+    notes: "Major 20th-century writer"
+    importance: 82
+
+  - date_type: birth
+    year: 1904
+    description_short: Lal Bahadur Shastri born
+    description: Lal Bahadur Shastri, Indian independence activist and later the second prime minister of India, was born.
+    region: India
+    notes: "Indian national leader"
+    importance: 87
+
+  - date_type: birth
+    year: 1949
+    description_short: Annie Leibovitz born
+    description: Annie Leibovitz, celebrated for dramatic celebrity portrait photography, was born.
+    region: United States
+    notes: "Influential photographer"
+    importance: 76
+
+  - date_type: birth
+    year: 1951
+    description_short: Sting born
+    description: Sting, front man of The Police and an acclaimed solo musician, was born.
+    region: United Kingdom
+    notes: "Global music figure"
+    importance: 78
+
+  - date_type: death
+    year: 1780
+    description_short: John Andre executed
+    description: British officer John Andre was executed as a spy after secret dealings with Benedict Arnold during the American Revolution.
+    region: United States / United Kingdom
+    notes: "Revolutionary War episode"
+    importance: 79
+
+  - date_type: death
+    year: 1927
+    description_short: Svante Arrhenius dies
+    description: Svante Arrhenius, Nobel-winning chemist and pioneer of the greenhouse effect model, died.
+    region: Sweden
+    notes: "Scientific pioneer"
+    importance: 85
+
+  - date_type: death
+    year: 1958
+    description_short: Marie Stopes dies
+    description: Marie Stopes, birth-control advocate and founder of the United Kingdom's first instructional contraception clinic, died.
+    region: United Kingdom
+    notes: "Social reform figure"
+    importance: 77
+
+  - date_type: death
+    year: 1973
+    description_short: Paavo Nurmi dies
+    description: Paavo Nurmi, the Flying Finn and one of the greatest distance runners in Olympic history, died.
+    region: Finland
+    notes: "Olympic legend"
+    importance: 80
+
+  - date_type: death
+    year: 1985
+    description_short: Rock Hudson dies
+    description: Actor Rock Hudson died from AIDS-related complications, bringing major public attention to the AIDS crisis.
+    region: United States / global
+    notes: "Public-health awareness moment"
+    importance: 90
+
+  - date_type: death
+    year: 2005
+    description_short: August Wilson dies
+    description: Pulitzer Prize-winning playwright August Wilson, renowned for his cycle of plays about Black American life, died.
+    region: United States
+    notes: "Major dramatist"
+    importance: 78
+
+  - date_type: death
+    year: 2017
+    description_short: Tom Petty dies
+    description: Singer-songwriter Tom Petty, known for roots-oriented rock and a long run of hit records, died.
+    region: United States
+    notes: "Major rock artist"
+    importance: 76
+
+  - date_type: national_day
+    year: 2007
+    description_short: International Day of Non-Violence
+    description: The United Nations observes 2 October as the International Day of Non-Violence, honoring Gandhi's birthday and message.
+    region: International / UN
+    notes: "Official UN observance"
+    importance: 94
+
+  - date_type: national_day
+    year: null
+    description_short: Gandhi Jayanti
+    description: India observes Gandhi Jayanti on 2 October as a national day marking Mahatma Gandhi's birth.
+    region: India
+    notes: "Indian national observance"
+    importance: 95
+
+  - date_type: national_day
+    year: 1958
+    description_short: National Day of Guinea
+    description: Guinea's national day commemorates its declaration of independence from France on 2 October 1958.
+    region: Guinea
+    notes: "National independence day"
+    importance: 83
+
+  - date_type: religious
+    year: null
+    description_short: Memorial of the Holy Guardian Angels
+    description: In the Roman Catholic calendar, 2 October is the Memorial of the Holy Guardian Angels.
+    region: Roman Catholic / global
+    notes: "Fixed annual Christian observance"
+    importance: 68
+
+  - date_type: religious
+    year: null
+    description_short: Yom Kippur may fall on October 2
+    description: Yom Kippur, the Jewish Day of Atonement, sometimes falls on Octobe
+::contentReference[oaicite:1]{index=1}
+r 2 depending on the Hebrew calendar.
+    region: Jewish / global
+    notes: "Date varies by year and calendar"
+    importance: 86
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1836
+description_short: Darwin returns to England
+description: Charles Darwin returned to England after the HMS Beagle voyage shaping evolution theory.
+region: United Kingdom / global science
+notes: Science milestone
+importance: 98
+
+date_type: historical_event
+year: 1935
+description_short: Ethiopia mobilizes against Italy
+description: Haile Selassie ordered mobilization after Italian invasion, starting the Italo-Ethiopian War.
+region: Ethiopia / Italy
+notes: Anti-fascist conflict precursor
+importance: 88
+
+date_type: historical_event
+year: 1937
+description_short: Parsley Massacre begins
+description: Mass killing of Haitians began under Trujillo's regime in the Dominican Republic.
+region: Dominican Republic / Haiti
+notes: Mass atrocity
+importance: 90
+
+date_type: historical_event
+year: 1954
+description_short: Elvis appears on Grand Ole Opry
+description: Elvis Presley made his only Grand Ole Opry appearance before later success.
+region: United States
+notes: Early career moment
+importance: 72
+
+date_type: historical_event
+year: 1957
+description_short: Bridge on the River Kwai premieres
+description: Film premiered and later won Best Picture at the Academy Awards.
+region: United Kingdom / United States
+notes: Film milestone
+importance: 74
+
+date_type: historical_event
+year: 1959
+description_short: The Twilight Zone debuts
+description: Influential anthology TV series created by Rod Serling premiered.
+region: United States / global culture
+notes: Television landmark
+importance: 86
+
+date_type: historical_event
+year: 1967
+description_short: Thurgood Marshall sworn in
+description: First African American U.S. Supreme Court justice officially took office.
+region: United States
+notes: Civil rights milestone
+importance: 95
+
+date_type: birth
+year: 1452
+description_short: Richard III born
+description: Last Plantagenet king of England was born.
+region: England
+notes: Medieval monarch
+importance: 80
+
+date_type: birth
+year: 1800
+description_short: Nat Turner born
+description: Leader of a major slave rebellion in U.S. history was born.
+region: United States
+notes: Resistance figure
+importance: 84
+
+date_type: birth
+year: 1869
+description_short: Mahatma Gandhi born
+description: Leader of Indian independence and symbol of nonviolent resistance was born.
+region: India / global
+notes: Nonviolence icon
+importance: 100
+
+date_type: birth
+year: 1904
+description_short: Graham Greene born
+description: Influential English novelist known for political and moral themes was born.
+region: United Kingdom
+notes: Major writer
+importance: 82
+
+date_type: birth
+year: 1904
+description_short: Lal Bahadur Shastri born
+description: Second Prime Minister of India and independence leader was born.
+region: India
+notes: National leader
+importance: 87
+
+date_type: birth
+year: 1949
+description_short: Annie Leibovitz born
+description: Celebrated photographer known for iconic portraits was born.
+region: United States
+notes: Photography icon
+importance: 76
+
+date_type: birth
+year: 1951
+description_short: Sting born
+description: Musician and lead singer of The Police was born.
+region: United Kingdom
+notes: Global music figure
+importance: 78
+
+date_type: death
+year: 1780
+description_short: John Andre executed
+description: British officer executed as a spy during the American Revolution.
+region: United States / United Kingdom
+notes: Revolutionary War event
+importance: 79
+
+date_type: death
+year: 1927
+description_short: Svante Arrhenius dies
+description: Nobel Prize-winning chemist and greenhouse effect pioneer died.
+region: Sweden
+notes: Science pioneer
+importance: 85
+
+date_type: death
+year: 1958
+description_short: Marie Stopes dies
+description: Birth control advocate and clinic founder in the UK died.
+region: United Kingdom
+notes: Social reformer
+importance: 77
+
+date_type: death
+year: 1973
+description_short: Paavo Nurmi dies
+description: Legendary Finnish Olympic distance runner died.
+region: Finland
+notes: Olympic legend
+importance: 80
+
+date_type: death
+year: 1985
+description_short: Rock Hudson dies
+description: Actor whose death raised awareness of AIDS died.
+region: United States / global
+notes: Public health awareness
+importance: 90
+
+date_type: death
+year: 2005
+description_short: August Wilson dies
+description: Pulitzer Prize-winning playwright died.
+region: United States
+notes: Major dramatist
+importance: 78
+
+date_type: death
+year: 2017
+description_short: Tom Petty dies
+description: Influential rock musician died.
+region: United States
+notes: Music icon
+importance: 76
+
+date_type: national_day
+year: 2007
+description_short: International Day of Non-Violence
+description: UN observance honoring Gandhi and promoting nonviolence.
+region: International
+notes: UN observance
+importance: 94
+
+date_type: national_day
+year: null
+description_short: Gandhi Jayanti
+description: Indian national holiday celebrating Gandhi's birth.
+region: India
+notes: National observance
+importance: 95
+
+date_type: national_day
+year: 1958
+description_short: Guinea Independence Day
+description: Guinea celebrates independence from France.
+region: Guinea
+notes: National independence
+importance: 83
+
+date_type: religious
+year: null
+description_short: Guardian Angels Feast
+description: Roman Catholic memorial of the Holy Guardian Angels.
+region: Global Catholic
+notes: Fixed annual observance
+importance: 68
+
+date_type: religious
+year: null
+description_short: Yom Kippur may occur
+description: Jewish Day of Atonement sometimes falls on October 2 depending on calendar.
+region: Global Jewish
+notes: Date varies yearly
+importance: 85
+&&&tag for copy&&&
+
+
+
+

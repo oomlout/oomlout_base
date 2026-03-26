@@ -1,0 +1,154 @@
+- date_type: historical_event
+  year: 1635
+  description_short: Roger Williams banished from Massachusetts Bay
+  description: Roger Williams was banished for advocating religious liberty and fair dealings with Native peoples, leading to Rhode Island's founding.
+  region: Massachusetts Bay Colony, North America
+  notes: Early milestone in religious freedom history.
+  importance: 83
+- date_type: historical_event
+  year: 1874
+  description_short: Universal Postal Union established
+  description: The Universal Postal Union was founded in Bern, creating a global postal system framework.
+  region: Switzerland / international
+  notes: Foundation of modern international mail.
+  importance: 86
+- date_type: historical_event
+  year: 1936
+  description_short: Hoover Dam supplies power to Los Angeles
+  description: Hoover Dam began transmitting electricity to Los Angeles, symbolizing large-scale infrastructure progress.
+  region: United States
+  notes: Engineering and electrification milestone.
+  importance: 84
+- date_type: historical_event
+  year: 1963
+  description_short: Vajont disaster in Italy
+  description: A landslide into the Vajont reservoir caused a deadly wave that killed around 2,000 people.
+  region: Italy
+  notes: Major dam-related tragedy.
+  importance: 90
+- date_type: historical_event
+  year: 1989
+  description_short: Leipzig protests accelerate East German collapse
+  description: Peaceful protests in Leipzig became a turning point in ending communist rule in East Germany.
+  region: East Germany
+  notes: Prelude to the fall of the Berlin Wall.
+  importance: 92
+- date_type: historical_event
+  year: 2004
+  description_short: Afghanistan holds first presidential election
+  description: Afghanistan held its first direct presidential election after Taliban rule, electing Hamid Karzai.
+  region: Afghanistan
+  notes: Democratic milestone.
+  importance: 89
+- date_type: historical_event
+  year: 2006
+  description_short: North Korea conducts first nuclear test
+  description: North Korea carried out its first underground nuclear test, raising global tensions.
+  region: North Korea
+  notes: Major geopolitical event.
+  importance: 93
+- date_type: historical_event
+  year: 2012
+  description_short: Malala Yousafzai shot by Taliban
+  description: Malala Yousafzai was attacked for advocating girls' education and later became a Nobel laureate.
+  region: Pakistan
+  notes: Global symbol of education rights.
+  importance: 95
+- date_type: birth
+  year: 1835
+  description_short: Birth of Camille Saint-Saens
+  description: French composer known for The Carnival of the Animals.
+  region: France
+  notes: Romantic-era composer.
+  importance: 82
+- date_type: birth
+  year: 1940
+  description_short: Birth of John Lennon
+  description: English musician and founding member of The Beatles.
+  region: United Kingdom
+  notes: Iconic global music figure.
+  importance: 98
+- date_type: birth
+  year: 1948
+  description_short: Birth of Jackson Browne
+  description: Influential American singer-songwriter of the 1970s.
+  region: United States
+  notes: Rock and folk music influence.
+  importance: 72
+- date_type: birth
+  year: 1964
+  description_short: Birth of Guillermo del Toro
+  description: Mexican filmmaker known for dark fantasy films.
+  region: Mexico
+  notes: Academy Award-winning director.
+  importance: 84
+- date_type: birth
+  year: 1966
+  description_short: Birth of David Cameron
+  description: British politician who served as UK Prime Minister.
+  region: United Kingdom
+  notes: Modern political figure.
+  importance: 78
+- date_type: death
+  year: 1967
+  description_short: Death of Che Guevara
+  description: Revolutionary leader executed in Bolivia after capture.
+  region: Bolivia
+  notes: Icon of global revolutionary movements.
+  importance: 94
+- date_type: death
+  year: 1974
+  description_short: Death of Oskar Schindler
+  description: Businessman who saved over 1,000 Jews during the Holocaust.
+  region: Germany
+  notes: Remembered for humanitarian actions.
+  importance: 91
+- date_type: death
+  year: 2016
+  description_short: Death of Andrzej Wajda
+  description: Influential Polish film director of postwar cinema.
+  region: Poland
+  notes: Oscar-recognized filmmaker.
+  importance: 76
+- date_type: national_day
+  year: 1962
+  description_short: Uganda Independence Day
+  description: Uganda celebrates independence from British rule.
+  region: Uganda
+  notes: National holiday.
+  importance: 90
+- date_type: national_day
+  year: 1969
+  description_short: World Post Day
+  description: Marks the founding of the Universal Postal Union.
+  region: International
+  notes: UN-recognized observance.
+  importance: 80
+- date_type: national_day
+  year: 1446
+  description_short: Hangul Day
+  description: Celebrates the creation of the Korean alphabet.
+  region: South Korea
+  notes: Language and literacy celebration.
+  importance: 85
+- date_type: national_day
+  year: 1964
+  description_short: Leif Erikson Day
+  description: Honors Norse explorer Leif Erikson.
+  region: United States
+  notes: Cultural heritage observance.
+  importance: 65
+- date_type: religious
+  year: null
+  description_short: Sukkot may fall on this date
+  description: Jewish festival of booths; dates vary by Hebrew calendar.
+  region: Jewish communities worldwide
+  notes: Movable feast.
+  importance: 68
+- date_type: religious
+  year: null
+  description_short: Dussehra may fall on this date
+  description: Hindu festival marking victory of good over evil.
+  region: India and worldwide Hindu communities
+  notes: Based on lunar calendar.
+  importance: 72

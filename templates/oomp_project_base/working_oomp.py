@@ -57,6 +57,7 @@ def create_generic(**kwargs):
         #default_empty["words"] = words
         #default_empty["animal"] = "triffid"
 
+
     parts = []
 
     for thing in things:
@@ -69,11 +70,6 @@ def create_generic(**kwargs):
         #define stage        
         theme = part.get("oomp_description_extra", "")
         part["theme"] = theme
-        
-        
-        
-        
-        
         
         part["name"] = thing
         part["name_space"] = thing.replace("_", " ")
@@ -96,8 +92,8 @@ def create_generic(**kwargs):
         files_to_trace = []
         count = 0
 
-        mode_ai_wait = "fast"
-        #mode_ai_wait = "slow"
+        #mode_ai_wait = "fast"
+        mode_ai_wait = "slow"
 
 
         #icon
@@ -127,13 +123,15 @@ def create_generic(**kwargs):
 
             oomlout_roboclick.add_action(part=part, action_type=action_type, action_name=action_name, actions=actions, file_test=file_test)
 
+        folder_project = "ai_data_source_calendar_date"
+
         #prompt bubble letter
-        if True:
+        if False:
             # prompt change
             prompts = []
-            prompts.append({"folder_name" : "roboclick\\helen_school_english_reading_book_read_chart\\prompt_bubble_letter_1", "delay" : "60"})
+            prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_three_dimension_letter_1", "delay" : "60"})
             #prompts.append({"file_name" : "roboclick\\prompt_bubble_letter_1\\working_2.md", "delay" : "60"})
-            words = ["Books Read Chart"]
+            words = part.get("words", [])
             word_count = len(words)
             for i in range(word_count):            
                 word = words[i]
@@ -141,35 +139,61 @@ def create_generic(**kwargs):
                 file_name = f"initial_generated_{i+1}.png"
                 prompts.append({"file_name_image" : file_name, "text" : f"Generate it take all the time you need", "delay" : "60"})
                 files_to_trace.append(file_name)
-            count = oomlout_roboclick.ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
+            part2 = copy.deepcopy(part)
+            count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       
 
         #prompt image
-        if True:
+        if False:
             # prompt change
             prompts = []
-            prompts.append({"folder_name" : "roboclick\\helen_school_english_reading_book_read_chart\\prompt_image_main_1", "delay" : "60"})                        
+            prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_image_main_1", "delay" : "60"})                        
             file_name = f"image_main.png"
             prompts.append({"file_name_image" : file_name, "text" : f"Generate it take all the time you need", "delay" : "60"})
             files_to_trace.append(file_name)
-            count = oomlout_roboclick.ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
+            part2 = copy.deepcopy(part)
+            count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       
 
         #cover_background
         #prompt image
-        if True:
+        if False:
             # prompt change
             prompts = []
-            prompts.append({"folder_name" : "roboclick\\helen_school_english_reading_book_read_chart\\prompt_image_background_1", "delay" : "60"})                        
+            prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_image_cover_background_1", "delay" : "60"})                        
             file_name = f"image_cover_background.png"
             prompts.append({"file_name_image" : file_name, "text" : f"Generate it take all the time you need", "delay" : "60"})
             files_to_trace.append(file_name)
-            count = oomlout_roboclick.ai_query_from_prompts(part,prompts,mode_ai_wait, count)       
+            part2 = copy.deepcopy(part)
+            count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       
+       
+        #internal border
+        #prompt image
+        if False:
+            # prompt change
+            prompts = []
+            prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_inside_border_1", "delay" : "60"})                        
+            file_name = f"image_inside_border.png"
+            prompts.append({"file_name_image" : file_name, "text" : f"Generate it take all the time you need", "delay" : "60"})
+            files_to_trace.append(file_name)
+            part2 = copy.deepcopy(part)
+            count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       
 
+        #logo back
+        #prompt image
+        if False:
+            # prompt change
+            prompts = []
+            prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_logo_back_1", "delay" : "60"})                        
+            file_name = f"image_logo_back.png"
+            prompts.append({"file_name_image" : file_name, "text" : f"Generate it take all the time you need", "delay" : "60"})
+            files_to_trace.append(file_name)
+            part2 = copy.deepcopy(part)
+            count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       
 
          
 
 
         #trace
-        if True:  
+        if False:  
 
             for file_to_trace in files_to_trace:
                 folder_name = "roboclick\\action_corel_trace_1" 
@@ -186,12 +210,24 @@ def create_generic(**kwargs):
 
         #make_card
         if False:
-            folder_name = "roboclick\\action_corel_card_make"
+            folder_name = f"roboclick\\{folder_project}\\action_corel_card_make"
             part2 = copy.deepcopy(part)
             part2["folder_name"] = folder_name
             count = oomlout_roboclick.ai_action_from_folder(part=part, part2=part2)
 
-        
+        #research
+        if True:
+            folder_name = f"roboclick\\{folder_project}\\research_day_of_the_year"
+            prompts = []
+            prompts.append({"folder_name" : folder_name, "delay" : "120"})
+            file_destination_yaml = "research.yaml"
+            action_name = f"research_day_of_the_year"
+            part2 = copy.deepcopy(part)
+            part2["new_item_name"] = "date_type"
+            part2["remove_top_level"] = "data"
+            count = oomlout_roboclick.ai_query_from_prompts(part=part, part2=part2, prompts=prompts, mode_ai_wait=mode_ai_wait, count=count, file_destination_yaml=file_destination_yaml, action_name=action_name)
+
+
         parts.append(part)
     
 

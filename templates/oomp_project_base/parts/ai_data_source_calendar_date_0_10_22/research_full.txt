@@ -1,0 +1,792 @@
+
+
+
+
+ Hi, CHadikins I hope your day is going well! lets get to this!.
+
+Hiya!! 😄 Chadikins reporting for duty — fully charged, thinking cap on, and ready to dive deep with you.
+
+What are we building / researching / creating today?
+
+
+  You are a high-quality research agent tasked with compiling rich, accurate, and engaging "On This Day" data for use in a physical or digital card product.
+
+---
+
+## STEP 1 — INPUT HANDLING
+
+If the user has NOT provided a specific date:
+→ Ask clearly: "Please provide a date (day and month, e.g., March 25)."
+
+If a date IS provided:
+→ Proceed immediately.
+
+Interpret the date as a DAY + MONTH (not year-specific unless explicitly stated).
+
+---
+
+## STEP 2 — RESEARCH SCOPE
+
+You must gather and synthesize information from multiple high-quality sources.
+
+For the given date, collect:
+
+### 1. Historical Events
+- Major global events (political, scientific, cultural, technological)
+- Aim for as many as a date can have, some days will have more some less
+- Prioritise significance, recognisability, and variety across eras
+
+### 2. Births
+- Notable people born on this date
+- Include a mix of:
+  - Historical figures
+  - Modern figures
+  - Creative / scientific / cultural relevance
+- As many as are relevant
+
+### 3. Deaths (optional but preferred)
+- Notable deaths on this date
+- As many as are relevant
+
+### 4. National / International Days
+- Official UN days
+- Country-specific national days
+- Widely recognised “fun” or internet days (if culturally relevant)
+- Include country where applicable
+
+### 5. Religious Observances
+- Christian, Muslim, Hindu, Jewish, Buddhist, Sikh, etc.
+- Include movable feasts IF they sometimes fall on this date (note variability)
+- Clearly mark if date varies by year or calendar
+
+---
+
+## STEP 3 — QUALITY RULES
+
+- Avoid obscure trivia unless genuinely interesting
+- Prefer globally recognisable or narratively strong items
+- Ensure factual accuracy and avoid duplication
+- Where helpful, add 1 short contextual phrase (max 10 words)
+
+---
+
+## STEP 4 — OUTPUT FORMAT
+
+Return structured, clean, and easy-to-parse output in YAML:
+
+data:
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short:
+    description:
+    region:
+    notes:
+    importance: (1-100)
+  - date_type: (historical_event, birth, death, national_day,religious)
+    year:
+    description_short
+    description:
+    region:
+    notes:
+    importance: (1-100)
+
+Please provide a date (day and month, e.g., March 25).
+
+
+  Great! please do it for October 22
+
+
+Thought for 1m 28s
+data:
+
+date_type: historical_event
+year: 1797
+description_short: "First parachute jump from a balloon"
+description: "Andre-Jacques Garnerin made the first widely recognised parachute descent from a balloon over Paris."
+region: "France"
+notes: "Early aviation milestone."
+importance: 86
+sources:
+
+"
+"
+
+date_type: historical_event
+year: 1836
+description_short: "Sam Houston inaugurated"
+description: "Sam Houston was inaugurated as the first president of the Republic of Texas after the Texas Revolution."
+region: "Republic of Texas"
+notes: "State-building moment."
+importance: 84
+sources:
+
+"
+"
+
+date_type: historical_event
+year: 1910
+description_short: "Dr. Crippen convicted"
+description: "Hawley Harvey Crippen was found guilty in one of the 20th century's most notorious murder trials."
+region: "United Kingdom"
+notes: "Famous criminal case."
+importance: 72
+sources:
+
+"
+"
+
+date_type: historical_event
+year: 1934
+description_short: "Pretty Boy Floyd killed"
+description: "Bank robber Charles 'Pretty Boy' Floyd was fatally shot by FBI agents near East Liverpool, Ohio."
+region: "United States"
+notes: "Depression-era crime icon."
+importance: 67
+sources:
+
+"
+"
+
+date_type: historical_event
+year: 1962
+description_short: "Cuban Missile Crisis escalates publicly"
+description: "President John F. Kennedy announced a naval blockade of Cuba, bringing the Cuban Missile Crisis into open global focus."
+region: "United States / Cuba / Global"
+notes: "Cold War flashpoint."
+importance: 99
+sources:
+
+"
+"
+
+date_type: historical_event
+year: 1964
+description_short: "Sartre declines Nobel Prize"
+description: "Jean-Paul Sartre was announced as Nobel laureate in Literature but became the first person to refuse the prize."
+region: "France / Sweden"
+notes: "Rare Nobel refusal."
+importance: 83
+sources:
+
+"
+"
+
+date_type: historical_event
+year: 1983
+description_short: "Beirut barracks bombing"
+description: "Suicide bombers attacked U.S. Marines and French paratroopers in Beirut, killing hundreds."
+region: "Lebanon"
+notes: "Major Middle East conflict event."
+importance: 94
+sources:
+
+"
+"
+
+date_type: historical_event
+year: 2008
+description_short: "India launches Chandrayaan-1"
+description: "India launched Chandrayaan-1, its first lunar probe, which later helped detect water in the Moon's atmosphere."
+region: "India / Space"
+notes: "Important Asian space milestone."
+importance: 91
+sources:
+
+"
+"
+
+date_type: historical_event
+year: 2010
+description_short: "WikiLeaks war logs released"
+description: "WikiLeaks published thousands of U.S. documents related to the wars in Iraq and Afghanistan."
+region: "Global"
+notes: "Major transparency controversy."
+importance: 82
+sources:
+
+"
+"
+
+date_type: birth
+year: 1811
+description_short: "Franz Liszt born"
+description: "Franz Liszt, virtuoso pianist and major Romantic composer, was born in Raiding."
+region: "Austria / Hungary"
+notes: "Piano legend."
+importance: 95
+sources:
+
+"
+"
+
+date_type: birth
+year: 1844
+description_short: "Sarah Bernhardt born"
+description: "Sarah Bernhardt, one of the most celebrated stage actors of her era, was born."
+region: "France"
+notes: "Theatre icon."
+importance: 86
+sources:
+
+"
+"
+
+date_type: birth
+year: 1844
+description_short: "Louis Riel born"
+description: "Louis Riel, Metis leader central to Canadian history, was born."
+region: "Canada"
+notes: "Nation-shaping figure."
+importance: 88
+sources:
+
+"
+"
+
+date_type: birth
+year: 1917
+description_short: "Joan Fontaine born"
+description: "Oscar-winning actor Joan Fontaine was born."
+region: "Japan / United States / United Kingdom"
+notes: "Classic Hollywood star."
+importance: 73
+sources:
+
+"
+"
+
+date_type: birth
+year: 1943
+description_short: "Catherine Deneuve born"
+description: "Catherine Deneuve, one of France's defining screen stars, was born."
+region: "France"
+notes: "European cinema icon."
+importance: 90
+sources:
+
+"
+"
+
+date_type: birth
+year: 1946
+description_short: "Deepak Chopra born"
+description: "Author and alternative-medicine figure Deepak Chopra was born."
+region: "India / United States"
+notes: "Influential wellness author."
+importance: 71
+sources:
+
+"
+"
+
+date_type: birth
+year: 1949
+description_short: "Arsene Wenger born"
+description: "Football manager Arsene Wenger was born."
+region: "France"
+notes: "Transformative Premier League figure."
+importance: 84
+sources:
+
+"
+"
+
+date_type: birth
+year: 1952
+description_short: "Jeff Goldblum born"
+description: "Actor Jeff Goldblum was born."
+region: "United States"
+notes: "Film and pop-culture favourite."
+importance: 76
+sources:
+
+"
+"
+
+date_type: birth
+year: 1962
+description_short: "Bob Odenkirk born"
+description: "Actor, comedian, and writer Bob Odenkirk was born."
+region: "United States"
+notes: "Television and comedy figure."
+importance: 74
+sources:
+
+"
+"
+
+date_type: birth
+year: 1992
+description_short: "21 Savage born"
+description: "Rapper 21 Savage was born."
+region: "United Kingdom / United States"
+notes: "Modern music relevance."
+importance: 68
+sources:
+
+"
+"
+
+date_type: death
+year: 741
+description_short: "Charles Martel died"
+description: "Frankish military and political leader Charles Martel died."
+region: "Frankish realms"
+notes: "Major early medieval ruler."
+importance: 89
+sources:
+
+"
+"
+
+date_type: death
+year: 1906
+description_short: "Paul Cezanne died"
+description: "Post-Impressionist master Paul Cezanne died in Aix-en-Provence."
+region: "France"
+notes: "Foundational modern painter."
+importance: 93
+sources:
+
+"
+"
+
+date_type: death
+year: 1973
+description_short: "Pablo Casals died"
+description: "Cellist and conductor Pablo Casals died."
+region: "Puerto Rico / Spain"
+notes: "Classical music giant."
+importance: 85
+sources:
+
+"
+"
+
+date_type: death
+year: 1979
+description_short: "Nadia Boulanger died"
+description: "Composer, conductor, and legendary teacher Nadia Boulanger died."
+region: "France"
+notes: "Influenced generations of composers."
+importance: 84
+sources:
+
+"
+"
+
+date_type: death
+year: 1989
+description_short: "Ewan MacColl died"
+description: "Folk singer-songwriter and playwright Ewan MacColl died."
+region: "United Kingdom"
+notes: "Folk revival figure."
+importance: 72
+sources:
+
+"
+"
+
+date_type: death
+year: 1995
+description_short: "Kingsley Amis died"
+description: "Novelist and critic Kingsley Amis died."
+region: "United Kingdom"
+notes: "Major postwar British writer."
+importance: 79
+sources:
+
+"
+"
+
+date_type: national_day
+year: 1998
+description_short: "International Stuttering Awareness Day"
+description: "International Stuttering Awareness Day is observed annually on October 22 to raise awareness and support people who stutter."
+region: "Global"
+notes: "Widely recognised awareness day."
+importance: 78
+sources:
+
+"
+"
+
+date_type: national_day
+year: 2005
+description_short: "Wombat Day"
+description: "Wombat Day is celebrated on October 22 in honour of Australia's iconic marsupial."
+region: "Australia"
+notes: "Popular animal-awareness observance."
+importance: 52
+sources:
+
+"
+"
+
+date_type: national_day
+year: 2019
+description_short: "National Make A Dog's Day"
+description: "National Make A Dog's Day was established by Subaru and is observed on October 22."
+region: "United States"
+notes: "Modern branded observance."
+importance: 38
+sources:
+
+"
+"
+
+date_type: religious
+year: "fixed annual observance"
+description_short: "Feast of Saint John Paul II"
+description: "In the Roman Catholic calendar, October 22 is the feast day of Saint John Paul II."
+region: "Roman Catholic Church / Global"
+notes: "Fixed feast day."
+importance: 80
+sources:
+
+"
+"
+
+date_type: religious
+year: "fixed annual observance"
+description_short: "Orthodox commemorations on October 22"
+description: "Eastern Orthodox calendars mark saints and commemorations on October 22, including Saint Abercius and other fixed observances depending on calendar usage."
+region: "Eastern Orthodox Christianity"
+notes: "Old Calendar churches may mark different civil dates."
+importance: 63
+sources:
+
+"
+"
+
+date_type: religious
+year: "varies by year"
+description_short: "Birth of the Bab may fall on October 22"
+description: "In the Baha'i calendar, the Birth of the Bab is movable and can sometimes fall on October 22."
+region: "Baha'i"
+notes: "Twin Holy Days vary year to year."
+importance: 66
+sources:
+
+"
+"
+
+date_type: religious
+year: "varies by year"
+description_short: "Birth of Baha'u'llah may fall on October 22"
+description: "The Birth of Baha'u'llah is also movable and has fallen on October 22 in some years."
+region: "Baha'i"
+notes: "Usually paired with the Birth of the Bab."
+importance: 68
+sources:
+
+"
+"
+
+date_type: religious
+year: "varies by year"
+description_short: "Diwali can fall on October 22"
+description: "Diwali, the Hindu festival of lights also observed in Jain, Sikh, and some Buddhist traditions, falls between mid-October and mid-November and can occasionally land on October 22."
+region: "India and global diaspora"
+notes: "Lunisolar date; not fixed."
+importance: 88
+sources:
+
+"
+"
+
+date_type: religious
+year: "varies by year"
+description_short: "Sukkot or Shemini Atzeret may align nearby"
+description: "Jewish autumn festivals such as Sukkot and Shemini Atzeret are movable in the Gregorian calendar and can align with October 22 in some years."
+region: "Judaism / Global"
+notes: "Hebrew calendar observance."
+importance: 76
+sources:
+
+"
+"
+
+
+if the above output is yaml please put it in the reply, if it is not please summarize the above information in a yaml format and only return the yaml without any other text. The yaml should be in the format of a dictionary with keys and values. The keys should be descriptive of the information they contain. The values should be the information itself. Please make sure the yaml is between two &&&tag for copy&&& strings
+
+&&&tag for copy&&&
+data:
+
+date_type: historical_event
+year: 1797
+description_short: "First parachute jump from a balloon"
+description: "Andre-Jacques Garnerin made the first widely recognised parachute descent from a balloon over Paris."
+region: "France"
+notes: "Early aviation milestone."
+importance: 86
+
+date_type: historical_event
+year: 1836
+description_short: "Sam Houston inaugurated"
+description: "Sam Houston was inaugurated as the first president of the Republic of Texas after the Texas Revolution."
+region: "Republic of Texas"
+notes: "State-building moment."
+importance: 84
+
+date_type: historical_event
+year: 1910
+description_short: "Dr. Crippen convicted"
+description: "Hawley Harvey Crippen was found guilty in one of the 20th century's most notorious murder trials."
+region: "United Kingdom"
+notes: "Famous criminal case."
+importance: 72
+
+date_type: historical_event
+year: 1934
+description_short: "Pretty Boy Floyd killed"
+description: "Bank robber Charles 'Pretty Boy' Floyd was fatally shot by FBI agents near East Liverpool, Ohio."
+region: "United States"
+notes: "Depression-era crime icon."
+importance: 67
+
+date_type: historical_event
+year: 1962
+description_short: "Cuban Missile Crisis escalates publicly"
+description: "President John F. Kennedy announced a naval blockade of Cuba, bringing the Cuban Missile Crisis into open global focus."
+region: "United States / Cuba / Global"
+notes: "Cold War flashpoint."
+importance: 99
+
+date_type: historical_event
+year: 1964
+description_short: "Sartre declines Nobel Prize"
+description: "Jean-Paul Sartre was announced as Nobel laureate in Literature but became the first person to refuse the prize."
+region: "France / Sweden"
+notes: "Rare Nobel refusal."
+importance: 83
+
+date_type: historical_event
+year: 1983
+description_short: "Beirut barracks bombing"
+description: "Suicide bombers attacked U.S. Marines and French paratroopers in Beirut, killing hundreds."
+region: "Lebanon"
+notes: "Major Middle East conflict event."
+importance: 94
+
+date_type: historical_event
+year: 2008
+description_short: "India launches Chandrayaan-1"
+description: "India launched Chandrayaan-1, its first lunar probe, which later helped detect water in the Moon's atmosphere."
+region: "India / Space"
+notes: "Important Asian space milestone."
+importance: 91
+
+date_type: historical_event
+year: 2010
+description_short: "WikiLeaks war logs released"
+description: "WikiLeaks published thousands of U.S. documents related to the wars in Iraq and Afghanistan."
+region: "Global"
+notes: "Major transparency controversy."
+importance: 82
+
+date_type: birth
+year: 1811
+description_short: "Franz Liszt born"
+description: "Franz Liszt, virtuoso pianist and major Romantic composer, was born in Raiding."
+region: "Austria / Hungary"
+notes: "Piano legend."
+importance: 95
+
+date_type: birth
+year: 1844
+description_short: "Sarah Bernhardt born"
+description: "Sarah Bernhardt, one of the most celebrated stage actors of her era, was born."
+region: "France"
+notes: "Theatre icon."
+importance: 86
+
+date_type: birth
+year: 1844
+description_short: "Louis Riel born"
+description: "Louis Riel, Metis leader central to Canadian history, was born."
+region: "Canada"
+notes: "Nation-shaping figure."
+importance: 88
+
+date_type: birth
+year: 1917
+description_short: "Joan Fontaine born"
+description: "Oscar-winning actor Joan Fontaine was born."
+region: "Japan / United States / United Kingdom"
+notes: "Classic Hollywood star."
+importance: 73
+
+date_type: birth
+year: 1943
+description_short: "Catherine Deneuve born"
+description: "Catherine Deneuve, one of France's defining screen stars, was born."
+region: "France"
+notes: "European cinema icon."
+importance: 90
+
+date_type: birth
+year: 1946
+description_short: "Deepak Chopra born"
+description: "Author and alternative-medicine figure Deepak Chopra was born."
+region: "India / United States"
+notes: "Influential wellness author."
+importance: 71
+
+date_type: birth
+year: 1949
+description_short: "Arsene Wenger born"
+description: "Football manager Arsene Wenger was born."
+region: "France"
+notes: "Transformative Premier League figure."
+importance: 84
+
+date_type: birth
+year: 1952
+description_short: "Jeff Goldblum born"
+description: "Actor Jeff Goldblum was born."
+region: "United States"
+notes: "Film and pop-culture favourite."
+importance: 76
+
+date_type: birth
+year: 1962
+description_short: "Bob Odenkirk born"
+description: "Actor, comedian, and writer Bob Odenkirk was born."
+region: "United States"
+notes: "Television and comedy figure."
+importance: 74
+
+date_type: birth
+year: 1992
+description_short: "21 Savage born"
+description: "Rapper 21 Savage was born."
+region: "United Kingdom / United States"
+notes: "Modern music relevance."
+importance: 68
+
+date_type: death
+year: 741
+description_short: "Charles Martel died"
+description: "Frankish military and political leader Charles Martel died."
+region: "Frankish realms"
+notes: "Major early medieval ruler."
+importance: 89
+
+date_type: death
+year: 1906
+description_short: "Paul Cezanne died"
+description: "Post-Impressionist master Paul Cezanne died in Aix-en-Provence."
+region: "France"
+notes: "Foundational modern painter."
+importance: 93
+
+date_type: death
+year: 1973
+description_short: "Pablo Casals died"
+description: "Cellist and conductor Pablo Casals died."
+region: "Puerto Rico / Spain"
+notes: "Classical music giant."
+importance: 85
+
+date_type: death
+year: 1979
+description_short: "Nadia Boulanger died"
+description: "Composer, conductor, and legendary teacher Nadia Boulanger died."
+region: "France"
+notes: "Influenced generations of composers."
+importance: 84
+
+date_type: death
+year: 1989
+description_short: "Ewan MacColl died"
+description: "Folk singer-songwriter and playwright Ewan MacColl died."
+region: "United Kingdom"
+notes: "Folk revival figure."
+importance: 72
+
+date_type: death
+year: 1995
+description_short: "Kingsley Amis died"
+description: "Novelist and critic Kingsley Amis died."
+region: "United Kingdom"
+notes: "Major postwar British writer."
+importance: 79
+
+date_type: national_day
+year: 1998
+description_short: "International Stuttering Awareness Day"
+description: "International Stuttering Awareness Day is observed annually on October 22 to raise awareness and support people who stutter."
+region: "Global"
+notes: "Widely recognised awareness day."
+importance: 78
+
+date_type: national_day
+year: 2005
+description_short: "Wombat Day"
+description: "Wombat Day is celebrated on October 22 in honour of Australia's iconic marsupial."
+region: "Australia"
+notes: "Popular animal-awareness observance."
+importance: 52
+
+date_type: national_day
+year: 2019
+description_short: "National Make A Dog's Day"
+description: "National Make A Dog's Day was established by Subaru and is observed on October 22."
+region: "United States"
+notes: "Modern branded observance."
+importance: 38
+
+date_type: religious
+year: "fixed annual observance"
+description_short: "Feast of Saint John Paul II"
+description: "In the Roman Catholic calendar, October 22 is the feast day of Saint John Paul II."
+region: "Roman Catholic Church / Global"
+notes: "Fixed feast day."
+importance: 80
+
+date_type: religious
+year: "fixed annual observance"
+description_short: "Orthodox commemorations on October 22"
+description: "Eastern Orthodox calendars mark saints and commemorations on October 22, including Saint Abercius and other fixed observances depending on calendar usage."
+region: "Eastern Orthodox Christianity"
+notes: "Old Calendar churches may mark different civil dates."
+importance: 63
+
+date_type: religious
+year: "varies by year"
+description_short: "Birth of the Bab may fall on October 22"
+description: "In the Baha'i calendar, the Birth of the Bab is movable and can sometimes fall on October 22."
+region: "Baha'i"
+notes: "Twin Holy Days vary year to year."
+importance: 66
+
+date_type: religious
+year: "varies by year"
+description_short: "Birth of Baha'u'llah may fall on October 22"
+description: "The Birth of Baha'u'llah is also movable and has fallen on October 22 in some years."
+region: "Baha'i"
+notes: "Usually paired with the Birth of the Bab."
+importance: 68
+
+date_type: religious
+year: "varies by year"
+description_short: "Diwali can fall on October 22"
+description: "Diwali, the Hindu festival of lights also observed in Jain, Sikh, and some Buddhist traditions, falls between mid-October and mid-November and can occasionally land on October 22."
+region: "India and global diaspora"
+notes: "Lunisolar date; not fixed."
+importance: 88
+
+date_type: religious
+year: "varies by year"
+description_short: "Sukkot or Shemini Atzeret may align nearby"
+description: "Jewish autumn festivals such as Sukkot and Shemini Atzeret are movable in the Gregorian calendar and can align with October 22 in some years."
+region: "Judaism / Global"
+notes: "Hebrew calendar observance."
+importance: 76
+&&&tag for copy&&&
+
+
+
+
+

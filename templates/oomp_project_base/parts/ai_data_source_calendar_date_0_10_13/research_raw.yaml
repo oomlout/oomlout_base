@@ -1,0 +1,178 @@
+
+data:
+
+date_type: historical_event
+year: 54
+description_short: "Emperor Claudius dies; Nero succeeds"
+description: "Roman emperor Claudius dies, and Nero becomes emperor of Rome."
+region: "Roman Empire"
+notes: "Major imperial succession."
+importance: 92
+
+date_type: historical_event
+year: 1307
+description_short: "Knights Templar arrested in France"
+description: "King Philip IV orders the mass arrest of the Knights Templar in France."
+region: "France"
+notes: "Famous medieval crackdown."
+importance: 95
+
+date_type: historical_event
+year: 1399
+description_short: "Henry IV crowned King of England"
+description: "Henry IV is crowned King of England at Westminster Abbey."
+region: "England"
+notes: "Important monarchy transition."
+importance: 88
+
+date_type: historical_event
+year: 1792
+description_short: "White House cornerstone laid"
+description: "Construction of the White House begins with the laying of its cornerstone."
+region: "United States"
+notes: "Symbolic start of U.S. executive residence."
+importance: 90
+
+date_type: birth
+year: 1925
+description_short: "Margaret Thatcher born"
+description: "Margaret Thatcher, future UK Prime Minister, is born."
+region: "United Kingdom"
+notes: "First female UK prime minister."
+importance: 94
+
+date_type: birth
+year: 1925
+description_short: "Lenny Bruce born"
+description: "American comedian Lenny Bruce is born."
+region: "United States"
+notes: "Influential stand-up pioneer."
+importance: 82
+
+date_type: birth
+year: 1989
+description_short: "Alexandria Ocasio-Cortez born"
+description: "American politician Alexandria Ocasio-Cortez is born."
+region: "United States"
+notes: "Prominent modern political figure."
+importance: 76
+
+date_type: birth
+year: 1995
+description_short: "Jimin born"
+description: "Jimin, member of BTS, is born."
+region: "South Korea"
+notes: "Global pop culture influence."
+importance: 84
+
+date_type: death
+year: 54
+description_short: "Claudius dies"
+description: "Roman emperor Claudius dies."
+region: "Roman Empire"
+notes: "Triggers Nero's rise."
+importance: 90
+
+date_type: death
+year: 1961
+description_short: "Prince Louis Rwagasore assassinated"
+description: "Burundi's Prime Minister Prince Louis Rwagasore is assassinated."
+region: "Burundi"
+notes: "National tragedy."
+importance: 90
+
+date_type: death
+year: 2016
+description_short: "King Bhumibol Adulyadej dies"
+description: "Thailand's long-reigning King Bhumibol Adulyadej dies."
+region: "Thailand"
+notes: "End of historic reign."
+importance: 95
+
+date_type: death
+year: 2016
+description_short: "Dario Fo dies"
+description: "Italian playwright and Nobel laureate Dario Fo dies."
+region: "Italy"
+notes: "Major literary figure."
+importance: 78
+
+date_type: death
+year: 2023
+description_short: "Louise Gluck dies"
+description: "American Nobel Prize-winning poet Louise Gluck dies."
+region: "United States"
+notes: "Recent literary loss."
+importance: 74
+
+date_type: national_day
+year: null
+description_short: "International Day for Disaster Risk Reduction"
+description: "UN observance promoting global disaster preparedness and resilience."
+region: "International"
+notes: "Official UN day."
+importance: 88
+
+date_type: national_day
+year: null
+description_short: "Rwagasore Day"
+description: "Burundi commemorates Prince Louis Rwagasore."
+region: "Burundi"
+notes: "Linked to 1961 assassination."
+importance: 82
+
+date_type: national_day
+year: null
+description_short: "Azerbaijani Railway Day"
+description: "Azerbaijan celebrates its railway workers and system."
+region: "Azerbaijan"
+notes: "National observance."
+importance: 52
+
+date_type: national_day
+year: null
+description_short: "Ada Lovelace Day (sometimes)"
+description: "Celebrates women in STEM; falls on October 13 in some years."
+region: "International"
+notes: "Movable (second Tuesday of October)."
+importance: 72
+
+date_type: national_day
+year: null
+description_short: "International Skeptics Day"
+description: "Informal day promoting critical thinking and skepticism."
+region: "International"
+notes: "Fun observance."
+importance: 44
+
+date_type: religious
+year: null
+description_short: "Feast of St. Edward the Confessor"
+description: "Christian feast day honoring Edward the Confessor."
+region: "Christianity"
+notes: "Fixed date."
+importance: 66
+
+date_type: religious
+year: null
+description_short: "Blessed Alexandrina Maria da Costa feast day"
+description: "Catholic remembrance of Alexandrina Maria da Costa."
+region: "Christianity"
+notes: "Fixed date."
+importance: 40
+
+date_type: religious
+year: null
+description_short: "Eastern Orthodox observances"
+description: "Various saints and commemorations observed on this date."
+region: "Eastern Orthodox Christianity"
+notes: "Varies by calendar tradition."
+importance: 48
+
+date_type: religious
+year: null
+description_short: "Hoshana Rabbah (sometimes)"
+description: "Jewish observance that may fall on this date in some years."
+region: "Judaism"
+notes: "Movable Hebrew calendar date."
+importance: 50
