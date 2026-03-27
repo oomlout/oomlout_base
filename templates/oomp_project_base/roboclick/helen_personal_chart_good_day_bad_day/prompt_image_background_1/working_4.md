@@ -1,1 +1,1 @@
-awesome please populate the prompt for {theme}
+awesome please populate the prompt for {background_theme}

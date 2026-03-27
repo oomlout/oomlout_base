@@ -1,4 +1,4 @@
-{
+  {
   "core_rules": {
     "output": "The output must be a single image prompt only",
     "subject": "The subject is only the word(s) - no characters, no objects, no icons, no scenery",

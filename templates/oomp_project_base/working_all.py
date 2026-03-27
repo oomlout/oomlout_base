@@ -55,7 +55,7 @@ def main(**kwargs):
         kwargs["mode"] = "corel"
         oomlout_roboclick.run_folder_recursive(**kwargs)
 
-
+    
 
 if __name__ == '__main__':
     # parse arguments

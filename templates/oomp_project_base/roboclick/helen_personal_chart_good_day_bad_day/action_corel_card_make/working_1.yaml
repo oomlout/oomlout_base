@@ -1,0 +1,38 @@
+action_type: "corel"
+action_name: "corel_card_make"
+actions:
+- command: wait_for_file
+  file_name: "image_cover_background_trace.cdr"
+- command: file_copy
+  file_source: "template\\blank_page_a4_portrait_210_mm_width_297_mm_height\\working.cdr"
+  file_destination: "card.cdr"
+### corel_open card.cdr
+- command: "corel_open"
+  file_source: "card.cdr"
+# - command: "corel_page_add"
+#   repeat: 3
+# - command: "corel_page_goto"
+#   page_number: 1
+- command: "corel_import"
+  file_source: "image_cover_background_trace.cdr"
+  x: 105
+  y: 297/2
+  width: 210
+- command: "corel_object_order"
+  order: "to_back"
+- command: "corel_import"
+  file_source: "image_main_1_trace.cdr"
+  x: "54.375"
+  y: "144.75"
+  height: 100
+- command: "corel_import"
+  file_source: "image_main_2_trace.cdr"
+  x: "165"
+  y: "158.5"
+  height: 80
+- command: "corel_save"
+- command: "corel_export"
+  file_destination: "card.png"
+- command: "corel_export"
+  file_destination: "card.pdf"
+- command: "corel_close"

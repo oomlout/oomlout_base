@@ -67,9 +67,6 @@ def create_generic(**kwargs):
         part.update(current)
         
         
-        #define stage        
-        theme = part.get("oomp_description_extra", "")
-        part["theme"] = theme
         
         part["name"] = thing
         part["name_space"] = thing.replace("_", " ")
@@ -148,7 +145,7 @@ def create_generic(**kwargs):
             # prompt change
             prompts = []
             prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_image_main_1", "delay" : "60"})                        
-            file_name = f"image_main.png"
+            file_name = f"image_main_1.png"
             prompts.append({"file_name_image" : file_name, "text" : f"Generate the image take all the time you need", "delay" : "60"})
             files_to_trace.append(file_name)
             part2 = copy.deepcopy(part)
@@ -158,7 +155,7 @@ def create_generic(**kwargs):
             # prompt change
             prompts = []
             prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_image_main_2", "delay" : "60"})                        
-            file_name = f"image_main.png"
+            file_name = f"image_main_2.png"
             prompts.append({"file_name_image" : file_name, "text" : f"Generate the image take all the time you need", "delay" : "60"})
             files_to_trace.append(file_name)
             part2 = copy.deepcopy(part)
@@ -175,7 +172,7 @@ def create_generic(**kwargs):
             prompts.append({"file_name_image" : file_name, "text" : f"Generate the image take all the time you need", "delay" : "60"})
             files_to_trace.append(file_name)
             new_theme = f"{part.get("theme", "")} and {part.get("consequence", "")}"
-            part["theme"] = new_theme
+            part["background_theme"] = new_theme
             part2 = copy.deepcopy(part)
             count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       
        
@@ -223,7 +220,7 @@ def create_generic(**kwargs):
                 count = oomlout_roboclick.ai_action_from_folder(part=part, part2=part2)
 
         #make_card
-        if False:
+        if True:
             folder_name = f"roboclick\\{folder_project}\\action_corel_card_make"
             part2 = copy.deepcopy(part)
             part2["folder_name"] = folder_name
