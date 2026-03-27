@@ -1324,6 +1324,10 @@ def robo_delay(**kwargs):
     if isinstance(delay, str):
         delay = int(delay)
     rand = kwargs.get('rand', 0)
+    if rand == 0:
+        rand = kwargs.get('random', 0)
+        if rand == 0:
+            rand = kwargs.get('randomize', 0)
     message = kwargs.get('message', f"")
     if message != "":
         print(f"message")
