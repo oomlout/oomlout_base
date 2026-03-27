@@ -1750,6 +1750,20 @@ def robo_pdf_merge(**kwargs):
 
 ###### ai utilities
 
+def ai_check_for_too_many_requests():
+    #robo copy
+    text = robo_keyboard_copy()
+    if "too many requests" in text.lower():
+        print("     Detected 'too many requests' in AI response. Waiting for 60 seconds before retrying...")
+        robo_delay(delay=1800, randomize=300)
+        #press tab once
+        robo_keyboard_press_tab(delay=2)
+        #press enter once
+        robo_keyboard_press_enter(delay=10)
+        pass
+    pass
+    robo_delay(delay=2)
+
 
 def ai_wait_mode_fast_check(mode_ai_wait="fast_button_state"):  
     if mode_ai_wait == "fast_button_state" or mode_ai_wait == "fast":
@@ -1768,6 +1782,7 @@ def ai_wait_mode_fast_check_state_of_submit_button_approach():
     color_expecting = (236,236,236)
 
     while running and count < count_max:
+        ai_check_for_too_many_requests()
         robo_delay(delay=10)
         pixel_color = pyautogui.screenshot().getpixel((point_check_color[0], point_check_color[1]))
         print(f"    Pixel color at {point_check_color}: {pixel_color} ")
