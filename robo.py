@@ -1753,7 +1753,7 @@ def robo_pdf_merge(**kwargs):
 def ai_check_for_too_many_requests():
     #robo copy
     text = robo_keyboard_copy()
-    if "too many requests" in text.lower():
+    if "making requests too quickly" in text.lower():
         print("     Detected 'too many requests' in AI response. Waiting for 60 seconds before retrying...")
         robo_delay(delay=1800, randomize=300)
         #press tab once
