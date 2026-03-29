@@ -1759,7 +1759,7 @@ def ai_check_for_too_many_requests():
     text = robo_keyboard_copy()
     if "making requests too quickly" in text.lower():
         print("     Detected 'too many requests' in AI response. Waiting for 60 seconds before retrying...")
-        robo_delay(delay=1800, randomize=300)
+        robo_delay(delay=1800, randomize=1800)
         #press tab once
         robo_keyboard_press_tab(delay=2)
         #press enter once
