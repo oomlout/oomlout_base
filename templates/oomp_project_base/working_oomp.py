@@ -236,6 +236,7 @@ def create_generic(**kwargs):
             part2 = copy.deepcopy(part)
             part2["new_item_name"] = "date_type"
             part2["remove_top_level"] = "data"
+            #part2["file_tag"] = file_destination ## "tag" defaults to creating a tag file after completion
             count = oomlout_roboclick.ai_query_from_prompts(part=part, part2=part2, prompts=prompts, mode_ai_wait=mode_ai_wait, count=count, file_destination_yaml=file_destination_yaml, action_name=action_name)
 
 
