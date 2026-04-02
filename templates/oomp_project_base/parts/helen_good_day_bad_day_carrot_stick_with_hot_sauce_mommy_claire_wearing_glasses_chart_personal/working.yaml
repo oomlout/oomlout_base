@@ -214,6 +214,29 @@ oomlout_corel_roboclick_5:
         file_source: template\blank_page_a4_portrait_210_mm_width_297_mm_height\working.cdr
     -   command: corel_open
         file_source: card.cdr
+    -   command: corel_import
+        file_source: image_cover_background_trace.cdr
+        width: 210
+        x: 105
+        y: 297/2
+    -   command: corel_object_order
+        order: to_back
+    -   command: corel_import
+        file_source: image_main_1_trace.cdr
+        height: 100
+        x: '54.375'
+        y: '144.75'
+    -   command: corel_import
+        file_source: image_main_2_trace.cdr
+        height: 80
+        x: '165'
+        y: '158.5'
+    -   command: corel_save
+    -   command: corel_export
+        file_destination: card.png
+    -   command: corel_export
+        file_destination: card.pdf
+    -   command: corel_close
     -   command: create_text_file
         content: Tag for corel_card_make completed.
         file_name: aaaa_corel_card_make_tag_done.txt

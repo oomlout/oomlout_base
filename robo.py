@@ -1765,8 +1765,24 @@ def ai_check_for_too_many_requests():
         #press enter once
         robo_keyboard_press_enter(delay=10)
         pass
+    if True:
+        clip = text
+        if "you've hit the plus plan limit" in clip.lower() or "you have reached your free image generation limit" in clip.lower() or "you've reached your image creation limit" in clip.lower():   
+            #get text bewteen "resets in" and  minutes
+            time_out = clip.lower().split("resets in")[-1].split("minutes")[0].strip()
+            #check to make sure it worked
+            delay_time  = 6 * 60 * 60 # 6 hours
+            if time_out != "":
+                #get hours
+                if "hour" in time_out:
+                    hours = int(time_out.split("hour")[0].strip()) + 1
+                    delay_time = hours * 60 * 60
+                #print message
+                print(f"Image generation limit reached, waiting for {delay_time/3600:.2f} hours until reset...")
+            robo_delay(delay=delay_time)
     pass
     robo_delay(delay=2)
+
 
 
 def ai_wait_mode_fast_check(mode_ai_wait="fast_button_state"):  

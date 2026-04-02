@@ -22,9 +22,9 @@ def main(**kwargs):
     # Define default input dict with all required fields
     default_input = {
         "classification": "helen",
-        "type": "personal",
-        "size": "chart",
-        "color": "good_day_bad_day",
+        "type": "school",
+        "size": "general",
+        "color": "certificate",
         "description_main": "",
         "description_extra": "",
         "manufacturer": "",
@@ -38,15 +38,18 @@ def main(**kwargs):
     options = []
     if True:
         option = {}
-        option["theme"] = "mommy_claire_wearing_glasses"
-        option["consequence"] = "carrot_stick_with_hot_sauce"
+        #reason 600 house points
+        option["reason"] = "600 House Points"
+        option["theme"] = "lady_birds"
+        option["style"] = "garden_with_lots_of_bugs"
+        option["person"] = "Laila"
         options.append(option)
+    
 
     extras = []
     for option in options:
         extra = copy.deepcopy(default_input)
-        extra["theme"] = option["theme"]
-        extra["consequence"] = option["consequence"]
+        extra.update(option)
         extra["description_main"] = extra["theme"]
         extra["description_extra"] = extra["consequence"]
         extras.append(extra)
