@@ -89,8 +89,8 @@ def create_generic(**kwargs):
         files_to_trace = []
         count = 0
 
-        #mode_ai_wait = "fast"
-        mode_ai_wait = "slow"
+        mode_ai_wait = "fast"
+        #mode_ai_wait = "slow"
 
 
         #icon
@@ -120,10 +120,10 @@ def create_generic(**kwargs):
 
             oomlout_roboclick.add_action(part=part, action_type=action_type, action_name=action_name, actions=actions, file_test=file_test)
 
-        folder_project = "helen_personal_chart_good_day_bad_day"
+        folder_project = "helen_personal_chart_bribe_bank"
 
         #prompt bubble letter
-        part["words"] = ["Good Day Bad Day"]
+        part["words"] = ["Bribe Bank"]
         if True:
             # prompt change
             prompts = []
@@ -141,7 +141,7 @@ def create_generic(**kwargs):
             count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       
 
         #prompt image theme
-        if True:
+        if False:
             # prompt change
             prompts = []
             prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_image_main_1", "delay" : "60"})                        
@@ -150,17 +150,20 @@ def create_generic(**kwargs):
             files_to_trace.append(file_name)
             part2 = copy.deepcopy(part)
             count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       
-        #consequnce
+        #value
         if True:
             # prompt change
-            prompts = []
-            prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_image_main_2", "delay" : "60"})                        
-            file_name = f"image_main_2.png"
-            prompts.append({"file_name_image" : file_name, "text" : f"Generate the image take all the time you need", "delay" : "60"})
-            files_to_trace.append(file_name)
-            part2 = copy.deepcopy(part)
-            count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       
-
+            for i in range(1, 4):
+                value = part.get(f"value_{i}", "")
+                if value != "":
+                    prompts = []
+                    prompts.append({"folder_name" : f"roboclick\\{folder_project}\\prompt_image_main_{i}", "delay" : "60"})                        
+                    file_name = f"image_value_{i}.png"
+                    prompts.append({"file_name_image" : file_name, "text" : f"Generate the image take all the time you need", "delay" : "60"})
+                    files_to_trace.append(file_name)
+                    part2 = copy.deepcopy(part)                    
+                    count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)
+            
 
         #cover_background
         #prompt image
@@ -171,7 +174,7 @@ def create_generic(**kwargs):
             file_name = f"image_cover_background.png"
             prompts.append({"file_name_image" : file_name, "text" : f"Generate the image take all the time you need", "delay" : "60"})
             files_to_trace.append(file_name)
-            new_theme = f"{part.get("theme", "")} and {part.get("consequence", "")}"
+            new_theme = f"A Bribe Bank with these rewards: {part.get("value_1", "")}, {part.get("value_2", "")}, and {part.get("value_3", "")}"
             part["background_theme"] = new_theme
             part2 = copy.deepcopy(part)
             count = oomlout_roboclick.ai_query_from_prompts(part, part2, prompts, mode_ai_wait, count)       

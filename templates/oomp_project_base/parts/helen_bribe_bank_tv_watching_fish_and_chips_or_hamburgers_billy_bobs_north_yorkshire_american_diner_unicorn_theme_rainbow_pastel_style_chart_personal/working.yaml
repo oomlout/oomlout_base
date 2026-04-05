@@ -1,0 +1,288 @@
+background_theme: 'A Bribe Bank with these rewards: tv_watching, fish_and_chips_or_hamburgers,
+    and billy_bobs_north_yorkshire_american_diner'
+classification: helen
+classification_capital: Helen
+classification_first_letter: h
+classification_first_letter_upper: H
+classification_upper: HELEN
+color: unicorn_theme_rainbow_pastel_style
+color_capital: Unicorn Theme Rainbow Pastel Style
+color_first_letter: u
+color_first_letter_upper: U
+color_upper: UNICORN_THEME_RAINBOW_PASTEL_STYLE
+description_extra: ''
+description_extra_capital: ''
+description_extra_first_letter: ''
+description_extra_first_letter_upper: ''
+description_extra_upper: ''
+description_main: ''
+description_main_capital: ''
+description_main_first_letter: ''
+description_main_first_letter_upper: ''
+description_main_upper: ''
+description_only_numbers: ''
+description_only_numbers_short: ' '
+description_or_color: 'U '
+description_or_color_upper: 'U '
+directory: parts/helen_bribe_bank_tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal
+distributors: []
+file_input: ''
+id: helen_bribe_bank_tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal
+id_no_class: bribe_bank_tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal
+id_no_size: unicorn_theme_rainbow_pastel_style_chart_personal
+id_no_type: tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal
+link_github: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_bribe_bank_tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal
+link_main: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_bribe_bank_tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal
+link_redirect: https://github.com/oomlout/oomlout_oomp_version_1_messy/tree/main/parts/helen_bribe_bank_tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal
+manufacturer: chart
+manufacturer_capital: Chart
+manufacturer_first_letter: c
+manufacturer_first_letter_upper: C
+manufacturer_upper: CHART
+manufacturers: []
+markdown_full: '[helen_bribe_bank_tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal](none)<br>[](none)<br>[Helen
+    Bribe Bank Tv Watching Fish And Chips Or Hamburgers Billy Bobs North Yorkshire
+    American Diner Unicorn Theme Rainbow Pastel Style Chart Personal](none)<br><br>'
+markdown_short: '[helen_bribe_bank_tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal](none)<br><br>'
+md5: 8e4d2ca1b63d7dd40e1a5104efed2931
+md5_10: 8e4d2ca1b6
+md5_10_upper: 8E4D2CA1B6
+md5_5: 8e4d2
+md5_5_upper: 8E4D2
+md5_6: 8e4d2c
+md5_6_alpha: 5jvvw
+md5_6_alpha_upper: 5JVVW
+md5_6_upper: 8E4D2C
+name: Helen Bribe Bank Tv Watching Fish And Chips Or Hamburgers Billy Bobs North Yorkshire
+    American Diner Unicorn Theme Rainbow Pastel Style Chart Personal
+name_no_class: Bribe Bank Tv Watching Fish And Chips Or Hamburgers Billy Bobs North
+    Yorkshire American Diner Unicorn Theme Rainbow Pastel Style Chart Personal
+name_no_size: Unicorn Theme Rainbow Pastel Style Chart Personal
+name_no_size_short: Unicorn Theme Rainbow Pastel Style Chart Personal
+name_no_type: Tv Watching Fish And Chips Or Hamburgers Billy Bobs North Yorkshire
+    American Diner Unicorn Theme Rainbow Pastel Style Chart Personal
+name_proper: Helen Personal Chart Bribe Bank Unicorn Theme Rainbow Pastel Style Tv
+    Watching Fish And Chips Or Hamburgers Billy Bobs North Yorkshire American Diner
+name_space: helen personal chart bribe bank unicorn theme rainbow pastel style tv
+    watching fish and chips or hamburgers billy bobs north yorkshire american diner
+name_upper: HELEN PERSONAL CHART BRIBE BANK UNICORN THEME RAINBOW PASTEL STYLE TV
+    WATCHING FISH AND CHIPS OR HAMBURGERS BILLY BOBS NORTH YORKSHIRE AMERICAN DINER
+oomlout_ai_roboclick_1:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: roboclick\helen_personal_chart_bribe_bank\prompt_three_dimension_letter_two_line_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        mode_ai_wait: fast
+        text: Awesome fill in the json template with "Bribe Bank"
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate the image take all the time you need
+    -   command: save_image_generated
+        file_name: initial_generated_1.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: initial_generated_1.png
+oomlout_ai_roboclick_2:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: roboclick\helen_personal_chart_bribe_bank\prompt_image_main_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate the image take all the time you need
+    -   command: save_image_generated
+        file_name: image_value_1.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_value_1.png
+oomlout_ai_roboclick_3:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: roboclick\helen_personal_chart_bribe_bank\prompt_image_main_2
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate the image take all the time you need
+    -   command: save_image_generated
+        file_name: image_value_2.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_value_2.png
+oomlout_ai_roboclick_4:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: roboclick\helen_personal_chart_bribe_bank\prompt_image_main_3
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate the image take all the time you need
+    -   command: save_image_generated
+        file_name: image_value_3.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_value_3.png
+oomlout_ai_roboclick_5:
+    actions:
+    -   command: new_chat
+        description: create_prompt_verbose
+    -   command: ai_query
+        delay: '60'
+        folder_name: roboclick\helen_personal_chart_bribe_bank\prompt_image_background_1
+        mode_ai_wait: fast
+    -   command: ai_query
+        delay: '60'
+        mode_ai_wait: fast
+        text: Generate the image take all the time you need
+    -   command: save_image_generated
+        file_name: image_cover_background.png
+        mode_ai_wait: fast
+    -   command: close_tab
+    file_test: image_cover_background.png
+oomlout_ai_roboclick_6:
+    actions:
+    -   command: create_text_file
+        content: Tag for roboclick\helen_personal_chart_bribe_bank\action_corel_card_make_action
+            completed.
+        file_name: aaaa_roboclick\helen_personal_chart_bribe_bank\action_corel_card_make_action_tag_done.txt
+    file_test: aaaa_roboclick\helen_personal_chart_bribe_bank\action_corel_card_make_action_tag_done.txt
+oomlout_corel_roboclick_1:
+    actions:
+    -   command: wait_for_file
+        file_name: initial_generated_1.png
+    -   command: corel_trace_full
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: initial_generated_1.png
+        max_dimension: 95
+        number_of_colors: ''
+        remove_background_color_from_entire_image:
+            remove_background_color_from_entire_image: null
+        x: 50
+        y: 50
+    -   command: create_text_file
+        content: Tag for corel_trace_initial_generated_1.png completed.
+        file_name: aaaa_corel_trace_initial_generated_1.png_tag_done.txt
+    file_test: aaaa_corel_trace_initial_generated_1.png_tag_done.txt
+oomlout_corel_roboclick_2:
+    actions:
+    -   command: wait_for_file
+        file_name: image_value_1.png
+    -   command: corel_trace_full
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_value_1.png
+        max_dimension: 95
+        number_of_colors: ''
+        remove_background_color_from_entire_image:
+            remove_background_color_from_entire_image: null
+        x: 50
+        y: 50
+    -   command: create_text_file
+        content: Tag for corel_trace_image_value_1.png completed.
+        file_name: aaaa_corel_trace_image_value_1.png_tag_done.txt
+    file_test: aaaa_corel_trace_image_value_1.png_tag_done.txt
+oomlout_corel_roboclick_3:
+    actions:
+    -   command: wait_for_file
+        file_name: image_value_2.png
+    -   command: corel_trace_full
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_value_2.png
+        max_dimension: 95
+        number_of_colors: ''
+        remove_background_color_from_entire_image:
+            remove_background_color_from_entire_image: null
+        x: 50
+        y: 50
+    -   command: create_text_file
+        content: Tag for corel_trace_image_value_2.png completed.
+        file_name: aaaa_corel_trace_image_value_2.png_tag_done.txt
+    file_test: aaaa_corel_trace_image_value_2.png_tag_done.txt
+oomlout_corel_roboclick_4:
+    actions:
+    -   command: wait_for_file
+        file_name: image_value_3.png
+    -   command: corel_trace_full
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_value_3.png
+        max_dimension: 95
+        number_of_colors: ''
+        remove_background_color_from_entire_image:
+            remove_background_color_from_entire_image: null
+        x: 50
+        y: 50
+    -   command: create_text_file
+        content: Tag for corel_trace_image_value_3.png completed.
+        file_name: aaaa_corel_trace_image_value_3.png_tag_done.txt
+    file_test: aaaa_corel_trace_image_value_3.png_tag_done.txt
+oomlout_corel_roboclick_5:
+    actions:
+    -   command: wait_for_file
+        file_name: image_cover_background.png
+    -   command: corel_trace_full
+        file_source: template\blank_square_100_mm_width_100_mm_height\working.cdr
+        file_source_trace: image_cover_background.png
+        max_dimension: 95
+        number_of_colors: ''
+        remove_background_color_from_entire_image:
+            remove_background_color_from_entire_image: null
+        x: 50
+        y: 50
+    -   command: create_text_file
+        content: Tag for corel_trace_image_cover_background.png completed.
+        file_name: aaaa_corel_trace_image_cover_background.png_tag_done.txt
+    file_test: aaaa_corel_trace_image_cover_background.png_tag_done.txt
+oomp_key: oomp_helen_bribe_bank_tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner_unicorn_theme_rainbow_pastel_style_chart_personal
+oomp_word: clipboard bug snowflake
+oomp_word_emoji: ':clipboard: :bug: :snowflake:'
+oomp_word_emoji_list:
+- ':clipboard:'
+- ':bug:'
+- ':snowflake:'
+oomp_word_list:
+- clipboard
+- bug
+- snowflake
+part_number: personal
+part_number_capital: Personal
+part_number_first_letter: p
+part_number_first_letter_upper: P
+part_number_upper: PERSONAL
+short_code: ''
+short_code_upper: ''
+size: tv_watching_fish_and_chips_or_hamburgers_billy_bobs_north_yorkshire_american_diner
+size_capital: Tv Watching Fish And Chips Or Hamburgers Billy Bobs North Yorkshire
+    American Diner
+size_first_letter: t
+size_first_letter_upper: T
+size_only_numbers: ''
+size_only_numbers_no_zeros: ''
+size_upper: TV_WATCHING_FISH_AND_CHIPS_OR_HAMBURGERS_BILLY_BOBS_NORTH_YORKSHIRE_AMERICAN_DINER
+style: rainbow_pastel
+theme: unicorn
+type: bribe_bank
+type_capital: Bribe Bank
+type_first_letter: b
+type_first_letter_upper: B
+type_upper: BRIBE_BANK
+url_chat: ''
+value_1: tv_watching
+value_2: fish_and_chips_or_hamburgers
+value_3: billy_bobs_north_yorkshire_american_diner
+words:
+- Bribe Bank
