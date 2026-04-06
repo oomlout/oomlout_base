@@ -46,6 +46,7 @@ plane relationships
 depth logic
 structural rhythm
 
+also a bit colourful and no greadients
 
 add aspects of {style} to the prompt
 
