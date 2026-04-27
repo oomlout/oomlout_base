@@ -28,7 +28,7 @@ def robo_chatgpt_prompt_type(**kwargs):
     pyautogui.typewrite(prompt, interval=0.025)
     time.sleep(1)
     #press enter to send the prompt
-    print("Pressing enter...")
+    print(".:enter:.")
     pyautogui.press('enter')
     robo_delay(delay=40)
 
@@ -1146,13 +1146,13 @@ def robo_keyboard_press_alt_generic(**kwargs):
     repeat = kwargs.get('repeat', 1)
     #press ctrl + string
     if repeat > 1:
-        print(f"pressing alt + {string} {repeat} times")
+        print(f"'.:'alt + {string} x {repeat}:.", flush=True, end="")
         for i in range(repeat):
             pyautogui.hotkey('alt', string)
             time.sleep(delay_keypress)
         robo_delay(delay=delay)
     else:
-        print(f"pressing alt + {string} once")
+        print(f"'.:'alt + {string}:.", flush=True, end="")
         pyautogui.hotkey('alt', string)
         robo_delay(delay=delay)
 
@@ -1163,13 +1163,13 @@ def robo_keyboard_press_ctrl_generic(**kwargs):
     repeat = kwargs.get('repeat', 1)
     #press ctrl + string
     if repeat > 1:
-        print(f"pressing ctrl + {string} {repeat} times")
+        print(f"'.:'ctrl + {string} x {repeat}:.", flush=True, end="")
         for i in range(repeat):
             pyautogui.hotkey('ctrl', string)
             time.sleep(delay_keypress)
         robo_delay(delay=delay)
     else:
-        print(f"pressing ctrl + {string} once")
+        print(f"'.:'ctrl + {string}:.", flush=True, end="")
         pyautogui.hotkey('ctrl', string)
         robo_delay(delay=delay)
 
@@ -1250,7 +1250,9 @@ def robo_keyboard_press_string(**kwargs):
     string = kwargs.get('string', '')
     delay = kwargs.get('delay', 1)
     delay_keypress = kwargs.get('delay_keypress', 0.025)    
-    print(f"pressing {string} once")
+    #remove new lines and tabs from the string for the print statement
+    string_print = string.replace("\n", "\\n").replace("\t", "\\t")
+    print(f".: typing: {string_print[:60]}:.", flush=True, end="")
     pyautogui.typewrite(string, interval=delay_keypress)
     robo_delay(delay=delay)
 
@@ -1261,13 +1263,15 @@ def robo_keyboard_press_generic(**kwargs):
     repeat = kwargs.get('repeat', 1)
     #press escape to close the menu
     if repeat > 1:
-        print(f"pressing {string} {repeat} times")
+        string_print = string.replace("\n", "\\n").replace("\t", "\\t")
+        print(f".: typing: {string_print[:60]} x {repeat}:.", flush=True, end="")
         for i in range(repeat):
             pyautogui.press(string)
             time.sleep(delay_keypress)
         robo_delay(delay=delay)
     else:
-        print(f"pressing {string} once")
+        string_print = string.replace("\n", "\\n").replace("\t", "\\t")
+        print(f".: typing: {string_print[:60]}:.", flush=True, end="")
         pyautogui.press(string)
         robo_delay(delay=delay)
 
@@ -1278,7 +1282,8 @@ def robo_keyboard_press_shift_generic(**kwargs):
     repeat = kwargs.get('repeat', 1)
     #press escape to close the menu
     if repeat > 1:
-        print(f"pressing shift {string} {repeat} times")
+        string_print = string.replace("\n", "\\n").replace("\t", "\\t")
+        print(f".:shift {string_print[:60]} x {repeat}:.", flush=True, end="")
         for i in range(repeat):
             pyautogui.keyDown('shift')
             pyautogui.press(string)
@@ -1286,7 +1291,8 @@ def robo_keyboard_press_shift_generic(**kwargs):
             time.sleep(delay_keypress)
         robo_delay(delay=delay)
     else:
-        print(f"pressing shift {string} once")
+        string_print = string.replace("\n", "\\n").replace("\t", "\\t")
+        print(f".:shift {string_print[:60]}:.", flush=True, end="")
         pyautogui.keyDown('shift')
         pyautogui.press(string)
         pyautogui.keyUp('shift')
@@ -1337,7 +1343,8 @@ def robo_delay(**kwargs):
     if delay <= 1:
         time.sleep(delay)
     elif delay > 5:
-        print(f"<<<<<>>>>> waiting for {delay} seconds (press 's' to skip) or turn scroll lock off")
+        print("")
+        print(f"<<<<<>>>>> {delay} ")
     
         splits = 10
         for i in range(splits):
@@ -1347,32 +1354,32 @@ def robo_delay(**kwargs):
                 # Check if 's' key is pressed
                 key = check_key_pressed()
                 if key == 's':
-                    print("\nDelay skipped by pressing 's' key")
+                    print("\n.:skipped:.", flush=True, end="")
                     time.sleep(1)
                     return
                 #check scroll lock state
                 import ctypes
 
                 if ctypes.windll.user32.GetKeyState(0x91) & 1 == 1:
-                    print("Scroll Lock is OFF, skipping delay")
+                    print(".:skip:.", end='', flush=True)
                     time.sleep(2)
                     pyautogui.press('scrolllock')
                     return
                 time.sleep(1)
         print("")
     else:
-        print(f"waiting for {delay} seconds (press 's' to skip)", end='', flush=True)
+        print(f".:{delay}:.", end='', flush=True)
         for i in range(int(delay)):
             #print the progress bar
             print(".", end='', flush=True)
             # Check if 's' key is pressed
             key = check_key_pressed()
             if key == 's':
-                print("\nDelay skipped by pressing 's' key")
+                print("\n.:skipped:.", flush=True, end="")
                 time.sleep(5)
                 return
             time.sleep(1)
-        print("")
+        #print("")
 
 def robo_mouse_click(**kwargs):
     position = kwargs.get('position', [0, 0])
@@ -1484,6 +1491,9 @@ def fix_search_replace_special_characters(data):
     Recursively process a dictionary/list and replace special Unicode characters
     with their XML/SVG entity equivalents (&#xHHHH; format)
     """
+    memo = {}
+    active = set()
+
     def fix_corrupted_utf8(text):
         """Fix common UTF-8 corruption patterns for various languages"""
         if not isinstance(text, str):
@@ -1652,9 +1662,33 @@ def fix_search_replace_special_characters(data):
     def process_value(obj):
         """Recursively process dictionary/list/string values"""
         if isinstance(obj, dict):
-            return {k: process_value(v) for k, v in obj.items()}
+            obj_id = id(obj)
+            if obj_id in memo:
+                return memo[obj_id]
+            if obj_id in active:
+                return obj
+
+            active.add(obj_id)
+            result = {}
+            memo[obj_id] = result
+            for k, v in obj.items():
+                result[k] = process_value(v)
+            active.remove(obj_id)
+            return result
         elif isinstance(obj, list):
-            return [process_value(item) for item in obj]
+            obj_id = id(obj)
+            if obj_id in memo:
+                return memo[obj_id]
+            if obj_id in active:
+                return obj
+
+            active.add(obj_id)
+            result = []
+            memo[obj_id] = result
+            for item in obj:
+                result.append(process_value(item))
+            active.remove(obj_id)
+            return result
         elif isinstance(obj, str):
             return unicode_to_svg_entity(obj)
         else:
@@ -1822,18 +1856,22 @@ def ai_wait_mode_fast_clipboard_creating_image_approach():
     count_max = 100
     running = True    
     string_check = "Creating image"
-
+    strings_check = ["one last tweak", "creating_image", "sketching it out", "making the first draft", "setting the scene", "polishing details"]
+    
     while running and count < count_max:
         robo_delay(delay=10)
         #mouse click at 300,300
         robo_mouse_click(position=[300, 300], delay=2, button="left")  # Click to focus
         text = robo_keyboard_copy(delay=2)
-        if string_check in text:
-            print("    AI appears to be creating an image, waiting for it to finish...")
-        else:
+        #if string_check in text:
+        #any of the strings in strings_check in text
+        if any(s.lower() in text.lower() for s in strings_check):
             print("    AI appears to have finished responding.")
             running = False
-            robo_delay(delay=2)
+            robo_delay(delay=60)
+        else:
+            print("    AI appears to be creating an image, waiting for it to finish...")
+            
 
 def ai_save_image(**kwargs):
     #position_click = kwargs.get("position_click", [960, 500])
