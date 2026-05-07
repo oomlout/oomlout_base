@@ -59,3 +59,4 @@ pip install PyPDF2
 pip install schedule
 pip install mkdocs
 pip install CairoSVG
+pip install solidpython2
