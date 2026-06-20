@@ -399,7 +399,7 @@ def get_jinja2_template(**kwargs):
     if not os.path.isfile(file_template):
         file_template = os.path.join("c:/gh/oomlout_base", file_template)    
     file_template = file_template.replace("/", "\\")
-    with open(file_template, "r") as infile:
+    with gen as infile:
         markdown_string = infile.read()
     ##### sanitize part
     import copy
